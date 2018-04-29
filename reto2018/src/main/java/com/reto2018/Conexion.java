@@ -8,7 +8,7 @@ public class Conexion {
 
     public static Connection conexion;
 
-    public static void EstablecerConexion() throws ClassNotFoundException, SQLException {
+    public static Connection EstablecerConexion() throws ClassNotFoundException, SQLException {
         Class.forName("oracle.jdbc.driver.OracleDriver");
 
         /*String servidor = "srvoracle";
@@ -24,7 +24,7 @@ public class Conexion {
         String password = "clase";
         String url = "jdbc:oracle:thin:@" + servidor + ":" + puerto + ":" + sid;
 
-                conexion= DriverManager.getConnection(url, login, password);
+               return conexion= DriverManager.getConnection(url, login, password);
 
     }
 }

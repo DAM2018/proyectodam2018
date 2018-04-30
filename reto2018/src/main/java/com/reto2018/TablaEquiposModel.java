@@ -9,7 +9,7 @@ import java.util.List;
 
 public class TablaEquiposModel extends AbstractTableModel {
 
-    private String[] columnas = {"Nombre", "Codigo", "Ganados", "Empatados", "perdidos"};
+    private String[] columnas = {"Nombre", "Ganados", "Empatados", "perdidos"};
 
     private int viaje;
     private List<Equipo> equipos;
@@ -43,26 +43,26 @@ public class TablaEquiposModel extends AbstractTableModel {
 
     @Override
     public Object getValueAt(int rowIndex, int columnIndex) {
+        try {
+            Equipo e = null;
+            e = equipos.get(rowIndex);
 
-        Equipo e = equipos.get(rowIndex);
+            switch (columnIndex) {
+                case 0:
+                    return e.getNombreequi();
+                case 1:
+                    return e.getGanandos();
+                case 2:
+                    return e.getEmpates();
+                case 3:
+                    return e.getPerdidos();
 
-        switch (columnIndex) {
-            case 0:
-                return e.getNombreequi();
-            case 1:
-                return e.getCodigoequi();
-            case 2:
-                return e.getGanandos();
-            case 3:
-                return e.getEmpates();
-            case 4:
-                return e.getPerdidos();
+            }
 
-        }
-
+        } catch (java.lang.IndexOutOfBoundsException e1){};
         return null;
-    }
 
+    }
     @Override
     public String getColumnName(int column) {
         return columnas[column];

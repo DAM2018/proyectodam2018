@@ -3,14 +3,14 @@ package com.reto2018;
 public class Equipo {
 
     private String nombreequi;
-    private String codigoequi;
+    //private String codigoequi;
     private int ganandos;
     private int empates;
     private int perdidos;
 
-    public Equipo(String nombreequi, String codigoequi, int ganandos, int empates, int perdidos) {
+    public Equipo(String nombreequi, int ganandos, int empates, int perdidos) {
         this.nombreequi = nombreequi;
-        this.codigoequi = codigoequi;
+      //  this.codigoequi = codigoequi;
         this.ganandos = ganandos;
         this.empates = empates;
         this.perdidos = perdidos;
@@ -24,13 +24,6 @@ public class Equipo {
         this.nombreequi = nombreequi;
     }
 
-    public String getCodigoequi() {
-        return codigoequi;
-    }
-
-    public void setCodigoequi(String codigoequi) {
-        this.codigoequi = codigoequi;
-    }
 
     public int getGanandos() {
         return ganandos;

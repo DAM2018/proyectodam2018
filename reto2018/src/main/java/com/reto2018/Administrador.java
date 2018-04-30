@@ -1,17 +1,19 @@
 package com.reto2018;
 
+
+
+import oracle.jdbc.internal.OracleTypes;
+
 import javax.swing.*;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 import javax.swing.table.DefaultTableModel;
-import java.awt.event.ComponentAdapter;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
+import java.awt.event.*;
 import java.math.BigDecimal;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
-import java.sql.Types;
+import java.sql.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 public class Administrador {
 
@@ -97,10 +99,10 @@ public class Administrador {
 
                     System.out.println(sql);
                 } catch (SQLException e1) {
-                   // e1.printStackTrace();
+                    // e1.printStackTrace();
                 } catch (ClassNotFoundException e1) {
                     e1.printStackTrace();
-                }catch (java.lang.NumberFormatException e1) {
+                } catch (java.lang.NumberFormatException e1) {
                     //e1.printStackTrace();
                 }
 
@@ -143,7 +145,7 @@ public class Administrador {
                     // e1.printStackTrace();
                 } catch (ClassNotFoundException e1) {
                     e1.printStackTrace();
-                }catch (java.lang.NumberFormatException e1) {
+                } catch (java.lang.NumberFormatException e1) {
                     //e1.printStackTrace();
                 }
 
@@ -208,7 +210,7 @@ public class Administrador {
                     // e1.printStackTrace();
                 } catch (ClassNotFoundException e1) {
                     e1.printStackTrace();
-                }catch (java.lang.NumberFormatException e1) {
+                } catch (java.lang.NumberFormatException e1) {
                     //e1.printStackTrace();
                 }
 
@@ -244,7 +246,7 @@ public class Administrador {
                     // e1.printStackTrace();
                 } catch (ClassNotFoundException e1) {
                     e1.printStackTrace();
-                }catch (java.lang.NumberFormatException e1) {
+                } catch (java.lang.NumberFormatException e1) {
                     //e1.printStackTrace();
                 }
 
@@ -280,7 +282,7 @@ public class Administrador {
                     // e1.printStackTrace();
                 } catch (ClassNotFoundException e1) {
                     e1.printStackTrace();
-                }catch (java.lang.NumberFormatException e1) {
+                } catch (java.lang.NumberFormatException e1) {
                     //e1.printStackTrace();
                 }
 
@@ -316,7 +318,7 @@ public class Administrador {
                     // e1.printStackTrace();
                 } catch (ClassNotFoundException e1) {
                     e1.printStackTrace();
-                }catch (java.lang.NumberFormatException e1) {
+                } catch (java.lang.NumberFormatException e1) {
                     //e1.printStackTrace();
                 }
             }
@@ -347,14 +349,13 @@ public class Administrador {
                     PreparedStatement st;
 
 
-                    String sql = "insert into equipo values (?,?,?,?,?)";
+                    String sql = "insert into equipo values (?,?,?,?)";
                     st = conexion.prepareStatement(sql);
                     st.setString(1, textField10.getText());
-                    st.setString(2, textField11.getText());
-                    st.setInt(3, Integer.parseInt(textField12.getText()));
-                    st.setInt(4, Integer.parseInt(textField13.getText()));
-                    st.setInt(5, Integer.parseInt(textField14.getText()));
-
+//                    st.setString(2, textField11.getText());
+                    st.setInt(2, Integer.parseInt(textField12.getText()));
+                    st.setInt(3, Integer.parseInt(textField13.getText()));
+                    st.setInt(4, Integer.parseInt(textField14.getText()));
 
 
                     st.executeUpdate();
@@ -369,10 +370,9 @@ public class Administrador {
                     // e1.printStackTrace();
                 } catch (ClassNotFoundException e1) {
                     e1.printStackTrace();
-                }catch (java.lang.NumberFormatException e1) {
+                } catch (java.lang.NumberFormatException e1) {
                     //e1.printStackTrace();
                 }
-
 
 
             }
@@ -385,8 +385,8 @@ public class Administrador {
                 try {
                     Connection conexion = Conexion.conexion;
 
-                    String sql = "update equipo set nombreequi=?, codigoequi=?,gannados=?," +
-                            "empates=?,perdidos=? where codigoequi='" + tem.getValueAt(table3.getSelectedRow(), 1).toString() + "'";
+                    String sql = "update equipo set nombreequi=?,ganados=?," +
+                            "empates=?,perdidos=? where nombreequi='" + tem.getValueAt(table3.getSelectedRow(), 0).toString() + "'";
 
 
                     PreparedStatement st = conexion.prepareStatement(sql);
@@ -394,10 +394,10 @@ public class Administrador {
                     st = conexion.prepareStatement(sql);
 
                     st.setString(1, textField10.getText());
-                    st.setString(2, textField11.getText());
-                    st.setInt(3, Integer.parseInt(textField12.getText()));
-                    st.setInt(4, Integer.parseInt(textField13.getText()));
-                    st.setInt(5, Integer.parseInt(textField14.getText()));
+                   // st.setString(2, textField11.getText());
+                    st.setInt(2, Integer.parseInt(textField12.getText()));
+                    st.setInt(3, Integer.parseInt(textField13.getText()));
+                    st.setInt(4, Integer.parseInt(textField14.getText()));
 
                     st.executeUpdate();
 
@@ -410,7 +410,7 @@ public class Administrador {
                     // e1.printStackTrace();
                 } catch (ClassNotFoundException e1) {
                     e1.printStackTrace();
-                }catch (java.lang.NumberFormatException e1) {
+                } catch (java.lang.NumberFormatException e1) {
                     //e1.printStackTrace();
                 }
 
@@ -428,7 +428,7 @@ public class Administrador {
                     PreparedStatement st;
 
 
-                    String sql = "delete from equipo where codigoequi=?";
+                    String sql = "delete from equipo where nombreequi=?";
                     st = conexion.prepareStatement(sql);
                     st.setString(1, tem.getValueAt(table3.getSelectedRow(), 1).toString());
 
@@ -444,7 +444,7 @@ public class Administrador {
                     // e1.printStackTrace();
                 } catch (ClassNotFoundException e1) {
                     e1.printStackTrace();
-                }catch (java.lang.NumberFormatException e1) {
+                } catch (java.lang.NumberFormatException e1) {
                     //e1.printStackTrace();
                 }
 
@@ -458,8 +458,315 @@ public class Administrador {
                 textField11.setText(tem.getValueAt(table3.getSelectedRow(), 1).toString());
                 textField12.setText(tem.getValueAt(table3.getSelectedRow(), 2).toString());
                 textField13.setText(tem.getValueAt(table3.getSelectedRow(), 3).toString());
-                textField14.setText(tem.getValueAt(table3.getSelectedRow(), 4).toString());
+              //  textField14.setText(tem.getValueAt(table3.getSelectedRow(), 4).toString());
 
+            }
+        });
+
+        final DefaultComboBoxModel dcm = new DefaultComboBoxModel();
+
+        dcm.addElement(0);
+        dcm.addElement(1);
+        dcm.addElement(2);
+        dcm.addElement(3);
+        dcm.addElement(4);
+        dcm.addElement(5);
+        dcm.addElement(6);
+        dcm.addElement(7);
+        dcm.addElement(8);
+        dcm.addElement(9);
+        dcm.addElement(10);
+        dcm.addElement(11);
+        dcm.addElement(12);
+        dcm.addElement(13);
+        dcm.addElement(14);
+
+        comboBox1.setModel(dcm);
+
+
+        comboBox1.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                textField15.setText("");
+                textField17.setText("");
+                textField18.setText("");
+                textField21.setText("");
+                textField19.setText("");
+                textField22.setText("");
+                textField20.setText("");
+                textField23.setText("");
+                textField24.setText("");
+                textField25.setText("");
+                textField26.setText("");
+                textField27.setText("");
+
+
+                String sql = "{call calendario.crearCalendario(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)}";
+                try {
+                    Connection conexion = Conexion.conexion;
+                    CallableStatement callableStatement = conexion.prepareCall(sql);
+
+                    callableStatement.setString(1, tem.getValueAt(0, 0).toString());
+                    callableStatement.setString(2, tem.getValueAt(1, 0).toString());
+                    callableStatement.setString(3, tem.getValueAt(2, 0).toString());
+                    callableStatement.setString(4, tem.getValueAt(3, 0).toString());
+                    callableStatement.setString(5, tem.getValueAt(4, 0).toString());
+                    callableStatement.setString(6, tem.getValueAt(5, 0).toString());
+                    callableStatement.setString(7, tem.getValueAt(6, 0).toString());
+                    callableStatement.setString(8, tem.getValueAt(7, 0).toString());
+                    callableStatement.setInt(9, Integer.parseInt(dcm.getSelectedItem().toString()));
+
+
+                    callableStatement.registerOutParameter(10, java.sql.Types.VARCHAR);
+                    callableStatement.registerOutParameter(11, java.sql.Types.VARCHAR);
+                    callableStatement.registerOutParameter(12, java.sql.Types.VARCHAR);
+                    callableStatement.registerOutParameter(13, java.sql.Types.VARCHAR);
+                    callableStatement.registerOutParameter(14, java.sql.Types.VARCHAR);
+                    callableStatement.registerOutParameter(15, java.sql.Types.VARCHAR);
+                    callableStatement.registerOutParameter(16, java.sql.Types.VARCHAR);
+                    callableStatement.registerOutParameter(17, java.sql.Types.VARCHAR);
+
+                    callableStatement.executeUpdate();
+
+                    equipo1.setText(callableStatement.getString(10));
+                    equipo2.setText(callableStatement.getString(11));
+                    equipo3.setText(callableStatement.getString(12));
+                    equipo4.setText(callableStatement.getString(13));
+                    equipo5.setText(callableStatement.getString(14));
+                    equipo6.setText(callableStatement.getString(15));
+                    equipo7.setText(callableStatement.getString(16));
+                    equipo8.setText(callableStatement.getString(17));
+
+
+                    String sql2 = "{call calendario.verResultados(?,?)}";
+
+                    CallableStatement callableStatement2 = conexion.prepareCall(sql2);
+
+                    callableStatement2.setInt(1, Integer.parseInt(dcm.getSelectedItem().toString()));
+                    callableStatement2.registerOutParameter(2, OracleTypes.CURSOR);
+                    //callableStatement2.registerOutParameter(3, Types.VARCHAR);
+
+                    callableStatement2.executeUpdate();
+                    ResultSet rs = (ResultSet) callableStatement2.getObject(2);
+
+                    List<Resultado> resultados = new ArrayList<Resultado>();
+
+                    while (rs.next()) {
+                        int resultado1 = rs.getInt("resultado1");
+                        int resultado2 = rs.getInt("resultado2");
+                        String fecha = rs.getString("fecha");
+
+                        resultados.add(new Resultado(resultado1, resultado2,fecha));
+
+
+                    }
+                    textField15.setText(String.valueOf(resultados.get(0).getResultado1()));
+                    textField17.setText(String.valueOf(resultados.get(0).getResultado2()));
+                    textField24.setText(String.valueOf(resultados.get(0).getFecha()));
+                    textField18.setText(String.valueOf(resultados.get(1).getResultado1()));
+                    textField21.setText(String.valueOf(resultados.get(1).getResultado2()));
+                    textField25.setText(String.valueOf(resultados.get(1).getFecha()));
+                    textField19.setText(String.valueOf(resultados.get(2).getResultado1()));
+                    textField22.setText(String.valueOf(resultados.get(2).getResultado2()));
+                    textField26.setText(String.valueOf(resultados.get(2).getFecha()));
+                    textField20.setText(String.valueOf(resultados.get(3).getResultado1()));
+                    textField23.setText(String.valueOf(resultados.get(3).getResultado2()));
+                    textField27.setText(String.valueOf(resultados.get(3).getFecha()));
+
+
+                } catch (SQLException e2) {
+
+                    // System.out.println(e.getMessage());
+
+                } catch (java.lang.NullPointerException e2) {
+
+
+                }catch (java.lang.IndexOutOfBoundsException e2) {
+
+
+                }
+
+
+            }
+        });
+        actualizarResultadoFechaButton.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                super.mouseClicked(e);
+
+                try {
+
+                    Connection conexion = Conexion.conexion;
+
+                    PreparedStatement st;
+
+
+                    String sql = "insert into partido values (?,?,?,?,?,?)";
+                    st = conexion.prepareStatement(sql);
+                    st.setString(1, textField24.getText());
+                    st.setInt(2, Integer.parseInt(dcm.getSelectedItem().toString()));
+                    st.setInt(3, Integer.parseInt(textField15.getText()));
+                    st.setInt(4, Integer.parseInt(textField17.getText()));
+                    st.setString(5, equipo1.getText());
+                    st.setString(6, equipo2.getText());
+
+
+                    st.executeUpdate();
+
+
+                    textField15.revalidate();
+                    textField15.repaint();
+                    textField17.revalidate();
+                    textField17.repaint();
+
+                    System.out.println(sql);
+                } catch (SQLException e1) {
+                    // e1.printStackTrace();
+                } catch (java.lang.NumberFormatException e1) {
+                    //e1.printStackTrace();
+                }
+
+            }
+        });
+        insertarButton4.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                super.mouseClicked(e);
+
+                try {
+
+                    Connection conexion = Conexion.conexion;
+
+                    PreparedStatement st;
+
+
+                    String sql = "insert into partido values (?,?,?,?,?,?)";
+                    st = conexion.prepareStatement(sql);
+                    st.setString(1, textField25.getText());
+                    st.setInt(2, Integer.parseInt(dcm.getSelectedItem().toString()));
+                    st.setInt(3, Integer.parseInt(textField18.getText()));
+                    st.setInt(4, Integer.parseInt(textField21.getText()));
+                    st.setString(5, equipo3.getText());
+                    st.setString(6, equipo4.getText());
+
+
+                    st.executeUpdate();
+
+
+                    textField18.revalidate();
+                    textField18.repaint();
+                    textField21.revalidate();
+                    textField21.repaint();
+
+                    System.out.println(sql);
+                } catch (SQLException e1) {
+                    // e1.printStackTrace();
+                } catch (java.lang.NumberFormatException e1) {
+                    //e1.printStackTrace();
+                }
+            }
+        });
+        insertarButton5.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                super.mouseClicked(e);
+
+                try {
+
+                    Connection conexion = Conexion.conexion;
+
+                    PreparedStatement st;
+
+
+                    String sql = "insert into partido values (?,?,?,?,?,?)";
+                    st = conexion.prepareStatement(sql);
+                    st.setString(1, textField26.getText());
+                    st.setInt(2, Integer.parseInt(dcm.getSelectedItem().toString()));
+                    st.setInt(3, Integer.parseInt(textField19.getText()));
+                    st.setInt(4, Integer.parseInt(textField22.getText()));
+                    st.setString(5, equipo5.getText());
+                    st.setString(6, equipo6.getText());
+
+
+                    st.executeUpdate();
+
+
+                    textField19.revalidate();
+                    textField19.repaint();
+                    textField22.revalidate();
+                    textField22.repaint();
+
+                    System.out.println(sql);
+                } catch (SQLException e1) {
+                    // e1.printStackTrace();
+                } catch (java.lang.NumberFormatException e1) {
+                    //e1.printStackTrace();
+                }
+            }
+        });
+        insertarButton6.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                super.mouseClicked(e);
+
+                try {
+
+                    Connection conexion = Conexion.conexion;
+
+                    PreparedStatement st;
+
+
+                    String sql = "insert into partido values (?,?,?,?,?,?)";
+                    st = conexion.prepareStatement(sql);
+                    st.setString(1, textField27.getText());
+                    st.setInt(2, Integer.parseInt(dcm.getSelectedItem().toString()));
+                    st.setInt(3, Integer.parseInt(textField20.getText()));
+                    st.setInt(4, Integer.parseInt(textField23.getText()));
+                    st.setString(5, equipo7.getText());
+                    st.setString(6, equipo8.getText());
+
+
+                    st.executeUpdate();
+
+
+                    textField20.revalidate();
+                    textField20.repaint();
+                    textField23.revalidate();
+                    textField23.repaint();
+
+                    System.out.println(sql);
+                } catch (SQLException e1) {
+                    // e1.printStackTrace();
+                } catch (java.lang.NumberFormatException e1) {
+                    //e1.printStackTrace();
+                }
+            }
+        });
+        borrarTodoButton.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                super.mouseClicked(e);
+
+                try {
+
+                    Connection conexion = Conexion.conexion;
+
+                    PreparedStatement st;
+
+
+                    String sql = "delete from partido";
+                    st = conexion.prepareStatement(sql);
+
+
+                    st.executeUpdate();
+
+
+                    System.out.println(sql);
+                } catch (SQLException e1) {
+                    // e1.printStackTrace();
+                }  catch (java.lang.NumberFormatException e1) {
+                    //e1.printStackTrace();
+                }
             }
         });
     }
@@ -470,8 +777,7 @@ public class Administrador {
     private JPanel Jugadore;
     private JPanel Dueños;
     private JPanel Equipos;
-    private JPanel Calendario;
-    private JPanel Resultados;
+    private JPanel Partidos;
     private JPanel Usuarios;
     private JList list1;
     private JButton insertarButton;
@@ -506,7 +812,32 @@ public class Administrador {
     private JButton actualizarButton3;
     private JButton borrarButton3;
     private JScrollPane scrollPane1;
-    private JTable table5;
     private JScrollPane scrollPane2;
     private JScrollPane scrollPane3;
+    private JComboBox comboBox1;
+    private JTextField textField15;
+    private JTextField textField17;
+    private JTextField textField18;
+    private JTextField textField19;
+    private JTextField textField20;
+    private JTextField textField21;
+    private JTextField textField22;
+    private JTextField textField23;
+    private JLabel equipo1;
+    private JLabel equipo2;
+    private JLabel equipo3;
+    private JLabel equipo4;
+    private JLabel equipo5;
+    private JLabel equipo6;
+    private JLabel equipo7;
+    private JLabel equipo8;
+    private JButton actualizarResultadoFechaButton;
+    private JTextField textField24;
+    private JTextField textField25;
+    private JTextField textField26;
+    private JTextField textField27;
+    private JButton insertarButton4;
+    private JButton insertarButton5;
+    private JButton insertarButton6;
+    private JButton borrarTodoButton;
 }

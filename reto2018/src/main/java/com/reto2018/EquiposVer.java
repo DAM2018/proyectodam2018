@@ -25,11 +25,11 @@ public class EquiposVer {
         while(rs.next()){
 
             equipos.add(new Equipo(
+                //    rs.getString(1),
                     rs.getString(1),
-                    rs.getString(2),
+                    rs.getInt(2),
                     rs.getInt(3),
-                    rs.getInt(4),
-                    rs.getInt(5)));
+                    rs.getInt(4)));
 
         }
 

@@ -619,7 +619,57 @@ public class Administrador {
                     textField17.revalidate();
                     textField17.repaint();
 
-                    System.out.println(sql);
+                    int ganados=0;
+                    int empatados=0;
+                    int perdidos=0;
+                    int puntos=0;
+                    if(Integer.parseInt(textField15.getText())>Integer.parseInt(textField17.getText())){
+                        ganados=1;
+                        puntos=3;
+                    }
+                    if(Integer.parseInt(textField15.getText())==Integer.parseInt(textField17.getText())){
+                        empatados=1;
+                        puntos=1;
+                    }
+                    if(Integer.parseInt(textField15.getText())<Integer.parseInt(textField17.getText())){
+                        perdidos=1;
+                    }
+                    PreparedStatement st2;
+                    String sql2 = "insert into clasificacion2 values (?,?,?,?,?,?)";
+                    st2 = conexion.prepareStatement(sql2);
+                    st2.setString(1, equipo1.getText());
+                    st2.setInt(2, Integer.parseInt(dcm.getSelectedItem().toString()));
+                    st2.setInt(3, puntos);
+                    st2.setInt(4, ganados);
+                    st2.setInt(5, empatados);
+                    st2.setInt(6, perdidos);
+                    st2.executeUpdate();
+                    int ganados2=0;
+                    int empatados2=0;
+                    int perdidos2=0;
+                    int puntos2=0;
+                    if(Integer.parseInt(textField17.getText())>Integer.parseInt(textField15.getText())){
+                        ganados2=1;
+                        puntos2=3;
+                    }
+                    if(Integer.parseInt(textField17.getText())==Integer.parseInt(textField15.getText())){
+                        empatados2=1;
+                        puntos2=1;
+                    }
+                    if(Integer.parseInt(textField17.getText())<Integer.parseInt(textField15.getText())){
+                        perdidos2=1;
+                    }
+                    PreparedStatement st3;
+                    String sql3 = "insert into clasificacion2 values (?,?,?,?,?,?)";
+                    st3 = conexion.prepareStatement(sql3);
+                    st3.setString(1, equipo2.getText());
+                    st3.setInt(2, Integer.parseInt(dcm.getSelectedItem().toString()));
+                    st3.setInt(3, puntos2);
+                    st3.setInt(4, ganados2);
+                    st3.setInt(5, empatados2);
+                    st3.setInt(6, perdidos2);
+                    st3.executeUpdate();
+
                 } catch (SQLException e1) {
                     // e1.printStackTrace();
                 } catch (java.lang.NumberFormatException e1) {
@@ -658,7 +708,57 @@ public class Administrador {
                     textField21.revalidate();
                     textField21.repaint();
 
-                    System.out.println(sql);
+                    int ganados=0;
+                    int empatados=0;
+                    int perdidos=0;
+                    int puntos=0;
+                    if(Integer.parseInt(textField18.getText())>Integer.parseInt(textField21.getText())){
+                        ganados=1;
+                        puntos=3;
+                    }
+                    if(Integer.parseInt(textField18.getText())==Integer.parseInt(textField21.getText())){
+                        empatados=1;
+                        puntos=1;
+                    }
+                    if(Integer.parseInt(textField18.getText())<Integer.parseInt(textField21.getText())){
+                        perdidos=1;
+                    }
+                    PreparedStatement st2;
+                    String sql2 = "insert into clasificacion2 values (?,?,?,?,?,?)";
+                    st2 = conexion.prepareStatement(sql2);
+                    st2.setString(1, equipo3.getText());
+                    st2.setInt(2, Integer.parseInt(dcm.getSelectedItem().toString()));
+                    st2.setInt(3, puntos);
+                    st2.setInt(4, ganados);
+                    st2.setInt(5, empatados);
+                    st2.setInt(6, perdidos);
+                    st2.executeUpdate();
+                    int ganados2=0;
+                    int empatados2=0;
+                    int perdidos2=0;
+                    int puntos2=0;
+                    if(Integer.parseInt(textField21.getText())>Integer.parseInt(textField18.getText())){
+                        ganados2=1;
+                        puntos2=3;
+                    }
+                    if(Integer.parseInt(textField21.getText())==Integer.parseInt(textField18.getText())){
+                        empatados2=1;
+                        puntos2=1;
+                    }
+                    if(Integer.parseInt(textField21.getText())<Integer.parseInt(textField18.getText())){
+                        perdidos2=1;
+                    }
+                    PreparedStatement st3;
+                    String sql3 = "insert into clasificacion2 values (?,?,?,?,?,?)";
+                    st3 = conexion.prepareStatement(sql3);
+                    st3.setString(1, equipo4.getText());
+                    st3.setInt(2, Integer.parseInt(dcm.getSelectedItem().toString()));
+                    st3.setInt(3, puntos2);
+                    st3.setInt(4, ganados2);
+                    st3.setInt(5, empatados2);
+                    st3.setInt(6, perdidos2);
+                    st3.executeUpdate();
+
                 } catch (SQLException e1) {
                     // e1.printStackTrace();
                 } catch (java.lang.NumberFormatException e1) {
@@ -696,7 +796,57 @@ public class Administrador {
                     textField22.revalidate();
                     textField22.repaint();
 
-                    System.out.println(sql);
+                    int ganados=0;
+                    int empatados=0;
+                    int perdidos=0;
+                    int puntos=0;
+                    if(Integer.parseInt(textField19.getText())>Integer.parseInt(textField22.getText())){
+                        ganados=1;
+                        puntos=3;
+                    }
+                    if(Integer.parseInt(textField19.getText())==Integer.parseInt(textField22.getText())){
+                        empatados=1;
+                        puntos=1;
+                    }
+                    if(Integer.parseInt(textField19.getText())<Integer.parseInt(textField22.getText())){
+                        perdidos=1;
+                    }
+                    PreparedStatement st2;
+                    String sql2 = "insert into clasificacion2 values (?,?,?,?,?,?)";
+                    st2 = conexion.prepareStatement(sql2);
+                    st2.setString(1, equipo5.getText());
+                    st2.setInt(2, Integer.parseInt(dcm.getSelectedItem().toString()));
+                    st2.setInt(3, puntos);
+                    st2.setInt(4, ganados);
+                    st2.setInt(5, empatados);
+                    st2.setInt(6, perdidos);
+                    st2.executeUpdate();
+                    int ganados2=0;
+                    int empatados2=0;
+                    int perdidos2=0;
+                    int puntos2=0;
+                    if(Integer.parseInt(textField22.getText())>Integer.parseInt(textField19.getText())){
+                        ganados2=1;
+                        puntos2=3;
+                    }
+                    if(Integer.parseInt(textField22.getText())==Integer.parseInt(textField19.getText())){
+                        empatados2=1;
+                        puntos2=1;
+                    }
+                    if(Integer.parseInt(textField22.getText())<Integer.parseInt(textField19.getText())){
+                        perdidos2=1;
+                    }
+                    PreparedStatement st3;
+                    String sql3 = "insert into clasificacion2 values (?,?,?,?,?,?)";
+                    st3 = conexion.prepareStatement(sql3);
+                    st3.setString(1, equipo6.getText());
+                    st3.setInt(2, Integer.parseInt(dcm.getSelectedItem().toString()));
+                    st3.setInt(3, puntos2);
+                    st3.setInt(4, ganados2);
+                    st3.setInt(5, empatados2);
+                    st3.setInt(6, perdidos2);
+                    st3.executeUpdate();
+
                 } catch (SQLException e1) {
                     // e1.printStackTrace();
                 } catch (java.lang.NumberFormatException e1) {
@@ -734,9 +884,59 @@ public class Administrador {
                     textField23.revalidate();
                     textField23.repaint();
 
-                    System.out.println(sql);
+                    int ganados=0;
+                    int empatados=0;
+                    int perdidos=0;
+                    int puntos=0;
+                    if(Integer.parseInt(textField20.getText())>Integer.parseInt(textField23.getText())){
+                        ganados=1;
+                        puntos=3;
+                    }
+                    if(Integer.parseInt(textField20.getText())==Integer.parseInt(textField23.getText())){
+                        empatados=1;
+                        puntos=1;
+                    }
+                    if(Integer.parseInt(textField20.getText())<Integer.parseInt(textField23.getText())){
+                        perdidos=1;
+                    }
+                    PreparedStatement st2;
+                    String sql2 = "insert into clasificacion2 values (?,?,?,?,?,?)";
+                    st2 = conexion.prepareStatement(sql2);
+                    st2.setString(1, equipo7.getText());
+                    st2.setInt(2, Integer.parseInt(dcm.getSelectedItem().toString()));
+                    st2.setInt(3, puntos);
+                    st2.setInt(4, ganados);
+                    st2.setInt(5, empatados);
+                    st2.setInt(6, perdidos);
+                    st2.executeUpdate();
+                    int ganados2=0;
+                    int empatados2=0;
+                    int perdidos2=0;
+                    int puntos2=0;
+                    if(Integer.parseInt(textField23.getText())>Integer.parseInt(textField20.getText())){
+                        ganados2=1;
+                        puntos2=3;
+                    }
+                    if(Integer.parseInt(textField23.getText())==Integer.parseInt(textField20.getText())){
+                        empatados2=1;
+                        puntos2=1;
+                    }
+                    if(Integer.parseInt(textField23.getText())<Integer.parseInt(textField20.getText())){
+                        perdidos2=1;
+                    }
+                    PreparedStatement st3;
+                    String sql3 = "insert into clasificacion2 values (?,?,?,?,?,?)";
+                    st3 = conexion.prepareStatement(sql3);
+                    st3.setString(1, equipo8.getText());
+                    st3.setInt(2, Integer.parseInt(dcm.getSelectedItem().toString()));
+                    st3.setInt(3, puntos2);
+                    st3.setInt(4, ganados2);
+                    st3.setInt(5, empatados2);
+                    st3.setInt(6, perdidos2);
+                    st3.executeUpdate();
+
                 } catch (SQLException e1) {
-                    // e1.printStackTrace();
+                     //e1.printStackTrace();
                 } catch (java.lang.NumberFormatException e1) {
                     //e1.printStackTrace();
                 }
@@ -752,16 +952,15 @@ public class Administrador {
                     Connection conexion = Conexion.conexion;
 
                     PreparedStatement st;
-
-
                     String sql = "delete from partido";
                     st = conexion.prepareStatement(sql);
-
-
                     st.executeUpdate();
 
+                    PreparedStatement st2;
+                    String sql2 = "delete from clasificacion2";
+                    st2 = conexion.prepareStatement(sql2);
+                    st2.executeUpdate();
 
-                    System.out.println(sql);
                 } catch (SQLException e1) {
                     // e1.printStackTrace();
                 }  catch (java.lang.NumberFormatException e1) {

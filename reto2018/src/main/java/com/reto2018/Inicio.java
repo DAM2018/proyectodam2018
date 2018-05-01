@@ -10,6 +10,7 @@ public class Inicio {
         Conexion.EstablecerConexion();
         System.out.println("Conectado");
         Administrador administrador = new Administrador();
+        Usuario usuario=new Usuario();
     }
 
 }

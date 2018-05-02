@@ -1,12 +1,20 @@
 package com.reto2018;
 
+import org.jfree.chart.ChartFactory;
+import org.jfree.chart.ChartPanel;
+import org.jfree.chart.JFreeChart;
+import org.jfree.chart.plot.PlotOrientation;
+import org.jfree.chart.plot.XYPlot;
+import org.jfree.chart.renderer.xy.XYLineAndShapeRenderer;
+import org.jfree.data.xy.DefaultXYDataset;
+import org.jfree.data.xy.XYDataset;
+
+
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -20,8 +28,7 @@ public class Usuario {
         frame.setVisible(true);
 
 
-
-        final DefaultComboBoxModel dcm=new DefaultComboBoxModel();
+        final DefaultComboBoxModel dcm = new DefaultComboBoxModel();
 
         dcm.addElement(0);
         dcm.addElement(1);
@@ -59,25 +66,25 @@ public class Usuario {
                 }
 
                 String sql = "select equipo,sum(puntos),sum(ganados),sum(empatados),sum(perdidos) from clasificacion2 where " +
-                        "jornada="+Integer.parseInt(dcm.getSelectedItem().toString())+
-                        " or jornada="+(Integer.parseInt(dcm.getSelectedItem().toString())-1)+
-                        " or jornada="+(Integer.parseInt(dcm.getSelectedItem().toString())-2)+
-                        " or jornada="+(Integer.parseInt(dcm.getSelectedItem().toString())-3)+
-                        " or jornada="+(Integer.parseInt(dcm.getSelectedItem().toString())-4)+
-                        " or jornada="+(Integer.parseInt(dcm.getSelectedItem().toString())-5)+
-                        " or jornada="+(Integer.parseInt(dcm.getSelectedItem().toString())-6)+
-                        " or jornada="+(Integer.parseInt(dcm.getSelectedItem().toString())-7)+
-                        " or jornada="+(Integer.parseInt(dcm.getSelectedItem().toString())-8)+
-                        " or jornada="+(Integer.parseInt(dcm.getSelectedItem().toString())-9)+
-                        " or jornada="+(Integer.parseInt(dcm.getSelectedItem().toString())-10)+
-                        " or jornada="+(Integer.parseInt(dcm.getSelectedItem().toString())-11)+
-                        " or jornada="+(Integer.parseInt(dcm.getSelectedItem().toString())-12)+
-                        " or jornada="+(Integer.parseInt(dcm.getSelectedItem().toString())-13)+
+                        "jornada=" + Integer.parseInt(dcm.getSelectedItem().toString()) +
+                        " or jornada=" + (Integer.parseInt(dcm.getSelectedItem().toString()) - 1) +
+                        " or jornada=" + (Integer.parseInt(dcm.getSelectedItem().toString()) - 2) +
+                        " or jornada=" + (Integer.parseInt(dcm.getSelectedItem().toString()) - 3) +
+                        " or jornada=" + (Integer.parseInt(dcm.getSelectedItem().toString()) - 4) +
+                        " or jornada=" + (Integer.parseInt(dcm.getSelectedItem().toString()) - 5) +
+                        " or jornada=" + (Integer.parseInt(dcm.getSelectedItem().toString()) - 6) +
+                        " or jornada=" + (Integer.parseInt(dcm.getSelectedItem().toString()) - 7) +
+                        " or jornada=" + (Integer.parseInt(dcm.getSelectedItem().toString()) - 8) +
+                        " or jornada=" + (Integer.parseInt(dcm.getSelectedItem().toString()) - 9) +
+                        " or jornada=" + (Integer.parseInt(dcm.getSelectedItem().toString()) - 10) +
+                        " or jornada=" + (Integer.parseInt(dcm.getSelectedItem().toString()) - 11) +
+                        " or jornada=" + (Integer.parseInt(dcm.getSelectedItem().toString()) - 12) +
+                        " or jornada=" + (Integer.parseInt(dcm.getSelectedItem().toString()) - 13) +
 
 
                         " group by equipo order by sum(puntos) desc, equipo";
 
-                ResultSet rs= null;
+                ResultSet rs = null;
                 try {
                     rs = st.executeQuery(sql);
                 } catch (SQLException e1) {
@@ -85,7 +92,7 @@ public class Usuario {
                 }
 
                 try {
-                    while(rs.next()){
+                    while (rs.next()) {
 
                         clasificacion.add(new Clasificacion(
                                 //    rs.getString(1),
@@ -149,12 +156,166 @@ public class Usuario {
 
                     clasificacion.clear();
 
-                }catch (java.lang.IndexOutOfBoundsException e1) {
+                } catch (java.lang.IndexOutOfBoundsException e1) {
 
-                    }
+                }
             }
         });
+
+        XYDataset ds = createDataset();
+
+        JFreeChart chart =
+                ChartFactory.createXYLineChart("Clasificacion",
+                        "x", "y", ds, PlotOrientation.VERTICAL, true, true,
+                        false);
+
+        ChartPanel cp = new ChartPanel(chart);
+        grafico.setLayout(new BorderLayout());
+        grafico.add(cp, BorderLayout.CENTER);
+
+        XYPlot plot = chart.getXYPlot();
+        XYLineAndShapeRenderer renderer = new XYLineAndShapeRenderer();
+
+        renderer.setSeriesPaint(0, Color.RED);
+        renderer.setSeriesStroke(0, new BasicStroke(2.0f));
+
+        renderer.setSeriesPaint(1, Color.BLUE);
+        renderer.setSeriesStroke(1, new BasicStroke(2.0f));
+
+        plot.setRenderer(renderer);
+        Color c = new Color(76, 118, 75);
+        plot.setBackgroundPaint(c);
+
+        plot.setRangeGridlinesVisible(true);
+        plot.setDomainGridlinesVisible(true);
+
     }
+
+    private XYDataset createDataset() {
+
+        DefaultXYDataset ds = new DefaultXYDataset();
+
+        List<Clasificacion> clasificacion = new ArrayList<Clasificacion>();
+
+
+        Connection conexion = Conexion.conexion;
+
+        Statement st = null;
+        try {
+            st = conexion.createStatement();
+        } catch (SQLException e1) {
+            e1.printStackTrace();
+        }
+        String sql2 = "select distinct equipo from clasificacion2 order by equipo";
+
+        ResultSet rs = null;
+        try {
+            rs = st.executeQuery(sql2);
+        } catch (SQLException e1) {
+            e1.printStackTrace();
+        }
+
+        String[] eq = new String[8];
+        int i = 0;
+
+        try {
+            while (rs.next()) {
+
+                eq[i] = rs.getString(1);
+
+                i++;
+                System.out.println(rs.getString(1));
+            }
+        } catch (SQLException e1) {
+            e1.printStackTrace();
+        }
+
+        String sql = "{call calendario.grafico(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)}";
+
+        try {
+
+            for (int j = 0; j <8 ; j++) {
+
+
+                CallableStatement callableStatement = conexion.prepareCall(sql);
+
+                callableStatement.setString(1, eq[j]);
+                callableStatement.registerOutParameter(2, Types.INTEGER);
+                callableStatement.registerOutParameter(3, Types.INTEGER);
+                callableStatement.registerOutParameter(4, Types.INTEGER);
+                callableStatement.registerOutParameter(5, Types.INTEGER);
+                callableStatement.registerOutParameter(6, Types.INTEGER);
+                callableStatement.registerOutParameter(7, Types.INTEGER);
+                callableStatement.registerOutParameter(8, Types.INTEGER);
+                callableStatement.registerOutParameter(9, Types.INTEGER);
+                callableStatement.registerOutParameter(10, Types.INTEGER);
+                callableStatement.registerOutParameter(11, Types.INTEGER);
+                callableStatement.registerOutParameter(12, Types.INTEGER);
+                callableStatement.registerOutParameter(13, Types.INTEGER);
+                callableStatement.registerOutParameter(14, Types.INTEGER);
+                callableStatement.registerOutParameter(15, Types.INTEGER);
+
+
+                callableStatement.executeUpdate();
+
+                int[] puntos = new int[14];
+
+                puntos[0] = callableStatement.getInt(2);
+                puntos[1] = callableStatement.getInt(3);
+                puntos[2] = callableStatement.getInt(4);
+                puntos[3] = callableStatement.getInt(5);
+                puntos[4] = callableStatement.getInt(6);
+                puntos[5] = callableStatement.getInt(7);
+                puntos[6] = callableStatement.getInt(8);
+                puntos[7] = callableStatement.getInt(9);
+                puntos[8] = callableStatement.getInt(10);
+                puntos[9] = callableStatement.getInt(11);
+                puntos[10] = callableStatement.getInt(12);
+                puntos[11] = callableStatement.getInt(13);
+                puntos[12] = callableStatement.getInt(14);
+                puntos[13] = callableStatement.getInt(15);
+
+                double[][] data = {{1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14}, {puntos[0],
+                        puntos[1],
+                        puntos[2],
+                        puntos[3],
+                        puntos[4],
+                        puntos[5],
+                        puntos[6],
+                        puntos[7],
+                        puntos[8],
+                        puntos[9],
+                        puntos[10],
+                        puntos[11],
+                        puntos[12],
+                        puntos[13],
+                }};
+
+                ds.addSeries(eq[j], data);
+            }
+
+
+        } catch (SQLException e2) {
+
+            // System.out.println(e.getMessage());
+
+        } catch (java.lang.NullPointerException e2) {
+
+
+        } catch (java.lang.IndexOutOfBoundsException e2) {
+
+
+        }
+
+        // double[][] data2 = { {0.5, 0.6, 0.7}, {3, 4, 5} };
+
+
+        // ds.addSeries("series2", data2);
+
+
+        return ds;
+    }
+
 
     private JTabbedPane tabbedPane1;
     private JPanel panel1;
@@ -199,4 +360,5 @@ public class Usuario {
     private JLabel perdidos6;
     private JLabel perdidos7;
     private JLabel perdidos8;
+    private JPanel grafico;
 }

@@ -454,14 +454,18 @@ public class Administrador {
         table3.getSelectionModel().addListSelectionListener(new ListSelectionListener() {
             @Override
             public void valueChanged(ListSelectionEvent e) {
+                try{
                 textField10.setText(tem.getValueAt(table3.getSelectedRow(), 0).toString());
                 textField11.setText(tem.getValueAt(table3.getSelectedRow(), 1).toString());
                 textField12.setText(tem.getValueAt(table3.getSelectedRow(), 2).toString());
                 textField13.setText(tem.getValueAt(table3.getSelectedRow(), 3).toString());
               //  textField14.setText(tem.getValueAt(table3.getSelectedRow(), 4).toString());
-
+                } catch (java.lang.NullPointerException e1) {
+                    //e1.printStackTrace();
+                }
             }
         });
+
 
         final DefaultComboBoxModel dcm = new DefaultComboBoxModel();
 
@@ -936,9 +940,9 @@ public class Administrador {
                     st3.executeUpdate();
 
                 } catch (SQLException e1) {
-                     //e1.printStackTrace();
+                     e1.printStackTrace();
                 } catch (java.lang.NumberFormatException e1) {
-                    //e1.printStackTrace();
+                    e1.printStackTrace();
                 }
             }
         });

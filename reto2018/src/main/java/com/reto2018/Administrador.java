@@ -18,7 +18,7 @@ import java.util.List;
 public class Administrador {
 
     //Connection conexion = Conexion.conexion;
-
+    final TablaUsuariosModel tum;
     public Administrador() throws SQLException, ClassNotFoundException {
         JFrame frame = new JFrame("Administrador");
         frame.setContentPane(panel1);
@@ -41,6 +41,7 @@ public class Administrador {
         final TablaJugadoresModel tjm = new TablaJugadoresModel(0);
         final TablaDueñosModel tdm = new TablaDueñosModel(0);
         final TablaEquiposModel tem = new TablaEquiposModel(0);
+        tum = new TablaUsuariosModel(0);
 
        /* for (int i = 0; i < JugadoresVer.jugadores().size(); i++) {
 
@@ -55,11 +56,13 @@ public class Administrador {
         table1.setModel(tjm);
         table2.setModel(tdm);
         table3.setModel(tem);
+        table4.setModel(tum);
 
 
         scrollPane1.setViewportView(table1);
         scrollPane2.setViewportView(table2);
         scrollPane3.setViewportView(table3);
+        scrollPane4.setViewportView(table4);
 
 
         insertarButton.addMouseListener(new MouseAdapter() {
@@ -241,7 +244,6 @@ public class Administrador {
                     table2.revalidate();
                     table2.repaint();
 
-                    System.out.println(sql);
                 } catch (SQLException e1) {
                     // e1.printStackTrace();
                 } catch (ClassNotFoundException e1) {
@@ -972,8 +974,56 @@ public class Administrador {
                 }
             }
         });
+        borrarButton3.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                super.mouseClicked(e);
+
+
+                try {
+
+                    Connection conexion = Conexion.conexion;
+
+                    PreparedStatement st;
+
+
+                    String sql = "delete from usuarios where email=?";
+                    st = conexion.prepareStatement(sql);
+                    st.setString(1, tum.getValueAt(table4.getSelectedRow(), 1).toString());
+
+
+                    st.executeUpdate();
+
+                    tum.actualizarLista();
+                    table4.revalidate();
+                    table4.repaint();
+
+                } catch (SQLException e1) {
+                } catch (ClassNotFoundException e1) {
+                    e1.printStackTrace();
+                } catch (java.lang.NumberFormatException e1) {
+                    //e1.printStackTrace();
+                }
+
+
+
+
+
+            }
+        });
     }
 
+    public TablaUsuariosModel getTum() {
+        return tum;
+    }
+
+    public JTable getTable4() {
+        return table4;
+    }
+
+    public void setTable4(JTable table4) {
+        this.table4 = table4;
+    }
 
     private JTabbedPane tabbedPane1;
     private JPanel panel1;
@@ -1010,9 +1060,6 @@ public class Administrador {
     private JButton actualizarButton2;
     private JButton borrarButton2;
     private JTable table4;
-    private JTextField textField16;
-    private JButton insertarButton3;
-    private JButton actualizarButton3;
     private JButton borrarButton3;
     private JScrollPane scrollPane1;
     private JScrollPane scrollPane2;
@@ -1043,4 +1090,5 @@ public class Administrador {
     private JButton insertarButton5;
     private JButton insertarButton6;
     private JButton borrarTodoButton;
+    private JScrollPane scrollPane4;
 }

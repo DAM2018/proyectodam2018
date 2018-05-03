@@ -1,11 +1,17 @@
 package com.reto2018;
 
+import org.jfree.chart.ChartColor;
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartPanel;
 import org.jfree.chart.JFreeChart;
+import org.jfree.chart.axis.NumberAxis;
+import org.jfree.chart.axis.NumberTickUnit;
+import org.jfree.chart.axis.TickUnits;
+import org.jfree.chart.axis.ValueAxis;
 import org.jfree.chart.plot.PlotOrientation;
 import org.jfree.chart.plot.XYPlot;
 import org.jfree.chart.renderer.xy.XYLineAndShapeRenderer;
+import org.jfree.data.RangeType;
 import org.jfree.data.xy.DefaultXYDataset;
 import org.jfree.data.xy.XYDataset;
 
@@ -15,6 +21,10 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.*;
+import java.text.DecimalFormat;
+import java.text.FieldPosition;
+import java.text.NumberFormat;
+import java.text.ParsePosition;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -166,7 +176,7 @@ public class Usuario {
 
         JFreeChart chart =
                 ChartFactory.createXYLineChart("Clasificacion",
-                        "x", "y", ds, PlotOrientation.VERTICAL, true, true,
+                        "jornada", "puntos", ds, PlotOrientation.VERTICAL, true, true,
                         false);
 
         ChartPanel cp = new ChartPanel(chart);
@@ -177,17 +187,40 @@ public class Usuario {
         XYLineAndShapeRenderer renderer = new XYLineAndShapeRenderer();
 
         renderer.setSeriesPaint(0, Color.RED);
-        renderer.setSeriesStroke(0, new BasicStroke(2.0f));
+        renderer.setSeriesStroke(0, new BasicStroke(4.0f));
 
         renderer.setSeriesPaint(1, Color.BLUE);
-        renderer.setSeriesStroke(1, new BasicStroke(2.0f));
+        renderer.setSeriesStroke(1, new BasicStroke(4.0f));
+
+        renderer.setSeriesStroke(2, new BasicStroke(4.0f));
+        renderer.setSeriesStroke(3, new BasicStroke(4.0f));
+        renderer.setSeriesStroke(4, new BasicStroke(4.0f));
+        renderer.setSeriesStroke(5, new BasicStroke(4.0f));
+        renderer.setSeriesStroke(6, new BasicStroke(4.0f));
+        renderer.setSeriesStroke(7, new BasicStroke(4.0f));
 
         plot.setRenderer(renderer);
         Color c = new Color(76, 118, 75);
+        Color c2 = new Color(177, 187, 48);
+
         plot.setBackgroundPaint(c);
+
+        Paint p = new GradientPaint(0, 0, c, 1000, 0, c2);
+        chart.setBackgroundPaint(p);
 
         plot.setRangeGridlinesVisible(true);
         plot.setDomainGridlinesVisible(true);
+
+        NumberAxis yAxis = (NumberAxis) plot.getRangeAxis(0);
+        NumberAxis xAxis = (NumberAxis) plot.getDomainAxis(0);
+
+        yAxis.setRangeType(RangeType.FULL);
+        xAxis.setLowerBound(1);
+        xAxis.setUpperBound(14);
+
+        yAxis.setTickUnit(new NumberTickUnit(1));
+        xAxis.setTickUnit(new NumberTickUnit(1));
+
 
     }
 
@@ -195,7 +228,6 @@ public class Usuario {
 
         DefaultXYDataset ds = new DefaultXYDataset();
 
-        List<Clasificacion> clasificacion = new ArrayList<Clasificacion>();
 
 
         Connection conexion = Conexion.conexion;
@@ -224,7 +256,6 @@ public class Usuario {
                 eq[i] = rs.getString(1);
 
                 i++;
-                System.out.println(rs.getString(1));
             }
         } catch (SQLException e1) {
             e1.printStackTrace();
@@ -361,4 +392,5 @@ public class Usuario {
     private JLabel perdidos7;
     private JLabel perdidos8;
     private JPanel grafico;
+    private JComboBox comboBox2;
 }

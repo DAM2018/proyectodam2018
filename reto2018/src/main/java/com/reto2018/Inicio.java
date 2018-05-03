@@ -4,13 +4,18 @@ import javax.swing.*;
 import java.sql.SQLException;
 
 public class Inicio {
-
+    private static Login login;
     public static void main(String[] args) throws SQLException, ClassNotFoundException {
+ login =new Login();
 
-        Conexion.EstablecerConexion();
-        System.out.println("Conectado");
-        Administrador administrador = new Administrador();
-        Usuario usuario=new Usuario();
+       // Usuario usuario=new Usuario();
     }
 
+    public static Login getLogin() {
+        return login;
+    }
+
+    public static void setLogin(Login login) {
+        Inicio.login = login;
+    }
 }

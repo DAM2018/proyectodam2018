@@ -8,6 +8,7 @@ import javax.swing.*;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 import javax.swing.table.DefaultTableModel;
+import java.awt.*;
 import java.awt.event.*;
 import java.math.BigDecimal;
 import java.sql.*;
@@ -26,6 +27,75 @@ public class Administrador {
         frame.pack();
         frame.setVisible(true);
 
+        if (textField10.getText().equals("") &&
+                textField12.getText().equals("") &&
+                textField13.getText().equals("") &&
+                textField14.getText().equals("") &&
+                textField28.getText().equals("") &&
+                textField29.getText().equals("") &&
+                textField30.getText().equals("") &&
+                textField31.getText().equals("")) {
+            numEquipos.setText("0");
+        }
+
+
+            Connection conexion = Conexion.conexion;
+
+        String sql2 = "{call calendario.verEquipos(?)}";
+
+        CallableStatement callableStatement2 = conexion.prepareCall(sql2);
+
+        callableStatement2.registerOutParameter(1, OracleTypes.CURSOR);
+
+        callableStatement2.executeUpdate();
+        ResultSet rs = (ResultSet) callableStatement2.getObject(1);
+        List<String>listaEquipos=new ArrayList<String>();
+        while (rs.next()) {
+            String nombreequi = rs.getString("nombreequi");
+
+            listaEquipos.add(nombreequi);
+
+
+        }
+        try{
+        textField10.setText(listaEquipos.get(0));
+        textField12.setText(listaEquipos.get(1));
+        textField13.setText(listaEquipos.get(2));
+        textField14.setText(listaEquipos.get(3));
+        textField28.setText(listaEquipos.get(4));
+        textField29.setText(listaEquipos.get(5));
+        textField30.setText(listaEquipos.get(6));
+        textField31.setText(listaEquipos.get(7));
+
+
+        } catch (java.lang.IndexOutOfBoundsException e1) {
+        }
+
+
+
+
+
+
+
+
+
+        textField15.setVisible(false);
+        textField17.setVisible(false);
+        textField18.setVisible(false);
+        textField21.setVisible(false);
+        textField19.setVisible(false);
+        textField22.setVisible(false);
+        textField20.setVisible(false);
+        textField23.setVisible(false);
+        textField24.setVisible(false);
+        textField25.setVisible(false);
+        textField26.setVisible(false);
+        textField27.setVisible(false);
+        actualizarResultadoFechaButton.setVisible(false);
+        insertarButton4.setVisible(false);
+        insertarButton5.setVisible(false);
+        insertarButton6.setVisible(false);
+
         // final DefaultListModel modelList1 = new DefaultListModel();
         // DefaultTableModel modelTable1=new DefaultTableModel();
        /* for (int i = 0; i < JugadoresVer.jugadores().size(); i++) {
@@ -40,7 +110,7 @@ public class Administrador {
         modelTable1.addColumn("Price");*/
         final TablaJugadoresModel tjm = new TablaJugadoresModel(0);
         final TablaDueñosModel tdm = new TablaDueñosModel(0);
-        final TablaEquiposModel tem = new TablaEquiposModel(0);
+       // final TablaEquiposModel tem = new TablaEquiposModel(0);
         tum = new TablaUsuariosModel(0);
 
        /* for (int i = 0; i < JugadoresVer.jugadores().size(); i++) {
@@ -55,13 +125,13 @@ public class Administrador {
         }*/
         table1.setModel(tjm);
         table2.setModel(tdm);
-        table3.setModel(tem);
+//        table3.setModel(tem);
         table4.setModel(tum);
 
 
         scrollPane1.setViewportView(table1);
         scrollPane2.setViewportView(table2);
-        scrollPane3.setViewportView(table3);
+     //  scrollPane3.setViewportView(table3);
         scrollPane4.setViewportView(table4);
 
 
@@ -100,13 +170,12 @@ public class Administrador {
                         modelList1.addElement(JugadoresVer.jugadores().get(i));
                     }*/
 
-                    System.out.println(sql);
                 } catch (SQLException e1) {
                     // e1.printStackTrace();
                 } catch (ClassNotFoundException e1) {
-                    e1.printStackTrace();
+                   // e1.printStackTrace();
                 } catch (java.lang.NumberFormatException e1) {
-                    //e1.printStackTrace();
+                  //  e1.printStackTrace();
                 }
 
 
@@ -348,81 +417,83 @@ public class Administrador {
 
                     Connection conexion = Conexion.conexion;
 
-                    PreparedStatement st;
-
-
-                    String sql = "insert into equipo values (?,?,?,?)";
+                    if (!textField10.getText().equals("") &&
+                            !textField12.getText().equals("") &&
+                            !textField13.getText().equals("") &&
+                            !textField14.getText().equals("") &&
+                            !textField28.getText().equals("") &&
+                            !textField29.getText().equals("") &&
+                            !textField30.getText().equals("") &&
+                            !textField31.getText().equals("") &&
+                            numEquipos.getText().equals("0")
+                            )
+                    {
+                        PreparedStatement st;
+                    String sql = "insert into equipo values (?)";
                     st = conexion.prepareStatement(sql);
                     st.setString(1, textField10.getText());
-//                    st.setString(2, textField11.getText());
-                    st.setInt(2, Integer.parseInt(textField12.getText()));
-                    st.setInt(3, Integer.parseInt(textField13.getText()));
-                    st.setInt(4, Integer.parseInt(textField14.getText()));
-
-
                     st.executeUpdate();
 
-                    tem.actualizarLista();
-                    table3.revalidate();
-                    table3.repaint();
+                    PreparedStatement st2;
+                    String sql2 = "insert into equipo values (?)";
+                    st2 = conexion.prepareStatement(sql);
+                    st2.setString(1, textField12.getText());
+                    st2.executeUpdate();
 
+                    PreparedStatement st3;
+                    String sql3 = "insert into equipo values (?)";
+                    st3 = conexion.prepareStatement(sql);
+                    st3.setString(1, textField13.getText());
+                    st3.executeUpdate();
 
-                    System.out.println(sql);
+                    PreparedStatement st4;
+                    String sql4 = "insert into equipo values (?)";
+                    st4 = conexion.prepareStatement(sql);
+                    st4.setString(1, textField14.getText());
+                    st4.executeUpdate();
+
+                    PreparedStatement st5;
+                    String sql5 = "insert into equipo values (?)";
+                    st5 = conexion.prepareStatement(sql);
+                    st5.setString(1, textField28.getText());
+                    st5.executeUpdate();
+
+                    PreparedStatement st6;
+                    String sql6 = "insert into equipo values (?)";
+                    st6 = conexion.prepareStatement(sql);
+                    st6.setString(1, textField29.getText());
+                    st6.executeUpdate();
+
+                    PreparedStatement st7;
+                    String sql7 = "insert into equipo values (?)";
+                    st7 = conexion.prepareStatement(sql);
+                    st7.setString(1, textField30.getText());
+                    st7.executeUpdate();
+
+                    PreparedStatement st8;
+                    String sql8 = "insert into equipo values (?)";
+                    st8 = conexion.prepareStatement(sql);
+                    st8.setString(1, textField31.getText());
+                    st8.executeUpdate();
+                    numEquipos.setText("8 OK!");
+
+                }
+
                 } catch (SQLException e1) {
                     // e1.printStackTrace();
-                } catch (ClassNotFoundException e1) {
-                    e1.printStackTrace();
-                } catch (java.lang.NumberFormatException e1) {
+                }  catch (java.lang.NumberFormatException e1) {
                     //e1.printStackTrace();
                 }
 
 
             }
         });
-        actualizarButton2.addMouseListener(new MouseAdapter() {
-            @Override
-            public void mouseClicked(MouseEvent e) {
-                super.mouseClicked(e);
 
-                try {
-                    Connection conexion = Conexion.conexion;
-
-                    String sql = "update equipo set nombreequi=?,ganados=?," +
-                            "empates=?,perdidos=? where nombreequi='" + tem.getValueAt(table3.getSelectedRow(), 0).toString() + "'";
-
-
-                    PreparedStatement st = conexion.prepareStatement(sql);
-
-                    st = conexion.prepareStatement(sql);
-
-                    st.setString(1, textField10.getText());
-                   // st.setString(2, textField11.getText());
-                    st.setInt(2, Integer.parseInt(textField12.getText()));
-                    st.setInt(3, Integer.parseInt(textField13.getText()));
-                    st.setInt(4, Integer.parseInt(textField14.getText()));
-
-                    st.executeUpdate();
-
-                    tem.actualizarLista();
-                    table3.revalidate();
-                    table3.repaint();
-
-
-                } catch (SQLException e1) {
-                    // e1.printStackTrace();
-                } catch (ClassNotFoundException e1) {
-                    e1.printStackTrace();
-                } catch (java.lang.NumberFormatException e1) {
-                    //e1.printStackTrace();
-                }
-
-            }
-        });
         borrarButton2.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
                 super.mouseClicked(e);
-
+numEquipos.setText("0");
                 try {
 
                     Connection conexion = Conexion.conexion;
@@ -430,22 +501,23 @@ public class Administrador {
                     PreparedStatement st;
 
 
-                    String sql = "delete from equipo where nombreequi=?";
+                    String sql = "delete from equipo";
                     st = conexion.prepareStatement(sql);
-                    st.setString(1, tem.getValueAt(table3.getSelectedRow(), 1).toString());
 
 
                     st.executeUpdate();
+textField10.setText("");
+                    textField12.setText("");
+                    textField13.setText("");
+                    textField14.setText("");
+                    textField28.setText("");
+                    textField29.setText("");
+                    textField30.setText("");
+                    textField31.setText("");
 
-                    tem.actualizarLista();
-                    table3.revalidate();
-                    table3.repaint();
 
-                    System.out.println(sql);
                 } catch (SQLException e1) {
                     // e1.printStackTrace();
-                } catch (ClassNotFoundException e1) {
-                    e1.printStackTrace();
                 } catch (java.lang.NumberFormatException e1) {
                     //e1.printStackTrace();
                 }
@@ -453,25 +525,11 @@ public class Administrador {
             }
         });
 
-        table3.getSelectionModel().addListSelectionListener(new ListSelectionListener() {
-            @Override
-            public void valueChanged(ListSelectionEvent e) {
-                try{
-                textField10.setText(tem.getValueAt(table3.getSelectedRow(), 0).toString());
-                textField11.setText(tem.getValueAt(table3.getSelectedRow(), 1).toString());
-                textField12.setText(tem.getValueAt(table3.getSelectedRow(), 2).toString());
-                textField13.setText(tem.getValueAt(table3.getSelectedRow(), 3).toString());
-              //  textField14.setText(tem.getValueAt(table3.getSelectedRow(), 4).toString());
-                } catch (java.lang.NullPointerException e1) {
-                    //e1.printStackTrace();
-                }
-            }
-        });
 
 
         final DefaultComboBoxModel dcm = new DefaultComboBoxModel();
 
-        dcm.addElement(0);
+       // dcm.addElement(0);
         dcm.addElement(1);
         dcm.addElement(2);
         dcm.addElement(3);
@@ -505,6 +563,22 @@ public class Administrador {
                 textField25.setText("");
                 textField26.setText("");
                 textField27.setText("");
+                textField15.setVisible(true);
+                textField17.setVisible(true);
+                textField18.setVisible(true);
+                textField21.setVisible(true);
+                textField19.setVisible(true);
+                textField22.setVisible(true);
+                textField20.setVisible(true);
+                textField23.setVisible(true);
+                textField24.setVisible(true);
+                textField25.setVisible(true);
+                textField26.setVisible(true);
+                textField27.setVisible(true);
+                actualizarResultadoFechaButton.setVisible(true);
+                insertarButton4.setVisible(true);
+                insertarButton5.setVisible(true);
+                insertarButton6.setVisible(true);
 
 
                 String sql = "{call calendario.crearCalendario(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)}";
@@ -512,14 +586,14 @@ public class Administrador {
                     Connection conexion = Conexion.conexion;
                     CallableStatement callableStatement = conexion.prepareCall(sql);
 
-                    callableStatement.setString(1, tem.getValueAt(0, 0).toString());
-                    callableStatement.setString(2, tem.getValueAt(1, 0).toString());
-                    callableStatement.setString(3, tem.getValueAt(2, 0).toString());
-                    callableStatement.setString(4, tem.getValueAt(3, 0).toString());
-                    callableStatement.setString(5, tem.getValueAt(4, 0).toString());
-                    callableStatement.setString(6, tem.getValueAt(5, 0).toString());
-                    callableStatement.setString(7, tem.getValueAt(6, 0).toString());
-                    callableStatement.setString(8, tem.getValueAt(7, 0).toString());
+                    callableStatement.setString(1, textField10.getText());
+                    callableStatement.setString(2, textField12.getText());
+                    callableStatement.setString(3, textField13.getText());
+                    callableStatement.setString(4, textField14.getText());
+                    callableStatement.setString(5, textField28.getText());
+                    callableStatement.setString(6, textField29.getText());
+                    callableStatement.setString(7, textField30.getText());
+                    callableStatement.setString(8, textField31.getText());
                     callableStatement.setInt(9, Integer.parseInt(dcm.getSelectedItem().toString()));
 
 
@@ -980,6 +1054,7 @@ public class Administrador {
                 super.mouseClicked(e);
 
 
+
                 try {
 
                     Connection conexion = Conexion.conexion;
@@ -1009,6 +1084,48 @@ public class Administrador {
 
 
 
+            }
+        });
+        refreshButton.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                super.mouseClicked(e);
+                Connection conexion = Conexion.conexion;
+
+                String sql2 = "{call calendario.verEquipos(?)}";
+
+                CallableStatement callableStatement2 = null;
+                try {
+                    callableStatement2 = conexion.prepareCall(sql2);
+
+
+                callableStatement2.registerOutParameter(1, OracleTypes.CURSOR);
+
+                callableStatement2.executeUpdate();
+                ResultSet rs = (ResultSet) callableStatement2.getObject(1);
+                List<String>listaEquipos=new ArrayList<String>();
+                while (rs.next()) {
+                    String nombreequi = rs.getString("nombreequi");
+
+                    listaEquipos.add(nombreequi);
+
+
+                }
+
+                textField10.setText(listaEquipos.get(0));
+                textField12.setText(listaEquipos.get(1));
+                textField13.setText(listaEquipos.get(2));
+                textField14.setText(listaEquipos.get(3));
+                textField28.setText(listaEquipos.get(4));
+                textField29.setText(listaEquipos.get(5));
+                textField30.setText(listaEquipos.get(6));
+                textField31.setText(listaEquipos.get(7));
+
+
+            } catch (SQLException e1) {
+                e1.printStackTrace();
+            } catch (java.lang.IndexOutOfBoundsException e1) {
+            }
             }
         });
     }
@@ -1057,7 +1174,6 @@ public class Administrador {
     private JTextField textField13;
     private JTextField textField14;
     private JButton insertarButton2;
-    private JButton actualizarButton2;
     private JButton borrarButton2;
     private JTable table4;
     private JButton borrarButton3;
@@ -1091,4 +1207,13 @@ public class Administrador {
     private JButton insertarButton6;
     private JButton borrarTodoButton;
     private JScrollPane scrollPane4;
+    private JPasswordField passwordField1;
+    private JTextField textField16;
+    private JPasswordField passwordField2;
+    private JTextField textField28;
+    private JTextField textField29;
+    private JTextField textField30;
+    private JTextField textField31;
+    private JButton refreshButton;
+    private JLabel numEquipos;
 }

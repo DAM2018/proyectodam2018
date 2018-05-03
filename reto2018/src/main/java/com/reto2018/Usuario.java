@@ -40,7 +40,7 @@ public class Usuario {
 
         final DefaultComboBoxModel dcm = new DefaultComboBoxModel();
 
-        dcm.addElement(0);
+        //dcm.addElement(0);
         dcm.addElement(1);
         dcm.addElement(2);
         dcm.addElement(3);

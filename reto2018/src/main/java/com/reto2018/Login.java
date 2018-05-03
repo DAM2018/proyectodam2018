@@ -3,15 +3,17 @@ package com.reto2018;
 import javax.swing.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
+import java.io.*;
+import java.sql.*;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 public class Login {
 
     private Administrador administrador;
+    private Usuario usuario;
+
     public Login() {
         final JFrame frame = new JFrame("Login");
         frame.setContentPane(login);
@@ -30,20 +32,97 @@ public class Login {
             @Override
             public void mouseClicked(MouseEvent e) {
                 super.mouseClicked(e);
-                char[] password = passwordField1.getPassword();
-                char[] correctPass = new char[] {'a', 'd', 'm', 'i', 'n'};
 
-                if(textField6.getText().equals("admin") && Arrays.equals(password, correctPass)){
+                List<String> emails = new ArrayList<String>();
+                List<String> passwords = new ArrayList<String>();
+
+                String servidor = Inicio.getLogin().getTextField1().getText();
+                String puerto = Inicio.getLogin().getTextField2().getText();
+                String sid = Inicio.getLogin().getTextField3().getText();
+                String login = Inicio.getLogin().getTextField4().getText();
+                String password = Inicio.getLogin().getTextField5().getText();
+                String url = "jdbc:oracle:thin:@" + servidor + ":" + puerto + ":" + sid;
+
+                Connection conexion = null;
+                Statement st = null;
+
+                try {
+                    conexion = DriverManager.getConnection(url, login, password);
+
+                    st = conexion.createStatement();
+
+
+                    String sql = "select email,password from usuarios";
+
+                    ResultSet rs = null;
+                    rs = st.executeQuery(sql);
+
+                    while (rs.next()) {
+
+                        emails.add(rs.getString(1));
+                        passwords.add(rs.getString(2));
+
+
+
+                    }
+                } catch (SQLException e1) {
+                    e1.printStackTrace();
+                }
+                boolean accesoUsuario=false;
+                for (int i = 0; i < emails.size(); i++) {
+                    if(emails.get(i).equals(textField6.getText()) && new String(passwordField1.getPassword()).equals(passwords.get(i)))
+                        accesoUsuario=true;
+                }
+                List<String>claves=new ArrayList<String>();
+                List<String>usuarios=new ArrayList<String>();
+
+                try {
+                    BufferedReader in = new BufferedReader(new FileReader("src/passwords.txt"));
+                    BufferedReader in2 = new BufferedReader(new FileReader("src/usuarios.txt"));
+
+                    String line;
+                    String line2;
+
+                    claves=new ArrayList<String>();
+                    usuarios=new ArrayList<String>();
+
+                    while((line = in.readLine()) !=null)
+                    {
+                        claves.add(line);
+
+                    }
+                    in.close();
+                    while((line2 = in2.readLine()) !=null)
+                    {
+                        usuarios.add(line2);
+
+                    }
+                    in2.close();
+
+                } catch (FileNotFoundException e1) {
+                    e1.printStackTrace();
+                } catch (IOException e1) {
+                    e1.printStackTrace();
+                }
+
+
+                //char[] password2 = ;
+                //char[] correctPass = new char[]{'a', 'd', 'm', 'i', 'n'};
+
+                boolean aceptarAdmin=false;
+                for (int i = 0; i < usuarios.size(); i++) {
+
+                    if (usuarios.get(i).equals(textField6.getText()) && claves.get(i).equals(new String(passwordField1.getPassword())))
+                        aceptarAdmin=true;
+
+                }
+                if (aceptarAdmin) {
 
                     try {
                         Conexion.EstablecerConexion();
-                    } catch (ClassNotFoundException e1) {
-                        e1.printStackTrace();
-                    } catch (SQLException e1) {
-                        e1.printStackTrace();
-                    }
+
                     System.out.println("Conectado");
-                    try {
+
                         administrador = new Administrador();
                     } catch (SQLException e1) {
                         e1.printStackTrace();
@@ -52,11 +131,24 @@ public class Login {
                     }
 
 
-                }
+                } else if(accesoUsuario){
+                    try {
+                        Conexion.EstablecerConexion();
+
+                    System.out.println("Conectado");
+                        usuario = new Usuario();
+                    } catch (SQLException e1) {
+                        e1.printStackTrace();
+                    } catch (ClassNotFoundException e1) {
+                        e1.printStackTrace();
+                    }
 
 
+                }else{
+                    System.out.println("else");}
 
-
+                emails.clear();
+                passwords.clear();
 
 
             }
@@ -74,7 +166,7 @@ public class Login {
                     String password = Inicio.getLogin().getTextField5().getText();
                     String url = "jdbc:oracle:thin:@" + servidor + ":" + puerto + ":" + sid;
 
-                    Connection conexion= DriverManager.getConnection(url, login, password);
+                    Connection conexion = DriverManager.getConnection(url, login, password);
 
                     PreparedStatement st;
 
@@ -93,7 +185,7 @@ public class Login {
                     administrador.getTable4().repaint();
 
                 } catch (SQLException e1) {
-                     JOptionPane.showMessageDialog(null,"El usuario ya existe","Error",JOptionPane.ERROR_MESSAGE);
+                    JOptionPane.showMessageDialog(null, "El usuario ya existe", "Error", JOptionPane.ERROR_MESSAGE);
                 } catch (ClassNotFoundException e1) {
                     e1.printStackTrace();
                 } catch (java.lang.NumberFormatException e1) {
@@ -101,18 +193,9 @@ public class Login {
                 }
 
 
-
-
-
-
-
-
             }
         });
     }
-
-
-
 
 
     private JTextField textField1;

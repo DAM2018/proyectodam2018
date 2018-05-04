@@ -1,5 +1,8 @@
 package com.reto2018;
 
+import org.apache.commons.validator.routines.EmailValidator;
+import org.jasypt.util.text.StrongTextEncryptor;
+
 import javax.swing.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
@@ -13,6 +16,11 @@ public class Login {
 
     private Administrador administrador;
     private Usuario usuario;
+    private SuperUsuario superUsuario;
+    private List<String> claves;
+    private List<String> usuarios;
+    private List<String> emails = new ArrayList<String>();
+    private List<String> passwords = new ArrayList<String>();
 
     public Login() {
         final JFrame frame = new JFrame("Login");
@@ -28,13 +36,19 @@ public class Login {
         textField5.setText(Conexion.getPassword());
 
 
+        final StrongTextEncryptor textEncryptor = new StrongTextEncryptor();
+        textEncryptor.setPassword("pass");
+
+
+        //String plainText = textEncryptor.decrypt("eC3hFemuB8Vv9ZqySPkJfg==");
+        //System.out.println(plainText);
+
+
         entrarButton.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
                 super.mouseClicked(e);
 
-                List<String> emails = new ArrayList<String>();
-                List<String> passwords = new ArrayList<String>();
 
                 String servidor = Inicio.getLogin().getTextField1().getText();
                 String puerto = Inicio.getLogin().getTextField2().getText();
@@ -63,18 +77,17 @@ public class Login {
                         passwords.add(rs.getString(2));
 
 
-
                     }
                 } catch (SQLException e1) {
                     e1.printStackTrace();
                 }
-                boolean accesoUsuario=false;
+                boolean accesoUsuario = false;
                 for (int i = 0; i < emails.size(); i++) {
-                    if(emails.get(i).equals(textField6.getText()) && new String(passwordField1.getPassword()).equals(passwords.get(i)))
-                        accesoUsuario=true;
+                    if (emails.get(i).equals(textField6.getText()) && new String(passwordField1.getPassword()).equals(passwords.get(i)))
+                        accesoUsuario = true;
                 }
-                List<String>claves=new ArrayList<String>();
-                List<String>usuarios=new ArrayList<String>();
+                claves = new ArrayList<String>();
+                usuarios = new ArrayList<String>();
 
                 try {
                     BufferedReader in = new BufferedReader(new FileReader("src/passwords.txt"));
@@ -83,18 +96,20 @@ public class Login {
                     String line;
                     String line2;
 
-                    claves=new ArrayList<String>();
-                    usuarios=new ArrayList<String>();
+                    claves = new ArrayList<String>();
+                    usuarios = new ArrayList<String>();
+                    String plainText;
+                    while ((line = in.readLine()) != null) {
+                        plainText = textEncryptor.decrypt(line);
 
-                    while((line = in.readLine()) !=null)
-                    {
-                        claves.add(line);
+                        claves.add(plainText);
 
                     }
                     in.close();
-                    while((line2 = in2.readLine()) !=null)
-                    {
-                        usuarios.add(line2);
+                    while ((line2 = in2.readLine()) != null) {
+                        plainText = textEncryptor.decrypt(line2);
+
+                        usuarios.add(plainText);
 
                     }
                     in2.close();
@@ -108,22 +123,45 @@ public class Login {
 
                 //char[] password2 = ;
                 //char[] correctPass = new char[]{'a', 'd', 'm', 'i', 'n'};
+                int i;
+                int ad=0;
+                boolean aceptarAdmin = false;
+                for (i = 0; i < usuarios.size(); i++) {
 
-                boolean aceptarAdmin=false;
-                for (int i = 0; i < usuarios.size(); i++) {
+                    if (usuarios.get(i).equals(textField6.getText()) && claves.get(i).equals(new String(passwordField1.getPassword()))) {
+                        {
+                            aceptarAdmin = true;
+                            ad=i+1;
+                        }
 
-                    if (usuarios.get(i).equals(textField6.getText()) && claves.get(i).equals(new String(passwordField1.getPassword())))
-                        aceptarAdmin=true;
+                    }
 
+                }
+                if (textField6.getText().equals("root") && new String(passwordField1.getPassword()).equals("root")) {
+
+                    try {
+                        Conexion.EstablecerConexion();
+
+
+                        System.out.println("Conectado");
+
+                        superUsuario = new SuperUsuario();
+                    } catch (ClassNotFoundException e1) {
+                        e1.printStackTrace();
+                    } catch (SQLException e1) {
+                        e1.printStackTrace();
+                    }
                 }
                 if (aceptarAdmin) {
 
                     try {
                         Conexion.EstablecerConexion();
 
-                    System.out.println("Conectado");
+                        System.out.println("Conectado");
 
                         administrador = new Administrador();
+                        administrador.setAdministrador(ad);
+
                     } catch (SQLException e1) {
                         e1.printStackTrace();
                     } catch (ClassNotFoundException e1) {
@@ -131,11 +169,11 @@ public class Login {
                     }
 
 
-                } else if(accesoUsuario){
+                } else if (accesoUsuario) {
                     try {
                         Conexion.EstablecerConexion();
 
-                    System.out.println("Conectado");
+                        System.out.println("Conectado");
                         usuario = new Usuario();
                     } catch (SQLException e1) {
                         e1.printStackTrace();
@@ -144,8 +182,9 @@ public class Login {
                     }
 
 
-                }else{
-                    System.out.println("else");}
+                } else {
+                    System.out.println("else");
+                }
 
                 emails.clear();
                 passwords.clear();
@@ -170,27 +209,41 @@ public class Login {
 
                     PreparedStatement st;
 
+                    //  Apache Commons validator
 
-                    String sql = "insert into usuarios values (?,?,?)";
-                    st = conexion.prepareStatement(sql);
+                    String email = textField8.getText();
+                    boolean valid = EmailValidator.getInstance().isValid(email);
 
-                    st.setString(1, textField7.getText());
-                    st.setString(2, textField8.getText());
-                    st.setString(3, textField9.getText());
+                    if (valid && new String(passwordField2.getPassword()).length()>7) {
+                        String sql = "insert into usuarios values (?,?,?)";
+                        st = conexion.prepareStatement(sql);
 
-                    st.executeUpdate();
+                        st.setString(1, textField7.getText());
+                        st.setString(2, textField8.getText());
+                        st.setString(3, new String(passwordField2.getPassword()));
 
-                    administrador.getTum().actualizarLista();
-                    administrador.getTable4().revalidate();
-                    administrador.getTable4().repaint();
+                        st.executeUpdate();
 
-                } catch (SQLException e1) {
-                    JOptionPane.showMessageDialog(null, "El usuario ya existe", "Error", JOptionPane.ERROR_MESSAGE);
-                } catch (ClassNotFoundException e1) {
-                    e1.printStackTrace();
-                } catch (java.lang.NumberFormatException e1) {
-                    //e1.printStackTrace();
-                }
+                        /*administrador.getTum().actualizarLista();
+                        administrador.getTable4().revalidate();
+                        administrador.getTable4().repaint();*/
+                    }else if (!valid){
+
+                        JOptionPane.showMessageDialog(null, "Email NO válido!!!!!!", "Error", JOptionPane.ERROR_MESSAGE);
+
+                    }else{
+
+                        JOptionPane.showMessageDialog(null, "La contraseña tiene que tener más de 7 caracteres...", "Error", JOptionPane.ERROR_MESSAGE);
+
+                    }
+
+
+
+                    } catch(SQLException e1){
+                        JOptionPane.showMessageDialog(null, "El usuario ya existe", "Error", JOptionPane.ERROR_MESSAGE);
+                    }  catch(java.lang.NumberFormatException e1){
+                        //e1.printStackTrace();
+                    }
 
 
             }
@@ -211,6 +264,7 @@ public class Login {
     private JTextField textField8;
     private JTextField textField9;
     private JButton aceptarButton;
+    private JPasswordField passwordField2;
 
     public JTextField getTextField1() {
         return textField1;
@@ -250,5 +304,37 @@ public class Login {
 
     public void setTextField5(JTextField textField5) {
         this.textField5 = textField5;
+    }
+
+    public List<String> getEmails() {
+        return emails;
+    }
+
+    public void setEmails(List<String> emails) {
+        this.emails = emails;
+    }
+
+    public List<String> getPasswords() {
+        return passwords;
+    }
+
+    public void setPasswords(List<String> passwords) {
+        this.passwords = passwords;
+    }
+
+    public List<String> getClaves() {
+        return claves;
+    }
+
+    public void setClaves(List<String> claves) {
+        this.claves = claves;
+    }
+
+    public List<String> getUsuarios() {
+        return usuarios;
+    }
+
+    public void setUsuarios(List<String> usuarios) {
+        this.usuarios = usuarios;
     }
 }

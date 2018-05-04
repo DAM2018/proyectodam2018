@@ -1,8 +1,8 @@
 package com.reto2018;
 
 
-
 import oracle.jdbc.internal.OracleTypes;
+import org.jasypt.util.text.StrongTextEncryptor;
 
 import javax.swing.*;
 import javax.swing.event.ListSelectionEvent;
@@ -10,6 +10,7 @@ import javax.swing.event.ListSelectionListener;
 import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 import java.awt.event.*;
+import java.io.*;
 import java.math.BigDecimal;
 import java.sql.*;
 import java.util.ArrayList;
@@ -18,14 +19,50 @@ import java.util.List;
 
 public class Administrador {
 
-    //Connection conexion = Conexion.conexion;
+    private int administrador;
+
     final TablaUsuariosModel tum;
+
     public Administrador() throws SQLException, ClassNotFoundException {
         JFrame frame = new JFrame("Administrador");
         frame.setContentPane(panel1);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.pack();
         frame.setVisible(true);
+
+
+        Connection conexion = Conexion.conexion;
+
+        String sql2 = "{call calendario.verEquipos(?)}";
+
+        CallableStatement callableStatement2 = conexion.prepareCall(sql2);
+
+        callableStatement2.registerOutParameter(1, OracleTypes.CURSOR);
+
+        callableStatement2.executeUpdate();
+        ResultSet rs = (ResultSet) callableStatement2.getObject(1);
+        List<String> listaEquipos = new ArrayList<String>();
+        while (rs.next()) {
+            String nombreequi = rs.getString("nombreequi");
+
+            listaEquipos.add(nombreequi);
+
+
+        }
+        try {
+            textField10.setText(listaEquipos.get(0));
+            textField12.setText(listaEquipos.get(1));
+            textField13.setText(listaEquipos.get(2));
+            textField14.setText(listaEquipos.get(3));
+            textField28.setText(listaEquipos.get(4));
+            textField29.setText(listaEquipos.get(5));
+            textField30.setText(listaEquipos.get(6));
+            textField31.setText(listaEquipos.get(7));
+
+
+        } catch (java.lang.IndexOutOfBoundsException e1) {
+        }
+
 
         if (textField10.getText().equals("") &&
                 textField12.getText().equals("") &&
@@ -36,47 +73,9 @@ public class Administrador {
                 textField30.getText().equals("") &&
                 textField31.getText().equals("")) {
             numEquipos.setText("0");
+        } else {
+            numEquipos.setText("8 OK!");
         }
-
-
-            Connection conexion = Conexion.conexion;
-
-        String sql2 = "{call calendario.verEquipos(?)}";
-
-        CallableStatement callableStatement2 = conexion.prepareCall(sql2);
-
-        callableStatement2.registerOutParameter(1, OracleTypes.CURSOR);
-
-        callableStatement2.executeUpdate();
-        ResultSet rs = (ResultSet) callableStatement2.getObject(1);
-        List<String>listaEquipos=new ArrayList<String>();
-        while (rs.next()) {
-            String nombreequi = rs.getString("nombreequi");
-
-            listaEquipos.add(nombreequi);
-
-
-        }
-        try{
-        textField10.setText(listaEquipos.get(0));
-        textField12.setText(listaEquipos.get(1));
-        textField13.setText(listaEquipos.get(2));
-        textField14.setText(listaEquipos.get(3));
-        textField28.setText(listaEquipos.get(4));
-        textField29.setText(listaEquipos.get(5));
-        textField30.setText(listaEquipos.get(6));
-        textField31.setText(listaEquipos.get(7));
-
-
-        } catch (java.lang.IndexOutOfBoundsException e1) {
-        }
-
-
-
-
-
-
-
 
 
         textField15.setVisible(false);
@@ -92,9 +91,7 @@ public class Administrador {
         textField26.setVisible(false);
         textField27.setVisible(false);
         actualizarResultadoFechaButton.setVisible(false);
-        insertarButton4.setVisible(false);
-        insertarButton5.setVisible(false);
-        insertarButton6.setVisible(false);
+
 
         // final DefaultListModel modelList1 = new DefaultListModel();
         // DefaultTableModel modelTable1=new DefaultTableModel();
@@ -110,7 +107,7 @@ public class Administrador {
         modelTable1.addColumn("Price");*/
         final TablaJugadoresModel tjm = new TablaJugadoresModel(0);
         final TablaDueñosModel tdm = new TablaDueñosModel(0);
-       // final TablaEquiposModel tem = new TablaEquiposModel(0);
+        // final TablaEquiposModel tem = new TablaEquiposModel(0);
         tum = new TablaUsuariosModel(0);
 
        /* for (int i = 0; i < JugadoresVer.jugadores().size(); i++) {
@@ -131,7 +128,7 @@ public class Administrador {
 
         scrollPane1.setViewportView(table1);
         scrollPane2.setViewportView(table2);
-     //  scrollPane3.setViewportView(table3);
+        //  scrollPane3.setViewportView(table3);
         scrollPane4.setViewportView(table4);
 
 
@@ -173,9 +170,9 @@ public class Administrador {
                 } catch (SQLException e1) {
                     // e1.printStackTrace();
                 } catch (ClassNotFoundException e1) {
-                   // e1.printStackTrace();
+                    // e1.printStackTrace();
                 } catch (java.lang.NumberFormatException e1) {
-                  //  e1.printStackTrace();
+                    //  e1.printStackTrace();
                 }
 
 
@@ -426,62 +423,61 @@ public class Administrador {
                             !textField30.getText().equals("") &&
                             !textField31.getText().equals("") &&
                             numEquipos.getText().equals("0")
-                            )
-                    {
+                            ) {
                         PreparedStatement st;
-                    String sql = "insert into equipo values (?)";
-                    st = conexion.prepareStatement(sql);
-                    st.setString(1, textField10.getText());
-                    st.executeUpdate();
+                        String sql = "insert into equipo values (?,seq.nextval)";
+                        st = conexion.prepareStatement(sql);
+                        st.setString(1, textField10.getText());
+                        st.executeUpdate();
 
-                    PreparedStatement st2;
-                    String sql2 = "insert into equipo values (?)";
-                    st2 = conexion.prepareStatement(sql);
-                    st2.setString(1, textField12.getText());
-                    st2.executeUpdate();
+                        PreparedStatement st2;
+                        String sql2 = "insert into equipo values (?,seq.nextval)";
+                        st2 = conexion.prepareStatement(sql2);
+                        st2.setString(1, textField12.getText());
+                        st2.executeUpdate();
 
-                    PreparedStatement st3;
-                    String sql3 = "insert into equipo values (?)";
-                    st3 = conexion.prepareStatement(sql);
-                    st3.setString(1, textField13.getText());
-                    st3.executeUpdate();
+                        PreparedStatement st3;
+                        String sql3 = "insert into equipo values (?,seq.nextval)";
+                        st3 = conexion.prepareStatement(sql3);
+                        st3.setString(1, textField13.getText());
+                        st3.executeUpdate();
 
-                    PreparedStatement st4;
-                    String sql4 = "insert into equipo values (?)";
-                    st4 = conexion.prepareStatement(sql);
-                    st4.setString(1, textField14.getText());
-                    st4.executeUpdate();
+                        PreparedStatement st4;
+                        String sql4 = "insert into equipo values (?,seq.nextval)";
+                        st4 = conexion.prepareStatement(sql4);
+                        st4.setString(1, textField14.getText());
+                        st4.executeUpdate();
 
-                    PreparedStatement st5;
-                    String sql5 = "insert into equipo values (?)";
-                    st5 = conexion.prepareStatement(sql);
-                    st5.setString(1, textField28.getText());
-                    st5.executeUpdate();
+                        PreparedStatement st5;
+                        String sql5 = "insert into equipo values (?,seq.nextval)";
+                        st5 = conexion.prepareStatement(sql5);
+                        st5.setString(1, textField28.getText());
+                        st5.executeUpdate();
 
-                    PreparedStatement st6;
-                    String sql6 = "insert into equipo values (?)";
-                    st6 = conexion.prepareStatement(sql);
-                    st6.setString(1, textField29.getText());
-                    st6.executeUpdate();
+                        PreparedStatement st6;
+                        String sql6 = "insert into equipo values (?,seq.nextval)";
+                        st6 = conexion.prepareStatement(sql6);
+                        st6.setString(1, textField29.getText());
+                        st6.executeUpdate();
 
-                    PreparedStatement st7;
-                    String sql7 = "insert into equipo values (?)";
-                    st7 = conexion.prepareStatement(sql);
-                    st7.setString(1, textField30.getText());
-                    st7.executeUpdate();
+                        PreparedStatement st7;
+                        String sql7 = "insert into equipo values (?,seq.nextval)";
+                        st7 = conexion.prepareStatement(sql7);
+                        st7.setString(1, textField30.getText());
+                        st7.executeUpdate();
 
-                    PreparedStatement st8;
-                    String sql8 = "insert into equipo values (?)";
-                    st8 = conexion.prepareStatement(sql);
-                    st8.setString(1, textField31.getText());
-                    st8.executeUpdate();
-                    numEquipos.setText("8 OK!");
+                        PreparedStatement st8;
+                        String sql8 = "insert into equipo values (?,seq.nextval)";
+                        st8 = conexion.prepareStatement(sql8);
+                        st8.setString(1, textField31.getText());
+                        st8.executeUpdate();
+                        numEquipos.setText("8 OK!");
 
-                }
+                    }
 
                 } catch (SQLException e1) {
-                    // e1.printStackTrace();
-                }  catch (java.lang.NumberFormatException e1) {
+                    e1.printStackTrace();
+                } catch (java.lang.NumberFormatException e1) {
                     //e1.printStackTrace();
                 }
 
@@ -493,7 +489,7 @@ public class Administrador {
             @Override
             public void mouseClicked(MouseEvent e) {
                 super.mouseClicked(e);
-numEquipos.setText("0");
+                numEquipos.setText("0");
                 try {
 
                     Connection conexion = Conexion.conexion;
@@ -506,7 +502,7 @@ numEquipos.setText("0");
 
 
                     st.executeUpdate();
-textField10.setText("");
+                    textField10.setText("");
                     textField12.setText("");
                     textField13.setText("");
                     textField14.setText("");
@@ -526,10 +522,10 @@ textField10.setText("");
         });
 
 
-
         final DefaultComboBoxModel dcm = new DefaultComboBoxModel();
+        dcm.setSelectedItem(1);
 
-       // dcm.addElement(0);
+        //dcm.addElement(0);
         dcm.addElement(1);
         dcm.addElement(2);
         dcm.addElement(3);
@@ -576,9 +572,7 @@ textField10.setText("");
                 textField26.setVisible(true);
                 textField27.setVisible(true);
                 actualizarResultadoFechaButton.setVisible(true);
-                insertarButton4.setVisible(true);
-                insertarButton5.setVisible(true);
-                insertarButton6.setVisible(true);
+
 
 
                 String sql = "{call calendario.crearCalendario(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)}";
@@ -636,7 +630,7 @@ textField10.setText("");
                         int resultado2 = rs.getInt("resultado2");
                         String fecha = rs.getString("fecha");
 
-                        resultados.add(new Resultado(resultado1, resultado2,fecha));
+                        resultados.add(new Resultado(resultado1, resultado2, fecha));
 
 
                     }
@@ -661,7 +655,7 @@ textField10.setText("");
                 } catch (java.lang.NullPointerException e2) {
 
 
-                }catch (java.lang.IndexOutOfBoundsException e2) {
+                } catch (java.lang.IndexOutOfBoundsException e2) {
 
 
                 }
@@ -674,351 +668,295 @@ textField10.setText("");
             public void mouseClicked(MouseEvent e) {
                 super.mouseClicked(e);
 
-                try {
+                if (!textField15.getText().equals("") && !textField17.getText().equals("") && !textField24.getText().equals("") &&
+                        !textField18.getText().equals("") && !textField21.getText().equals("") && !textField25.getText().equals("") &&
+                        !textField19.getText().equals("") && !textField22.getText().equals("") && !textField26.getText().equals("") &&
+                        !textField20.getText().equals("") && !textField23.getText().equals("") && !textField27.getText().equals("")) {
+                    try {
 
-                    Connection conexion = Conexion.conexion;
+                        Connection conexion = Conexion.conexion;
 
-                    PreparedStatement st;
-
-
-                    String sql = "insert into partido values (?,?,?,?,?,?)";
-                    st = conexion.prepareStatement(sql);
-                    st.setString(1, textField24.getText());
-                    st.setInt(2, Integer.parseInt(dcm.getSelectedItem().toString()));
-                    st.setInt(3, Integer.parseInt(textField15.getText()));
-                    st.setInt(4, Integer.parseInt(textField17.getText()));
-                    st.setString(5, equipo1.getText());
-                    st.setString(6, equipo2.getText());
+                        PreparedStatement st;
 
 
-                    st.executeUpdate();
+                        String sql = "insert into partido values (?,?,?,?,?,?)";
+                        st = conexion.prepareStatement(sql);
+                        st.setString(1, textField24.getText());
+                        st.setInt(2, Integer.parseInt(dcm.getSelectedItem().toString()));
+                        st.setInt(3, Integer.parseInt(textField15.getText()));
+                        st.setInt(4, Integer.parseInt(textField17.getText()));
+                        st.setString(5, equipo1.getText());
+                        st.setString(6, equipo2.getText());
 
 
-                    textField15.revalidate();
-                    textField15.repaint();
-                    textField17.revalidate();
-                    textField17.repaint();
+                        st.executeUpdate();
 
-                    int ganados=0;
-                    int empatados=0;
-                    int perdidos=0;
-                    int puntos=0;
-                    if(Integer.parseInt(textField15.getText())>Integer.parseInt(textField17.getText())){
-                        ganados=1;
-                        puntos=3;
+
+                        textField15.revalidate();
+                        textField15.repaint();
+                        textField17.revalidate();
+                        textField17.repaint();
+
+                        int ganados = 0;
+                        int empatados = 0;
+                        int perdidos = 0;
+                        int puntos = 0;
+                        if (Integer.parseInt(textField15.getText()) > Integer.parseInt(textField17.getText())) {
+                            ganados = 1;
+                            puntos = 3;
+                        }
+                        if (Integer.parseInt(textField15.getText()) == Integer.parseInt(textField17.getText())) {
+                            empatados = 1;
+                            puntos = 1;
+                        }
+                        if (Integer.parseInt(textField15.getText()) < Integer.parseInt(textField17.getText())) {
+                            perdidos = 1;
+                        }
+                        PreparedStatement st2;
+                        String sql2 = "insert into clasificacion2 values (?,?,?,?,?,?)";
+                        st2 = conexion.prepareStatement(sql2);
+                        st2.setString(1, equipo1.getText());
+                        st2.setInt(2, Integer.parseInt(dcm.getSelectedItem().toString()));
+                        st2.setInt(3, puntos);
+                        st2.setInt(4, ganados);
+                        st2.setInt(5, empatados);
+                        st2.setInt(6, perdidos);
+                        st2.executeUpdate();
+                        int ganados2 = 0;
+                        int empatados2 = 0;
+                        int perdidos2 = 0;
+                        int puntos2 = 0;
+                        if (Integer.parseInt(textField17.getText()) > Integer.parseInt(textField15.getText())) {
+                            ganados2 = 1;
+                            puntos2 = 3;
+                        }
+                        if (Integer.parseInt(textField17.getText()) == Integer.parseInt(textField15.getText())) {
+                            empatados2 = 1;
+                            puntos2 = 1;
+                        }
+                        if (Integer.parseInt(textField17.getText()) < Integer.parseInt(textField15.getText())) {
+                            perdidos2 = 1;
+                        }
+                        PreparedStatement st3;
+                        String sql3 = "insert into clasificacion2 values (?,?,?,?,?,?)";
+                        st3 = conexion.prepareStatement(sql3);
+                        st3.setString(1, equipo2.getText());
+                        st3.setInt(2, Integer.parseInt(dcm.getSelectedItem().toString()));
+                        st3.setInt(3, puntos2);
+                        st3.setInt(4, ganados2);
+                        st3.setInt(5, empatados2);
+                        st3.setInt(6, perdidos2);
+                        st3.executeUpdate();
+
+
+                        sql = "insert into partido values (?,?,?,?,?,?)";
+                        st = conexion.prepareStatement(sql);
+                        st.setString(1, textField25.getText());
+                        st.setInt(2, Integer.parseInt(dcm.getSelectedItem().toString()));
+                        st.setInt(3, Integer.parseInt(textField18.getText()));
+                        st.setInt(4, Integer.parseInt(textField21.getText()));
+                        st.setString(5, equipo3.getText());
+                        st.setString(6, equipo4.getText());
+
+
+                        st.executeUpdate();
+
+
+                        textField18.revalidate();
+                        textField18.repaint();
+                        textField21.revalidate();
+                        textField21.repaint();
+
+                        ganados = 0;
+                        empatados = 0;
+                        perdidos = 0;
+                        puntos = 0;
+                        if (Integer.parseInt(textField18.getText()) > Integer.parseInt(textField21.getText())) {
+                            ganados = 1;
+                            puntos = 3;
+                        }
+                        if (Integer.parseInt(textField18.getText()) == Integer.parseInt(textField21.getText())) {
+                            empatados = 1;
+                            puntos = 1;
+                        }
+                        if (Integer.parseInt(textField18.getText()) < Integer.parseInt(textField21.getText())) {
+                            perdidos = 1;
+                        }
+                        sql2 = "insert into clasificacion2 values (?,?,?,?,?,?)";
+                        st2 = conexion.prepareStatement(sql2);
+                        st2.setString(1, equipo3.getText());
+                        st2.setInt(2, Integer.parseInt(dcm.getSelectedItem().toString()));
+                        st2.setInt(3, puntos);
+                        st2.setInt(4, ganados);
+                        st2.setInt(5, empatados);
+                        st2.setInt(6, perdidos);
+                        st2.executeUpdate();
+                        ganados2 = 0;
+                        empatados2 = 0;
+                        perdidos2 = 0;
+                        puntos2 = 0;
+                        if (Integer.parseInt(textField21.getText()) > Integer.parseInt(textField18.getText())) {
+                            ganados2 = 1;
+                            puntos2 = 3;
+                        }
+                        if (Integer.parseInt(textField21.getText()) == Integer.parseInt(textField18.getText())) {
+                            empatados2 = 1;
+                            puntos2 = 1;
+                        }
+                        if (Integer.parseInt(textField21.getText()) < Integer.parseInt(textField18.getText())) {
+                            perdidos2 = 1;
+                        }
+                        sql3 = "insert into clasificacion2 values (?,?,?,?,?,?)";
+                        st3 = conexion.prepareStatement(sql3);
+                        st3.setString(1, equipo4.getText());
+                        st3.setInt(2, Integer.parseInt(dcm.getSelectedItem().toString()));
+                        st3.setInt(3, puntos2);
+                        st3.setInt(4, ganados2);
+                        st3.setInt(5, empatados2);
+                        st3.setInt(6, perdidos2);
+                        st3.executeUpdate();
+
+
+                        sql = "insert into partido values (?,?,?,?,?,?)";
+                        st = conexion.prepareStatement(sql);
+                        st.setString(1, textField26.getText());
+                        st.setInt(2, Integer.parseInt(dcm.getSelectedItem().toString()));
+                        st.setInt(3, Integer.parseInt(textField19.getText()));
+                        st.setInt(4, Integer.parseInt(textField22.getText()));
+                        st.setString(5, equipo5.getText());
+                        st.setString(6, equipo6.getText());
+
+
+                        st.executeUpdate();
+
+
+                        textField19.revalidate();
+                        textField19.repaint();
+                        textField22.revalidate();
+                        textField22.repaint();
+
+                        ganados = 0;
+                        empatados = 0;
+                        perdidos = 0;
+                        puntos = 0;
+                        if (Integer.parseInt(textField19.getText()) > Integer.parseInt(textField22.getText())) {
+                            ganados = 1;
+                            puntos = 3;
+                        }
+                        if (Integer.parseInt(textField19.getText()) == Integer.parseInt(textField22.getText())) {
+                            empatados = 1;
+                            puntos = 1;
+                        }
+                        if (Integer.parseInt(textField19.getText()) < Integer.parseInt(textField22.getText())) {
+                            perdidos = 1;
+                        }
+                        sql2 = "insert into clasificacion2 values (?,?,?,?,?,?)";
+                        st2 = conexion.prepareStatement(sql2);
+                        st2.setString(1, equipo5.getText());
+                        st2.setInt(2, Integer.parseInt(dcm.getSelectedItem().toString()));
+                        st2.setInt(3, puntos);
+                        st2.setInt(4, ganados);
+                        st2.setInt(5, empatados);
+                        st2.setInt(6, perdidos);
+                        st2.executeUpdate();
+                        ganados2 = 0;
+                        empatados2 = 0;
+                        perdidos2 = 0;
+                        puntos2 = 0;
+                        if (Integer.parseInt(textField22.getText()) > Integer.parseInt(textField19.getText())) {
+                            ganados2 = 1;
+                            puntos2 = 3;
+                        }
+                        if (Integer.parseInt(textField22.getText()) == Integer.parseInt(textField19.getText())) {
+                            empatados2 = 1;
+                            puntos2 = 1;
+                        }
+                        if (Integer.parseInt(textField22.getText()) < Integer.parseInt(textField19.getText())) {
+                            perdidos2 = 1;
+                        }
+                        sql3 = "insert into clasificacion2 values (?,?,?,?,?,?)";
+                        st3 = conexion.prepareStatement(sql3);
+                        st3.setString(1, equipo6.getText());
+                        st3.setInt(2, Integer.parseInt(dcm.getSelectedItem().toString()));
+                        st3.setInt(3, puntos2);
+                        st3.setInt(4, ganados2);
+                        st3.setInt(5, empatados2);
+                        st3.setInt(6, perdidos2);
+                        st3.executeUpdate();
+
+
+                        sql = "insert into partido values (?,?,?,?,?,?)";
+                        st = conexion.prepareStatement(sql);
+                        st.setString(1, textField27.getText());
+                        st.setInt(2, Integer.parseInt(dcm.getSelectedItem().toString()));
+                        st.setInt(3, Integer.parseInt(textField20.getText()));
+                        st.setInt(4, Integer.parseInt(textField23.getText()));
+                        st.setString(5, equipo7.getText());
+                        st.setString(6, equipo8.getText());
+
+
+                        st.executeUpdate();
+
+
+                        textField20.revalidate();
+                        textField20.repaint();
+                        textField23.revalidate();
+                        textField23.repaint();
+
+                        ganados = 0;
+                        empatados = 0;
+                        perdidos = 0;
+                        puntos = 0;
+                        if (Integer.parseInt(textField20.getText()) > Integer.parseInt(textField23.getText())) {
+                            ganados = 1;
+                            puntos = 3;
+                        }
+                        if (Integer.parseInt(textField20.getText()) == Integer.parseInt(textField23.getText())) {
+                            empatados = 1;
+                            puntos = 1;
+                        }
+                        if (Integer.parseInt(textField20.getText()) < Integer.parseInt(textField23.getText())) {
+                            perdidos = 1;
+                        }
+                        sql2 = "insert into clasificacion2 values (?,?,?,?,?,?)";
+                        st2 = conexion.prepareStatement(sql2);
+                        st2.setString(1, equipo7.getText());
+                        st2.setInt(2, Integer.parseInt(dcm.getSelectedItem().toString()));
+                        st2.setInt(3, puntos);
+                        st2.setInt(4, ganados);
+                        st2.setInt(5, empatados);
+                        st2.setInt(6, perdidos);
+                        st2.executeUpdate();
+                        ganados2 = 0;
+                        empatados2 = 0;
+                        perdidos2 = 0;
+                        puntos2 = 0;
+                        if (Integer.parseInt(textField23.getText()) > Integer.parseInt(textField20.getText())) {
+                            ganados2 = 1;
+                            puntos2 = 3;
+                        }
+                        if (Integer.parseInt(textField23.getText()) == Integer.parseInt(textField20.getText())) {
+                            empatados2 = 1;
+                            puntos2 = 1;
+                        }
+                        if (Integer.parseInt(textField23.getText()) < Integer.parseInt(textField20.getText())) {
+                            perdidos2 = 1;
+                        }
+                        sql3 = "insert into clasificacion2 values (?,?,?,?,?,?)";
+                        st3 = conexion.prepareStatement(sql3);
+                        st3.setString(1, equipo8.getText());
+                        st3.setInt(2, Integer.parseInt(dcm.getSelectedItem().toString()));
+                        st3.setInt(3, puntos2);
+                        st3.setInt(4, ganados2);
+                        st3.setInt(5, empatados2);
+                        st3.setInt(6, perdidos2);
+                        st3.executeUpdate();
+
+                    } catch (SQLException e1) {
+                        // e1.printStackTrace();
+                    } catch (java.lang.NumberFormatException e1) {
+                        // e1.printStackTrace();
                     }
-                    if(Integer.parseInt(textField15.getText())==Integer.parseInt(textField17.getText())){
-                        empatados=1;
-                        puntos=1;
-                    }
-                    if(Integer.parseInt(textField15.getText())<Integer.parseInt(textField17.getText())){
-                        perdidos=1;
-                    }
-                    PreparedStatement st2;
-                    String sql2 = "insert into clasificacion2 values (?,?,?,?,?,?)";
-                    st2 = conexion.prepareStatement(sql2);
-                    st2.setString(1, equipo1.getText());
-                    st2.setInt(2, Integer.parseInt(dcm.getSelectedItem().toString()));
-                    st2.setInt(3, puntos);
-                    st2.setInt(4, ganados);
-                    st2.setInt(5, empatados);
-                    st2.setInt(6, perdidos);
-                    st2.executeUpdate();
-                    int ganados2=0;
-                    int empatados2=0;
-                    int perdidos2=0;
-                    int puntos2=0;
-                    if(Integer.parseInt(textField17.getText())>Integer.parseInt(textField15.getText())){
-                        ganados2=1;
-                        puntos2=3;
-                    }
-                    if(Integer.parseInt(textField17.getText())==Integer.parseInt(textField15.getText())){
-                        empatados2=1;
-                        puntos2=1;
-                    }
-                    if(Integer.parseInt(textField17.getText())<Integer.parseInt(textField15.getText())){
-                        perdidos2=1;
-                    }
-                    PreparedStatement st3;
-                    String sql3 = "insert into clasificacion2 values (?,?,?,?,?,?)";
-                    st3 = conexion.prepareStatement(sql3);
-                    st3.setString(1, equipo2.getText());
-                    st3.setInt(2, Integer.parseInt(dcm.getSelectedItem().toString()));
-                    st3.setInt(3, puntos2);
-                    st3.setInt(4, ganados2);
-                    st3.setInt(5, empatados2);
-                    st3.setInt(6, perdidos2);
-                    st3.executeUpdate();
-
-                } catch (SQLException e1) {
-                    // e1.printStackTrace();
-                } catch (java.lang.NumberFormatException e1) {
-                    //e1.printStackTrace();
-                }
-
-            }
-        });
-        insertarButton4.addMouseListener(new MouseAdapter() {
-            @Override
-            public void mouseClicked(MouseEvent e) {
-                super.mouseClicked(e);
-
-                try {
-
-                    Connection conexion = Conexion.conexion;
-
-                    PreparedStatement st;
-
-
-                    String sql = "insert into partido values (?,?,?,?,?,?)";
-                    st = conexion.prepareStatement(sql);
-                    st.setString(1, textField25.getText());
-                    st.setInt(2, Integer.parseInt(dcm.getSelectedItem().toString()));
-                    st.setInt(3, Integer.parseInt(textField18.getText()));
-                    st.setInt(4, Integer.parseInt(textField21.getText()));
-                    st.setString(5, equipo3.getText());
-                    st.setString(6, equipo4.getText());
-
-
-                    st.executeUpdate();
-
-
-                    textField18.revalidate();
-                    textField18.repaint();
-                    textField21.revalidate();
-                    textField21.repaint();
-
-                    int ganados=0;
-                    int empatados=0;
-                    int perdidos=0;
-                    int puntos=0;
-                    if(Integer.parseInt(textField18.getText())>Integer.parseInt(textField21.getText())){
-                        ganados=1;
-                        puntos=3;
-                    }
-                    if(Integer.parseInt(textField18.getText())==Integer.parseInt(textField21.getText())){
-                        empatados=1;
-                        puntos=1;
-                    }
-                    if(Integer.parseInt(textField18.getText())<Integer.parseInt(textField21.getText())){
-                        perdidos=1;
-                    }
-                    PreparedStatement st2;
-                    String sql2 = "insert into clasificacion2 values (?,?,?,?,?,?)";
-                    st2 = conexion.prepareStatement(sql2);
-                    st2.setString(1, equipo3.getText());
-                    st2.setInt(2, Integer.parseInt(dcm.getSelectedItem().toString()));
-                    st2.setInt(3, puntos);
-                    st2.setInt(4, ganados);
-                    st2.setInt(5, empatados);
-                    st2.setInt(6, perdidos);
-                    st2.executeUpdate();
-                    int ganados2=0;
-                    int empatados2=0;
-                    int perdidos2=0;
-                    int puntos2=0;
-                    if(Integer.parseInt(textField21.getText())>Integer.parseInt(textField18.getText())){
-                        ganados2=1;
-                        puntos2=3;
-                    }
-                    if(Integer.parseInt(textField21.getText())==Integer.parseInt(textField18.getText())){
-                        empatados2=1;
-                        puntos2=1;
-                    }
-                    if(Integer.parseInt(textField21.getText())<Integer.parseInt(textField18.getText())){
-                        perdidos2=1;
-                    }
-                    PreparedStatement st3;
-                    String sql3 = "insert into clasificacion2 values (?,?,?,?,?,?)";
-                    st3 = conexion.prepareStatement(sql3);
-                    st3.setString(1, equipo4.getText());
-                    st3.setInt(2, Integer.parseInt(dcm.getSelectedItem().toString()));
-                    st3.setInt(3, puntos2);
-                    st3.setInt(4, ganados2);
-                    st3.setInt(5, empatados2);
-                    st3.setInt(6, perdidos2);
-                    st3.executeUpdate();
-
-                } catch (SQLException e1) {
-                    // e1.printStackTrace();
-                } catch (java.lang.NumberFormatException e1) {
-                    //e1.printStackTrace();
-                }
-            }
-        });
-        insertarButton5.addMouseListener(new MouseAdapter() {
-            @Override
-            public void mouseClicked(MouseEvent e) {
-                super.mouseClicked(e);
-
-                try {
-
-                    Connection conexion = Conexion.conexion;
-
-                    PreparedStatement st;
-
-
-                    String sql = "insert into partido values (?,?,?,?,?,?)";
-                    st = conexion.prepareStatement(sql);
-                    st.setString(1, textField26.getText());
-                    st.setInt(2, Integer.parseInt(dcm.getSelectedItem().toString()));
-                    st.setInt(3, Integer.parseInt(textField19.getText()));
-                    st.setInt(4, Integer.parseInt(textField22.getText()));
-                    st.setString(5, equipo5.getText());
-                    st.setString(6, equipo6.getText());
-
-
-                    st.executeUpdate();
-
-
-                    textField19.revalidate();
-                    textField19.repaint();
-                    textField22.revalidate();
-                    textField22.repaint();
-
-                    int ganados=0;
-                    int empatados=0;
-                    int perdidos=0;
-                    int puntos=0;
-                    if(Integer.parseInt(textField19.getText())>Integer.parseInt(textField22.getText())){
-                        ganados=1;
-                        puntos=3;
-                    }
-                    if(Integer.parseInt(textField19.getText())==Integer.parseInt(textField22.getText())){
-                        empatados=1;
-                        puntos=1;
-                    }
-                    if(Integer.parseInt(textField19.getText())<Integer.parseInt(textField22.getText())){
-                        perdidos=1;
-                    }
-                    PreparedStatement st2;
-                    String sql2 = "insert into clasificacion2 values (?,?,?,?,?,?)";
-                    st2 = conexion.prepareStatement(sql2);
-                    st2.setString(1, equipo5.getText());
-                    st2.setInt(2, Integer.parseInt(dcm.getSelectedItem().toString()));
-                    st2.setInt(3, puntos);
-                    st2.setInt(4, ganados);
-                    st2.setInt(5, empatados);
-                    st2.setInt(6, perdidos);
-                    st2.executeUpdate();
-                    int ganados2=0;
-                    int empatados2=0;
-                    int perdidos2=0;
-                    int puntos2=0;
-                    if(Integer.parseInt(textField22.getText())>Integer.parseInt(textField19.getText())){
-                        ganados2=1;
-                        puntos2=3;
-                    }
-                    if(Integer.parseInt(textField22.getText())==Integer.parseInt(textField19.getText())){
-                        empatados2=1;
-                        puntos2=1;
-                    }
-                    if(Integer.parseInt(textField22.getText())<Integer.parseInt(textField19.getText())){
-                        perdidos2=1;
-                    }
-                    PreparedStatement st3;
-                    String sql3 = "insert into clasificacion2 values (?,?,?,?,?,?)";
-                    st3 = conexion.prepareStatement(sql3);
-                    st3.setString(1, equipo6.getText());
-                    st3.setInt(2, Integer.parseInt(dcm.getSelectedItem().toString()));
-                    st3.setInt(3, puntos2);
-                    st3.setInt(4, ganados2);
-                    st3.setInt(5, empatados2);
-                    st3.setInt(6, perdidos2);
-                    st3.executeUpdate();
-
-                } catch (SQLException e1) {
-                    // e1.printStackTrace();
-                } catch (java.lang.NumberFormatException e1) {
-                    //e1.printStackTrace();
-                }
-            }
-        });
-        insertarButton6.addMouseListener(new MouseAdapter() {
-            @Override
-            public void mouseClicked(MouseEvent e) {
-                super.mouseClicked(e);
-
-                try {
-
-                    Connection conexion = Conexion.conexion;
-
-                    PreparedStatement st;
-
-
-                    String sql = "insert into partido values (?,?,?,?,?,?)";
-                    st = conexion.prepareStatement(sql);
-                    st.setString(1, textField27.getText());
-                    st.setInt(2, Integer.parseInt(dcm.getSelectedItem().toString()));
-                    st.setInt(3, Integer.parseInt(textField20.getText()));
-                    st.setInt(4, Integer.parseInt(textField23.getText()));
-                    st.setString(5, equipo7.getText());
-                    st.setString(6, equipo8.getText());
-
-
-                    st.executeUpdate();
-
-
-                    textField20.revalidate();
-                    textField20.repaint();
-                    textField23.revalidate();
-                    textField23.repaint();
-
-                    int ganados=0;
-                    int empatados=0;
-                    int perdidos=0;
-                    int puntos=0;
-                    if(Integer.parseInt(textField20.getText())>Integer.parseInt(textField23.getText())){
-                        ganados=1;
-                        puntos=3;
-                    }
-                    if(Integer.parseInt(textField20.getText())==Integer.parseInt(textField23.getText())){
-                        empatados=1;
-                        puntos=1;
-                    }
-                    if(Integer.parseInt(textField20.getText())<Integer.parseInt(textField23.getText())){
-                        perdidos=1;
-                    }
-                    PreparedStatement st2;
-                    String sql2 = "insert into clasificacion2 values (?,?,?,?,?,?)";
-                    st2 = conexion.prepareStatement(sql2);
-                    st2.setString(1, equipo7.getText());
-                    st2.setInt(2, Integer.parseInt(dcm.getSelectedItem().toString()));
-                    st2.setInt(3, puntos);
-                    st2.setInt(4, ganados);
-                    st2.setInt(5, empatados);
-                    st2.setInt(6, perdidos);
-                    st2.executeUpdate();
-                    int ganados2=0;
-                    int empatados2=0;
-                    int perdidos2=0;
-                    int puntos2=0;
-                    if(Integer.parseInt(textField23.getText())>Integer.parseInt(textField20.getText())){
-                        ganados2=1;
-                        puntos2=3;
-                    }
-                    if(Integer.parseInt(textField23.getText())==Integer.parseInt(textField20.getText())){
-                        empatados2=1;
-                        puntos2=1;
-                    }
-                    if(Integer.parseInt(textField23.getText())<Integer.parseInt(textField20.getText())){
-                        perdidos2=1;
-                    }
-                    PreparedStatement st3;
-                    String sql3 = "insert into clasificacion2 values (?,?,?,?,?,?)";
-                    st3 = conexion.prepareStatement(sql3);
-                    st3.setString(1, equipo8.getText());
-                    st3.setInt(2, Integer.parseInt(dcm.getSelectedItem().toString()));
-                    st3.setInt(3, puntos2);
-                    st3.setInt(4, ganados2);
-                    st3.setInt(5, empatados2);
-                    st3.setInt(6, perdidos2);
-                    st3.executeUpdate();
-
-                } catch (SQLException e1) {
-                     e1.printStackTrace();
-                } catch (java.lang.NumberFormatException e1) {
-                    e1.printStackTrace();
                 }
             }
         });
@@ -1043,7 +981,7 @@ textField10.setText("");
 
                 } catch (SQLException e1) {
                     // e1.printStackTrace();
-                }  catch (java.lang.NumberFormatException e1) {
+                } catch (java.lang.NumberFormatException e1) {
                     //e1.printStackTrace();
                 }
             }
@@ -1052,7 +990,6 @@ textField10.setText("");
             @Override
             public void mouseClicked(MouseEvent e) {
                 super.mouseClicked(e);
-
 
 
                 try {
@@ -1081,9 +1018,6 @@ textField10.setText("");
                 }
 
 
-
-
-
             }
         });
         refreshButton.addMouseListener(new MouseAdapter() {
@@ -1099,33 +1033,119 @@ textField10.setText("");
                     callableStatement2 = conexion.prepareCall(sql2);
 
 
-                callableStatement2.registerOutParameter(1, OracleTypes.CURSOR);
+                    callableStatement2.registerOutParameter(1, OracleTypes.CURSOR);
 
-                callableStatement2.executeUpdate();
-                ResultSet rs = (ResultSet) callableStatement2.getObject(1);
-                List<String>listaEquipos=new ArrayList<String>();
-                while (rs.next()) {
-                    String nombreequi = rs.getString("nombreequi");
+                    callableStatement2.executeUpdate();
+                    ResultSet rs = (ResultSet) callableStatement2.getObject(1);
+                    List<String> listaEquipos = new ArrayList<String>();
+                    while (rs.next()) {
+                        String nombreequi = rs.getString("nombreequi");
 
-                    listaEquipos.add(nombreequi);
+                        listaEquipos.add(nombreequi);
 
 
+                    }
+
+                    textField10.setText(listaEquipos.get(0));
+                    textField12.setText(listaEquipos.get(1));
+                    textField13.setText(listaEquipos.get(2));
+                    textField14.setText(listaEquipos.get(3));
+                    textField28.setText(listaEquipos.get(4));
+                    textField29.setText(listaEquipos.get(5));
+                    textField30.setText(listaEquipos.get(6));
+                    textField31.setText(listaEquipos.get(7));
+
+
+                } catch (SQLException e1) {
+                    e1.printStackTrace();
+                } catch (java.lang.IndexOutOfBoundsException e1) {
+                }
+            }
+        });
+        cambiarButton.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                super.mouseClicked(e);
+                StrongTextEncryptor textEncryptor = new StrongTextEncryptor();
+                textEncryptor.setPassword("pass");
+                if (textField11.getText().equals(textField16.getText()) &&
+                        new String(passwordField1.getPassword()).equals(new String(passwordField2.getPassword()))) {
+
+                    try {
+
+                        String usuarioEncriptado = textEncryptor.encrypt(textField11.getText());
+                        Inicio.getLogin().getUsuarios().remove(administrador - 1);
+                        Inicio.getLogin().getUsuarios().add((textEncryptor.decrypt(usuarioEncriptado)));
+
+                        FileWriter writer = null;
+
+                        writer = new FileWriter("src/usuarios.txt");
+
+                        for (String str : Inicio.getLogin().getUsuarios()) {
+                            writer.write(textEncryptor.encrypt(str)+"\n");
+                        }
+                        writer.close();
+
+                        String passEncriptado = textEncryptor.encrypt(new String(passwordField1.getPassword()));
+                        Inicio.getLogin().getClaves().remove(administrador - 1);
+                        Inicio.getLogin().getClaves().add((textEncryptor.decrypt(passEncriptado)));
+
+
+                        writer = new FileWriter("src/passwords.txt");
+
+                        for (String str : Inicio.getLogin().getClaves()) {
+                            writer.write(textEncryptor.encrypt(str)+"\n");
+                        }
+                        writer.close();
+
+                        BufferedReader in = new BufferedReader(new FileReader("src/nombre.txt"));
+
+
+                        List<String> nombres = new ArrayList<String>();
+
+                        String plainText;
+                        while ((plainText = in.readLine()) != null) {
+
+                            nombres.add(plainText);
+
+                        }
+                        String nombre=nombres.get(administrador - 1);
+                        nombres.remove(nombre);
+                        nombres.add(nombre);
+
+
+
+                        writer = null;
+
+                        writer = new FileWriter("src/nombre.txt");
+
+                        for (String str : nombres) {
+                            writer.write(str+"\n");
+                        }
+                        writer.close();
+
+                        textField11.setEnabled(false);
+                        textField16.setEnabled(false);
+                        passwordField1.setEnabled(false);
+                        passwordField2.setEnabled(false);
+
+                    } catch (FileNotFoundException e1) {
+                        e1.printStackTrace();
+                    } catch (IOException e1) {
+                        e1.printStackTrace();
+                    }
+
+                } else {
+                    System.out.println("error");
                 }
 
-                textField10.setText(listaEquipos.get(0));
-                textField12.setText(listaEquipos.get(1));
-                textField13.setText(listaEquipos.get(2));
-                textField14.setText(listaEquipos.get(3));
-                textField28.setText(listaEquipos.get(4));
-                textField29.setText(listaEquipos.get(5));
-                textField30.setText(listaEquipos.get(6));
-                textField31.setText(listaEquipos.get(7));
 
-
-            } catch (SQLException e1) {
-                e1.printStackTrace();
-            } catch (java.lang.IndexOutOfBoundsException e1) {
             }
+        });
+        cargarDatosButton.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                super.mouseClicked(e);
             }
         });
     }
@@ -1173,8 +1193,8 @@ textField10.setText("");
     private JTextField textField12;
     private JTextField textField13;
     private JTextField textField14;
-    private JButton insertarButton2;
-    private JButton borrarButton2;
+    private JLabel insertarButton2;
+    private JLabel borrarButton2;
     private JTable table4;
     private JButton borrarButton3;
     private JScrollPane scrollPane1;
@@ -1214,6 +1234,17 @@ textField10.setText("");
     private JTextField textField29;
     private JTextField textField30;
     private JTextField textField31;
-    private JButton refreshButton;
+    private JLabel refreshButton;
     private JLabel numEquipos;
+    private JButton cambiarButton;
+    private JButton cargarDatosButton;
+    private JButton eliminarDatosButton;
+
+    public int getAdministrador() {
+        return administrador;
+    }
+
+    public void setAdministrador(int administrador) {
+        this.administrador = administrador;
+    }
 }

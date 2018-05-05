@@ -9,7 +9,6 @@ import java.awt.event.MouseEvent;
 import java.io.*;
 import java.sql.*;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 public class Login {
@@ -17,10 +16,14 @@ public class Login {
     private Administrador administrador;
     private Usuario usuario;
     private SuperUsuario superUsuario;
+    private Dueño dueño;
     private List<String> claves;
     private List<String> usuarios;
     private List<String> emails = new ArrayList<String>();
     private List<String> passwords = new ArrayList<String>();
+    private List<String> nombreDue = new ArrayList<String>();
+    private List<String> passwordDue = new ArrayList<String>();
+    private int du = 0;
 
     public Login() {
         final JFrame frame = new JFrame("Login");
@@ -86,9 +89,40 @@ public class Login {
                     if (emails.get(i).equals(textField6.getText()) && new String(passwordField1.getPassword()).equals(passwords.get(i)))
                         accesoUsuario = true;
                 }
+
+
+                try {
+                    st = conexion.createStatement();
+
+
+                    String sql = "select nombreDue,passwordDue from dueño order by ordenInsertar";
+
+                    ResultSet rs = null;
+                    rs = st.executeQuery(sql);
+
+                    while (rs.next()) {
+
+                        nombreDue.add(rs.getString(1));
+                        passwordDue.add(rs.getString(2));
+
+
+                    }
+                } catch (SQLException e1) {
+                    e1.printStackTrace();
+                }
+                int i;
+                boolean accesoDueños = false;
+                for (i = 0; i < nombreDue.size(); i++) {
+                    if (nombreDue.get(i).equals(textField6.getText()) && new String(passwordField1.getPassword()).equals(passwordDue.get(i))) {
+                        accesoDueños = true;
+                        du = i + 1;
+                    }
+
+                }
+
+
                 claves = new ArrayList<String>();
                 usuarios = new ArrayList<String>();
-
                 try {
                     BufferedReader in = new BufferedReader(new FileReader("src/passwords.txt"));
                     BufferedReader in2 = new BufferedReader(new FileReader("src/usuarios.txt"));
@@ -123,21 +157,17 @@ public class Login {
 
                 //char[] password2 = ;
                 //char[] correctPass = new char[]{'a', 'd', 'm', 'i', 'n'};
-                int i;
-                int ad=0;
+                int ad = 0;
                 boolean aceptarAdmin = false;
                 for (i = 0; i < usuarios.size(); i++) {
 
                     if (usuarios.get(i).equals(textField6.getText()) && claves.get(i).equals(new String(passwordField1.getPassword()))) {
-                        {
-                            aceptarAdmin = true;
-                            ad=i+1;
-                        }
-
+                        aceptarAdmin = true;
+                        ad = i + 1;
                     }
 
                 }
-                if (textField6.getText().equals("root") && new String(passwordField1.getPassword()).equals("root")) {
+                if (textField6.getText().equals("") && new String(passwordField1.getPassword()).equals("")) {
 
                     try {
                         Conexion.EstablecerConexion();
@@ -151,8 +181,7 @@ public class Login {
                     } catch (SQLException e1) {
                         e1.printStackTrace();
                     }
-                }
-                if (aceptarAdmin) {
+                } else if (aceptarAdmin) {
 
                     try {
                         Conexion.EstablecerConexion();
@@ -182,13 +211,30 @@ public class Login {
                     }
 
 
+                } else if (accesoDueños) {
+                    try {
+                        Conexion.EstablecerConexion();
+
+                        System.out.println("Conectado");
+                        dueño = new Dueño();
+                    } catch (SQLException e1) {
+                        e1.printStackTrace();
+                    } catch (ClassNotFoundException e1) {
+                        e1.printStackTrace();
+                    }
                 } else {
-                    System.out.println("else");
+
+                    JOptionPane.showMessageDialog(null, "El usuario y/o la clave son incorrectas!", "Error", JOptionPane.ERROR_MESSAGE);
+
+
                 }
 
                 emails.clear();
                 passwords.clear();
-
+                claves.clear();
+                usuarios.clear();
+                nombreDue.clear();
+                passwordDue.clear();
 
             }
         });
@@ -214,7 +260,7 @@ public class Login {
                     String email = textField8.getText();
                     boolean valid = EmailValidator.getInstance().isValid(email);
 
-                    if (valid && new String(passwordField2.getPassword()).length()>7) {
+                    if (valid && new String(passwordField2.getPassword()).length() > 7) {
                         String sql = "insert into usuarios values (?,?,?)";
                         st = conexion.prepareStatement(sql);
 
@@ -227,23 +273,22 @@ public class Login {
                         /*administrador.getTum().actualizarLista();
                         administrador.getTable4().revalidate();
                         administrador.getTable4().repaint();*/
-                    }else if (!valid){
+                    } else if (!valid) {
 
                         JOptionPane.showMessageDialog(null, "Email NO válido!!!!!!", "Error", JOptionPane.ERROR_MESSAGE);
 
-                    }else{
+                    } else {
 
                         JOptionPane.showMessageDialog(null, "La contraseña tiene que tener más de 7 caracteres...", "Error", JOptionPane.ERROR_MESSAGE);
 
                     }
 
 
-
-                    } catch(SQLException e1){
-                        JOptionPane.showMessageDialog(null, "El usuario ya existe", "Error", JOptionPane.ERROR_MESSAGE);
-                    }  catch(java.lang.NumberFormatException e1){
-                        //e1.printStackTrace();
-                    }
+                } catch (SQLException e1) {
+                    JOptionPane.showMessageDialog(null, "El usuario ya existe", "Error", JOptionPane.ERROR_MESSAGE);
+                } catch (java.lang.NumberFormatException e1) {
+                    //e1.printStackTrace();
+                }
 
 
             }
@@ -336,5 +381,21 @@ public class Login {
 
     public void setUsuarios(List<String> usuarios) {
         this.usuarios = usuarios;
+    }
+
+    public int getDu() {
+        return du;
+    }
+
+    public void setDu(int du) {
+        this.du = du;
+    }
+
+    public Dueño getDueño() {
+        return dueño;
+    }
+
+    public void setDueño(Dueño dueño) {
+        this.dueño = dueño;
     }
 }

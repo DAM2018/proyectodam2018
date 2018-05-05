@@ -11,16 +11,13 @@ public class TablaUsuariosModel extends AbstractTableModel {
 
     private String[] columnas = {"Nombre", "Email", "Password"};
 
-    private int viaje;
     private List<Usuarios> usuarios;
 
     public TablaUsuariosModel() {
-        this.viaje = -1;
         usuarios = new ArrayList<Usuarios>();
     }
 
     public TablaUsuariosModel(int jugador) throws SQLException, ClassNotFoundException {
-        this.viaje = viaje;
         usuarios = UsuariosVer.usuarios();
     }
 

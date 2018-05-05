@@ -21,7 +21,9 @@ public class Administrador {
 
     private int administrador;
 
+
     final TablaUsuariosModel tum;
+    List<String> listaEquipos;
 
     public Administrador() throws SQLException, ClassNotFoundException {
         JFrame frame = new JFrame("Administrador");
@@ -41,7 +43,7 @@ public class Administrador {
 
         callableStatement2.executeUpdate();
         ResultSet rs = (ResultSet) callableStatement2.getObject(1);
-        List<String> listaEquipos = new ArrayList<String>();
+        listaEquipos = new ArrayList<String>();
         while (rs.next()) {
             String nombreequi = rs.getString("nombreequi");
 
@@ -121,13 +123,13 @@ public class Administrador {
             });
         }*/
         table1.setModel(tjm);
-        table2.setModel(tdm);
+//        table2.setModel(tdm);
 //        table3.setModel(tem);
         table4.setModel(tum);
 
 
         scrollPane1.setViewportView(table1);
-        scrollPane2.setViewportView(table2);
+        //    scrollPane2.setViewportView(table2);
         //  scrollPane3.setViewportView(table3);
         scrollPane4.setViewportView(table4);
 
@@ -285,7 +287,7 @@ public class Administrador {
 
             }
         });
-        insertarButton1.addMouseListener(new MouseAdapter() {
+        /*insertarButton1.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
                 super.mouseClicked(e);
@@ -401,7 +403,7 @@ public class Administrador {
 
 
             }
-        });
+        });*/
 
 
         insertarButton2.addMouseListener(new MouseAdapter() {
@@ -472,6 +474,15 @@ public class Administrador {
                         st8.setString(1, textField31.getText());
                         st8.executeUpdate();
                         numEquipos.setText("8 OK!");
+
+                        dueñosEq1.setText(textField10.getText());
+                        dueñosEq2.setText(textField12.getText());
+                        dueñosEq3.setText(textField13.getText());
+                        dueñosEq4.setText(textField14.getText());
+                        dueñosEq5.setText(textField28.getText());
+                        dueñosEq6.setText(textField29.getText());
+                        dueñosEq7.setText(textField30.getText());
+                        dueñosEq8.setText(textField31.getText());
 
                     }
 
@@ -572,7 +583,6 @@ public class Administrador {
                 textField26.setVisible(true);
                 textField27.setVisible(true);
                 actualizarResultadoFechaButton.setVisible(true);
-
 
 
                 String sql = "{call calendario.crearCalendario(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)}";
@@ -1082,7 +1092,7 @@ public class Administrador {
                         writer = new FileWriter("src/usuarios.txt");
 
                         for (String str : Inicio.getLogin().getUsuarios()) {
-                            writer.write(textEncryptor.encrypt(str)+"\n");
+                            writer.write(textEncryptor.encrypt(str) + "\n");
                         }
                         writer.close();
 
@@ -1094,7 +1104,7 @@ public class Administrador {
                         writer = new FileWriter("src/passwords.txt");
 
                         for (String str : Inicio.getLogin().getClaves()) {
-                            writer.write(textEncryptor.encrypt(str)+"\n");
+                            writer.write(textEncryptor.encrypt(str) + "\n");
                         }
                         writer.close();
 
@@ -1109,10 +1119,9 @@ public class Administrador {
                             nombres.add(plainText);
 
                         }
-                        String nombre=nombres.get(administrador - 1);
+                        String nombre = nombres.get(administrador - 1);
                         nombres.remove(nombre);
                         nombres.add(nombre);
-
 
 
                         writer = null;
@@ -1120,7 +1129,7 @@ public class Administrador {
                         writer = new FileWriter("src/nombre.txt");
 
                         for (String str : nombres) {
-                            writer.write(str+"\n");
+                            writer.write(str + "\n");
                         }
                         writer.close();
 
@@ -1142,10 +1151,276 @@ public class Administrador {
 
             }
         });
-        cargarDatosButton.addMouseListener(new MouseAdapter() {
+        if(numEquipos.getText().equals("8 OK!")) {
+            dueñosEq1.setText(textField10.getText());
+            dueñosEq2.setText(textField12.getText());
+            dueñosEq3.setText(textField13.getText());
+            dueñosEq4.setText(textField14.getText());
+            dueñosEq5.setText(textField28.getText());
+            dueñosEq6.setText(textField29.getText());
+            dueñosEq7.setText(textField30.getText());
+            dueñosEq8.setText(textField31.getText());
+        }
+
+        String sql6 = "{call calendario.verDueños(?)}";
+
+        CallableStatement callableStatement6 = null;
+        try {
+            callableStatement6 = conexion.prepareCall(sql6);
+
+
+            callableStatement6.registerOutParameter(1, OracleTypes.CURSOR);
+
+            callableStatement6.executeUpdate();
+            rs = (ResultSet) callableStatement6.getObject(1);
+            List<String> listaDueños = new ArrayList<String>();
+            while (rs.next()) {
+                String nombreDue = rs.getString("NombreDue");
+                String passwordDue = rs.getString("PasswordDue");
+
+                listaDueños.add(nombreDue);
+                listaDueños.add(passwordDue);
+
+
+            }
+
+            textField7.setText(listaDueños.get(0));
+           // textField8.setText(listaDueños.get(1));
+            d2.setText(listaDueños.get(2));
+          //  p2.setText(listaDueños.get(3));
+            d3.setText(listaDueños.get(4));
+         //   p3.setText(listaDueños.get(5));
+            d4.setText(listaDueños.get(6));
+         //   p4.setText(listaDueños.get(7));
+            d5.setText(listaDueños.get(8));
+          //  p5.setText(listaDueños.get(9));
+            d6.setText(listaDueños.get(10));
+          //  p6.setText(listaDueños.get(11));
+            d7.setText(listaDueños.get(12));
+          //  p7.setText(listaDueños.get(13));
+            d8.setText(listaDueños.get(14));
+         //   p8.setText(listaDueños.get(15));
+
+            listaDueños.clear();
+
+        } catch (SQLException e1) {
+            e1.printStackTrace();
+        } catch (java.lang.IndexOutOfBoundsException e1) {
+        }
+        if (textField7.getText().equals("") && //textField8.getText().equals("") &&
+                d2.getText().equals("") && //p2.getText().equals("") &&
+                d3.getText().equals("") && //p3.getText().equals("") &&
+                d4.getText().equals("") && //p4.getText().equals("") &&
+                d5.getText().equals("") && //p5.getText().equals("") &&
+                d6.getText().equals("") && //p6.getText().equals("") &&
+                d7.getText().equals("") && //p7.getText().equals("") &&
+                d8.getText().equals("")) //&& p8.getText().equals(""))
+
+        {
+            numDueños.setText("0");
+        } else {
+            numDueños.setText("8 OK!");
+        }
+
+        dueñosInsertar.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
                 super.mouseClicked(e);
+
+
+
+                    if (numDueños.getText().equals("0") &&
+                            !textField7.getText().equals("") && //!textField8.getText().equals("") &&
+                            !d2.getText().equals("") && //!p2.getText().equals("") &&
+                            !d3.getText().equals("") && //!p3.getText().equals("") &&
+                            !d4.getText().equals("") && //!p4.getText().equals("") &&
+                            !d5.getText().equals("") && //!p5.getText().equals("") &&
+                            !d6.getText().equals("") && //!p6.getText().equals("") &&
+                            !d7.getText().equals("") && //!p7.getText().equals("") &&
+                            !d8.getText().equals("")){ //&& !p8.getText().equals("")) {
+
+                        try {
+
+                            Connection conexion = Conexion.conexion;
+                        PreparedStatement st;
+                        String sql = "insert into dueño values (?,?,?,seq.nextval)";
+                        st = conexion.prepareStatement(sql);
+                        st.setString(1, textField7.getText());
+                        st.setString(2, textField7.getText());
+                        st.setString(3, dueñosEq1.getText());
+
+                        st.executeUpdate();
+
+                        PreparedStatement st2;
+                        String sql2 = "insert into dueño values (?,?,?,seq.nextval)";
+                        st2 = conexion.prepareStatement(sql2);
+                        st2.setString(1, d2.getText());
+                        st2.setString(2, d2.getText());
+                        st2.setString(3, dueñosEq2.getText());
+
+                        st2.executeUpdate();
+
+                        PreparedStatement st3;
+                        String sql3 = "insert into dueño values (?,?,?,seq.nextval)";
+                        st3 = conexion.prepareStatement(sql3);
+                        st3.setString(1, d3.getText());
+                        st3.setString(2, d3.getText());
+                        st3.setString(3, dueñosEq3.getText());
+                        st3.executeUpdate();
+
+                        PreparedStatement st4;
+                        String sql4 = "insert into dueño values (?,?,?,seq.nextval)";
+                        st4 = conexion.prepareStatement(sql4);
+                        st4.setString(1, d4.getText());
+                        st4.setString(2, d4.getText());
+                        st4.setString(3, dueñosEq4.getText());
+                        st4.executeUpdate();
+
+                        PreparedStatement st5;
+                        String sql5 = "insert into dueño values (?,?,?,seq.nextval)";
+                        st5 = conexion.prepareStatement(sql5);
+                        st5.setString(1, d5.getText());
+                        st5.setString(2, d5.getText());
+                        st5.setString(3, dueñosEq5.getText());
+                        st5.executeUpdate();
+
+                        PreparedStatement st6;
+                        String sql6 = "insert into dueño values (?,?,?,seq.nextval)";
+                        st6 = conexion.prepareStatement(sql6);
+                        st6.setString(1, d6.getText());
+                        st6.setString(2, d6.getText());
+                        st6.setString(3, dueñosEq6.getText());
+                        st6.executeUpdate();
+
+                        PreparedStatement st7;
+                        String sql7 = "insert into dueño values (?,?,?,seq.nextval)";
+                        st7 = conexion.prepareStatement(sql7);
+                        st7.setString(1, d7.getText());
+                        st7.setString(2, d7.getText());
+                        st7.setString(3, dueñosEq7.getText());
+                        st7.executeUpdate();
+
+                        PreparedStatement st8;
+                        String sql8 = "insert into dueño values (?,?,?,seq.nextval)";
+                        st8 = conexion.prepareStatement(sql8);
+                        st8.setString(1, d8.getText());
+                        st8.setString(2, d8.getText());
+                        st8.setString(3, dueñosEq8.getText());
+                        st8.executeUpdate();
+                        numDueños.setText("8 OK!");
+
+                        } catch (SQLException e1) {
+                            e1.printStackTrace();
+                        } catch (java.lang.NumberFormatException e1) {
+                            //e1.printStackTrace();
+                        }
+                    }
+
+
+
+
+            }
+        });
+        dueñosRefresh.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                super.mouseClicked(e);
+
+                Connection conexion = Conexion.conexion;
+
+                String sql2 = "{call calendario.verDueños(?)}";
+
+                CallableStatement callableStatement2 = null;
+                try {
+                    callableStatement2 = conexion.prepareCall(sql2);
+
+
+                    callableStatement2.registerOutParameter(1, OracleTypes.CURSOR);
+
+                    callableStatement2.executeUpdate();
+                    ResultSet rs = (ResultSet) callableStatement2.getObject(1);
+                    List<String> listaDueños = new ArrayList<String>();
+                    while (rs.next()) {
+                        String nombreDue = rs.getString("nombreDue");
+                        String passwordDue = rs.getString("passwordDue");
+
+                        listaDueños.add(nombreDue);
+                        listaDueños.add(passwordDue);
+
+
+                    }
+
+                    textField7.setText(listaDueños.get(0));
+                  //  textField8.setText(listaDueños.get(1));
+                    d2.setText(listaDueños.get(2));
+                 //   p2.setText(listaDueños.get(3));
+                    d3.setText(listaDueños.get(4));
+                //    p3.setText(listaDueños.get(5));
+                    d4.setText(listaDueños.get(6));
+                 //   p4.setText(listaDueños.get(7));
+                    d5.setText(listaDueños.get(8));
+                //    p5.setText(listaDueños.get(9));
+                    d6.setText(listaDueños.get(10));
+                 //   p6.setText(listaDueños.get(11));
+                    d7.setText(listaDueños.get(12));
+                //    p7.setText(listaDueños.get(13));
+                    d8.setText(listaDueños.get(14));
+                //    p8.setText(listaDueños.get(15));
+
+                    listaDueños.clear();
+
+                } catch (SQLException e1) {
+                    e1.printStackTrace();
+                } catch (java.lang.IndexOutOfBoundsException e1) {
+                }
+
+
+
+
+            }
+        });
+
+        dueñosBorrar.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                super.mouseClicked(e);
+
+                numDueños.setText("0");
+                try {
+
+                    Connection conexion = Conexion.conexion;
+
+                    PreparedStatement st;
+
+
+                    String sql = "delete from dueño";
+                    st = conexion.prepareStatement(sql);
+
+
+                    st.executeUpdate();
+                    textField7.setText("");
+                 //   textField8.setText("");
+                    d2.setText("");
+                  //  p2.setText("");
+                    d3.setText("");
+                 //   p3.setText("");
+                    d4.setText("");
+                 //   p4.setText("");
+                    d5.setText("");
+                  //  p5.setText("");
+                    d6.setText("");
+                  //  p6.setText("");
+                    d7.setText("");
+                  //  p7.setText("");
+                    d8.setText("");
+                 //   p8.setText("");
+
+
+                } catch (SQLException e1) {
+                    // e1.printStackTrace();
+                } catch (java.lang.NumberFormatException e1) {
+                    //e1.printStackTrace();
+                }
             }
         });
     }
@@ -1239,6 +1514,34 @@ public class Administrador {
     private JButton cambiarButton;
     private JButton cargarDatosButton;
     private JButton eliminarDatosButton;
+    private JLabel dueñosEq1;
+    private JLabel dueñosEq2;
+    private JLabel dueñosEq3;
+    private JLabel dueñosEq4;
+    private JLabel dueñosEq5;
+    private JLabel dueñosEq6;
+    private JLabel dueñosEq7;
+    private JLabel dueñosEq8;
+    private JLabel dueñosInsertar;
+    private JLabel dueñosRefresh;
+    private JLabel dueñosBorrar;
+    private JLabel numDueños;
+    private JTextField d2;
+    private JTextField p2;
+    private JTextField d3;
+    private JTextField p3;
+    private JTextField d4;
+    private JTextField p4;
+    private JTextField d5;
+    private JTextField p5;
+    private JTextField d6;
+    private JTextField p6;
+    private JTextField d7;
+    private JTextField p7;
+    private JTextField d8;
+    private JTextField p8;
+
+
 
     public int getAdministrador() {
         return administrador;

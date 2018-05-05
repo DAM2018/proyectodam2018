@@ -11,23 +11,31 @@ public class TablaJugadoresModel extends AbstractTableModel {
 
     private String[] columnas = {"Nombre", "Nick", "Sueldo", "DNI", "caracteristicas", "Equipo"};
 
-    private int viaje;
     private List<Jugador> jugadores;
 
     public TablaJugadoresModel() {
-        this.viaje = -1;
+
         jugadores = new ArrayList<Jugador>();
+
     }
 
-    public TablaJugadoresModel(int jugador) throws SQLException, ClassNotFoundException {
-        this.viaje = viaje;
+    public TablaJugadoresModel(int j) throws SQLException, ClassNotFoundException {
         jugadores = JugadoresVer.jugadores();
+    }
+    public TablaJugadoresModel(int j,int j2) throws SQLException, ClassNotFoundException {
+        jugadores = JugadoresVer.jugadores2();
     }
 
     public void actualizarLista() throws SQLException, ClassNotFoundException {
 
         jugadores.clear();
         jugadores = JugadoresVer.jugadores();
+
+    }
+    public void actualizarLista2() throws SQLException, ClassNotFoundException {
+
+        jugadores.clear();
+        jugadores = JugadoresVer.jugadores2();
 
     }
 

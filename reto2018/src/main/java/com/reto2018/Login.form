@@ -35,7 +35,9 @@
                 <preferred-size width="150" height="-1"/>
               </grid>
             </constraints>
-            <properties/>
+            <properties>
+              <background color="-5129424"/>
+            </properties>
           </component>
           <component id="3a77d" class="javax.swing.JLabel">
             <constraints>
@@ -52,7 +54,9 @@
                 <preferred-size width="150" height="-1"/>
               </grid>
             </constraints>
-            <properties/>
+            <properties>
+              <background color="-5129424"/>
+            </properties>
           </component>
           <component id="982e4" class="javax.swing.JLabel">
             <constraints>
@@ -69,7 +73,9 @@
                 <preferred-size width="150" height="-1"/>
               </grid>
             </constraints>
-            <properties/>
+            <properties>
+              <background color="-5129424"/>
+            </properties>
           </component>
           <component id="322a5" class="javax.swing.JLabel">
             <constraints>
@@ -86,7 +92,9 @@
                 <preferred-size width="150" height="-1"/>
               </grid>
             </constraints>
-            <properties/>
+            <properties>
+              <background color="-5129424"/>
+            </properties>
           </component>
           <component id="a8b22" class="javax.swing.JLabel">
             <constraints>
@@ -103,7 +111,9 @@
                 <preferred-size width="150" height="-1"/>
               </grid>
             </constraints>
-            <properties/>
+            <properties>
+              <background color="-5129424"/>
+            </properties>
           </component>
         </children>
       </grid>
@@ -143,7 +153,9 @@
                 <preferred-size width="150" height="-1"/>
               </grid>
             </constraints>
-            <properties/>
+            <properties>
+              <background color="-5129424"/>
+            </properties>
           </component>
           <component id="c5271" class="javax.swing.JPasswordField" binding="passwordField1" default-binding="true">
             <constraints>
@@ -151,7 +163,9 @@
                 <preferred-size width="150" height="-1"/>
               </grid>
             </constraints>
-            <properties/>
+            <properties>
+              <background color="-5129424"/>
+            </properties>
           </component>
           <component id="5944d" class="javax.swing.JButton" binding="entrarButton" default-binding="true">
             <constraints>
@@ -188,7 +202,10 @@
                 <preferred-size width="150" height="-1"/>
               </grid>
             </constraints>
-            <properties/>
+            <properties>
+              <background color="-16777216"/>
+              <foreground color="-5129424"/>
+            </properties>
           </component>
           <component id="68f55" class="javax.swing.JLabel">
             <constraints>
@@ -205,7 +222,10 @@
                 <preferred-size width="150" height="-1"/>
               </grid>
             </constraints>
-            <properties/>
+            <properties>
+              <background color="-16777216"/>
+              <foreground color="-5129424"/>
+            </properties>
           </component>
           <component id="bbe4c" class="javax.swing.JLabel">
             <constraints>
@@ -230,7 +250,10 @@
                 <preferred-size width="150" height="-1"/>
               </grid>
             </constraints>
-            <properties/>
+            <properties>
+              <background color="-16777216"/>
+              <foreground color="-5129424"/>
+            </properties>
           </component>
         </children>
       </grid>

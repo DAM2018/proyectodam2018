@@ -12,7 +12,7 @@ import java.util.List;
 public class Dueño {
 
     private JTabbedPane tabbedPane1;
-    private JPanel panel11;
+    private JPanel panel1;
     private JTable table1;
     private JTable table2;
     private JScrollPane scrollPane1;
@@ -20,7 +20,6 @@ public class Dueño {
     private JLabel equipo;
     private JPanel añadir;
     private JPanel eliminar;
-    private JTabbedPane tabbedPane2;
     private JLabel equipo1;
     private JLabel equipo2;
     private JLabel equipo3;
@@ -42,6 +41,64 @@ public class Dueño {
     private JLabel fecha3;
     private JLabel fecha4;
     private JLabel jornada1;
+    private JLabel jornada2;
+    private JLabel e1;
+    private JLabel e2;
+    private JLabel e3;
+    private JLabel e4;
+    private JLabel e5;
+    private JLabel e6;
+    private JLabel e7;
+    private JLabel e8;
+    private JLabel puntos1;
+    private JLabel puntos2;
+    private JLabel puntos3;
+    private JLabel puntos4;
+    private JLabel puntos5;
+    private JLabel puntos6;
+    private JLabel puntos7;
+    private JLabel puntos8;
+    private JLabel ganados1;
+    private JLabel ganados2;
+    private JLabel ganados3;
+    private JLabel ganados4;
+    private JLabel ganados5;
+    private JLabel ganados6;
+    private JLabel ganados7;
+    private JLabel ganados8;
+    private JLabel empatados1;
+    private JLabel empatados2;
+    private JLabel empatados3;
+    private JLabel empatados4;
+    private JLabel empatados5;
+    private JLabel empatados6;
+    private JLabel empatados7;
+    private JLabel empatados8;
+    private JLabel perdidos1;
+    private JLabel perdidos2;
+    private JLabel perdidos3;
+    private JLabel perdidos4;
+    private JLabel perdidos5;
+    private JLabel perdidos6;
+    private JLabel perdidos7;
+    private JLabel perdidos8;
+    private JTextField textField1;
+    private JPasswordField passwordField1;
+    private JTextField textField2;
+    private JPasswordField passwordField2;
+    private JButton cambiarButton;
+    private JTextField textField3;
+    private JTextField textField4;
+    private JTextField textField5;
+    private JTextField textField6;
+    private JTextField textField7;
+    private JTextField textField8;
+    private JTextField textField9;
+    private JTextField textField10;
+    private JButton insertarButton;
+    private JButton actualizarButton;
+    private JButton borrarButton;
+    private JLabel jornada;
     private int equiDue;
     private List<String> listaEquipos;
 
@@ -49,7 +106,7 @@ public class Dueño {
     public Dueño() throws SQLException, ClassNotFoundException {
 
         JFrame frame = new JFrame("Dueño");
-        frame.setContentPane(panel11);
+        frame.setContentPane(panel1);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.pack();
         frame.setVisible(true);
@@ -301,6 +358,109 @@ public class Dueño {
             res7.setText(String.valueOf(resultados.get(3).getResultado1()));
             res8.setText(String.valueOf(resultados.get(3).getResultado2()));
             fecha4.setText(String.valueOf(resultados.get(3).getFecha()));
+
+
+
+
+
+
+
+            List<Clasificacion> clasificacion = new ArrayList<Clasificacion>();
+
+            jornada2.setText(String.valueOf(jornada));
+
+
+            st = null;
+
+                st = conexion.createStatement();
+
+
+            sql = "select equipo,sum(puntos),sum(ganados),sum(empatados),sum(perdidos) from clasificacion2 where " +
+                    " jornada=" + 1 +
+                    " or jornada=" + 2 +
+                    " or jornada=" + 3 +
+                    " or jornada=" + 4 +
+                    " or jornada=" + 5 +
+                    " or jornada=" + 6 +
+                    " or jornada=" + 7 +
+                    " or jornada=" + 8 +
+                    " or jornada=" + 9 +
+                    " or jornada=" + 10 +
+                    " or jornada=" + 11 +
+                    " or jornada=" + 12 +
+                    " or jornada=" + 13 +
+                    " or jornada=" + 14 +
+
+                    " group by equipo order by sum(puntos) desc, equipo";
+
+            rs = null;
+
+                rs = st.executeQuery(sql);
+
+
+
+                while (rs.next()) {
+
+                    clasificacion.add(new Clasificacion(
+                            //    rs.getString(1),
+                            rs.getString(1),
+                            rs.getInt(2),
+                            rs.getInt(3),
+                            rs.getInt(4),
+                            rs.getInt(5)));
+
+                }
+
+
+
+
+                e1.setText(clasificacion.get(0).getEquipo());
+                e2.setText(clasificacion.get(1).getEquipo());
+                e3.setText(clasificacion.get(2).getEquipo());
+                e4.setText(clasificacion.get(3).getEquipo());
+                e5.setText(clasificacion.get(4).getEquipo());
+                e6.setText(clasificacion.get(5).getEquipo());
+                e7.setText(clasificacion.get(6).getEquipo());
+                e8.setText(clasificacion.get(7).getEquipo());
+
+                puntos1.setText(String.valueOf(clasificacion.get(0).getPuntos()));
+                puntos2.setText(String.valueOf(clasificacion.get(1).getPuntos()));
+                puntos3.setText(String.valueOf(clasificacion.get(2).getPuntos()));
+                puntos4.setText(String.valueOf(clasificacion.get(3).getPuntos()));
+                puntos5.setText(String.valueOf(clasificacion.get(4).getPuntos()));
+                puntos6.setText(String.valueOf(clasificacion.get(5).getPuntos()));
+                puntos7.setText(String.valueOf(clasificacion.get(6).getPuntos()));
+                puntos8.setText(String.valueOf(clasificacion.get(7).getPuntos()));
+
+                ganados1.setText(String.valueOf(clasificacion.get(0).getGanados()));
+                ganados2.setText(String.valueOf(clasificacion.get(1).getGanados()));
+                ganados3.setText(String.valueOf(clasificacion.get(2).getGanados()));
+                ganados4.setText(String.valueOf(clasificacion.get(3).getGanados()));
+                ganados5.setText(String.valueOf(clasificacion.get(4).getGanados()));
+                ganados6.setText(String.valueOf(clasificacion.get(5).getGanados()));
+                ganados7.setText(String.valueOf(clasificacion.get(6).getGanados()));
+                ganados8.setText(String.valueOf(clasificacion.get(7).getGanados()));
+
+                empatados1.setText(String.valueOf(clasificacion.get(0).getEmpatados()));
+                empatados2.setText(String.valueOf(clasificacion.get(1).getEmpatados()));
+                empatados3.setText(String.valueOf(clasificacion.get(2).getEmpatados()));
+                empatados4.setText(String.valueOf(clasificacion.get(3).getEmpatados()));
+                empatados5.setText(String.valueOf(clasificacion.get(4).getEmpatados()));
+                empatados6.setText(String.valueOf(clasificacion.get(5).getEmpatados()));
+                empatados7.setText(String.valueOf(clasificacion.get(6).getEmpatados()));
+                empatados8.setText(String.valueOf(clasificacion.get(7).getEmpatados()));
+
+                perdidos1.setText(String.valueOf(clasificacion.get(0).getPerdidos()));
+                perdidos2.setText(String.valueOf(clasificacion.get(1).getPerdidos()));
+                perdidos3.setText(String.valueOf(clasificacion.get(2).getPerdidos()));
+                perdidos4.setText(String.valueOf(clasificacion.get(3).getPerdidos()));
+                perdidos5.setText(String.valueOf(clasificacion.get(4).getPerdidos()));
+                perdidos6.setText(String.valueOf(clasificacion.get(5).getPerdidos()));
+                perdidos7.setText(String.valueOf(clasificacion.get(6).getPerdidos()));
+                perdidos8.setText(String.valueOf(clasificacion.get(7).getPerdidos()));
+
+                clasificacion.clear();
+
 
 
         } catch (SQLException e2) {

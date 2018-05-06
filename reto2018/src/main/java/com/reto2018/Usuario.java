@@ -83,6 +83,38 @@ public class Usuario {
 
         comboBox2.setModel(dcm2);
 
+        try {
+            Connection conexion = Conexion.conexion;
+
+            String sql3 = "{call calendario.verEquipos(?)}";
+
+            CallableStatement callableStatement3 = conexion.prepareCall(sql3);
+
+            callableStatement3.registerOutParameter(1, OracleTypes.CURSOR);
+
+            callableStatement3.executeUpdate();
+
+            ResultSet rs = (ResultSet) callableStatement3.getObject(1);
+            listaEquipos = new ArrayList<String>();
+            while (rs.next()) {
+                String nombreequi = rs.getString("nombreequi");
+
+                listaEquipos.add(nombreequi);
+
+
+            }
+        } catch (SQLException e2) {
+
+            //System.out.println(e2.getMessage());
+
+        } catch (java.lang.NullPointerException e2) {
+
+
+        } catch (java.lang.IndexOutOfBoundsException e2) {
+
+
+        }
+
         comboBox2.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -91,61 +123,42 @@ public class Usuario {
                 try {
 
                     Connection conexion = Conexion.conexion;
-
-                    String sql3 = "{call calendario.verEquipos(?)}";
-
-                    CallableStatement callableStatement3 = conexion.prepareCall(sql3);
-
-                    callableStatement3.registerOutParameter(1, OracleTypes.CURSOR);
-
-                    callableStatement3.executeUpdate();
-
-                    ResultSet rs = (ResultSet) callableStatement3.getObject(1);
-                    List<String> listaEquipos = new ArrayList<String>();
-                    while (rs.next()) {
-                        String nombreequi = rs.getString("nombreequi");
-
-                        listaEquipos.add(nombreequi);
-
-
-                    }
+                    ResultSet rs;
                     String sql = "{call calendario.crearCalendario(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)}";
 
-                        CallableStatement callableStatement = conexion.prepareCall(sql);
+                    CallableStatement callableStatement = conexion.prepareCall(sql);
 
 
+                    callableStatement.setString(1, listaEquipos.get(0));
+                    callableStatement.setString(2, listaEquipos.get(1));
+                    callableStatement.setString(3, listaEquipos.get(2));
+                    callableStatement.setString(4, listaEquipos.get(3));
+                    callableStatement.setString(5, listaEquipos.get(4));
+                    callableStatement.setString(6, listaEquipos.get(5));
+                    callableStatement.setString(7, listaEquipos.get(6));
+                    callableStatement.setString(8, listaEquipos.get(7));
+                    callableStatement.setInt(9, Integer.parseInt(dcm2.getSelectedItem().toString()));
 
 
-                        callableStatement.setString(1, listaEquipos.get(0));
-                        callableStatement.setString(2, listaEquipos.get(1));
-                        callableStatement.setString(3, listaEquipos.get(2));
-                        callableStatement.setString(4, listaEquipos.get(3));
-                        callableStatement.setString(5, listaEquipos.get(4));
-                        callableStatement.setString(6, listaEquipos.get(5));
-                        callableStatement.setString(7, listaEquipos.get(6));
-                        callableStatement.setString(8, listaEquipos.get(7));
-                        callableStatement.setInt(9, Integer.parseInt(dcm2.getSelectedItem().toString()));
+                    callableStatement.registerOutParameter(10, java.sql.Types.VARCHAR);
+                    callableStatement.registerOutParameter(11, java.sql.Types.VARCHAR);
+                    callableStatement.registerOutParameter(12, java.sql.Types.VARCHAR);
+                    callableStatement.registerOutParameter(13, java.sql.Types.VARCHAR);
+                    callableStatement.registerOutParameter(14, java.sql.Types.VARCHAR);
+                    callableStatement.registerOutParameter(15, java.sql.Types.VARCHAR);
+                    callableStatement.registerOutParameter(16, java.sql.Types.VARCHAR);
+                    callableStatement.registerOutParameter(17, java.sql.Types.VARCHAR);
 
+                    callableStatement.executeUpdate();
 
-                        callableStatement.registerOutParameter(10, java.sql.Types.VARCHAR);
-                        callableStatement.registerOutParameter(11, java.sql.Types.VARCHAR);
-                        callableStatement.registerOutParameter(12, java.sql.Types.VARCHAR);
-                        callableStatement.registerOutParameter(13, java.sql.Types.VARCHAR);
-                        callableStatement.registerOutParameter(14, java.sql.Types.VARCHAR);
-                        callableStatement.registerOutParameter(15, java.sql.Types.VARCHAR);
-                        callableStatement.registerOutParameter(16, java.sql.Types.VARCHAR);
-                        callableStatement.registerOutParameter(17, java.sql.Types.VARCHAR);
-
-                        callableStatement.executeUpdate();
-
-                        eq1.setText(callableStatement.getString(10));
-                        eq2.setText(callableStatement.getString(11));
-                        eq3.setText(callableStatement.getString(12));
-                        eq4.setText(callableStatement.getString(13));
-                        eq5.setText(callableStatement.getString(14));
-                        eq6.setText(callableStatement.getString(15));
-                        eq7.setText(callableStatement.getString(16));
-                        eq8.setText(callableStatement.getString(17));
+                    eq1.setText(callableStatement.getString(10));
+                    eq2.setText(callableStatement.getString(11));
+                    eq3.setText(callableStatement.getString(12));
+                    eq4.setText(callableStatement.getString(13));
+                    eq5.setText(callableStatement.getString(14));
+                    eq6.setText(callableStatement.getString(15));
+                    eq7.setText(callableStatement.getString(16));
+                    eq8.setText(callableStatement.getString(17));
 
                     String sql2 = "{call calendario.verResultados(?,?)}";
 
@@ -185,7 +198,7 @@ public class Usuario {
 
                 } catch (SQLException e2) {
 
-                     //System.out.println(e2.getMessage());
+                    //System.out.println(e2.getMessage());
 
                 } catch (java.lang.NullPointerException e2) {
 
@@ -359,6 +372,65 @@ public class Usuario {
 
         yAxis.setTickUnit(new NumberTickUnit(1));
         xAxis.setTickUnit(new NumberTickUnit(1));
+
+
+        final DefaultComboBoxModel dcm3 = new DefaultComboBoxModel();
+        dcm3.addElement(listaEquipos.get(0));
+        dcm3.addElement(listaEquipos.get(1));
+        dcm3.addElement(listaEquipos.get(2));
+        dcm3.addElement(listaEquipos.get(3));
+        dcm3.addElement(listaEquipos.get(4));
+        dcm3.addElement(listaEquipos.get(5));
+        dcm3.addElement(listaEquipos.get(6));
+        dcm3.addElement(listaEquipos.get(7));
+
+        comboBox4.setModel(dcm3);
+
+        comboBox4.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+                jugador1.setText("");
+                jugador2.setText("");
+                jugador3.setText("");
+                jugador4.setText("");
+                jugador5.setText("");
+                jugador6.setText("");
+                equi.setText(dcm3.getSelectedItem().toString());
+                List<String> jugadores = new ArrayList<String>();
+
+                Connection conexion = Conexion.conexion;
+
+                Statement st = null;
+                try {
+                    st = conexion.createStatement();
+
+                    String sql = "select nick from jugador where CodigoEquiJug='" + dcm3.getSelectedItem().toString() + "'";
+
+                    ResultSet rs = st.executeQuery(sql);
+
+                    while (rs.next()) {
+
+                        jugadores.add(rs.getString("nick"));
+
+                    }
+
+                    jugador1.setText(jugadores.get(0));
+                    jugador2.setText(jugadores.get(1));
+                    jugador3.setText(jugadores.get(2));
+                    jugador4.setText(jugadores.get(3));
+                    jugador5.setText(jugadores.get(4));
+                    jugador6.setText(jugadores.get(5));
+
+
+                } catch (SQLException e1) {
+                    e1.printStackTrace();
+                } catch (java.lang.IndexOutOfBoundsException e1) {
+                    // e1.printStackTrace();
+                }
+
+            }
+        });
 
 
     }
@@ -552,4 +624,14 @@ public class Usuario {
     private JLabel fecha2;
     private JLabel fecha3;
     private JLabel fecha4;
+    private JComboBox comboBox3;
+    private JComboBox comboBox4;
+    private JLabel jugador1;
+    private JLabel jugador2;
+    private JLabel jugador3;
+    private JLabel jugador4;
+    private JLabel jugador5;
+    private JLabel jugador6;
+    private JLabel equi;
+    private List<String> listaEquipos;
 }

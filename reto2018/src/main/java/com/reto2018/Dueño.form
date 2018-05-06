@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="com.reto2018.Dueño">
-  <grid id="27dc6" binding="panel1" layout-manager="GridLayoutManager" row-count="1" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+  <grid id="27dc6" binding="panel11" layout-manager="GridLayoutManager" row-count="1" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
     <margin top="0" left="0" bottom="0" right="0"/>
     <constraints>
-      <xy x="20" y="20" width="500" height="400"/>
+      <xy x="20" y="20" width="861" height="400"/>
     </constraints>
     <properties>
       <preferredSize width="800" height="800"/>
@@ -164,7 +164,326 @@
             </constraints>
             <properties/>
             <border type="none"/>
-            <children/>
+            <children>
+              <tabbedpane id="a839f" binding="tabbedPane2" default-binding="true">
+                <constraints>
+                  <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false">
+                    <preferred-size width="200" height="200"/>
+                  </grid>
+                </constraints>
+                <properties>
+                  <background color="-5311573"/>
+                </properties>
+                <border type="none"/>
+                <children>
+                  <grid id="aac06" layout-manager="GridLayoutManager" row-count="5" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+                    <margin top="0" left="0" bottom="0" right="0"/>
+                    <constraints>
+                      <tabbedpane title="Resultados"/>
+                    </constraints>
+                    <properties>
+                      <background color="-15197859"/>
+                    </properties>
+                    <border type="none"/>
+                    <children>
+                      <grid id="194c8" layout-manager="GridLayoutManager" row-count="1" column-count="5" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+                        <margin top="0" left="0" bottom="0" right="0"/>
+                        <constraints>
+                          <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+                        </constraints>
+                        <properties>
+                          <background color="-5311573"/>
+                        </properties>
+                        <border type="none"/>
+                        <children>
+                          <component id="5f655" class="javax.swing.JLabel" binding="equipo1">
+                            <constraints>
+                              <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false">
+                                <preferred-size width="300" height="-1"/>
+                              </grid>
+                            </constraints>
+                            <properties>
+                              <font name="Chalkduster" size="36"/>
+                              <foreground color="-15197859"/>
+                              <text value="Label"/>
+                            </properties>
+                          </component>
+                          <component id="acc1a" class="javax.swing.JLabel" binding="res1">
+                            <constraints>
+                              <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                            </constraints>
+                            <properties>
+                              <font size="26"/>
+                              <text value="Label"/>
+                            </properties>
+                          </component>
+                          <component id="8bb1d" class="javax.swing.JLabel" binding="res2">
+                            <constraints>
+                              <grid row="0" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                            </constraints>
+                            <properties>
+                              <font size="26"/>
+                              <text value="Label"/>
+                            </properties>
+                          </component>
+                          <component id="8fb7b" class="javax.swing.JLabel" binding="equipo2">
+                            <constraints>
+                              <grid row="0" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="4" fill="0" indent="0" use-parent-layout="false">
+                                <preferred-size width="300" height="-1"/>
+                              </grid>
+                            </constraints>
+                            <properties>
+                              <font name="Chalkduster" size="36"/>
+                              <foreground color="-15197859"/>
+                              <text value="Label"/>
+                            </properties>
+                          </component>
+                          <component id="de7fc" class="javax.swing.JLabel" binding="fecha1">
+                            <constraints>
+                              <grid row="0" column="4" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                            </constraints>
+                            <properties>
+                              <font size="26"/>
+                              <text value="Label"/>
+                            </properties>
+                          </component>
+                        </children>
+                      </grid>
+                      <grid id="a50be" layout-manager="GridLayoutManager" row-count="1" column-count="5" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+                        <margin top="0" left="0" bottom="0" right="0"/>
+                        <constraints>
+                          <grid row="4" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+                        </constraints>
+                        <properties>
+                          <background color="-5311573"/>
+                        </properties>
+                        <border type="none"/>
+                        <children>
+                          <component id="1ec7d" class="javax.swing.JLabel" binding="equipo7">
+                            <constraints>
+                              <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false">
+                                <preferred-size width="300" height="-1"/>
+                              </grid>
+                            </constraints>
+                            <properties>
+                              <font name="Chalkduster" size="36"/>
+                              <foreground color="-15197859"/>
+                              <text value="Label"/>
+                            </properties>
+                          </component>
+                          <component id="75457" class="javax.swing.JLabel" binding="res7">
+                            <constraints>
+                              <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                            </constraints>
+                            <properties>
+                              <font size="26"/>
+                              <text value="Label"/>
+                            </properties>
+                          </component>
+                          <component id="b90c" class="javax.swing.JLabel" binding="res8">
+                            <constraints>
+                              <grid row="0" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                            </constraints>
+                            <properties>
+                              <font size="26"/>
+                              <text value="Label"/>
+                            </properties>
+                          </component>
+                          <component id="92ad8" class="javax.swing.JLabel" binding="equipo8">
+                            <constraints>
+                              <grid row="0" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="4" fill="0" indent="0" use-parent-layout="false">
+                                <preferred-size width="300" height="-1"/>
+                              </grid>
+                            </constraints>
+                            <properties>
+                              <font name="Chalkduster" size="36"/>
+                              <foreground color="-15197859"/>
+                              <text value="Label"/>
+                            </properties>
+                          </component>
+                          <component id="1ef5d" class="javax.swing.JLabel" binding="fecha4">
+                            <constraints>
+                              <grid row="0" column="4" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                            </constraints>
+                            <properties>
+                              <font size="26"/>
+                              <text value="Label"/>
+                            </properties>
+                          </component>
+                        </children>
+                      </grid>
+                      <grid id="2c4b8" layout-manager="GridLayoutManager" row-count="1" column-count="5" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+                        <margin top="0" left="0" bottom="0" right="0"/>
+                        <constraints>
+                          <grid row="3" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+                        </constraints>
+                        <properties>
+                          <background color="-5311573"/>
+                        </properties>
+                        <border type="none"/>
+                        <children>
+                          <component id="c8a8d" class="javax.swing.JLabel" binding="equipo5">
+                            <constraints>
+                              <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false">
+                                <preferred-size width="300" height="-1"/>
+                              </grid>
+                            </constraints>
+                            <properties>
+                              <font name="Chalkduster" size="36"/>
+                              <foreground color="-15197859"/>
+                              <text value="Label"/>
+                            </properties>
+                          </component>
+                          <component id="2d21a" class="javax.swing.JLabel" binding="res5">
+                            <constraints>
+                              <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                            </constraints>
+                            <properties>
+                              <font size="26"/>
+                              <text value="Label"/>
+                            </properties>
+                          </component>
+                          <component id="55f90" class="javax.swing.JLabel" binding="res6">
+                            <constraints>
+                              <grid row="0" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                            </constraints>
+                            <properties>
+                              <font size="26"/>
+                              <text value="Label"/>
+                            </properties>
+                          </component>
+                          <component id="edb4c" class="javax.swing.JLabel" binding="equipo6">
+                            <constraints>
+                              <grid row="0" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="4" fill="0" indent="0" use-parent-layout="false">
+                                <preferred-size width="300" height="-1"/>
+                              </grid>
+                            </constraints>
+                            <properties>
+                              <font name="Chalkduster" size="36"/>
+                              <foreground color="-15197859"/>
+                              <text value="Label"/>
+                            </properties>
+                          </component>
+                          <component id="f745d" class="javax.swing.JLabel" binding="fecha3">
+                            <constraints>
+                              <grid row="0" column="4" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                            </constraints>
+                            <properties>
+                              <font size="26"/>
+                              <text value="Label"/>
+                            </properties>
+                          </component>
+                        </children>
+                      </grid>
+                      <grid id="b80c2" layout-manager="GridLayoutManager" row-count="1" column-count="5" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+                        <margin top="0" left="0" bottom="0" right="0"/>
+                        <constraints>
+                          <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+                        </constraints>
+                        <properties>
+                          <background color="-5311573"/>
+                        </properties>
+                        <border type="none"/>
+                        <children>
+                          <component id="beca4" class="javax.swing.JLabel" binding="equipo3">
+                            <constraints>
+                              <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false">
+                                <preferred-size width="300" height="-1"/>
+                              </grid>
+                            </constraints>
+                            <properties>
+                              <font name="Chalkduster" size="36"/>
+                              <foreground color="-15197859"/>
+                              <text value="Label"/>
+                            </properties>
+                          </component>
+                          <component id="fb627" class="javax.swing.JLabel" binding="res3">
+                            <constraints>
+                              <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                            </constraints>
+                            <properties>
+                              <font size="26"/>
+                              <text value="Label"/>
+                            </properties>
+                          </component>
+                          <component id="7c50c" class="javax.swing.JLabel" binding="res4">
+                            <constraints>
+                              <grid row="0" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                            </constraints>
+                            <properties>
+                              <font size="26"/>
+                              <text value="Label"/>
+                            </properties>
+                          </component>
+                          <component id="b7b8b" class="javax.swing.JLabel" binding="equipo4">
+                            <constraints>
+                              <grid row="0" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="4" fill="0" indent="0" use-parent-layout="false">
+                                <preferred-size width="300" height="-1"/>
+                              </grid>
+                            </constraints>
+                            <properties>
+                              <font name="Chalkduster" size="36"/>
+                              <foreground color="-15197859"/>
+                              <text value="Label"/>
+                            </properties>
+                          </component>
+                          <component id="32889" class="javax.swing.JLabel" binding="fecha2">
+                            <constraints>
+                              <grid row="0" column="4" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                            </constraints>
+                            <properties>
+                              <font size="26"/>
+                              <text value="Label"/>
+                            </properties>
+                          </component>
+                        </children>
+                      </grid>
+                      <grid id="33c1c" layout-manager="GridLayoutManager" row-count="1" column-count="2" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+                        <margin top="0" left="0" bottom="0" right="0"/>
+                        <constraints>
+                          <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+                        </constraints>
+                        <properties>
+                          <background color="-5311573"/>
+                        </properties>
+                        <border type="none"/>
+                        <children>
+                          <component id="566fe" class="javax.swing.JLabel">
+                            <constraints>
+                              <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                            </constraints>
+                            <properties>
+                              <font size="26"/>
+                              <foreground color="-15197859"/>
+                              <text value="Jornada"/>
+                            </properties>
+                          </component>
+                          <component id="a3c63" class="javax.swing.JLabel" binding="jornada1">
+                            <constraints>
+                              <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                            </constraints>
+                            <properties>
+                              <font size="48"/>
+                              <foreground color="-15197859"/>
+                              <text value="Label"/>
+                            </properties>
+                          </component>
+                        </children>
+                      </grid>
+                    </children>
+                  </grid>
+                  <grid id="70c6e" layout-manager="GridLayoutManager" row-count="1" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+                    <margin top="0" left="0" bottom="0" right="0"/>
+                    <constraints>
+                      <tabbedpane title="Clasificacion"/>
+                    </constraints>
+                    <properties/>
+                    <border type="none"/>
+                    <children/>
+                  </grid>
+                </children>
+              </tabbedpane>
+            </children>
           </grid>
         </children>
       </tabbedpane>

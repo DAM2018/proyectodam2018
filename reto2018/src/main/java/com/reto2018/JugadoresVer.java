@@ -18,7 +18,7 @@ public class JugadoresVer {
 
         Statement st = conexion.createStatement();
 
-        String sql = "select * from jugador";
+        String sql = "select * from jugador where CodigoEquiJug='0'";
 
         ResultSet rs=st.executeQuery(sql);
 
@@ -44,7 +44,7 @@ public class JugadoresVer {
         Connection conexion = Conexion.conexion;
 
         Statement st = conexion.createStatement();
-        String sql = "select * from jugador where CodigoEquiJug='"+Inicio.getLogin().getDueño().getListaEquipos().get(Inicio.getLogin().getDu()-1)+"'";
+        String sql = "select * from jugador where CodigoEquiJug='"+Inicio.verEquipos().get(Inicio.getLogin().getDu()-1)+"'";
 
         ResultSet rs=st.executeQuery(sql);
 

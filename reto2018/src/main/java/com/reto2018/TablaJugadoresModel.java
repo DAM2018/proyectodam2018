@@ -51,7 +51,7 @@ public class TablaJugadoresModel extends AbstractTableModel {
 
     @Override
     public Object getValueAt(int rowIndex, int columnIndex) {
-
+try{
         Jugador j = jugadores.get(rowIndex);
 
         switch (columnIndex) {
@@ -68,6 +68,8 @@ public class TablaJugadoresModel extends AbstractTableModel {
             case 5:
                 return j.getcodigoequijug();
         }
+} catch (java.lang.IndexOutOfBoundsException e1) {
+}
 
         return null;
     }

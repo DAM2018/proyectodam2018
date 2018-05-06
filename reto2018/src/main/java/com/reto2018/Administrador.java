@@ -155,7 +155,7 @@ public class Administrador {
 
                     st.setString(4, textField4.getText());
                     st.setString(5, textField5.getText());
-                    st.setString(6, textField6.getText());
+                    st.setString(6, "0");
 
                     st.executeUpdate();
 
@@ -190,7 +190,7 @@ public class Administrador {
                     Connection conexion = Conexion.conexion;
 
                     String sql = "update jugador set nombrejug=?, nick=?, sueldo=?, dnijug=?," +
-                            "caracteristicas=?, codigoequijug=? where dnijug='" + tjm.getValueAt(table1.getSelectedRow(), 3).toString() + "'";
+                            "caracteristicas=? where dnijug='" + tjm.getValueAt(table1.getSelectedRow(), 3).toString() + "'";
 
 
                     PreparedStatement st = conexion.prepareStatement(sql);
@@ -202,7 +202,7 @@ public class Administrador {
 
                     st.setString(4, textField4.getText());
                     st.setString(5, textField5.getText());
-                    st.setString(6, textField6.getText());
+                    //st.setString(6, textField6.getText());
                     // st.setString(7, textField4.getText());
 
                     st.executeUpdate();
@@ -242,7 +242,7 @@ public class Administrador {
                 textField3.setText(tjm.getValueAt(table1.getSelectedRow(), 2).toString());
                 textField4.setText(tjm.getValueAt(table1.getSelectedRow(), 3).toString());
                 textField5.setText(tjm.getValueAt(table1.getSelectedRow(), 4).toString());
-                textField6.setText(tjm.getValueAt(table1.getSelectedRow(), 5).toString());
+             //   textField6.setText(tjm.getValueAt(table1.getSelectedRow(), 5).toString());
 
             }
         });

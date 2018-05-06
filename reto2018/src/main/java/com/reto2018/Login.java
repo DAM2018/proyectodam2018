@@ -19,11 +19,15 @@ public class Login {
     private Dueño dueño;
     private List<String> claves;
     private List<String> usuarios;
+    private List<String> nombresUsuarios= new ArrayList<String>();
     private List<String> emails = new ArrayList<String>();
     private List<String> passwords = new ArrayList<String>();
     private List<String> nombreDue = new ArrayList<String>();
     private List<String> passwordDue = new ArrayList<String>();
     private int du = 0;
+    private int ad = 0;
+    private int us = 0;
+
 
     public Login() {
         final JFrame frame = new JFrame("Login");
@@ -69,25 +73,30 @@ public class Login {
                     st = conexion.createStatement();
 
 
-                    String sql = "select email,password from usuarios";
+                    String sql = "select email,password2,nombre from usuarios";
 
                     ResultSet rs = null;
                     rs = st.executeQuery(sql);
 
                     while (rs.next()) {
 
-                        emails.add(rs.getString(1));
-                        passwords.add(rs.getString(2));
+                        emails.add(rs.getString("email"));
+                        passwords.add(rs.getString("password2"));
+                        nombresUsuarios.add(rs.getString("nombre"));
 
 
                     }
                 } catch (SQLException e1) {
-                    e1.printStackTrace();
+                    //e1.printStackTrace();
+                } catch (java.lang.NullPointerException e1) {
+                    //e1.printStackTrace();
                 }
                 boolean accesoUsuario = false;
                 for (int i = 0; i < emails.size(); i++) {
-                    if (emails.get(i).equals(textField6.getText()) && new String(passwordField1.getPassword()).equals(passwords.get(i)))
+                    if (emails.get(i).equals(textField6.getText()) && new String(passwordField1.getPassword()).equals(passwords.get(i))) {
                         accesoUsuario = true;
+                        us = i + 1;
+                    }
                 }
 
 
@@ -132,6 +141,7 @@ public class Login {
 
                     claves = new ArrayList<String>();
                     usuarios = new ArrayList<String>();
+
                     String plainText;
                     while ((line = in.readLine()) != null) {
                         plainText = textEncryptor.decrypt(line);
@@ -157,7 +167,6 @@ public class Login {
 
                 //char[] password2 = ;
                 //char[] correctPass = new char[]{'a', 'd', 'm', 'i', 'n'};
-                int ad = 0;
                 boolean aceptarAdmin = false;
                 for (i = 0; i < usuarios.size(); i++) {
 
@@ -228,14 +237,17 @@ public class Login {
 
 
                 }
-
-                emails.clear();
-                passwords.clear();
-                claves.clear();
-                usuarios.clear();
-                nombreDue.clear();
-                passwordDue.clear();
-
+                try {
+                    //nombresUsuarios.clear();
+                    emails.clear();
+                    passwords.clear();
+                    claves.clear();
+                    usuarios.clear();
+                    nombreDue.clear();
+                    passwordDue.clear();
+                } catch (java.lang.NullPointerException e1) {
+                   // e1.printStackTrace();
+                }
             }
         });
         aceptarButton.addMouseListener(new MouseAdapter() {
@@ -397,5 +409,37 @@ public class Login {
 
     public void setDueño(Dueño dueño) {
         this.dueño = dueño;
+    }
+
+    public int getAd() {
+        return ad;
+    }
+
+    public void setAd(int ad) {
+        this.ad = ad;
+    }
+
+    public List<String> getNombreDue() {
+        return nombreDue;
+    }
+
+    public void setNombreDue(List<String> nombreDue) {
+        this.nombreDue = nombreDue;
+    }
+
+    public List<String> getNombresUsuarios() {
+        return nombresUsuarios;
+    }
+
+    public void setNombresUsuarios(List<String> nombresUsuarios) {
+        this.nombresUsuarios = nombresUsuarios;
+    }
+
+    public int getUs() {
+        return us;
+    }
+
+    public void setUs(int us) {
+        this.us = us;
     }
 }

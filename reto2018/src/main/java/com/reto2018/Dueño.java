@@ -12,7 +12,7 @@ import java.util.List;
 public class Dueño {
 
     private JTabbedPane tabbedPane1;
-    private JPanel panel1;
+    private JPanel panel11;
     private JTable table1;
     private JTable table2;
     private JScrollPane scrollPane1;
@@ -98,6 +98,7 @@ public class Dueño {
     private JButton insertarButton;
     private JButton actualizarButton;
     private JButton borrarButton;
+    private JLabel bienvenida;
     private JLabel jornada;
     private int equiDue;
     private List<String> listaEquipos;
@@ -106,11 +107,12 @@ public class Dueño {
     public Dueño() throws SQLException, ClassNotFoundException {
 
         JFrame frame = new JFrame("Dueño");
-        frame.setContentPane(panel1);
+        frame.setContentPane(panel11);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.pack();
         frame.setVisible(true);
 
+        bienvenida.setText(Inicio.getLogin().getNombreDue().get(Inicio.getLogin().getDu()-1));
 
         Connection conexion = Conexion.conexion;
 

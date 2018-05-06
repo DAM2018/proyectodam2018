@@ -40,6 +40,7 @@ public class Usuario {
         frame.pack();
         frame.setVisible(true);
 
+        bienvenida.setText(Inicio.getLogin().getNombresUsuarios().get(Inicio.getLogin().getUs()-1));
 
         final DefaultComboBoxModel dcm = new DefaultComboBoxModel();
 
@@ -633,5 +634,6 @@ public class Usuario {
     private JLabel jugador5;
     private JLabel jugador6;
     private JLabel equi;
+    private JLabel bienvenida;
     private List<String> listaEquipos;
 }

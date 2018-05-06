@@ -32,6 +32,7 @@ public class Administrador {
         frame.pack();
         frame.setVisible(true);
 
+        bienvenida.setText(Inicio.getLogin().getUsuarios().get(Inicio.getLogin().getAd()));
 
         Connection conexion = Conexion.conexion;
 
@@ -1539,6 +1540,7 @@ public class Administrador {
     private JTextField d7;
     private JTextField p7;
     private JTextField d8;
+    private JLabel bienvenida;
     private JTextField p8;
 
 

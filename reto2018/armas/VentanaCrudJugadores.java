@@ -3,6 +3,8 @@ package jose.armas;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
@@ -38,51 +40,53 @@ public class VentanaCrudJugadores {
     //Conexiones.
     private VentanaMenuAdministrador ventanaMenuAdministrador;
     private JugadoresBD jugadoresBD;
+    private JugadorDaoImpl jugadorDao;
 
 
     //Control de datos modelo.
     DefaultListModel<Jugador> jugadoresModel= new DefaultListModel<>();
 
     //Control de los objetos en una lista de jugadores.
-
+    private void controlDeInserccionesTextFields(Jugador jugador) throws SQLException {
+        textFieldNombre.setText(jugador.getNombreJugador());
+        textFieldDni.setText(jugador.getDniJugador());
+        textFieldNick.setText(jugador.getNickJugador());
+        textFieldCodigoEquipo.setText(jugador.getCodigoEquipoJugador());
+        textFieldCaracteristicas.setText(jugador.getCaracteristicasJugador());
+        int s= jugador.getSueldoJugador();
+        String  sueldo = ""+s;
+        textFieldSueldo.setText(sueldo);
+    }
 
 
     /**
      * @method controlDeInserccionesTextFields para el control de los textFields.
      * @param playersModel para el manejo de los datos de la lista.
      */
-    private void controlDeInserccionesTextFields(DefaultListModel<Jugador>playersModel) throws SQLException {
+    private void controlDeInserccionesTextFields(DefaultListModel<Jugador>playersModel, int seleccion) throws SQLException {
 
-
-
-        int seleccion = listJugadores.getSelectedIndex();
+        //int seleccion = listJugadores.getSelectedIndex();
         Jugador jugadorArellenar = playersModel.getElementAt(seleccion);
-
-
-
+        controlDeInserccionesTextFields(jugadorArellenar);
         System.out.println(jugadorArellenar.getNombreJugador());
 
-        textFieldNombre.setText(jugadorArellenar.getNombreJugador());
-        textFieldDni.setText(jugadorArellenar.getDniJugador());
-        textFieldNick.setText(jugadorArellenar.getNickJugador());
-        textFieldCodigoEquipo.setText(jugadorArellenar.getCodigoEquipoJugador());
-        textFieldCaracteristicas.setText(jugadorArellenar.getCaracteristicasJugador());
-        int s= jugadorArellenar.getSueldoJugador();
-        String  sueldo = ""+s;
-        textFieldSueldo.setText(sueldo);
+
     }
 
 
     //Función propia que controla los datos del modeloLista para que aparezcan en el Jlist.
-    private void modeloLista(DefaultListModel<Jugador> parametroListModel) throws SQLException {
+    private void modeloLista(DefaultListModel<Jugador> parametroListModel) {
 
-        List<Jugador> jugadoresList = JugadoresBD.ListarJugadores();
-
-        for (Jugador j:jugadoresList) {
-            parametroListModel.addElement(j);
+        List<Jugador> jugadoresList = null;
+        try {
+            jugadoresList = JugadoresBD.ListarJugadores();
+            for (Jugador j:jugadoresList) {
+                parametroListModel.addElement(j);
+            }
+            listJugadores.setModel(parametroListModel);
+        } catch (SQLException exception) {
+            JOptionPane.showMessageDialog(contenedorPrincipal,"Error al listar jugadores: " + exception.getMessage());
         }
-
-        listJugadores.setModel(parametroListModel);
     }
 
     public VentanaCrudJugadores(VentanaMenuAdministrador vMad) {
@@ -95,26 +99,16 @@ public class VentanaCrudJugadores {
         frame.pack();
         frame.setLocationRelativeTo(null);
         frame.setVisible(true);
-
-        try {
-            if(jugadoresModel.getSize()==0){
-                modeloLista(jugadoresModel);
-            }
-
-
-        } catch (SQLException e1) {
-            e1.printStackTrace();
+        if(jugadoresModel.getSize()==0){
+            modeloLista(jugadoresModel);
         }
-
-
-
 
         verJugadorButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
 
                 try {
-                    controlDeInserccionesTextFields(jugadoresModel);
+                    controlDeInserccionesTextFields(jugadoresModel,listJugadores.getSelectedIndex());
                 } catch (SQLException e1) {
                     e1.printStackTrace();
                 }
@@ -139,17 +133,17 @@ public class VentanaCrudJugadores {
             @Override
             public void actionPerformed(ActionEvent e) {
 
-                if(JugadorDaoImpl.registrar(extraerDatosTexfields())==true){
-                    JOptionPane.showMessageDialog(contenedorPrincipal,"Jugador creado correctamente");
-                    limpiarTexfields();
-                    try {
+                try {
+                    if(JugadorDaoImpl.registrar(extraerDatosTexfields())==true){
+                        JOptionPane.showMessageDialog(contenedorPrincipal,"Jugador creado correctamente");
+                        limpiarTexfields();
                         DefaultListModel<Jugador>modelo = new DefaultListModel<>();
                         modeloLista(modelo);
-                    } catch (SQLException e1) {
-                        e1.printStackTrace();
+                    }else{
+                        JOptionPane.showMessageDialog(contenedorPrincipal,"El jugador ya existe");
                     }
-                }else{
-                    JOptionPane.showMessageDialog(contenedorPrincipal,"El jugador ya existe");
+                } catch (SQLException exception) {
+                    JOptionPane.showMessageDialog(contenedorPrincipal,"Error al crear el jugador: " + exception.getMessage());
                 }
 
                 limpiarTexfields();
@@ -161,18 +155,14 @@ public class VentanaCrudJugadores {
             @Override
             public void actionPerformed(ActionEvent e) {
 
-                if(JugadorDaoImpl.actualizar(extraerDatosTexfields())==true){
+                try {
+                    JugadorDaoImpl.actualizar(extraerDatosTexfields());
                     JOptionPane.showMessageDialog(contenedorPrincipal,"Jugador actualizado correctamente");
                     limpiarTexfields();
-                    try {
-                        DefaultListModel<Jugador>modelo = new DefaultListModel<>();
-                        modeloLista(modelo);
-
-                    } catch (SQLException e1) {
-                        e1.printStackTrace();
-                    }
-                }else{
-                    JOptionPane.showMessageDialog(contenedorPrincipal,"el jugador no ha sido actualizado");
+                    DefaultListModel<Jugador>modelo = new DefaultListModel<>();
+                    modeloLista(modelo);
+                } catch (SQLException excepcion) {
+                    JOptionPane.showMessageDialog(contenedorPrincipal,"Error al actualizar el jugador:"+excepcion.getMessage());
                 }
 
             }
@@ -185,13 +175,8 @@ public class VentanaCrudJugadores {
                 if(JugadorDaoImpl.borrarJugador(extraerDatosTexfields())==true){
                     JOptionPane.showMessageDialog(contenedorPrincipal,"Jugador eliminado correctamente");
                     limpiarTexfields();
-                    try {
                         DefaultListModel<Jugador>modelo = new DefaultListModel<>();
                         modeloLista(modelo);
-
-                    } catch (SQLException e1) {
-                        e1.printStackTrace();
-                    }
                 }else{
                     JOptionPane.showMessageDialog(contenedorPrincipal,"el jugador no ha sido eliminado");
                 }
@@ -216,13 +201,28 @@ public class VentanaCrudJugadores {
                     }
 
                     modeloLista(modelo);
-                    
+
                 } catch (SQLException e1) {
                     e1.printStackTrace();
                 }
 
             }
         });
+        listJugadores.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mousePressed(MouseEvent e) {
+                super.mousePressed(e);
+                   Jugador j =(Jugador) listJugadores.getSelectedValue();
+                   System.out.println(j);
+                try {
+                    controlDeInserccionesTextFields(j);
+                } catch (SQLException e1) {
+                    e1.printStackTrace();
+                }
+
+            }
+        });
+
     }
 
     /**

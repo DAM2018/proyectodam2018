@@ -43,8 +43,8 @@ public class JugadoresBD {
                 st.close();
 
             } catch (SQLException ex) {
-                ex.printStackTrace();
                 ContraladorBd.cerrarConexion(conexion);
+                throw ex;
             }
                 ContraladorBd.cerrarConexion(conexion);
 

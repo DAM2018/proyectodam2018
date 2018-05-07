@@ -1,5 +1,6 @@
 package jose.armas;
 
+import javax.swing.*;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
@@ -8,7 +9,10 @@ import java.util.List;
 
 public class JugadorDaoImpl {
 
-    public static boolean registrar(Jugador jugador) {
+    //Conexion.
+
+
+    public static boolean registrar(Jugador jugador) throws SQLException {
 
         Statement stm = null;
         Connection conexion = ContraladorBd.abrirConecxion();
@@ -20,9 +24,9 @@ public class JugadorDaoImpl {
 
 
             stmt.setString(1, jugador.getNombreJugador());
-            stmt.setString(2, jugador.getDniJugador());
+            stmt.setString(2, jugador.getNickJugador());
             stmt.setInt(3, jugador.getSueldoJugador());
-            stmt.setString(4, jugador.getNickJugador());
+            stmt.setString(4, jugador.getDniJugador());
             stmt.setString(5, jugador.getCaracteristicasJugador());
             stmt.setString(6, jugador.getCodigoEquipoJugador());
 
@@ -34,9 +38,10 @@ public class JugadorDaoImpl {
             }
 
 
-        } catch (SQLException e1) {
-            System.out.println("ERROR: ");
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
             ContraladorBd.cerrarConexion(conexion);
+            throw e;
         }
         ContraladorBd.cerrarConexion(conexion);
 
@@ -48,7 +53,7 @@ public class JugadorDaoImpl {
      * @param jugador
      * @method actualizar Update el Jugador que recibe por parámetro y loactualiza en la BD.
      */
-    public static boolean actualizar(Jugador jugador) {
+    public static boolean actualizar(Jugador jugador) throws SQLException {
 
         Statement stm = null;
         Connection conexion = ContraladorBd.abrirConecxion();
@@ -62,10 +67,12 @@ public class JugadorDaoImpl {
         String caracteristicas = jugador.getCaracteristicasJugador();
         String codigoEquipo = jugador.getCodigoEquipoJugador();
 
+
+
         try {
 
             PreparedStatement stmt;
-            stmt = conexion.prepareStatement("UPDATE jugador SET nombreJug=?,nick=?,sueldo=?,dnijug=?,caracteristicas=?,codiequipo=?  WHERE dnijug=?");
+            stmt = conexion.prepareStatement("UPDATE jugador SET nombreJug=?,nick=?,sueldo=?,dnijug=?,caracteristicas=?,CODIGOEQUIJUG=?  WHERE dnijug=?");
             stmt.setString(1, nombre);
             stmt.setString(2, dni);
             stmt.setInt(3, salario);
@@ -80,9 +87,11 @@ public class JugadorDaoImpl {
                 actualizacion = true;
             }
 
-        } catch (SQLException e1) {
+        } catch (SQLException e) {
             System.out.println("ERROR: ");
+            System.out.println(e.getMessage());
             ContraladorBd.cerrarConexion(conexion);
+            throw e;
         }
         ContraladorBd.cerrarConexion(conexion);
 

@@ -15,9 +15,11 @@ public class VentanaMenuAdministrador {
     private JPanel calendar;
     private JPanel results;
 
-    //Conexión.
+    //Asociaciones.
     private VentanaUsuarioContrasenya ventanaUsuarioContrasenya;
     private VentanaCrudJugadores ventanaCrudJugadores;
+    private VentanaCrudEquipos ventanaCrudEquipos;
+    private VentanaCrudDuenyo ventanaCrudDuenyo;
 
     VentanaUsuarioContrasenya windowUserpassword;
     VentanaMenuAdministrador windowMenuAdmon;
@@ -44,6 +46,22 @@ public class VentanaMenuAdministrador {
             }
         });
 
+        equiposButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                ventanaCrudEquipos = new VentanaCrudEquipos(windowMenuAdmon);
+            }
+        });
+
+
+        duenyosButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+                ventanaCrudDuenyo = new VentanaCrudDuenyo(windowMenuAdmon);
+
+            }
+        });
     }
 
 }

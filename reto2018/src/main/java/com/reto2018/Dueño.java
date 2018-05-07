@@ -1,10 +1,12 @@
 package com.reto2018;
 
 import oracle.jdbc.internal.OracleTypes;
+import org.jasypt.util.text.StrongTextEncryptor;
 
 import javax.swing.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.io.*;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -94,11 +96,11 @@ public class Dueño {
     private JTextField textField7;
     private JTextField textField8;
     private JTextField textField9;
-    private JTextField textField10;
     private JButton insertarButton;
     private JButton actualizarButton;
     private JButton borrarButton;
     private JLabel bienvenida;
+    private JTextField textField11;
     private JLabel jornada;
     private int equiDue;
     private List<String> listaEquipos;
@@ -112,7 +114,7 @@ public class Dueño {
         frame.pack();
         frame.setVisible(true);
 
-        bienvenida.setText(Inicio.getLogin().getNombreDue().get(Inicio.getLogin().getDu()-1));
+        bienvenida.setText(Inicio.getLogin().getNombreDue().get(Inicio.getLogin().getDu() - 1));
 
         Connection conexion = Conexion.conexion;
 
@@ -134,7 +136,6 @@ public class Dueño {
         }
 
         equipo.setText(listaEquipos.get(Inicio.getLogin().getDu() - 1));
-        System.out.println(listaEquipos.get(Inicio.getLogin().getDu() - 1));
 
         final TablaJugadoresModel tjm = new TablaJugadoresModel(0);
         final TablaJugadoresModel tjm2 = new TablaJugadoresModel(0, 0);
@@ -164,10 +165,7 @@ public class Dueño {
                     st5.execute(sql);
 
 
-
-
-
-                    sql = "update jugador set CodigoEquiJug=? where dnijug='" + tjm.getValueAt(table1.getSelectedRow(), 3).toString() + "'";
+                    sql = "update jugador set CodigoEquiJug=?,actualizacion=seq.nextval where dnijug='" + tjm.getValueAt(table1.getSelectedRow(), 3).toString() + "'";
 
 
                     PreparedStatement st = conexion.prepareStatement(sql);
@@ -175,6 +173,7 @@ public class Dueño {
                     st = conexion.prepareStatement(sql);
 
                     st.setString(1, listaEquipos.get(Inicio.getLogin().getDu() - 1));
+                    //st.setInt(2, seq.nextval);
 
                     st.executeUpdate();
 
@@ -218,7 +217,6 @@ public class Dueño {
                     st5 = conexion.prepareStatement(sql);
 
                     st5.execute(sql);
-
 
 
                     sql = "update jugador set CodigoEquiJug='0' where dnijug='" + tjm2.getValueAt(table2.getSelectedRow(), 3).toString() + "'";
@@ -362,11 +360,6 @@ public class Dueño {
             fecha4.setText(String.valueOf(resultados.get(3).getFecha()));
 
 
-
-
-
-
-
             List<Clasificacion> clasificacion = new ArrayList<Clasificacion>();
 
             jornada2.setText(String.valueOf(jornada));
@@ -374,7 +367,7 @@ public class Dueño {
 
             st = null;
 
-                st = conexion.createStatement();
+            st = conexion.createStatement();
 
 
             sql = "select equipo,sum(puntos),sum(ganados),sum(empatados),sum(perdidos) from clasificacion2 where " +
@@ -397,72 +390,68 @@ public class Dueño {
 
             rs = null;
 
-                rs = st.executeQuery(sql);
+            rs = st.executeQuery(sql);
 
 
+            while (rs.next()) {
 
-                while (rs.next()) {
+                clasificacion.add(new Clasificacion(
+                        //    rs.getString(1),
+                        rs.getString(1),
+                        rs.getInt(2),
+                        rs.getInt(3),
+                        rs.getInt(4),
+                        rs.getInt(5)));
 
-                    clasificacion.add(new Clasificacion(
-                            //    rs.getString(1),
-                            rs.getString(1),
-                            rs.getInt(2),
-                            rs.getInt(3),
-                            rs.getInt(4),
-                            rs.getInt(5)));
-
-                }
-
+            }
 
 
+            e1.setText(clasificacion.get(0).getEquipo());
+            e2.setText(clasificacion.get(1).getEquipo());
+            e3.setText(clasificacion.get(2).getEquipo());
+            e4.setText(clasificacion.get(3).getEquipo());
+            e5.setText(clasificacion.get(4).getEquipo());
+            e6.setText(clasificacion.get(5).getEquipo());
+            e7.setText(clasificacion.get(6).getEquipo());
+            e8.setText(clasificacion.get(7).getEquipo());
 
-                e1.setText(clasificacion.get(0).getEquipo());
-                e2.setText(clasificacion.get(1).getEquipo());
-                e3.setText(clasificacion.get(2).getEquipo());
-                e4.setText(clasificacion.get(3).getEquipo());
-                e5.setText(clasificacion.get(4).getEquipo());
-                e6.setText(clasificacion.get(5).getEquipo());
-                e7.setText(clasificacion.get(6).getEquipo());
-                e8.setText(clasificacion.get(7).getEquipo());
+            puntos1.setText(String.valueOf(clasificacion.get(0).getPuntos()));
+            puntos2.setText(String.valueOf(clasificacion.get(1).getPuntos()));
+            puntos3.setText(String.valueOf(clasificacion.get(2).getPuntos()));
+            puntos4.setText(String.valueOf(clasificacion.get(3).getPuntos()));
+            puntos5.setText(String.valueOf(clasificacion.get(4).getPuntos()));
+            puntos6.setText(String.valueOf(clasificacion.get(5).getPuntos()));
+            puntos7.setText(String.valueOf(clasificacion.get(6).getPuntos()));
+            puntos8.setText(String.valueOf(clasificacion.get(7).getPuntos()));
 
-                puntos1.setText(String.valueOf(clasificacion.get(0).getPuntos()));
-                puntos2.setText(String.valueOf(clasificacion.get(1).getPuntos()));
-                puntos3.setText(String.valueOf(clasificacion.get(2).getPuntos()));
-                puntos4.setText(String.valueOf(clasificacion.get(3).getPuntos()));
-                puntos5.setText(String.valueOf(clasificacion.get(4).getPuntos()));
-                puntos6.setText(String.valueOf(clasificacion.get(5).getPuntos()));
-                puntos7.setText(String.valueOf(clasificacion.get(6).getPuntos()));
-                puntos8.setText(String.valueOf(clasificacion.get(7).getPuntos()));
+            ganados1.setText(String.valueOf(clasificacion.get(0).getGanados()));
+            ganados2.setText(String.valueOf(clasificacion.get(1).getGanados()));
+            ganados3.setText(String.valueOf(clasificacion.get(2).getGanados()));
+            ganados4.setText(String.valueOf(clasificacion.get(3).getGanados()));
+            ganados5.setText(String.valueOf(clasificacion.get(4).getGanados()));
+            ganados6.setText(String.valueOf(clasificacion.get(5).getGanados()));
+            ganados7.setText(String.valueOf(clasificacion.get(6).getGanados()));
+            ganados8.setText(String.valueOf(clasificacion.get(7).getGanados()));
 
-                ganados1.setText(String.valueOf(clasificacion.get(0).getGanados()));
-                ganados2.setText(String.valueOf(clasificacion.get(1).getGanados()));
-                ganados3.setText(String.valueOf(clasificacion.get(2).getGanados()));
-                ganados4.setText(String.valueOf(clasificacion.get(3).getGanados()));
-                ganados5.setText(String.valueOf(clasificacion.get(4).getGanados()));
-                ganados6.setText(String.valueOf(clasificacion.get(5).getGanados()));
-                ganados7.setText(String.valueOf(clasificacion.get(6).getGanados()));
-                ganados8.setText(String.valueOf(clasificacion.get(7).getGanados()));
+            empatados1.setText(String.valueOf(clasificacion.get(0).getEmpatados()));
+            empatados2.setText(String.valueOf(clasificacion.get(1).getEmpatados()));
+            empatados3.setText(String.valueOf(clasificacion.get(2).getEmpatados()));
+            empatados4.setText(String.valueOf(clasificacion.get(3).getEmpatados()));
+            empatados5.setText(String.valueOf(clasificacion.get(4).getEmpatados()));
+            empatados6.setText(String.valueOf(clasificacion.get(5).getEmpatados()));
+            empatados7.setText(String.valueOf(clasificacion.get(6).getEmpatados()));
+            empatados8.setText(String.valueOf(clasificacion.get(7).getEmpatados()));
 
-                empatados1.setText(String.valueOf(clasificacion.get(0).getEmpatados()));
-                empatados2.setText(String.valueOf(clasificacion.get(1).getEmpatados()));
-                empatados3.setText(String.valueOf(clasificacion.get(2).getEmpatados()));
-                empatados4.setText(String.valueOf(clasificacion.get(3).getEmpatados()));
-                empatados5.setText(String.valueOf(clasificacion.get(4).getEmpatados()));
-                empatados6.setText(String.valueOf(clasificacion.get(5).getEmpatados()));
-                empatados7.setText(String.valueOf(clasificacion.get(6).getEmpatados()));
-                empatados8.setText(String.valueOf(clasificacion.get(7).getEmpatados()));
+            perdidos1.setText(String.valueOf(clasificacion.get(0).getPerdidos()));
+            perdidos2.setText(String.valueOf(clasificacion.get(1).getPerdidos()));
+            perdidos3.setText(String.valueOf(clasificacion.get(2).getPerdidos()));
+            perdidos4.setText(String.valueOf(clasificacion.get(3).getPerdidos()));
+            perdidos5.setText(String.valueOf(clasificacion.get(4).getPerdidos()));
+            perdidos6.setText(String.valueOf(clasificacion.get(5).getPerdidos()));
+            perdidos7.setText(String.valueOf(clasificacion.get(6).getPerdidos()));
+            perdidos8.setText(String.valueOf(clasificacion.get(7).getPerdidos()));
 
-                perdidos1.setText(String.valueOf(clasificacion.get(0).getPerdidos()));
-                perdidos2.setText(String.valueOf(clasificacion.get(1).getPerdidos()));
-                perdidos3.setText(String.valueOf(clasificacion.get(2).getPerdidos()));
-                perdidos4.setText(String.valueOf(clasificacion.get(3).getPerdidos()));
-                perdidos5.setText(String.valueOf(clasificacion.get(4).getPerdidos()));
-                perdidos6.setText(String.valueOf(clasificacion.get(5).getPerdidos()));
-                perdidos7.setText(String.valueOf(clasificacion.get(6).getPerdidos()));
-                perdidos8.setText(String.valueOf(clasificacion.get(7).getPerdidos()));
-
-                clasificacion.clear();
-
+            clasificacion.clear();
 
 
         } catch (SQLException e2) {
@@ -477,6 +466,127 @@ public class Dueño {
 
         }
 
+        Statement st = conexion.createStatement();
+
+        String sql = "select fundacion,ciudad,estadio,capacidad,titulos from equipo where nombreequi='" + equipo.getText() + "'";
+
+        rs = st.executeQuery(sql);
+
+        while (rs.next()) {
+
+
+            textField3.setText(String.valueOf(rs.getInt(1)));
+            textField4.setText(rs.getString(2));
+            textField5.setText(rs.getString(3));
+            textField6.setText(String.valueOf(rs.getInt(4)));
+            textField11.setText(String.valueOf(rs.getInt(5)));
+
+        }
+        sql = "select nombre,edad,profesion from dueño where nombredue='" + bienvenida.getText() + "'";
+
+        rs = st.executeQuery(sql);
+
+        while (rs.next()) {
+
+
+            textField7.setText(rs.getString(1));
+            textField8.setText(String.valueOf(rs.getInt(2)));
+            textField9.setText(rs.getString(3));
+
+
+        }
+
+        actualizarButton.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                super.mouseClicked(e);
+
+
+                try {
+
+                    Connection conexion = Conexion.conexion;
+
+                    PreparedStatement st;
+
+
+                    String sql = "update equipo set fundacion=?,ciudad=?,estadio=?,capacidad=?,titulos=? " +
+                            "where nombreequi='" + equipo.getText() + "'";
+                    st = conexion.prepareStatement(sql);
+                    st.setInt(1, Integer.parseInt(textField3.getText()));
+                    st.setString(2, textField4.getText());
+                    st.setString(3, textField5.getText());
+                    st.setInt(4, Integer.parseInt(textField6.getText()));
+                    st.setInt(5, Integer.parseInt(textField11.getText()));
+
+                    st.executeUpdate();
+
+
+                    sql = "update dueño set nombre=?,edad=?,profesion=? " +
+                            "where nombredue='" + bienvenida.getText() + "'";
+                    st = conexion.prepareStatement(sql);
+                    st.setString(1, textField7.getText());
+                    st.setInt(2, Integer.parseInt(textField8.getText()));
+                    st.setString(3, textField9.getText());
+
+                    st.executeUpdate();
+
+
+                } catch (SQLException e1) {
+                    // e1.printStackTrace();
+                } catch (java.lang.NumberFormatException e1) {
+                    //  e1.printStackTrace();
+                }
+
+
+            }
+        });
+
+        cambiarButton.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                super.mouseClicked(e);
+
+
+
+                if (textField1.getText().equals(textField2.getText()) &&
+                        new String(passwordField1.getPassword()).equals(new String(passwordField2.getPassword()))) {
+
+                    try {
+                        Connection conexion = Conexion.conexion;
+                        PreparedStatement st;
+                        String sql = "update dueño set nombredue=?,passworddue=? where " +
+                                "equidue=?";
+                        st = conexion.prepareStatement(sql);
+
+                        st.setString(1, textField1.getText());
+                        st.setString(2, new String(passwordField1.getPassword()));
+                        st.setString(3, listaEquipos.get(Inicio.getLogin().getDu() - 1));
+
+
+                        st.executeUpdate();
+
+
+
+
+
+                    } catch (SQLException e9) {
+                        e9.printStackTrace();
+                    }
+
+                } else {
+                    System.out.println("error");
+                }
+
+
+
+
+
+
+
+
+
+            }
+        });
     }
 
     public List<String> getListaEquipos() {

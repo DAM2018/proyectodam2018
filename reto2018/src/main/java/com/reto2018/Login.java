@@ -308,11 +308,11 @@ public class Login {
     }
 
 
-    private JTextField textField1;
-    private JTextField textField2;
-    private JTextField textField3;
-    private JTextField textField4;
-    private JTextField textField5;
+    private JPasswordField textField1;
+    private JPasswordField textField2;
+    private JPasswordField textField3;
+    private JPasswordField textField4;
+    private JPasswordField textField5;
     private JTextField textField6;
     private JPasswordField passwordField1;
     private JPanel login;
@@ -327,7 +327,7 @@ public class Login {
         return textField1;
     }
 
-    public void setTextField1(JTextField textField1) {
+    public void setTextField1(JPasswordField textField1) {
         this.textField1 = textField1;
     }
 
@@ -335,7 +335,7 @@ public class Login {
         return textField2;
     }
 
-    public void setTextField2(JTextField textField2) {
+    public void setTextField2(JPasswordField textField2) {
         this.textField2 = textField2;
     }
 
@@ -343,7 +343,7 @@ public class Login {
         return textField3;
     }
 
-    public void setTextField3(JTextField textField3) {
+    public void setTextField3(JPasswordField textField3) {
         this.textField3 = textField3;
     }
 
@@ -351,7 +351,7 @@ public class Login {
         return textField4;
     }
 
-    public void setTextField4(JTextField textField4) {
+    public void setTextField4(JPasswordField textField4) {
         this.textField4 = textField4;
     }
 
@@ -359,7 +359,7 @@ public class Login {
         return textField5;
     }
 
-    public void setTextField5(JTextField textField5) {
+    public void setTextField5(JPasswordField textField5) {
         this.textField5 = textField5;
     }
 

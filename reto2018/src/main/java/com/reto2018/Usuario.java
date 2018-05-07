@@ -40,12 +40,12 @@ public class Usuario {
         frame.pack();
         frame.setVisible(true);
 
-        bienvenida.setText(Inicio.getLogin().getNombresUsuarios().get(Inicio.getLogin().getUs()-1));
+        bienvenida.setText(Inicio.getLogin().getNombresUsuarios().get(Inicio.getLogin().getUs() - 1));
 
         final DefaultComboBoxModel dcm = new DefaultComboBoxModel();
 
-        dcm.setSelectedItem(1);
         //dcm.addElement(0);
+        dcm.addElement("");
         dcm.addElement(1);
         dcm.addElement(2);
         dcm.addElement(3);
@@ -62,11 +62,13 @@ public class Usuario {
         dcm.addElement(14);
 
         comboBox1.setModel(dcm);
+        dcm.setSelectedItem("");
+
 
         final DefaultComboBoxModel dcm2 = new DefaultComboBoxModel();
-        dcm.setSelectedItem(1);
 
         //dcm2.addElement(0);
+        dcm2.addElement("");
         dcm2.addElement(1);
         dcm2.addElement(2);
         dcm2.addElement(3);
@@ -83,6 +85,7 @@ public class Usuario {
         dcm2.addElement(14);
 
         comboBox2.setModel(dcm2);
+        dcm2.setSelectedItem("");
 
         try {
             Connection conexion = Conexion.conexion;
@@ -386,6 +389,7 @@ public class Usuario {
         dcm3.addElement(listaEquipos.get(7));
 
         comboBox4.setModel(dcm3);
+        dcm3.setSelectedItem("");
 
         comboBox4.addActionListener(new ActionListener() {
             @Override
@@ -434,6 +438,72 @@ public class Usuario {
         });
 
 
+        final DefaultComboBoxModel dcm4 = new DefaultComboBoxModel();
+        dcm4.addElement(listaEquipos.get(0));
+        dcm4.addElement(listaEquipos.get(1));
+        dcm4.addElement(listaEquipos.get(2));
+        dcm4.addElement(listaEquipos.get(3));
+        dcm4.addElement(listaEquipos.get(4));
+        dcm4.addElement(listaEquipos.get(5));
+        dcm4.addElement(listaEquipos.get(6));
+        dcm4.addElement(listaEquipos.get(7));
+        comboBox3.setModel(dcm4);
+        dcm4.setSelectedItem("");
+
+        comboBox3.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+
+                Connection conexion = Conexion.conexion;
+
+                Statement st = null;
+                try {
+                    st = conexion.createStatement();
+
+                    String sql = "select nombreequi,fundacion,ciudad,estadio,capacidad,titulos from equipo where nombreequi='" + dcm4.getSelectedItem().toString() + "'";
+
+                    ResultSet rs = st.executeQuery(sql);
+
+                    while (rs.next()) {
+
+                        nombreEquipo.setText(rs.getString("nombreequi"));
+                        fundacion.setText(String.valueOf(rs.getInt("fundacion")));
+                        ciudad.setText(rs.getString("ciudad"));
+                        estadio.setText(rs.getString("estadio"));
+                        capacidad.setText(String.valueOf(rs.getInt("capacidad")));
+                        titulos.setText(String.valueOf(rs.getInt("titulos")));
+
+                    }
+
+                    st = null;
+
+                    st = conexion.createStatement();
+
+                    sql = "select nombredue,nombre,edad,profesion from dueño where equidue='" + dcm4.getSelectedItem().toString() + "'";
+
+                    rs = st.executeQuery(sql);
+
+                    while (rs.next()) {
+
+                        nombreDueño.setText(rs.getString("nombredue"));
+                        nombre.setText(rs.getString("nombre"));
+                        edad.setText(String.valueOf(rs.getInt("edad")));
+                        profesion.setText(rs.getString("profesion"));
+
+
+                    }
+
+
+                } catch (SQLException e1) {
+                    e1.printStackTrace();
+                } catch (java.lang.IndexOutOfBoundsException e1) {
+                    // e1.printStackTrace();
+                }
+
+
+            }
+        });
     }
 
     private XYDataset createDataset() {
@@ -635,5 +705,15 @@ public class Usuario {
     private JLabel jugador6;
     private JLabel equi;
     private JLabel bienvenida;
+    private JLabel nombreEquipo;
+    private JLabel nombreDueño;
+    private JLabel fundacion;
+    private JLabel ciudad;
+    private JLabel estadio;
+    private JLabel capacidad;
+    private JLabel titulos;
+    private JLabel nombre;
+    private JLabel edad;
+    private JLabel profesion;
     private List<String> listaEquipos;
 }

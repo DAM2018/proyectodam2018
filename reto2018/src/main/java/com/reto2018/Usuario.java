@@ -12,17 +12,27 @@ import org.jfree.chart.axis.ValueAxis;
 import org.jfree.chart.plot.PlotOrientation;
 import org.jfree.chart.plot.XYPlot;
 import org.jfree.chart.renderer.xy.XYLineAndShapeRenderer;
+import org.jfree.chart.ui.ApplicationFrame;
 import org.jfree.data.RangeType;
 import org.jfree.data.xy.DefaultXYDataset;
 import org.jfree.data.xy.XYDataset;
 
 
+import javax.imageio.ImageIO;
+import javax.imageio.ImageReader;
 import javax.swing.*;
 import java.awt.*;
+import java.awt.datatransfer.Clipboard;
+import java.awt.datatransfer.DataFlavor;
+import java.awt.datatransfer.Transferable;
+import java.awt.datatransfer.UnsupportedFlavorException;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.awt.image.BufferedImage;
+import java.io.*;
+import java.net.URL;
 import java.sql.*;
 import java.text.DecimalFormat;
 import java.text.FieldPosition;
@@ -31,14 +41,15 @@ import java.text.ParsePosition;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Usuario {
-    public Usuario() {
+public class Usuario implements Serializable{
+    public Usuario() throws IOException, UnsupportedFlavorException {
 
         JFrame frame = new JFrame("Usuario");
         frame.setContentPane(panel1);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.pack();
         frame.setVisible(true);
+
 
         bienvenida.setText(Inicio.getLogin().getNombresUsuarios().get(Inicio.getLogin().getUs() - 1));
 
@@ -328,55 +339,6 @@ public class Usuario {
             }
         });
 
-        XYDataset ds = createDataset();
-
-        JFreeChart chart =
-                ChartFactory.createXYLineChart("Clasificacion",
-                        "jornada", "puntos", ds, PlotOrientation.VERTICAL, true, true,
-                        false);
-
-        ChartPanel cp = new ChartPanel(chart);
-        grafico.setLayout(new BorderLayout());
-        grafico.add(cp, BorderLayout.CENTER);
-
-        XYPlot plot = chart.getXYPlot();
-        XYLineAndShapeRenderer renderer = new XYLineAndShapeRenderer();
-
-        renderer.setSeriesPaint(0, Color.RED);
-        renderer.setSeriesStroke(0, new BasicStroke(4.0f));
-
-        renderer.setSeriesPaint(1, Color.BLUE);
-        renderer.setSeriesStroke(1, new BasicStroke(4.0f));
-
-        renderer.setSeriesStroke(2, new BasicStroke(4.0f));
-        renderer.setSeriesStroke(3, new BasicStroke(4.0f));
-        renderer.setSeriesStroke(4, new BasicStroke(4.0f));
-        renderer.setSeriesStroke(5, new BasicStroke(4.0f));
-        renderer.setSeriesStroke(6, new BasicStroke(4.0f));
-        renderer.setSeriesStroke(7, new BasicStroke(4.0f));
-
-        plot.setRenderer(renderer);
-        Color c = new Color(76, 118, 75);
-        Color c2 = new Color(177, 187, 48);
-
-        plot.setBackgroundPaint(c);
-
-        Paint p = new GradientPaint(0, 0, c, 1000, 0, c2);
-        chart.setBackgroundPaint(p);
-
-        plot.setRangeGridlinesVisible(true);
-        plot.setDomainGridlinesVisible(true);
-
-        NumberAxis yAxis = (NumberAxis) plot.getRangeAxis(0);
-        NumberAxis xAxis = (NumberAxis) plot.getDomainAxis(0);
-
-        yAxis.setRangeType(RangeType.FULL);
-        xAxis.setLowerBound(1);
-        xAxis.setUpperBound(14);
-
-        yAxis.setTickUnit(new NumberTickUnit(1));
-        xAxis.setTickUnit(new NumberTickUnit(1));
-
 
         final DefaultComboBoxModel dcm3 = new DefaultComboBoxModel();
         dcm3.addElement(listaEquipos.get(0));
@@ -504,128 +466,105 @@ public class Usuario {
 
             }
         });
-    }
+        cambiarButton.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                super.mouseClicked(e);
 
-    private XYDataset createDataset() {
 
-        DefaultXYDataset ds = new DefaultXYDataset();
+                try {
+                    Connection conexion = Conexion.conexion;
+
+                    if (new String(passwordField1.getPassword()).equals(new String(passwordField2.getPassword())) &&
+                            textField1.getText().equals(textField2.getText())) {
+
+                        String sql = "update usuarios set nombre=?,password2=? where email=?";
 
 
-        Connection conexion = Conexion.conexion;
+                        PreparedStatement st;
 
-        Statement st = null;
-        try {
-            st = conexion.createStatement();
-        } catch (SQLException e1) {
-            e1.printStackTrace();
-        }
-        String sql2 = "select distinct equipo from clasificacion2 order by equipo";
+                        st = conexion.prepareStatement(sql);
+                        st.setString(1, textField1.getText());
+                        st.setString(2, new String(passwordField1.getPassword()));
+                        st.setString(3, Inicio.getLogin().getEmails().get(Inicio.getLogin().getUs() - 1));
 
-        ResultSet rs = null;
-        try {
-            rs = st.executeQuery(sql2);
-        } catch (SQLException e1) {
-            e1.printStackTrace();
-        }
 
-        String[] eq = new String[8];
-        int i = 0;
+                        st.executeUpdate();
+                        JOptionPane.showMessageDialog(null, "Cambiado con exito!!", "Cambiar", JOptionPane.OK_OPTION);
 
-        try {
-            while (rs.next()) {
+                    }
 
-                eq[i] = rs.getString(1);
+                } catch (SQLException e1) {
+                    // e1.printStackTrace();
+                } catch (java.lang.NumberFormatException e1) {
+                    //e1.printStackTrace();
+                }
 
-                i++;
+
             }
-        } catch (SQLException e1) {
-            e1.printStackTrace();
-        }
+        });
 
-        String sql = "{call calendario.grafico(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)}";
+        grafico.setLayout(new BorderLayout());
+        Grafico g = new Grafico();
+        grafico.add(g.getCp(), BorderLayout.CENTER);
+        grafico.validate();
+        BufferedImage originalImage = g.getChart().createBufferedImage(500, 300);
+        //gr.setIcon(new ImageIcon(originalImage));
+        //URL imageUrl = ClassLoader.getSystemResource(originalImage)
+        // g.getCp().doCopy();
+        //Transferable t = clipboard.getContents(DataFlavor.imageFlavor );
+        // Object o = t.getTransferData( DataFlavor.imageFlavor );
 
+
+
+/*
+       Transferable t = Toolkit.getDefaultToolkit().getSystemClipboard()
+                .getContents(null);
+
+        //grafico.add(t.getTransferData(DataFlavor.allHtmlFlavor), BorderLayout.CENTER);
+
+
+        if (t != null && t.isDataFlavorSupported(DataFlavor.imageFlavor)) {
+            Image img = (Image) t.getTransferData(DataFlavor.imageFlavor);
+
+            gr.setIcon(new ImageIcon(img));
+
+        }*/
+        // CopyChartPanel ccp=new C
+
+
+        Image objBufferedImage = g.getChart().getBackgroundImage();
+        /*ByteArrayOutputStream bas = new ByteArrayOutputStream();
         try {
-
-            for (int j = 0; j < 8; j++) {
-
-
-                CallableStatement callableStatement = conexion.prepareCall(sql);
-
-                callableStatement.setString(1, eq[j]);
-                callableStatement.registerOutParameter(2, Types.INTEGER);
-                callableStatement.registerOutParameter(3, Types.INTEGER);
-                callableStatement.registerOutParameter(4, Types.INTEGER);
-                callableStatement.registerOutParameter(5, Types.INTEGER);
-                callableStatement.registerOutParameter(6, Types.INTEGER);
-                callableStatement.registerOutParameter(7, Types.INTEGER);
-                callableStatement.registerOutParameter(8, Types.INTEGER);
-                callableStatement.registerOutParameter(9, Types.INTEGER);
-                callableStatement.registerOutParameter(10, Types.INTEGER);
-                callableStatement.registerOutParameter(11, Types.INTEGER);
-                callableStatement.registerOutParameter(12, Types.INTEGER);
-                callableStatement.registerOutParameter(13, Types.INTEGER);
-                callableStatement.registerOutParameter(14, Types.INTEGER);
-                callableStatement.registerOutParameter(15, Types.INTEGER);
-
-
-                callableStatement.executeUpdate();
-
-                int[] puntos = new int[14];
-
-                puntos[0] = callableStatement.getInt(2);
-                puntos[1] = callableStatement.getInt(3);
-                puntos[2] = callableStatement.getInt(4);
-                puntos[3] = callableStatement.getInt(5);
-                puntos[4] = callableStatement.getInt(6);
-                puntos[5] = callableStatement.getInt(7);
-                puntos[6] = callableStatement.getInt(8);
-                puntos[7] = callableStatement.getInt(9);
-                puntos[8] = callableStatement.getInt(10);
-                puntos[9] = callableStatement.getInt(11);
-                puntos[10] = callableStatement.getInt(12);
-                puntos[11] = callableStatement.getInt(13);
-                puntos[12] = callableStatement.getInt(14);
-                puntos[13] = callableStatement.getInt(15);
-
-                double[][] data = {{1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14}, {puntos[0],
-                        puntos[1],
-                        puntos[2],
-                        puntos[3],
-                        puntos[4],
-                        puntos[5],
-                        puntos[6],
-                        puntos[7],
-                        puntos[8],
-                        puntos[9],
-                        puntos[10],
-                        puntos[11],
-                        puntos[12],
-                        puntos[13],
-                }};
-
-                ds.addSeries(eq[j], data);
-            }
-
-
-        } catch (SQLException e2) {
-
-            // System.out.println(e.getMessage());
-
-        } catch (java.lang.NullPointerException e2) {
-
-
-        } catch (java.lang.IndexOutOfBoundsException e2) {
-
-
+            ImageIO.write(objBufferedImage, "png", bas);
+        } catch (IOException e) {
+            e.printStackTrace();
         }
 
-        // double[][] data2 = { {0.5, 0.6, 0.7}, {3, 4, 5} };
+        byte[] byteArray=bas.toByteArray();
+
+        InputStream in = new ByteArrayInputStream(byteArray);
+        BufferedImage image = ImageIO.read(in);*/
+        Graphics graphics = g.getCp().getGraphics();
+        ImageIcon iconQuit = new ImageIcon();
+       // grafico.add(graphics, BorderLayout.CENTER);
+
+        g.getCp().doCopy();
+       /* File outputfile = new File("image.png");
+        ImageIO.write(image, "png", outputfile);
+*/
+        Clipboard clipboard = Toolkit.getDefaultToolkit().getSystemClipboard();
+Object o=clipboard.getData(DataFlavor.imageFlavor);
+Transferable t=clipboard.getContents(o);
+        Image result = (Image) t.getTransferData(DataFlavor.imageFlavor);
 
 
-        // ds.addSeries("series2", data2);
+        //java.io.Reader r = (java.io.Reader) t.getTransferData(DataFlavor.imageFlavor);
+
+        Image image = (Image)t.getTransferData(DataFlavor.imageFlavor);
+        gr.setIcon(new ImageIcon(image));
 
 
-        return ds;
     }
 
 
@@ -715,5 +654,21 @@ public class Usuario {
     private JLabel nombre;
     private JLabel edad;
     private JLabel profesion;
+    private JTextField textField1;
+    private JTextField textField2;
+    private JPasswordField passwordField1;
+    private JPasswordField passwordField2;
+    private JButton cambiarButton;
+    private JLabel gr;
     private List<String> listaEquipos;
+
+    public JPanel getGrafico() {
+        return grafico;
+    }
+
+    public void setGrafico(JPanel grafico) {
+        this.grafico = grafico;
+    }
+
+
 }

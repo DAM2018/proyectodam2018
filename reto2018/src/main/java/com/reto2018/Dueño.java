@@ -14,7 +14,7 @@ import java.util.List;
 public class Dueño {
 
     private JTabbedPane tabbedPane1;
-    private JPanel panel11;
+    private JPanel panel1;
     private JTable table1;
     private JTable table2;
     private JScrollPane scrollPane1;
@@ -109,7 +109,7 @@ public class Dueño {
     public Dueño() throws SQLException, ClassNotFoundException {
 
         JFrame frame = new JFrame("Dueño");
-        frame.setContentPane(panel11);
+        frame.setContentPane(panel1);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.pack();
         frame.setVisible(true);
@@ -566,6 +566,7 @@ public class Dueño {
                         st.executeUpdate();
 
 
+                        JOptionPane.showMessageDialog(null, "Cambiado con exito!!", "Cambiar", JOptionPane.OK_OPTION);
 
 
 

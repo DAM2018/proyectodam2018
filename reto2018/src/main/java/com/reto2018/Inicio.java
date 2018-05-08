@@ -19,7 +19,6 @@ public class Inicio {
     public static void main(String[] args) throws SQLException, ClassNotFoundException {
         login = new Login();
 
-
     }
 
     public static List<String> verEquipos() throws SQLException {

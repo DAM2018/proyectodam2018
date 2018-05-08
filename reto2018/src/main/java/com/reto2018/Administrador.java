@@ -109,7 +109,7 @@ public class Administrador {
         modelTable1.addColumn("Price");
         modelTable1.addColumn("Price");*/
         final TablaJugadoresModel tjm = new TablaJugadoresModel(0);
-        final TablaDueñosModel tdm = new TablaDueñosModel(0);
+        //final TablaDueñosModel tdm = new TablaDueñosModel(0);
         // final TablaEquiposModel tem = new TablaEquiposModel(0);
         tum = new TablaUsuariosModel(0);
 
@@ -1122,7 +1122,40 @@ public class Administrador {
             @Override
             public void mouseClicked(MouseEvent e) {
                 super.mouseClicked(e);
-                StrongTextEncryptor textEncryptor = new StrongTextEncryptor();
+
+
+                if (textField11.getText().equals(textField16.getText()) &&
+                        new String(passwordField1.getPassword()).equals(new String(passwordField2.getPassword()))) {
+
+                    try {
+                        Connection conexion = Conexion.conexion;
+                        PreparedStatement st;
+                        String sql = "update administradores set usuario=?,password2=? where " +
+                                "usuario=?";
+                        st = conexion.prepareStatement(sql);
+
+                        st.setString(1, textField11.getText());
+                        st.setString(2, new String(passwordField1.getPassword()));
+                        st.setString(3, Inicio.getLogin().getUsuarios().get(Inicio.getLogin().getAd() - 1));
+
+
+                        st.executeUpdate();
+
+                        JOptionPane.showMessageDialog(null, "Cambiado con exito!!", "Cambiar", JOptionPane.OK_OPTION);
+
+
+
+
+                    } catch (SQLException e9) {
+                        e9.printStackTrace();
+                    }
+
+                } else {
+                    System.out.println("error");
+                }
+
+
+                /*StrongTextEncryptor textEncryptor = new StrongTextEncryptor();
                 textEncryptor.setPassword("pass");
                 if (textField11.getText().equals(textField16.getText()) &&
                         new String(passwordField1.getPassword()).equals(new String(passwordField2.getPassword()))) {
@@ -1135,7 +1168,7 @@ public class Administrador {
 
                         FileWriter writer = null;
 
-                        writer = new FileWriter("src/usuarios.txt");
+                        writer = new FileWriter("reto2018/usuarios.txt");
 
                         for (String str : Inicio.getLogin().getUsuarios()) {
                             writer.write(textEncryptor.encrypt(str) + "\n");
@@ -1147,14 +1180,14 @@ public class Administrador {
                         Inicio.getLogin().getClaves().add((textEncryptor.decrypt(passEncriptado)));
 
 
-                        writer = new FileWriter("src/passwords.txt");
+                        writer = new FileWriter("reto2018/passwords.txt");
 
                         for (String str : Inicio.getLogin().getClaves()) {
                             writer.write(textEncryptor.encrypt(str) + "\n");
                         }
                         writer.close();
 
-                        BufferedReader in = new BufferedReader(new FileReader("src/nombre.txt"));
+                        BufferedReader in = new BufferedReader(new FileReader("reto2018/nombre.txt"));
 
 
                         List<String> nombres = new ArrayList<String>();
@@ -1172,7 +1205,7 @@ public class Administrador {
 
                         writer = null;
 
-                        writer = new FileWriter("src/nombre.txt");
+                        writer = new FileWriter("reto2018/nombre.txt");
 
                         for (String str : nombres) {
                             writer.write(str + "\n");
@@ -1192,7 +1225,7 @@ public class Administrador {
 
                 } else {
                     System.out.println("error");
-                }
+                }*/
 
 
             }

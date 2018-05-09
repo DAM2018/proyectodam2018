@@ -1,0 +1,148 @@
+
+
+DROP TABLE dueño CASCADE CONSTRAINTS;
+
+DROP TABLE equipo CASCADE CONSTRAINTS;
+
+DROP TABLE jugador CASCADE CONSTRAINTS;
+
+DROP TABLE partido CASCADE CONSTRAINTS;
+
+DROP TABLE clasificacion2 CASCADE CONSTRAINTS;
+
+DROP TABLE usuarios CASCADE CONSTRAINTS;
+
+DROP TABLE administradores CASCADE CONSTRAINTS;
+
+DROP TABLE superusuario CASCADE CONSTRAINTS;
+
+
+drop sequence seq;
+
+
+create table Jugador (
+NombreJug varchar2(10) constraint nom_jug_nn not null,
+Nick varchar2(10) constraint nic_jug_uk unique,
+Sueldo integer constraint sue_jug_nn not null,
+DniJug varchar2(9) constraint dni_jug_pk primary key,
+Caracteristicas varchar2(10),
+CodigoEquiJug varchar2(10),
+actualizacion number
+);
+
+create table Dueño (
+NombreDue varchar2(10) constraint nom_due_pk primary key,
+PasswordDue varchar2(10) constraint pas_due_nn not null,
+EquiDue varchar2(10) constraint equ_due_nn not null,
+ordenInsertar number,
+nombre varchar2(10),
+edad number(3),
+profesion varchar2(10)
+);
+
+create table Equipo (
+NombreEqui varchar2(10) constraint nom_equi_nn not null primary key,
+fundacion number(4),
+ciudad varchar2(10),
+estadio varchar2(10),
+capacidad number(7),
+titulos number(3),
+--CodigoEqui varchar2(4) constraint cod_equi_pk primary key,
+--Ganados integer constraint gan_equi_nn not null,
+--Empates integer constraint emp_equi_nn not null,
+--Perdidos integer constraint per_equi_nn not null
+--DniDueEqui varchar2(9)
+ordenInsertar number
+);
+
+create sequence seq
+start with 1
+increment by 1;
+
+
+
+create table Partido (
+Fecha varchar2(10) constraint fec_par_nn not null,
+Jornada number(2),
+Resultado1 number(2),
+Resultado2 number(2),
+--CodigoEquiLoc varchar2(4) primary key,
+--CodigoEquiVis varchar2(4) primary key);
+nombreequiloc varchar2(10),
+nombreequivis varchar2(10)
+--CodigoPar varchar2(3) constraint cod_par_pk primary key seq_01
+);
+
+
+
+create table clasificacion2 (
+equipo varchar2(10),
+jornada number(2),
+puntos number(2),
+ganados number(2),
+empatados number(2),
+perdidos number(2)
+);
+
+create table usuarios (
+nombre varchar2(10),
+email varchar2(30) primary key,
+password2 varchar2(30)
+);
+
+create table administradores(
+nombre varchar2(30),
+usuario varchar2(30),
+password2 varchar2(30));
+
+create table superusuario(
+usuario varchar2(30),
+password2 varchar2(30));
+--drop trigger numJug;
+--alter trigger numJug disable;
+
+
+
+--create table triggerEquipo(
+
+
+
+
+
+
+
+
+
+create or replace trigger numJug before update on jugador
+declare
+v number:=0;
+begin
+select max(count(CodigoEquiJug)) into v from jugador where CodigoEquiJug!='0' group by CodigoEquiJug;
+if  v=6 then
+raise_application_error(-20600,'error'||'no se puede modificar mas de 6');
+end if;
+end;
+--drop trigger numJug;
+--select seq.nextval from dual;
+
+create or replace trigger salJug after update on jugador
+declare
+v2 number;
+begin
+select max(sum(sueldo)) into v2 from jugador where CodigoEquiJug!='0' group by CodigoEquiJug;
+if v2>200000 then
+update jugador set CodigoEquiJug='0' where actualizacion=(select max(actualizacion) from jugador);
+
+end if;
+end;
+
+alter table clasificacion2 add constraint equ_cla_pk primary key (equipo, jornada);
+alter table partido add constraint nom_par_pk primary key (nombreequiloc,jornada);
+alter table Jugador add constraint sal_equi_ck check (sueldo>=10302.60);
+
+--alter table Jugador add constraint cod_equijug_fk foreign key (CodigoEquiJug) references Equipo on delete set null;
+alter table Dueño add constraint cod_equidue_fk foreign key(EquiDue) references Equipo on delete set null;
+--alter table Equipo add constraint dni_dueequi_fk foreign key(DniDueEqui) references Dueño on delete set null;
+--alter table Partido add constraint codloc_equipar_fk foreign key (CodigoEquiLoc) references Equipo;
+--alter table Partido add constraint codvis_equipar_fk foreign key(CodigoEquiVis) references Equipo;
+

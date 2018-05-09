@@ -9,7 +9,7 @@ import java.util.List;
 
 public class TablaDueñosModel extends AbstractTableModel {
 
-    private String[] columnas = {"Nombre", "DNI", "Codigo Equipo"};
+    private String[] columnas = {"Nombre", "DNI", "Equipo"};
 
     private int viaje;
     private List<Dueños> dueños;

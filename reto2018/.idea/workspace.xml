@@ -1,5 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="ArtifactsWorkspaceSettings">
+    <artifacts-to-build>
+      <artifact name="reto2018:jar" />
+    </artifacts-to-build>
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="fe45aa91-e29f-4b3e-8b7a-332b96054d69" name="Default" comment="" />
     <ignored path="$PROJECT_DIR$/out/" />
@@ -16,251 +21,104 @@
       <file leaf-file-name="Administrador.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/reto2018/Administrador.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="99">
-              <caret line="36" column="14" lean-forward="true" selection-start-line="36" selection-start-column="14" selection-end-line="36" selection-end-column="54" />
+            <state relative-caret-position="163">
+              <caret line="41" column="51" lean-forward="false" selection-start-line="41" selection-start-column="51" selection-end-line="41" selection-end-column="51" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#21757#27624#0" expanded="true" />
-                <element signature="e#25896#25907#0" expanded="true" />
-                <element signature="e#27623#27624#0" expanded="true" />
-                <element signature="e#27683#42703#0" expanded="true" />
-                <element signature="e#42702#42703#0" expanded="true" />
-                <element signature="e#42748#43610#0" expanded="true" />
-                <element signature="e#43609#43610#0" expanded="true" />
-                <element signature="e#43652#44594#0" expanded="true" />
-                <element signature="e#44593#44594#0" expanded="true" />
-                <element signature="e#44636#46227#0" expanded="true" />
-                <element signature="e#45331#45339#0" expanded="true" />
-                <element signature="e#46226#46227#0" expanded="true" />
-                <element signature="e#46269#49345#0" expanded="true" />
-                <element signature="e#48128#48136#0" expanded="true" />
-                <element signature="e#49344#49345#0" expanded="true" />
-                <element signature="e#50269#50277#0" expanded="true" />
-                <element signature="e#52225#57217#0" expanded="true" />
-                <element signature="e#57216#57217#0" expanded="true" />
-                <element signature="e#57259#60754#0" expanded="true" />
-                <element signature="e#57956#57964#0" expanded="true" />
-                <element signature="e#59290#59298#0" expanded="true" />
-                <element signature="e#60753#60754#0" expanded="true" />
-                <element signature="e#60796#62121#0" expanded="true" />
-                <element signature="e#62120#62121#0" expanded="true" />
-                <element signature="e#62152#63027#0" expanded="true" />
-                <element signature="e#63026#63027#0" expanded="true" />
-                <element signature="e#63058#63916#0" expanded="true" />
-                <element signature="e#63915#63916#0" expanded="true" />
-                <element signature="e#63947#64805#0" expanded="true" />
-                <element signature="e#64804#64805#0" expanded="true" />
-                <element signature="e#64836#65694#0" expanded="true" />
-                <element signature="e#65693#65694#0" expanded="true" />
-                <element signature="e#65725#66583#0" expanded="true" />
-                <element signature="e#66582#66583#0" expanded="true" />
-                <element signature="e#66614#67472#0" expanded="true" />
-                <element signature="e#67471#67472#0" expanded="true" />
-                <element signature="e#67503#68361#0" expanded="true" />
-                <element signature="e#68360#68361#0" expanded="true" />
-                <element signature="e#68392#69250#0" expanded="true" />
-                <element signature="e#69249#69250#0" expanded="true" />
-                <element signature="e#69282#71740#0" expanded="true" />
-                <element signature="e#71739#71740#0" expanded="true" />
-                <element signature="e#71772#74227#0" expanded="true" />
-                <element signature="e#74226#74227#0" expanded="true" />
-                <element signature="e#74259#76715#0" expanded="true" />
-                <element signature="e#76714#76715#0" expanded="true" />
-                <element signature="e#76747#79207#0" expanded="true" />
-                <element signature="e#79206#79207#0" expanded="true" />
-                <element signature="e#79239#81698#0" expanded="true" />
-                <element signature="e#81697#81698#0" expanded="true" />
-                <element signature="e#81730#84186#0" expanded="true" />
-                <element signature="e#84185#84186#0" expanded="true" />
-                <element signature="e#84218#86674#0" expanded="true" />
-                <element signature="e#86673#86674#0" expanded="true" />
-                <element signature="e#86706#89163#0" expanded="true" />
-                <element signature="e#89162#89163#0" expanded="true" />
-                <element signature="e#89195#93133#0" expanded="true" />
-                <element signature="e#93132#93133#0" expanded="true" />
-                <element signature="e#93165#97101#0" expanded="true" />
-                <element signature="e#97100#97101#0" expanded="true" />
-                <element signature="e#97133#101069#0" expanded="true" />
-                <element signature="e#101068#101069#0" expanded="true" />
-                <element signature="e#101101#105037#0" expanded="true" />
-                <element signature="e#105036#105037#0" expanded="true" />
-                <element signature="e#105086#105087#0" expanded="true" />
-                <element signature="e#105112#105113#0" expanded="true" />
-                <element signature="e#105145#105146#0" expanded="true" />
-                <element signature="e#105174#105175#0" expanded="true" />
-                <element signature="e#105218#105219#0" expanded="true" />
-                <element signature="e#105254#105255#0" expanded="true" />
-                <element signature="e#109188#109189#0" expanded="true" />
-                <element signature="e#109224#109225#0" expanded="true" />
-                <element signature="e#109279#109280#0" expanded="true" />
-                <element signature="e#109329#109330#0" expanded="true" />
-                <marker date="1525720659000" expanded="false" signature="11746:11841" ph="(MouseAdapter) mouseClicked(e) → {" />
-                <marker date="1525720659000" expanded="false" signature="12933:12949" ph="}" />
-                <marker date="1525720659000" expanded="false" signature="12991:13086" ph="(MouseAdapter) mouseClicked(e) → {" />
-                <marker date="1525720659000" expanded="false" signature="14003:14018" ph="}" />
-                <marker date="1525720659000" expanded="false" signature="14082:14194" ph="(e) → {" />
-                <marker date="1525720659000" expanded="false" signature="14478:14493" ph="}" />
+                <marker date="1525863038000" expanded="false" signature="11699:11794" ph="(MouseAdapter) mouseClicked(e) → {" />
+                <marker date="1525863038000" expanded="false" signature="12886:12902" ph="}" />
+                <marker date="1525863038000" expanded="false" signature="12944:13039" ph="(MouseAdapter) mouseClicked(e) → {" />
+                <marker date="1525863038000" expanded="false" signature="13956:13971" ph="}" />
+                <marker date="1525863038000" expanded="false" signature="14035:14147" ph="(e) → {" />
+                <marker date="1525863038000" expanded="false" signature="14431:14446" ph="}" />
               </folding>
             </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="JugadoresVer.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/reto2018/JugadoresVer.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="112">
-              <caret line="18" column="23" lean-forward="false" selection-start-line="18" selection-start-column="23" selection-end-line="18" selection-end-column="50" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ResultadosVer.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/reto2018/ResultadosVer.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="255">
-              <caret line="22" column="42" lean-forward="false" selection-start-line="22" selection-start-column="42" selection-end-line="22" selection-end-column="42" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Administrador.form" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/reto2018/Administrador.form">
-          <provider selected="true" editor-type-id="ui-designer">
-            <state />
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Login.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/reto2018/Login.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="5633">
-              <caret line="365" column="37" lean-forward="true" selection-start-line="365" selection-start-column="37" selection-end-line="365" selection-end-column="37" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#594#602#0" expanded="true" />
-                <element signature="e#653#661#0" expanded="true" />
-                <element signature="e#715#723#0" expanded="true" />
-                <element signature="e#777#785#0" expanded="true" />
-                <element signature="e#841#849#0" expanded="true" />
-                <element signature="e#8802#11147#0" expanded="true" />
-                <element signature="e#11146#11147#0" expanded="true" />
-                <element signature="e#11713#11714#0" expanded="true" />
-                <element signature="e#11746#11747#0" expanded="true" />
-                <element signature="e#11806#11807#0" expanded="true" />
-                <element signature="e#11850#11851#0" expanded="true" />
-                <element signature="e#12630#12631#0" expanded="true" />
-                <element signature="e#12680#12681#0" expanded="true" />
-                <element signature="e#12716#12717#0" expanded="true" />
-                <element signature="e#12758#12759#0" expanded="true" />
-                <element signature="e#12790#12791#0" expanded="true" />
-                <element signature="e#12846#12847#0" expanded="true" />
-                <element signature="e#12888#12889#0" expanded="true" />
-                <element signature="e#12927#12928#0" expanded="true" />
-                <element signature="e#12956#12957#0" expanded="true" />
-                <element signature="e#13006#13007#0" expanded="true" />
-                <element signature="e#13042#13043#0" expanded="true" />
-                <element signature="e#13083#13084#0" expanded="true" />
-                <element signature="e#13114#13115#0" expanded="true" />
-                <element signature="e#13168#13169#0" expanded="true" />
-                <element signature="e#13208#13209#0" expanded="true" />
-                <element signature="e#13234#13235#0" expanded="true" />
-                <element signature="e#13259#13260#0" expanded="true" />
-                <element signature="e#13292#13293#0" expanded="true" />
-                <element signature="e#13320#13321#0" expanded="true" />
-                <element signature="e#13351#13352#0" expanded="true" />
-                <element signature="e#13379#13380#0" expanded="true" />
-                <element signature="e#13420#13421#0" expanded="true" />
-                <element signature="e#13454#13455#0" expanded="true" />
-                <element signature="e#13480#13481#0" expanded="true" />
-                <element signature="e#13505#13506#0" expanded="true" />
-                <element signature="e#13538#13539#0" expanded="true" />
-                <element signature="e#13566#13567#0" expanded="true" />
-                <element signature="e#13608#13609#0" expanded="true" />
-                <element signature="e#13640#13641#0" expanded="true" />
-                <element signature="e#13696#13697#0" expanded="true" />
-                <element signature="e#13738#13739#0" expanded="true" />
-                <element signature="e#13786#13787#0" expanded="true" />
-                <element signature="e#13824#13825#0" expanded="true" />
-                <element signature="e#13892#13893#0" expanded="true" />
-                <element signature="e#13946#13947#0" expanded="true" />
-                <element signature="e#13972#13973#0" expanded="true" />
-                <element signature="e#13997#13998#0" expanded="true" />
-                <element signature="e#14030#14031#0" expanded="true" />
-                <element signature="e#14058#14059#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Conexion.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/reto2018/Conexion.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="270">
-              <caret line="20" column="28" lean-forward="false" selection-start-line="20" selection-start-column="28" selection-end-line="20" selection-end-column="28" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Login.form" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/reto2018/Login.form">
-          <provider selected="true" editor-type-id="ui-designer">
-            <state />
           </provider>
         </entry>
       </file>
       <file leaf-file-name="Usuario.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/reto2018/Usuario.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="960">
-              <caret line="64" column="11" lean-forward="false" selection-start-line="64" selection-start-column="11" selection-end-line="64" selection-end-column="11" />
+            <state relative-caret-position="870">
+              <caret line="58" column="10" lean-forward="false" selection-start-line="58" selection-start-column="10" selection-end-line="58" selection-end-column="10" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#6368#6379#0" expanded="true" />
-                <element signature="e#8227#8242#0" expanded="true" />
-                <element signature="e#16828#18350#0" expanded="true" />
-                <element signature="e#17278#17286#0" expanded="true" />
-                <element signature="e#18349#18350#0" expanded="true" />
-                <element signature="e#18898#20775#0" expanded="true" />
-                <element signature="e#20774#20775#0" expanded="true" />
               </folding>
             </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Usuario.form" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/reto2018/Usuario.form">
+          <provider selected="true" editor-type-id="ui-designer">
+            <state />
           </provider>
         </entry>
       </file>
       <file leaf-file-name="Dueño.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/reto2018/Dueño.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="163">
-              <caret line="111" column="36" lean-forward="false" selection-start-line="111" selection-start-column="36" selection-end-line="111" selection-end-column="36" />
+            <state relative-caret-position="45">
+              <caret line="3" column="0" lean-forward="false" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Inicio.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/reto2018/Inicio.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="45">
+              <caret line="3" column="0" lean-forward="false" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Grafico.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/reto2018/Grafico.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1095">
+              <caret line="87" column="19" lean-forward="false" selection-start-line="87" selection-start-column="19" selection-end-line="87" selection-end-column="19" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#4342#5966#0" expanded="true" />
-                <element signature="e#5965#5966#0" expanded="true" />
-                <element signature="e#6003#7499#0" expanded="true" />
-                <element signature="e#7498#7499#0" expanded="true" />
-                <element signature="e#8241#8249#0" expanded="true" />
-                <element signature="e#10830#10841#0" expanded="true" />
-                <element signature="e#12118#12133#0" expanded="true" />
-                <element signature="e#17723#19301#0" expanded="true" />
-                <element signature="e#19300#19301#0" expanded="true" />
-                <element signature="e#19344#20536#0" expanded="true" />
-                <element signature="e#20535#20536#0" expanded="true" />
-                <element signature="e#20588#20589#0" expanded="true" />
-                <element signature="e#20623#20624#0" expanded="true" />
-                <element signature="e#20685#20686#0" expanded="true" />
-                <element signature="e#20733#20734#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Dueño.form" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/reto2018/Dueño.form">
-          <provider selected="true" editor-type-id="ui-designer">
-            <state />
+      <file leaf-file-name="Login.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/reto2018/Login.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-383">
+              <caret line="20" column="60" lean-forward="false" selection-start-line="20" selection-start-column="60" selection-end-line="20" selection-end-column="60" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#587#595#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="SuperUsuario.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/reto2018/SuperUsuario.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="15">
+              <caret line="2" column="0" lean-forward="false" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#1511#2449#0" expanded="true" />
+                <element signature="e#2448#2449#0" expanded="true" />
+                <element signature="e#2495#3513#0" expanded="true" />
+                <element signature="e#3512#3513#0" expanded="true" />
+                <element signature="e#3556#4434#0" expanded="true" />
+                <element signature="e#4433#4434#0" expanded="true" />
+                <element signature="e#4470#4898#0" expanded="true" />
+                <element signature="e#4897#4898#0" expanded="true" />
+                <element signature="e#4940#6026#0" expanded="true" />
+                <element signature="e#6025#6026#0" expanded="true" />
+              </folding>
+            </state>
           </provider>
         </entry>
       </file>
@@ -269,9 +127,17 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="package-info" />
         <option value="Class" />
       </list>
     </option>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>nombre</find>
+      <find>txt</find>
+      <find>dispose</find>
+    </findStrings>
   </component>
   <component name="GradleLocalSettings">
     <option name="externalProjectsViewState">
@@ -281,7 +147,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/main/java/com/reto2018/ConexionBD.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/reto2018/JugadoresBD.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/reto2018/Jugador.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/reto2018/DueñosVer.java" />
@@ -301,27 +166,88 @@
         <option value="$PROJECT_DIR$/src/passwords.txt" />
         <option value="$PROJECT_DIR$/src/usuarios.txt" />
         <option value="$PROJECT_DIR$/src/nombre.txt" />
-        <option value="$PROJECT_DIR$/src/main/java/com/reto2018/SuperUsuario.form" />
-        <option value="$PROJECT_DIR$/src/main/java/com/reto2018/SuperUsuario.java" />
-        <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/src/main/java/com/reto2018/TablaUsuariosModel.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/reto2018/Inicio.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/reto2018/TablaJugadoresModel.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/reto2018/JugadoresVer.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/reto2018/Login.form" />
+        <option value="$PROJECT_DIR$/src/main/java/com/reto2018/Administrador.form" />
+        <option value="$PROJECT_DIR$/src/main/java/com/reto2018/Dueño.form" />
+        <option value="$PROJECT_DIR$/src/main/java/com/reto2018/Administradores.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/reto2018/AdministradoresVer.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/reto2018/TablaAdministradoresModel.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/reto2018/SuperUsuario.form" />
+        <option value="$PROJECT_DIR$/src/main/java/META-INF/MANIFEST.MF" />
+        <option value="$PROJECT_DIR$/out/artifacts/reto2018_jar/META-INF/MANIFEST.MF" />
+        <option value="$PROJECT_DIR$/src/main/java/com/reto2018/CrearImagen.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/reto2018/JFreeChart.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/reto2018/DefaultXYDataset.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/reto2018/XYDataset.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/reto2018/ChartFactory.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/reto2018/ChartPanel.java" />
+        <option value="$PROJECT_DIR$/txt" />
+        <option value="$PROJECT_DIR$/src/main/java/com/reto2018/Grafico.java" />
+        <option value="$PROJECT_DIR$/src/main/java/org/jfree/chart/ChartPanel.java" />
+        <option value="$PROJECT_DIR$/src/main/java/org/jfree/chart/JFreeChart.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/reto2018/Administrador.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/reto2018/Login.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/reto2018/Dueño.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/reto2018/Inicio.java" />
+        <option value="$PROJECT_DIR$/reto2018.properties" />
+        <option value="$PROJECT_DIR$/src/main/java/com/reto2018/SuperUsuario.java" />
+        <option value="$PROJECT_DIR$/src/main/resources/META-INF/MANIFEST.MF" />
+        <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/src/main/java/com/reto2018/Usuario.form" />
         <option value="$PROJECT_DIR$/src/main/java/com/reto2018/Usuario.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/reto2018/Login.form" />
-        <option value="$PROJECT_DIR$/src/main/java/com/reto2018/Login.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/reto2018/Administrador.form" />
-        <option value="$PROJECT_DIR$/src/main/java/com/reto2018/Administrador.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/reto2018/Dueño.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/reto2018/Dueño.form" />
       </list>
     </option>
   </component>
+  <component name="MavenProjectNavigator">
+    <treeState>
+      <expand>
+        <path>
+          <item name="" type="16c1761:MavenProjectsStructure$RootNode" />
+          <item name="reto2018" type="9519ce18:MavenProjectsStructure$ProjectNode" />
+        </path>
+        <path>
+          <item name="" type="16c1761:MavenProjectsStructure$RootNode" />
+          <item name="reto2018" type="9519ce18:MavenProjectsStructure$ProjectNode" />
+          <item name="Lifecycle" type="58874e2:MavenProjectsStructure$LifecycleNode" />
+        </path>
+        <path>
+          <item name="" type="16c1761:MavenProjectsStructure$RootNode" />
+          <item name="reto2018" type="9519ce18:MavenProjectsStructure$ProjectNode" />
+          <item name="Plugins" type="7aea1407:MavenProjectsStructure$PluginsNode" />
+        </path>
+        <path>
+          <item name="" type="16c1761:MavenProjectsStructure$RootNode" />
+          <item name="reto2018" type="9519ce18:MavenProjectsStructure$ProjectNode" />
+          <item name="Plugins" type="7aea1407:MavenProjectsStructure$PluginsNode" />
+          <item name="assembly" type="36feed69:MavenProjectsStructure$PluginNode" />
+        </path>
+        <path>
+          <item name="" type="16c1761:MavenProjectsStructure$RootNode" />
+          <item name="reto2018" type="9519ce18:MavenProjectsStructure$ProjectNode" />
+          <item name="Dependencies" type="f4be9f2a:MavenProjectsStructure$DependenciesNode" />
+        </path>
+        <path>
+          <item name="" type="16c1761:MavenProjectsStructure$RootNode" />
+          <item name="reto2018" type="9519ce18:MavenProjectsStructure$ProjectNode" />
+          <item name="Dependencies" type="f4be9f2a:MavenProjectsStructure$DependenciesNode" />
+          <item name="commons-validator:commons-validator:1.4.1" type="c0821a7e:MavenProjectsStructure$DependencyNode" />
+        </path>
+        <path>
+          <item name="" type="16c1761:MavenProjectsStructure$RootNode" />
+          <item name="reto2018" type="9519ce18:MavenProjectsStructure$ProjectNode" />
+          <item name="Dependencies" type="f4be9f2a:MavenProjectsStructure$DependenciesNode" />
+          <item name="org.jfree:jfreechart:1.0.19" type="c0821a7e:MavenProjectsStructure$DependencyNode" />
+        </path>
+      </expand>
+      <select />
+    </treeState>
+  </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="43" />
-    <option name="y" value="80" />
+    <option name="x" value="24" />
+    <option name="y" value="65" />
     <option name="width" value="1637" />
     <option name="height" value="895" />
   </component>
@@ -597,10 +523,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scratches" />
-      <pane id="Scope" />
       <pane id="PackagesPane" />
-      <pane id="AndroidView" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -611,6 +534,29 @@
             <path>
               <item name="reto2018" type="b2602c69:ProjectViewProjectNode" />
               <item name="reto2018" type="462c0819:PsiDirectoryNode" />
+              <item name="lib" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="reto2018" type="b2602c69:ProjectViewProjectNode" />
+              <item name="reto2018" type="462c0819:PsiDirectoryNode" />
+              <item name="out" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="reto2018" type="b2602c69:ProjectViewProjectNode" />
+              <item name="reto2018" type="462c0819:PsiDirectoryNode" />
+              <item name="out" type="462c0819:PsiDirectoryNode" />
+              <item name="artifacts" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="reto2018" type="b2602c69:ProjectViewProjectNode" />
+              <item name="reto2018" type="462c0819:PsiDirectoryNode" />
+              <item name="out" type="462c0819:PsiDirectoryNode" />
+              <item name="artifacts" type="462c0819:PsiDirectoryNode" />
+              <item name="reto2018_jar" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="reto2018" type="b2602c69:ProjectViewProjectNode" />
+              <item name="reto2018" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -641,16 +587,7 @@
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="reto2018" type="462c0819:PsiDirectoryNode" />
-              <item name="Dueño" type="e9f4de52:FormNode" />
-            </path>
-            <path>
-              <item name="reto2018" type="b2602c69:ProjectViewProjectNode" />
-              <item name="reto2018" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="reto2018" type="462c0819:PsiDirectoryNode" />
-              <item name="Login" type="e9f4de52:FormNode" />
+              <item name="Usuario" type="e9f4de52:FormNode" />
             </path>
             <path>
               <item name="reto2018" type="b2602c69:ProjectViewProjectNode" />
@@ -673,28 +610,41 @@
           <select />
         </subPane>
       </pane>
+      <pane id="AndroidView" />
+      <pane id="Scratches" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="settings.editor.selected.configurable" value="configurable.group.tools" />
-    <property name="project.structure.last.edited" value="Libraries" />
+    <property name="settings.editor.selected.configurable" value="MavenSettings" />
+    <property name="project.structure.last.edited" value="Artifacts" />
     <property name="project.structure.proportion" value="0.15" />
-    <property name="project.structure.side.proportion" value="0.2" />
+    <property name="project.structure.side.proportion" value="0.35287356" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="GenerateAntBuildDialog.enableUiFormCompile" value="true" />
+    <property name="GenerateAntBuildDialog.forceTargetJdk" value="true" />
+    <property name="GenerateAntBuildDialog.outputFileNameProperty" value="reto2018" />
+    <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
+    <property name="GenerateAntBuildDialog.backupFiles" value="true" />
+    <property name="AnalyzeApkAction.lastApkPath" value="$PROJECT_DIR$/out/artifacts/reto2018_jar/reto2018.jar" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/main/resources/META-INF" />
+      <recent name="$PROJECT_DIR$/src/main/java/com/reto2018" />
       <recent name="$PROJECT_DIR$/src/main/resources" />
+      <recent name="$PROJECT_DIR$" />
+      <recent name="$PROJECT_DIR$/src/test" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="com.reto2018" />
     </key>
-    <key name="MoveFile.RECENT_KEYS">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/lib" />
       <recent name="$PROJECT_DIR$/src/main/resources" />
-      <recent name="$PROJECT_DIR$/src/test" />
-      <recent name="$PROJECT_DIR$/src" />
       <recent name="$PROJECT_DIR$/src/main/java/com/reto2018" />
-      <recent name="$PROJECT_DIR$/src/main/java" />
+      <recent name="$PROJECT_DIR$/out/artifacts/reto2018_jar" />
+      <recent name="$PROJECT_DIR$" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -737,6 +687,25 @@
         </pattern>
       </extension>
       <option name="MAIN_CLASS_NAME" value="com.reto2018.Inicio" />
+      <option name="VM_PARAMETERS" />
+      <option name="PROGRAM_PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="ENABLE_SWING_INSPECTOR" value="false" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <module name="reto2018" />
+      <envs />
+    </configuration>
+    <configuration name="JFreeChart" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
+        <pattern>
+          <option name="PATTERN" value="org.jfree.chart.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="MAIN_CLASS_NAME" value="org.jfree.chart.JFreeChart" />
       <option name="VM_PARAMETERS" />
       <option name="PROGRAM_PARAMETERS" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
@@ -807,6 +776,17 @@
       <module name="" />
       <envs />
     </configuration>
+    <configuration default="true" type="JarApplication" factoryName="JAR Application">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <option name="JAR_PATH" value="$PROJECT_DIR$/out/artifacts/reto2018_jar/reto2018.jar" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <envs />
+      <method>
+        <option name="BuildArtifacts" enabled="true">
+          <artifact name="reto2018:jar" />
+        </option>
+      </method>
+    </configuration>
     <configuration default="true" type="JUnit" factoryName="JUnit">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
       <module name="" />
@@ -867,18 +847,20 @@
       <properties />
       <listeners />
     </configuration>
-    <list size="4">
+    <list size="5">
       <item index="0" class="java.lang.String" itemvalue="Application.Administrador" />
       <item index="1" class="java.lang.String" itemvalue="Application.Inicio" />
       <item index="2" class="java.lang.String" itemvalue="Application.Usuario" />
       <item index="3" class="java.lang.String" itemvalue="Application.Login" />
+      <item index="4" class="java.lang.String" itemvalue="Application.JFreeChart" />
     </list>
     <recent_temporary>
-      <list size="4">
+      <list size="5">
         <item index="0" class="java.lang.String" itemvalue="Application.Inicio" />
-        <item index="1" class="java.lang.String" itemvalue="Application.Login" />
-        <item index="2" class="java.lang.String" itemvalue="Application.Usuario" />
-        <item index="3" class="java.lang.String" itemvalue="Application.Administrador" />
+        <item index="1" class="java.lang.String" itemvalue="Application.JFreeChart" />
+        <item index="2" class="java.lang.String" itemvalue="Application.Login" />
+        <item index="3" class="java.lang.String" itemvalue="Application.Usuario" />
+        <item index="4" class="java.lang.String" itemvalue="Application.Administrador" />
       </list>
     </recent_temporary>
   </component>
@@ -896,7 +878,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="43" y="80" width="1637" height="895" extended-state="0" />
+    <frame x="24" y="65" width="1637" height="895" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -906,14 +888,13 @@
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32928312" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3298717" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32928312" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.17715333" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32928312" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.26756263" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -923,8 +904,10 @@
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Dependency Viewer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32928312" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32928312" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
     <layout-to-restore>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -959,359 +942,19 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="XDebuggerManager">
-    <breakpoint-manager />
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>jar://$MAVEN_REPOSITORY$/org/jfree/jfreechart/1.5.0/jfreechart-1.5.0.jar!/org/jfree/chart/ChartPanel.class</url>
+          <line>168</line>
+          <properties />
+        </line-breakpoint>
+      </breakpoints>
+      <option name="time" value="1" />
+    </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/reto2018/Dueño.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/reto2018/Dueño.form">
-      <provider selected="true" editor-type-id="ui-designer">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/reto2018/UsuariosVer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="2" column="24" lean-forward="false" selection-start-line="2" selection-start-column="24" selection-end-line="2" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/reto2018.iml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/reto2018/Conexion.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="152">
-          <caret line="10" column="29" lean-forward="false" selection-start-line="10" selection-start-column="29" selection-end-line="10" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/reto2018/Inicio.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="220">
-          <caret line="11" column="0" lean-forward="false" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="510">
-          <caret line="34" column="0" lean-forward="true" selection-start-line="34" selection-start-column="0" selection-end-line="34" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/reto2018/ResultadosVer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="247">
-          <caret line="13" column="13" lean-forward="false" selection-start-line="13" selection-start-column="13" selection-end-line="13" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/reto2018/CalendarioVer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="2" column="26" lean-forward="false" selection-start-line="2" selection-start-column="26" selection-end-line="2" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/reto2018/Jugador.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="899">
-          <caret line="56" column="0" lean-forward="false" selection-start-line="56" selection-start-column="0" selection-end-line="56" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/reto2018/Dueños.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="160">
-          <caret line="8" column="74" lean-forward="false" selection-start-line="8" selection-start-column="74" selection-end-line="8" selection-end-column="74" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/reto2018/JugadoresVer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="263">
-          <caret line="19" column="0" lean-forward="false" selection-start-line="11" selection-start-column="4" selection-end-line="37" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/reto2018/EquiposVer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="92">
-          <caret line="11" column="38" lean-forward="false" selection-start-line="11" selection-start-column="38" selection-end-line="11" selection-end-column="38" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/reto2018/Administrador.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="189">
-          <caret line="438" column="40" lean-forward="false" selection-start-line="438" selection-start-column="40" selection-end-line="438" selection-end-column="40" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/reto2018/Administrador.form">
-      <provider selected="true" editor-type-id="ui-designer">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/reto2018/DueñosVer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="335">
-          <caret line="20" column="41" lean-forward="false" selection-start-line="20" selection-start-column="41" selection-end-line="20" selection-end-column="41" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/reto2018/DueñosVer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="661">
-          <caret line="39" column="0" lean-forward="false" selection-start-line="39" selection-start-column="0" selection-end-line="39" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/reto2018.iml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/reto2018/Jugador.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="620">
-          <caret line="31" column="0" lean-forward="false" selection-start-line="31" selection-start-column="0" selection-end-line="31" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/reto2018/CalendarioVer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="76">
-          <caret line="4" column="0" lean-forward="false" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/reto2018/Equipo.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="10" column="36" lean-forward="false" selection-start-line="10" selection-start-column="36" selection-end-line="10" selection-end-column="36" />
-          <folding>
-            <element signature="e#487#488#0" expanded="false" />
-            <element signature="e#520#521#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/reto2018/Partido.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1349">
-          <caret line="71" column="19" lean-forward="false" selection-start-line="71" selection-start-column="19" selection-end-line="71" selection-end-column="19" />
-          <folding>
-            <element signature="e#697#698#0" expanded="true" />
-            <element signature="e#727#728#0" expanded="true" />
-            <element signature="e#770#771#0" expanded="true" />
-            <element signature="e#808#809#0" expanded="true" />
-            <element signature="e#840#841#0" expanded="true" />
-            <element signature="e#868#869#0" expanded="true" />
-            <element signature="e#910#911#0" expanded="true" />
-            <element signature="e#944#945#0" expanded="true" />
-            <element signature="e#978#979#0" expanded="true" />
-            <element signature="e#1011#1012#0" expanded="true" />
-            <element signature="e#1060#1061#0" expanded="true" />
-            <element signature="e#1104#1105#0" expanded="true" />
-            <element signature="e#1138#1139#0" expanded="true" />
-            <element signature="e#1171#1172#0" expanded="true" />
-            <element signature="e#1220#1221#0" expanded="true" />
-            <element signature="e#1264#1265#0" expanded="true" />
-            <element signature="e#1305#1306#0" expanded="true" />
-            <element signature="e#1341#1342#0" expanded="true" />
-            <element signature="e#1399#1400#0" expanded="true" />
-            <element signature="e#1449#1450#0" expanded="true" />
-            <element signature="e#1489#1490#0" expanded="true" />
-            <element signature="e#1525#1526#0" expanded="true" />
-            <element signature="e#1583#1584#0" expanded="true" />
-            <element signature="e#1633#1634#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/reto2018/EquiposVer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="308">
-          <caret line="18" column="7" lean-forward="false" selection-start-line="18" selection-start-column="7" selection-end-line="33" selection-end-column="9" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/reto2018/Clasificacion.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="108">
-          <caret line="26" column="0" lean-forward="false" selection-start-line="26" selection-start-column="0" selection-end-line="26" selection-end-column="0" />
-          <folding>
-            <element signature="e#478#479#0" expanded="true" />
-            <element signature="e#507#508#0" expanded="true" />
-            <element signature="e#551#552#0" expanded="true" />
-            <element signature="e#587#588#0" expanded="true" />
-            <element signature="e#619#620#0" expanded="true" />
-            <element signature="e#648#649#0" expanded="true" />
-            <element signature="e#689#690#0" expanded="true" />
-            <element signature="e#725#726#0" expanded="true" />
-            <element signature="e#756#757#0" expanded="true" />
-            <element signature="e#786#787#0" expanded="true" />
-            <element signature="e#829#830#0" expanded="true" />
-            <element signature="e#867#868#0" expanded="true" />
-            <element signature="e#900#901#0" expanded="true" />
-            <element signature="e#932#933#0" expanded="true" />
-            <element signature="e#979#980#0" expanded="true" />
-            <element signature="e#1021#1022#0" expanded="true" />
-            <element signature="e#1053#1054#0" expanded="true" />
-            <element signature="e#1084#1085#0" expanded="true" />
-            <element signature="e#1129#1130#0" expanded="true" />
-            <element signature="e#1169#1170#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/reto2018/Usuarios.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="266">
-          <caret line="14" column="31" lean-forward="false" selection-start-line="14" selection-start-column="31" selection-end-line="14" selection-end-column="31" />
-          <folding>
-            <element signature="e#357#358#0" expanded="true" />
-            <element signature="e#401#402#0" expanded="true" />
-            <element signature="e#437#438#0" expanded="true" />
-            <element signature="e#469#470#0" expanded="true" />
-            <element signature="e#497#498#0" expanded="true" />
-            <element signature="e#539#540#0" expanded="true" />
-            <element signature="e#573#574#0" expanded="true" />
-            <element signature="e#608#609#0" expanded="true" />
-            <element signature="e#639#640#0" expanded="true" />
-            <element signature="e#687#688#0" expanded="true" />
-            <element signature="e#727#728#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$PROJECT_DIR$/src/main/resources/ojdbc7.jar!/oracle/jdbc/driver/T4CTTIoer.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="171">
-          <caret line="157" column="0" lean-forward="false" selection-start-line="157" selection-start-column="0" selection-end-line="157" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar:///Library/Java/JavaVirtualMachines/jdk-9.jdk/Contents/Home/lib/src.zip!/java.desktop/java/awt/EventDispatchThread.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="175">
-          <caret line="123" column="0" lean-forward="false" selection-start-line="123" selection-start-column="0" selection-end-line="123" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/reto2018/TablaDueñosModel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="11" column="51" lean-forward="false" selection-start-line="11" selection-start-column="51" selection-end-line="11" selection-end-column="51" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/passwords.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="9" column="0" lean-forward="false" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/usuarios.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="9" column="0" lean-forward="false" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/reto2018/SuperUsuario.form">
-      <provider selected="true" editor-type-id="ui-designer">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/reto2018/SuperUsuario.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="168">
-          <caret line="26" column="0" lean-forward="false" selection-start-line="26" selection-start-column="0" selection-end-line="26" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#1252#1260#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/nombre.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="8" column="0" lean-forward="false" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/reto2018/Resultado.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="16" column="30" lean-forward="false" selection-start-line="16" selection-start-column="30" selection-end-line="16" selection-end-column="30" />
-          <folding>
-            <element signature="e#371#372#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="645">
-          <caret line="43" column="21" lean-forward="false" selection-start-line="43" selection-start-column="21" selection-end-line="43" selection-end-column="21" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/reto2018/TablaEquiposModel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="529">
-          <caret line="56" column="22" lean-forward="false" selection-start-line="56" selection-start-column="22" selection-end-line="56" selection-end-column="22" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/reto2018/TablaUsuariosModel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="165">
-          <caret line="16" column="31" lean-forward="false" selection-start-line="16" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
-          <folding>
-            <element signature="e#394#395#0" expanded="false" />
-            <element signature="e#446#447#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/reto2018/Inicio.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="570">
-          <caret line="47" column="0" lean-forward="false" selection-start-line="47" selection-start-column="0" selection-end-line="47" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/reto2018/TablaJugadoresModel.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="366">
@@ -1328,233 +971,70 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/reto2018/Usuario.form">
-      <provider selected="true" editor-type-id="ui-designer">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/reto2018/Usuario.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="960">
-          <caret line="64" column="11" lean-forward="false" selection-start-line="64" selection-start-column="11" selection-end-line="64" selection-end-column="11" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#6368#6379#0" expanded="true" />
-            <element signature="e#8227#8242#0" expanded="true" />
-            <element signature="e#16828#18350#0" expanded="true" />
-            <element signature="e#17278#17286#0" expanded="true" />
-            <element signature="e#18349#18350#0" expanded="true" />
-            <element signature="e#18898#20775#0" expanded="true" />
-            <element signature="e#20774#20775#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/reto2018/ResultadosVer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="22" column="42" lean-forward="false" selection-start-line="22" selection-start-column="42" selection-end-line="22" selection-end-column="42" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/reto2018/Login.form">
       <provider selected="true" editor-type-id="ui-designer">
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/reto2018/Login.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/reto2018/Dueños.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="5633">
-          <caret line="365" column="37" lean-forward="true" selection-start-line="365" selection-start-column="37" selection-end-line="365" selection-end-column="37" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#594#602#0" expanded="true" />
-            <element signature="e#653#661#0" expanded="true" />
-            <element signature="e#715#723#0" expanded="true" />
-            <element signature="e#777#785#0" expanded="true" />
-            <element signature="e#841#849#0" expanded="true" />
-            <element signature="e#8802#11147#0" expanded="true" />
-            <element signature="e#11146#11147#0" expanded="true" />
-            <element signature="e#11713#11714#0" expanded="true" />
-            <element signature="e#11746#11747#0" expanded="true" />
-            <element signature="e#11806#11807#0" expanded="true" />
-            <element signature="e#11850#11851#0" expanded="true" />
-            <element signature="e#12630#12631#0" expanded="true" />
-            <element signature="e#12680#12681#0" expanded="true" />
-            <element signature="e#12716#12717#0" expanded="true" />
-            <element signature="e#12758#12759#0" expanded="true" />
-            <element signature="e#12790#12791#0" expanded="true" />
-            <element signature="e#12846#12847#0" expanded="true" />
-            <element signature="e#12888#12889#0" expanded="true" />
-            <element signature="e#12927#12928#0" expanded="true" />
-            <element signature="e#12956#12957#0" expanded="true" />
-            <element signature="e#13006#13007#0" expanded="true" />
-            <element signature="e#13042#13043#0" expanded="true" />
-            <element signature="e#13083#13084#0" expanded="true" />
-            <element signature="e#13114#13115#0" expanded="true" />
-            <element signature="e#13168#13169#0" expanded="true" />
-            <element signature="e#13208#13209#0" expanded="true" />
-            <element signature="e#13234#13235#0" expanded="true" />
-            <element signature="e#13259#13260#0" expanded="true" />
-            <element signature="e#13292#13293#0" expanded="true" />
-            <element signature="e#13320#13321#0" expanded="true" />
-            <element signature="e#13351#13352#0" expanded="true" />
-            <element signature="e#13379#13380#0" expanded="true" />
-            <element signature="e#13420#13421#0" expanded="true" />
-            <element signature="e#13454#13455#0" expanded="true" />
-            <element signature="e#13480#13481#0" expanded="true" />
-            <element signature="e#13505#13506#0" expanded="true" />
-            <element signature="e#13538#13539#0" expanded="true" />
-            <element signature="e#13566#13567#0" expanded="true" />
-            <element signature="e#13608#13609#0" expanded="true" />
-            <element signature="e#13640#13641#0" expanded="true" />
-            <element signature="e#13696#13697#0" expanded="true" />
-            <element signature="e#13738#13739#0" expanded="true" />
-            <element signature="e#13786#13787#0" expanded="true" />
-            <element signature="e#13824#13825#0" expanded="true" />
-            <element signature="e#13892#13893#0" expanded="true" />
-            <element signature="e#13946#13947#0" expanded="true" />
-            <element signature="e#13972#13973#0" expanded="true" />
-            <element signature="e#13997#13998#0" expanded="true" />
-            <element signature="e#14030#14031#0" expanded="true" />
-            <element signature="e#14058#14059#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/reto2018/Conexion.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="20" column="28" lean-forward="false" selection-start-line="20" selection-start-column="28" selection-end-line="20" selection-end-column="28" />
+        <state relative-caret-position="120">
+          <caret line="8" column="74" lean-forward="false" selection-start-line="8" selection-start-column="74" selection-end-line="8" selection-end-column="74" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/reto2018/JugadoresVer.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="112">
-          <caret line="18" column="23" lean-forward="false" selection-start-line="18" selection-start-column="23" selection-end-line="18" selection-end-column="50" />
+        <state relative-caret-position="37">
+          <caret line="13" column="36" lean-forward="true" selection-start-line="13" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/reto2018/Administrador.form">
-      <provider selected="true" editor-type-id="ui-designer">
-        <state />
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/reto2018/EquiposVer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="11" column="3" lean-forward="true" selection-start-line="11" selection-start-column="3" selection-end-line="36" selection-end-column="5" />
+          <folding />
+        </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/reto2018/Administrador.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/reto2018/AdministradoresVer.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="99">
-          <caret line="36" column="14" lean-forward="true" selection-start-line="36" selection-start-column="14" selection-end-line="36" selection-end-column="54" />
+        <state relative-caret-position="495">
+          <caret line="33" column="30" lean-forward="false" selection-start-line="33" selection-start-column="30" selection-end-line="33" selection-end-column="30" />
           <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#21757#27624#0" expanded="true" />
-            <element signature="e#25896#25907#0" expanded="true" />
-            <element signature="e#27623#27624#0" expanded="true" />
-            <element signature="e#27683#42703#0" expanded="true" />
-            <element signature="e#42702#42703#0" expanded="true" />
-            <element signature="e#42748#43610#0" expanded="true" />
-            <element signature="e#43609#43610#0" expanded="true" />
-            <element signature="e#43652#44594#0" expanded="true" />
-            <element signature="e#44593#44594#0" expanded="true" />
-            <element signature="e#44636#46227#0" expanded="true" />
-            <element signature="e#45331#45339#0" expanded="true" />
-            <element signature="e#46226#46227#0" expanded="true" />
-            <element signature="e#46269#49345#0" expanded="true" />
-            <element signature="e#48128#48136#0" expanded="true" />
-            <element signature="e#49344#49345#0" expanded="true" />
-            <element signature="e#50269#50277#0" expanded="true" />
-            <element signature="e#52225#57217#0" expanded="true" />
-            <element signature="e#57216#57217#0" expanded="true" />
-            <element signature="e#57259#60754#0" expanded="true" />
-            <element signature="e#57956#57964#0" expanded="true" />
-            <element signature="e#59290#59298#0" expanded="true" />
-            <element signature="e#60753#60754#0" expanded="true" />
-            <element signature="e#60796#62121#0" expanded="true" />
-            <element signature="e#62120#62121#0" expanded="true" />
-            <element signature="e#62152#63027#0" expanded="true" />
-            <element signature="e#63026#63027#0" expanded="true" />
-            <element signature="e#63058#63916#0" expanded="true" />
-            <element signature="e#63915#63916#0" expanded="true" />
-            <element signature="e#63947#64805#0" expanded="true" />
-            <element signature="e#64804#64805#0" expanded="true" />
-            <element signature="e#64836#65694#0" expanded="true" />
-            <element signature="e#65693#65694#0" expanded="true" />
-            <element signature="e#65725#66583#0" expanded="true" />
-            <element signature="e#66582#66583#0" expanded="true" />
-            <element signature="e#66614#67472#0" expanded="true" />
-            <element signature="e#67471#67472#0" expanded="true" />
-            <element signature="e#67503#68361#0" expanded="true" />
-            <element signature="e#68360#68361#0" expanded="true" />
-            <element signature="e#68392#69250#0" expanded="true" />
-            <element signature="e#69249#69250#0" expanded="true" />
-            <element signature="e#69282#71740#0" expanded="true" />
-            <element signature="e#71739#71740#0" expanded="true" />
-            <element signature="e#71772#74227#0" expanded="true" />
-            <element signature="e#74226#74227#0" expanded="true" />
-            <element signature="e#74259#76715#0" expanded="true" />
-            <element signature="e#76714#76715#0" expanded="true" />
-            <element signature="e#76747#79207#0" expanded="true" />
-            <element signature="e#79206#79207#0" expanded="true" />
-            <element signature="e#79239#81698#0" expanded="true" />
-            <element signature="e#81697#81698#0" expanded="true" />
-            <element signature="e#81730#84186#0" expanded="true" />
-            <element signature="e#84185#84186#0" expanded="true" />
-            <element signature="e#84218#86674#0" expanded="true" />
-            <element signature="e#86673#86674#0" expanded="true" />
-            <element signature="e#86706#89163#0" expanded="true" />
-            <element signature="e#89162#89163#0" expanded="true" />
-            <element signature="e#89195#93133#0" expanded="true" />
-            <element signature="e#93132#93133#0" expanded="true" />
-            <element signature="e#93165#97101#0" expanded="true" />
-            <element signature="e#97100#97101#0" expanded="true" />
-            <element signature="e#97133#101069#0" expanded="true" />
-            <element signature="e#101068#101069#0" expanded="true" />
-            <element signature="e#101101#105037#0" expanded="true" />
-            <element signature="e#105036#105037#0" expanded="true" />
-            <element signature="e#105086#105087#0" expanded="true" />
-            <element signature="e#105112#105113#0" expanded="true" />
-            <element signature="e#105145#105146#0" expanded="true" />
-            <element signature="e#105174#105175#0" expanded="true" />
-            <element signature="e#105218#105219#0" expanded="true" />
-            <element signature="e#105254#105255#0" expanded="true" />
-            <element signature="e#109188#109189#0" expanded="true" />
-            <element signature="e#109224#109225#0" expanded="true" />
-            <element signature="e#109279#109280#0" expanded="true" />
-            <element signature="e#109329#109330#0" expanded="true" />
-            <marker date="1525720659000" expanded="false" signature="11746:11841" ph="(MouseAdapter) mouseClicked(e) → {" />
-            <marker date="1525720659000" expanded="false" signature="12933:12949" ph="}" />
-            <marker date="1525720659000" expanded="false" signature="12991:13086" ph="(MouseAdapter) mouseClicked(e) → {" />
-            <marker date="1525720659000" expanded="false" signature="14003:14018" ph="}" />
-            <marker date="1525720659000" expanded="false" signature="14082:14194" ph="(e) → {" />
-            <marker date="1525720659000" expanded="false" signature="14478:14493" ph="}" />
+            <element signature="imports" expanded="false" />
+            <element signature="e#388#405#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/reto2018/Dueño.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/reto2018/TablaDueñosModel.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="163">
-          <caret line="111" column="36" lean-forward="false" selection-start-line="111" selection-start-column="36" selection-end-line="111" selection-end-column="36" />
+        <state relative-caret-position="30">
+          <caret line="7" column="22" lean-forward="true" selection-start-line="7" selection-start-column="22" selection-end-line="7" selection-end-column="22" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/reto2018/Administradores.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="225">
+          <caret line="15" column="31" lean-forward="false" selection-start-line="15" selection-start-column="31" selection-end-line="15" selection-end-column="31" />
           <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#4342#5966#0" expanded="true" />
-            <element signature="e#5965#5966#0" expanded="true" />
-            <element signature="e#6003#7499#0" expanded="true" />
-            <element signature="e#7498#7499#0" expanded="true" />
-            <element signature="e#8241#8249#0" expanded="true" />
-            <element signature="e#10830#10841#0" expanded="true" />
-            <element signature="e#12118#12133#0" expanded="true" />
-            <element signature="e#17723#19301#0" expanded="true" />
-            <element signature="e#19300#19301#0" expanded="true" />
-            <element signature="e#19344#20536#0" expanded="true" />
-            <element signature="e#20535#20536#0" expanded="true" />
-            <element signature="e#20588#20589#0" expanded="true" />
-            <element signature="e#20623#20624#0" expanded="true" />
-            <element signature="e#20685#20686#0" expanded="true" />
-            <element signature="e#20733#20734#0" expanded="true" />
+            <element signature="e#380#381#0" expanded="false" />
+            <element signature="e#424#425#0" expanded="false" />
+            <element signature="e#460#461#0" expanded="false" />
+            <element signature="e#494#495#0" expanded="false" />
+            <element signature="e#524#525#0" expanded="false" />
+            <element signature="e#570#571#0" expanded="false" />
+            <element signature="e#608#609#0" expanded="false" />
+            <element signature="e#643#644#0" expanded="false" />
+            <element signature="e#674#675#0" expanded="false" />
+            <element signature="e#722#723#0" expanded="false" />
+            <element signature="e#762#763#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1564,16 +1044,277 @@
         <state />
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/reto2018/ResultadosVer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="165">
+          <caret line="16" column="7" lean-forward="false" selection-start-line="16" selection-start-column="7" selection-end-line="34" selection-end-column="9" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/reto2018/TablaAdministradoresModel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="168">
+          <caret line="46" column="0" lean-forward="false" selection-start-line="46" selection-start-column="0" selection-end-line="46" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/reto2018/SuperUsuario.form">
+      <provider selected="true" editor-type-id="ui-designer">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/reto2018/Administrador.form">
+      <provider selected="true" editor-type-id="ui-designer">
+        <state />
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/jfree/jfreechart/1.5.0/jfreechart-1.5.0.jar!/org/jfree/chart/ui/ApplicationFrame.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="12" column="11" lean-forward="false" selection-start-line="12" selection-start-column="11" selection-end-line="12" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/image.png" />
+    <entry file="jar://$MAVEN_REPOSITORY$/org/jfree/jfreechart/1.5.0/jfreechart-1.5.0.jar!/org/jfree/chart/ChartPanel.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="168" column="13" lean-forward="false" selection-start-line="168" selection-start-column="13" selection-end-line="168" selection-end-column="86" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/build-swt.xml" />
+    <entry file="jar://$MAVEN_REPOSITORY$/org/jfree/jfreechart/1.5.0/jfreechart-1.5.0-sources.jar!/org/jfree/chart/ui/ApplicationFrame.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/apache/maven/shared/maven-artifact-transfer/0.9.1/maven-artifact-transfer-0.9.1.jar!/META-INF/MANIFEST.MF">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/out/artifacts/reto2018_jar/META-INF/MANIFEST.MF" />
+    <entry file="jar://$USER_HOME$/Downloads/jfreechart-1.0.19.jar!/org/jfree/data/xy/DefaultXYDataset.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="7" column="0" lean-forward="true" selection-start-line="7" selection-start-column="0" selection-end-line="156" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$USER_HOME$/Downloads/jfreechart-1.0.19.jar!/org/jfree/chart/ChartFactory.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="7" column="0" lean-forward="false" selection-start-line="7" selection-start-column="0" selection-end-line="1089" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/reto2018/XYDataset.java" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/reto2018/JFreeChart.java" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/reto2018/ChartFactory.java" />
+    <entry file="jar://$USER_HOME$/Downloads/jfreechart-1.0.19.jar!/org/jfree/data/xy/XYDataset.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="10" column="17" lean-forward="false" selection-start-line="10" selection-start-column="17" selection-end-line="10" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/reto2018/DefaultXYDataset.java" />
+    <entry file="file://$USER_HOME$/Downloads/jfreechart-1.0.19/org/jfree/chart/ChartPanel.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="75">
+          <caret line="82" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="1704" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/package-info.java" />
+    <entry file="file://$PROJECT_DIR$/txt" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/jfree/chart/JFreeChart.java" />
+    <entry file="jar://$USER_HOME$/Downloads/jfreechart-1.0.19.jar!/org/jfree/chart/JFreeChart.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="777" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$USER_HOME$/Downloads/jfreechart-1.0.19.jar!/org/jfree/chart/ChartPanel.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="30">
+          <caret line="5" column="8" lean-forward="false" selection-start-line="5" selection-start-column="8" selection-end-line="5" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/jfree/chart/ChartPanel.java" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/reto2018/Grafico.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1095">
+          <caret line="87" column="19" lean-forward="false" selection-start-line="87" selection-start-column="19" selection-end-line="87" selection-end-column="19" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/reto2018/Dueño.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="45">
+          <caret line="3" column="0" lean-forward="false" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/reto2018/Conexion.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="709">
+          <caret line="71" column="44" lean-forward="false" selection-start-line="71" selection-start-column="44" selection-end-line="71" selection-end-column="44" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/reto2018.iml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/reto2018.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/reto2018/Inicio.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="45">
+          <caret line="3" column="0" lean-forward="false" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/reto2018.properties">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="4" column="8" lean-forward="false" selection-start-line="4" selection-start-column="8" selection-end-line="4" selection-end-column="8" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/reto2018/Administrador.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="163">
+          <caret line="41" column="51" lean-forward="false" selection-start-line="41" selection-start-column="51" selection-end-line="41" selection-end-column="51" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <marker date="1525863038000" expanded="false" signature="11699:11794" ph="(MouseAdapter) mouseClicked(e) → {" />
+            <marker date="1525863038000" expanded="false" signature="12886:12902" ph="}" />
+            <marker date="1525863038000" expanded="false" signature="12944:13039" ph="(MouseAdapter) mouseClicked(e) → {" />
+            <marker date="1525863038000" expanded="false" signature="13956:13971" ph="}" />
+            <marker date="1525863038000" expanded="false" signature="14035:14147" ph="(e) → {" />
+            <marker date="1525863038000" expanded="false" signature="14431:14446" ph="}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/reto2018_Wed_May_09_02-17-07_CEST_2018.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-3783">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/META-INF/MANIFEST.MF">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/META-INF/MANIFEST.MF">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="651">
+          <caret line="92" column="45" lean-forward="false" selection-start-line="92" selection-start-column="45" selection-end-line="92" selection-end-column="45" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/reto2018/SuperUsuario.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="15">
+          <caret line="2" column="0" lean-forward="false" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#1511#2449#0" expanded="true" />
+            <element signature="e#2448#2449#0" expanded="true" />
+            <element signature="e#2495#3513#0" expanded="true" />
+            <element signature="e#3512#3513#0" expanded="true" />
+            <element signature="e#3556#4434#0" expanded="true" />
+            <element signature="e#4433#4434#0" expanded="true" />
+            <element signature="e#4470#4898#0" expanded="true" />
+            <element signature="e#4897#4898#0" expanded="true" />
+            <element signature="e#4940#6026#0" expanded="true" />
+            <element signature="e#6025#6026#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/reto2018/Usuario.form">
+      <provider selected="true" editor-type-id="ui-designer">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/reto2018/Usuario.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="870">
+          <caret line="58" column="10" lean-forward="false" selection-start-line="58" selection-start-column="10" selection-end-line="58" selection-end-column="10" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/reto2018/Login.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-383">
+          <caret line="20" column="60" lean-forward="false" selection-start-line="20" selection-start-column="60" selection-end-line="20" selection-end-column="60" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#587#595#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
   </component>
   <component name="masterDetails">
     <states>
       <state key="ArtifactsStructureConfigurable.UI">
         <settings>
           <artifact-editor />
+          <last-edited>reto2018:jar</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>
-                <option value="0.2" />
+                <option value="0.35287356" />
+                <option value="0.5" />
               </list>
             </option>
           </splitter-proportions>
@@ -1585,7 +1326,7 @@
           <splitter-proportions>
             <option name="proportions">
               <list>
-                <option value="0.2" />
+                <option value="0.35287356" />
               </list>
             </option>
           </splitter-proportions>
@@ -1596,7 +1337,7 @@
           <splitter-proportions>
             <option name="proportions">
               <list>
-                <option value="0.2" />
+                <option value="0.35287356" />
               </list>
             </option>
           </splitter-proportions>
@@ -1608,7 +1349,7 @@
           <splitter-proportions>
             <option name="proportions">
               <list>
-                <option value="0.2" />
+                <option value="0.35287356" />
               </list>
             </option>
           </splitter-proportions>
@@ -1620,8 +1361,7 @@
           <splitter-proportions>
             <option name="proportions">
               <list>
-                <option value="0.2" />
-                <option value="0.6" />
+                <option value="0.35287356" />
               </list>
             </option>
           </splitter-proportions>
@@ -1641,11 +1381,11 @@
       </state>
       <state key="ProjectLibrariesConfigurable.UI">
         <settings>
-          <last-edited>jfreechart-1.0.13-demo</last-edited>
+          <last-edited>Maven: commons-beanutils:commons-beanutils:1.8.3</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>
-                <option value="0.2" />
+                <option value="0.35287356" />
               </list>
             </option>
           </splitter-proportions>
@@ -1664,5 +1404,9 @@
         </settings>
       </state>
     </states>
+  </component>
+  <component name="mavenExecuteGoalHistory">
+    <option value="$PROJECT_DIR$" />
+    <option value="&lt;plugin-artifact-id&gt;:reto2018" />
   </component>
 </project>

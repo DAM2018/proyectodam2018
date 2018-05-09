@@ -1,9 +1,9 @@
 package com.reto2018;
 
 import org.apache.commons.validator.routines.EmailValidator;
-import org.jasypt.util.text.StrongTextEncryptor;
 
 import javax.swing.*;
+import java.awt.datatransfer.UnsupportedFlavorException;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.io.*;
@@ -17,9 +17,9 @@ public class Login {
     private Usuario usuario;
     private SuperUsuario superUsuario;
     private Dueño dueño;
-    private List<String> claves;
-    private List<String> usuarios;
-    private List<String> nombresUsuarios= new ArrayList<String>();
+    private List<String> claves = new ArrayList<String>();
+    private List<String> usuarios = new ArrayList<String>();
+    private List<String> nombresUsuarios = new ArrayList<String>();
     private List<String> emails = new ArrayList<String>();
     private List<String> passwords = new ArrayList<String>();
     private List<String> nombreDue = new ArrayList<String>();
@@ -27,6 +27,9 @@ public class Login {
     private int du = 0;
     private int ad = 0;
     private int us = 0;
+    private Connection conexion;
+    private String superusuario;
+    private String superpassword;
 
 
     public Login() {
@@ -43,8 +46,8 @@ public class Login {
         textField5.setText(Conexion.getPassword());
 
 
-        final StrongTextEncryptor textEncryptor = new StrongTextEncryptor();
-        textEncryptor.setPassword("pass");
+       /* final StrongTextEncryptor textEncryptor = new StrongTextEncryptor();
+        textEncryptor.setPassword("pass");*/
 
 
         //String plainText = textEncryptor.decrypt("eC3hFemuB8Vv9ZqySPkJfg==");
@@ -63,19 +66,23 @@ public class Login {
                 String login = Inicio.getLogin().getTextField4().getText();
                 String password = Inicio.getLogin().getTextField5().getText();
                 String url = "jdbc:oracle:thin:@" + servidor + ":" + puerto + ":" + sid;
+                boolean accesoUsuario = false;
+                boolean accesoDueños = false;
 
-                Connection conexion = null;
-                Statement st = null;
 
                 try {
+                    Statement st;
                     conexion = DriverManager.getConnection(url, login, password);
+
+
+                    //conexion = Conexion.conexion;
 
                     st = conexion.createStatement();
 
 
                     String sql = "select email,password2,nombre from usuarios";
 
-                    ResultSet rs = null;
+                    ResultSet rs;
                     rs = st.executeQuery(sql);
 
                     while (rs.next()) {
@@ -86,27 +93,20 @@ public class Login {
 
 
                     }
-                } catch (SQLException e1) {
-                    //e1.printStackTrace();
-                } catch (java.lang.NullPointerException e1) {
-                    //e1.printStackTrace();
-                }
-                boolean accesoUsuario = false;
-                for (int i = 0; i < emails.size(); i++) {
-                    if (emails.get(i).equals(textField6.getText()) && new String(passwordField1.getPassword()).equals(passwords.get(i))) {
-                        accesoUsuario = true;
-                        us = i + 1;
+
+                    for (int i = 0; i < emails.size(); i++) {
+                        if (emails.get(i).equals(textField6.getText()) && new String(passwordField1.getPassword()).equals(passwords.get(i))) {
+                            accesoUsuario = true;
+                            us = i + 1;
+                        }
                     }
-                }
 
 
-                try {
                     st = conexion.createStatement();
 
 
-                    String sql = "select nombreDue,passwordDue from dueño order by ordenInsertar";
+                    sql = "select nombreDue,passwordDue from dueño order by ordenInsertar";
 
-                    ResultSet rs = null;
                     rs = st.executeQuery(sql);
 
                     while (rs.next()) {
@@ -116,25 +116,37 @@ public class Login {
 
 
                     }
-                } catch (SQLException e1) {
-                    e1.printStackTrace();
-                }
-                int i;
-                boolean accesoDueños = false;
-                for (i = 0; i < nombreDue.size(); i++) {
-                    if (nombreDue.get(i).equals(textField6.getText()) && new String(passwordField1.getPassword()).equals(passwordDue.get(i))) {
-                        accesoDueños = true;
-                        du = i + 1;
+
+                    int i;
+                    for (i = 0; i < nombreDue.size(); i++) {
+                        if (nombreDue.get(i).equals(textField6.getText()) && new String(passwordField1.getPassword()).equals(passwordDue.get(i))) {
+                            accesoDueños = true;
+                            du = i + 1;
+                        }
+
                     }
 
-                }
+
+                    st = conexion.createStatement();
 
 
-                claves = new ArrayList<String>();
-                usuarios = new ArrayList<String>();
-                try {
-                    BufferedReader in = new BufferedReader(new FileReader("src/passwords.txt"));
-                    BufferedReader in2 = new BufferedReader(new FileReader("src/usuarios.txt"));
+                    sql = "select usuario,password2 from administradores";
+
+                    rs = st.executeQuery(sql);
+
+                    while (rs.next()) {
+
+                        usuarios.add(rs.getString("usuario"));
+                        claves.add(rs.getString("password2"));
+
+
+                    }
+//                    System.out.println(usuarios.get(0));
+                    //    System.out.println(claves.get(0));
+
+                    /*BufferedReader in = new BufferedReader(new FileReader("reto2018/passwords.txt"));
+
+                    BufferedReader in2 = new BufferedReader(new FileReader("reto2018/usuarios.txt"));
 
                     String line;
                     String line2;
@@ -156,11 +168,20 @@ public class Login {
                         usuarios.add(plainText);
 
                     }
-                    in2.close();
+                    in2.close();*/
+                    st = conexion.createStatement();
 
-                } catch (FileNotFoundException e1) {
-                    e1.printStackTrace();
-                } catch (IOException e1) {
+
+                    sql = "select usuario,password2 from superusuario";
+
+                    rs = st.executeQuery(sql);
+                    while (rs.next()) {
+
+                        superusuario = (rs.getString("usuario"));
+                        superpassword = (rs.getString("password2"));
+                    }
+
+                } catch (SQLException e1) {
                     e1.printStackTrace();
                 }
 
@@ -168,6 +189,7 @@ public class Login {
                 //char[] password2 = ;
                 //char[] correctPass = new char[]{'a', 'd', 'm', 'i', 'n'};
                 boolean aceptarAdmin = false;
+                int i;
                 for (i = 0; i < usuarios.size(); i++) {
 
                     if (usuarios.get(i).equals(textField6.getText()) && claves.get(i).equals(new String(passwordField1.getPassword()))) {
@@ -176,7 +198,9 @@ public class Login {
                     }
 
                 }
-                if (textField6.getText().equals("") && new String(passwordField1.getPassword()).equals("")) {
+
+
+                if (textField6.getText().equals(superusuario) && new String(passwordField1.getPassword()).equals(superpassword)) {
 
                     try {
                         Conexion.EstablecerConexion();
@@ -217,6 +241,10 @@ public class Login {
                         e1.printStackTrace();
                     } catch (ClassNotFoundException e1) {
                         e1.printStackTrace();
+                    } catch (UnsupportedFlavorException e1) {
+                        e1.printStackTrace();
+                    } catch (IOException e1) {
+                        e1.printStackTrace();
                     }
 
 
@@ -239,14 +267,11 @@ public class Login {
                 }
                 try {
                     //nombresUsuarios.clear();
-                    emails.clear();
                     passwords.clear();
-                    claves.clear();
-                    usuarios.clear();
                     nombreDue.clear();
                     passwordDue.clear();
                 } catch (java.lang.NullPointerException e1) {
-                   // e1.printStackTrace();
+                    // e1.printStackTrace();
                 }
             }
         });
@@ -441,5 +466,13 @@ public class Login {
 
     public void setUs(int us) {
         this.us = us;
+    }
+
+    public Usuario getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
     }
 }

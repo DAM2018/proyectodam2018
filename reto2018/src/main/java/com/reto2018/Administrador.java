@@ -486,6 +486,24 @@ public class Administrador {
 
                     }
 
+
+                    String sql2 = "{call calendario.verEquipos(?)}";
+
+                    CallableStatement callableStatement2 = conexion.prepareCall(sql2);
+
+                    callableStatement2.registerOutParameter(1, OracleTypes.CURSOR);
+
+                    callableStatement2.executeUpdate();
+                    ResultSet rs = (ResultSet) callableStatement2.getObject(1);
+                    listaEquipos = new ArrayList<String>();
+                    while (rs.next()) {
+                        String nombreequi = rs.getString("nombreequi");
+
+                        listaEquipos.add(nombreequi);
+
+
+                    }
+
                 } catch (SQLException e1) {
                     e1.printStackTrace();
                 } catch (java.lang.NumberFormatException e1) {
@@ -501,6 +519,7 @@ public class Administrador {
             public void mouseClicked(MouseEvent e) {
                 super.mouseClicked(e);
                 numEquipos.setText("0");
+                listaEquipos.clear();
                 try {
 
                     Connection conexion = Conexion.conexion;
@@ -1387,7 +1406,7 @@ public class Administrador {
                         numDueños.setText("8 OK!");
 
                     } catch (SQLException e1) {
-                        e1.printStackTrace();
+                      //  e1.printStackTrace();
                     } catch (java.lang.NumberFormatException e1) {
                         //e1.printStackTrace();
                     }
@@ -1787,6 +1806,17 @@ public class Administrador {
 
                     st.executeUpdate();
 
+
+                    sql = "update dueño set equidue=? where nombredue=?";
+
+                    st = conexion.prepareStatement(sql);
+
+                    st.setString(1, textField10.getText());
+                    st.setString(2, textField7.getText());
+
+                    st.executeUpdate();
+
+
                     sql = "update jugador set CodigoEquiJug=? where CodigoEquiJug=?";
 
                     st = conexion.prepareStatement(sql);
@@ -1836,9 +1866,9 @@ public class Administrador {
 
 
                 } catch (SQLException e1) {
-                    // e1.printStackTrace();
+                    e1.printStackTrace();
                 } catch (java.lang.NumberFormatException e1) {
-                    //e1.printStackTrace();
+                    e1.printStackTrace();
                 }
             }
         });
@@ -1859,6 +1889,15 @@ public class Administrador {
 
                     st.setString(1, textField12.getText());
                     st.setString(2, listaEquipos.get(1));
+
+                    st.executeUpdate();
+
+                    sql = "update dueño set equidue=? where nombredue=?";
+
+                    st = conexion.prepareStatement(sql);
+
+                    st.setString(1, textField12.getText());
+                    st.setString(2, d2.getText());
 
                     st.executeUpdate();
 
@@ -1935,6 +1974,15 @@ public class Administrador {
 
                     st.executeUpdate();
 
+                    sql = "update dueño set equidue=? where nombredue=?";
+
+                    st = conexion.prepareStatement(sql);
+
+                    st.setString(1, textField13.getText());
+                    st.setString(2, d3.getText());
+
+                    st.executeUpdate();
+
                     sql = "update jugador set CodigoEquiJug=? where CodigoEquiJug=?";
 
                     st = conexion.prepareStatement(sql);
@@ -2006,6 +2054,15 @@ public class Administrador {
 
                     st.setString(1, textField14.getText());
                     st.setString(2, listaEquipos.get(3));
+
+                    st.executeUpdate();
+
+                    sql = "update dueño set equidue=? where nombredue=?";
+
+                    st = conexion.prepareStatement(sql);
+
+                    st.setString(1, textField14.getText());
+                    st.setString(2, d4.getText());
 
                     st.executeUpdate();
 
@@ -2087,6 +2144,15 @@ public class Administrador {
 
                     st.executeUpdate();
 
+                    sql = "update dueño set equidue=? where nombredue=?";
+
+                    st = conexion.prepareStatement(sql);
+
+                    st.setString(1, textField28.getText());
+                    st.setString(2, d5.getText());
+
+                    st.executeUpdate();
+
                     sql = "update jugador set CodigoEquiJug=? where CodigoEquiJug=?";
 
                     st = conexion.prepareStatement(sql);
@@ -2161,6 +2227,15 @@ public class Administrador {
 
                     st.setString(1, textField29.getText());
                     st.setString(2, listaEquipos.get(5));
+
+                    st.executeUpdate();
+
+                    sql = "update dueño set equidue=? where nombredue=?";
+
+                    st = conexion.prepareStatement(sql);
+
+                    st.setString(1, textField29.getText());
+                    st.setString(2, d6.getText());
 
                     st.executeUpdate();
 
@@ -2239,6 +2314,15 @@ public class Administrador {
                     st.executeUpdate();
 
 
+                    sql = "update dueño set equidue=? where nombredue=?";
+
+                    st = conexion.prepareStatement(sql);
+
+                    st.setString(1, textField30.getText());
+                    st.setString(2, d7.getText());
+
+                    st.executeUpdate();
+
                     sql = "update jugador set CodigoEquiJug=? where CodigoEquiJug=?";
 
                     st = conexion.prepareStatement(sql);
@@ -2309,6 +2393,15 @@ public class Administrador {
 
                     st.setString(1, textField31.getText());
                     st.setString(2, listaEquipos.get(7));
+
+                    st.executeUpdate();
+
+                    sql = "update dueño set equidue=? where nombredue=?";
+
+                    st = conexion.prepareStatement(sql);
+
+                    st.setString(1, textField31.getText());
+                    st.setString(2, d8.getText());
 
                     st.executeUpdate();
 

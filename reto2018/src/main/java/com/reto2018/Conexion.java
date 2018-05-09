@@ -25,8 +25,8 @@ public class Conexion {
         servidor = Inicio.getLogin().getTextField1().getText();
         puerto = Inicio.getLogin().getTextField2().getText();
         sid = Inicio.getLogin().getTextField3().getText();
-        login = Inicio.getLogin().getTextField4().getText();
-        password = Inicio.getLogin().getTextField5().getText();
+        login = new String (Inicio.getLogin().getTextField4().getPassword());
+        password = new String (Inicio.getLogin().getTextField5().getPassword());
         url = "jdbc:oracle:thin:@" + servidor + ":" + puerto + ":" + sid;
 
                return conexion= DriverManager.getConnection(url, login, password);

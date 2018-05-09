@@ -372,7 +372,7 @@ public class Login {
         this.textField3 = textField3;
     }
 
-    public JTextField getTextField4() {
+    public JPasswordField getTextField4() {
         return textField4;
     }
 
@@ -380,7 +380,7 @@ public class Login {
         this.textField4 = textField4;
     }
 
-    public JTextField getTextField5() {
+    public JPasswordField getTextField5() {
         return textField5;
     }
 

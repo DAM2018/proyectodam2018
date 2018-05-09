@@ -1,7 +1,6 @@
 package com.reto2018;
 
 import org.apache.commons.validator.routines.EmailValidator;
-import org.jasypt.util.text.StrongTextEncryptor;
 
 import javax.swing.*;
 import java.awt.datatransfer.UnsupportedFlavorException;

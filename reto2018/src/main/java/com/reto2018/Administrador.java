@@ -2,7 +2,6 @@ package com.reto2018;
 
 
 import oracle.jdbc.internal.OracleTypes;
-import org.jasypt.util.text.StrongTextEncryptor;
 
 import javax.swing.*;
 import javax.swing.event.ListSelectionEvent;

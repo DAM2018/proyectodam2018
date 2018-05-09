@@ -1,23 +1,35 @@
 package com.reto2018;
 
-import org.jasypt.util.text.StrongTextEncryptor;
 
 import javax.swing.*;
-import javax.swing.table.DefaultTableModel;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.io.BufferedReader;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
-import java.sql.*;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 
 public class SuperUsuario {
 
 
+    private JTabbedPane tabbedPane1;
+    private JPanel panel1;
+    private JTable table1;
+    private JScrollPane scrollPane1;
+    private JTextField textField1;
+    private JTextField textField2;
+    private JTextField textField3;
+    private JButton añadirButton;
+    private JButton actualizarButton1;
+    private JButton eliminarButton;
+    private JPasswordField passwordField1;
+    private JPasswordField passwordField2;
+    private JButton cambiarButton;
+    private JTabbedPane tabbedPane2;
+    private JTable table2;
+    private JTable table3;
+    private JList list1;
+    private JList list2;
+    private JList list3;
     public SuperUsuario() throws SQLException, ClassNotFoundException {
 
         JFrame frame = new JFrame("SuperUsuario");
@@ -168,24 +180,4 @@ public class SuperUsuario {
             }
         });
     }
-
-    private JTabbedPane tabbedPane1;
-    private JPanel panel1;
-    private JTable table1;
-    private JScrollPane scrollPane1;
-    private JTextField textField1;
-    private JTextField textField2;
-    private JTextField textField3;
-    private JButton añadirButton;
-    private JButton actualizarButton1;
-    private JButton eliminarButton;
-    private JPasswordField passwordField1;
-    private JPasswordField passwordField2;
-    private JButton cambiarButton;
-    private JTabbedPane tabbedPane2;
-    private JTable table2;
-    private JTable table3;
-    private JList list1;
-    private JList list2;
-    private JList list3;
 }

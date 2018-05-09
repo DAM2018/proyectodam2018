@@ -8,22 +8,27 @@ import org.jfree.chart.axis.NumberTickUnit;
 import org.jfree.chart.plot.PlotOrientation;
 import org.jfree.chart.plot.XYPlot;
 import org.jfree.chart.renderer.xy.XYLineAndShapeRenderer;
-import org.jfree.chart.ui.ApplicationFrame;
 import org.jfree.data.RangeType;
 import org.jfree.data.xy.DefaultXYDataset;
 import org.jfree.data.xy.XYDataset;
 
-import javax.swing.*;
 import java.awt.*;
+import java.nio.*;
 import java.sql.*;
 
-public class Grafico {
+public class Grafico{
+
+
 
     private ChartPanel cp;
     private JFreeChart chart;
 
     public Grafico() {
 
+        ByteBuffer b = ByteBuffer.allocate(10);
+
+
+        System.out.println(b.isReadOnly());
 
         XYDataset ds = createDataset();
 
@@ -197,7 +202,7 @@ public class Grafico {
         // ds.addSeries("series2", data2);
 
 
-        return ds;
+        return (XYDataset) ds;
     }
 
     public ChartPanel getCp() {
@@ -215,4 +220,5 @@ public class Grafico {
     public void setChart(JFreeChart chart) {
         this.chart = chart;
     }
+
 }

@@ -12,7 +12,6 @@ import org.jfree.chart.axis.ValueAxis;
 import org.jfree.chart.plot.PlotOrientation;
 import org.jfree.chart.plot.XYPlot;
 import org.jfree.chart.renderer.xy.XYLineAndShapeRenderer;
-import org.jfree.chart.ui.ApplicationFrame;
 import org.jfree.data.RangeType;
 import org.jfree.data.xy.DefaultXYDataset;
 import org.jfree.data.xy.XYDataset;
@@ -31,6 +30,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.image.BufferedImage;
+import java.awt.image.Raster;
 import java.io.*;
 import java.net.URL;
 import java.sql.*;
@@ -41,7 +41,7 @@ import java.text.ParsePosition;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Usuario implements Serializable{
+public class Usuario implements Serializable {
     public Usuario() throws IOException, UnsupportedFlavorException {
 
         JFrame frame = new JFrame("Usuario");
@@ -56,7 +56,7 @@ public class Usuario implements Serializable{
         final DefaultComboBoxModel dcm = new DefaultComboBoxModel();
 
         //dcm.addElement(0);
-        dcm.addElement("");
+        //dcm.addElement("");
         dcm.addElement(1);
         dcm.addElement(2);
         dcm.addElement(3);
@@ -79,7 +79,6 @@ public class Usuario implements Serializable{
         final DefaultComboBoxModel dcm2 = new DefaultComboBoxModel();
 
         //dcm2.addElement(0);
-        dcm2.addElement("");
         dcm2.addElement(1);
         dcm2.addElement(2);
         dcm2.addElement(3);
@@ -133,6 +132,19 @@ public class Usuario implements Serializable{
         comboBox2.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+
+                res1.setText("");
+                res2.setText("");
+                fecha1.setText("");
+                res3.setText("");
+                res4.setText("");
+                fecha2.setText("");
+                res5.setText("");
+                res6.setText("");
+                fecha3.setText("");
+                res7.setText("");
+                res8.setText("");
+                fecha4.setText("");
 
 
                 try {
@@ -210,7 +222,7 @@ public class Usuario implements Serializable{
                     res8.setText(String.valueOf(resultados.get(3).getResultado2()));
                     fecha4.setText(String.valueOf(resultados.get(3).getFecha()));
 
-
+                    resultados.clear();
                 } catch (SQLException e2) {
 
                     //System.out.println(e2.getMessage());
@@ -508,7 +520,7 @@ public class Usuario implements Serializable{
         Grafico g = new Grafico();
         grafico.add(g.getCp(), BorderLayout.CENTER);
         grafico.validate();
-        BufferedImage originalImage = g.getChart().createBufferedImage(500, 300);
+        //BufferedImage originalImage = g.getChart().createBufferedImage(500, 300);
         //gr.setIcon(new ImageIcon(originalImage));
         //URL imageUrl = ClassLoader.getSystemResource(originalImage)
         // g.getCp().doCopy();
@@ -533,8 +545,8 @@ public class Usuario implements Serializable{
         // CopyChartPanel ccp=new C
 
 
-        Image objBufferedImage = g.getChart().getBackgroundImage();
-        /*ByteArrayOutputStream bas = new ByteArrayOutputStream();
+        /*Image objBufferedImage = g.getCp().createImage(500,500);
+        ByteArrayOutputStream bas = new ByteArrayOutputStream();
         try {
             ImageIO.write(objBufferedImage, "png", bas);
         } catch (IOException e) {
@@ -544,26 +556,37 @@ public class Usuario implements Serializable{
         byte[] byteArray=bas.toByteArray();
 
         InputStream in = new ByteArrayInputStream(byteArray);
-        BufferedImage image = ImageIO.read(in);*/
+        BufferedImage image = ImageIO.read(in);
         Graphics graphics = g.getCp().getGraphics();
-        ImageIcon iconQuit = new ImageIcon();
-       // grafico.add(graphics, BorderLayout.CENTER);
+        ImageIcon iconQuit = new ImageIcon();*/
+        // grafico.add(graphics, BorderLayout.CENTER);
 
-        g.getCp().doCopy();
-       /* File outputfile = new File("image.png");
+      /*  System.out.println(g.getCp().getChart().createBufferedImage(500, 500));
+
+       *//* File outputfile = new File("image.png");
         ImageIO.write(image, "png", outputfile);
-*/
+*//*
         Clipboard clipboard = Toolkit.getDefaultToolkit().getSystemClipboard();
-Object o=clipboard.getData(DataFlavor.imageFlavor);
-Transferable t=clipboard.getContents(o);
-        Image result = (Image) t.getTransferData(DataFlavor.imageFlavor);
+//Object o=clipboard.getData(DataFlavor.imageFlavor);
+//Transferable t=clipboard.getContents(o);
+        //      Image result = (Image) t.getTransferData(DataFlavor.imageFlavor);
 
 
         //java.io.Reader r = (java.io.Reader) t.getTransferData(DataFlavor.imageFlavor);
 
-        Image image = (Image)t.getTransferData(DataFlavor.imageFlavor);
-        gr.setIcon(new ImageIcon(image));
 
+        //       Image image = (Image)t.getTransferData(DataFlavor.imageFlavor);
+
+        BufferedImage buffered = new BufferedImage(500, 500, BufferedImage.TYPE_INT_RGB);
+
+        //       buffered.getGraphics().drawImage(image, 0, 0 , null);
+        ImageIO.write(buffered, "jpg", new File("./out3.jpg"));
+
+        File f = new File("./out3.jpg");
+        BufferedImage b = ImageIO.read(f);
+
+        gr.setIcon(new ImageIcon(buffered));
+*/
 
     }
 
@@ -659,7 +682,6 @@ Transferable t=clipboard.getContents(o);
     private JPasswordField passwordField1;
     private JPasswordField passwordField2;
     private JButton cambiarButton;
-    private JLabel gr;
     private List<String> listaEquipos;
 
     public JPanel getGrafico() {

@@ -2,11 +2,13 @@ package com.reto2018;
 
 
 import javax.swing.*;
+import javax.swing.table.DefaultTableModel;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.sql.Statement;
 
 public class SuperUsuario {
 
@@ -27,9 +29,15 @@ public class SuperUsuario {
     private JTabbedPane tabbedPane2;
     private JTable table2;
     private JTable table3;
+    private JTable table4;
+    private JScrollPane scrollPane4;
+    private JButton borrarButton;
+    private JButton añadirDatosDePruebaButton;
+    private JButton eliminarTodoButton;
     private JList list1;
     private JList list2;
     private JList list3;
+
     public SuperUsuario() throws SQLException, ClassNotFoundException {
 
         JFrame frame = new JFrame("SuperUsuario");
@@ -48,7 +56,9 @@ public class SuperUsuario {
         scrollPane1.setViewportView(table1);
 
 
-
+        TablaTriggerEquiposModel ttem = new TablaTriggerEquiposModel(0);
+        table4.setModel(ttem);
+        scrollPane4.setViewportView(table4);
 
         añadirButton.addMouseListener(new MouseAdapter() {
             @Override
@@ -56,17 +66,17 @@ public class SuperUsuario {
                 super.mouseClicked(e);
 
                 try {
-                Connection conexion = Conexion.conexion;
-                PreparedStatement st;
-                String sql = "insert into administradores values (?,?,?)";
+                    Connection conexion = Conexion.conexion;
+                    PreparedStatement st;
+                    String sql = "insert into administradores values (?,?,?)";
 
                     st = conexion.prepareStatement(sql);
 
-                st.setString(1, textField1.getText());
-                st.setString(2, textField2.getText());
-                st.setString(3, textField3.getText());
+                    st.setString(1, textField1.getText());
+                    st.setString(2, textField2.getText());
+                    st.setString(3, textField3.getText());
 
-                st.executeUpdate();
+                    st.executeUpdate();
 
                     tam.actualizarLista();
                     table1.revalidate();
@@ -95,7 +105,7 @@ public class SuperUsuario {
 
                     st.setString(1, textField2.getText());
                     st.setString(2, textField3.getText());
-                    st.setString(3, tam.getValueAt(table1.getSelectedRow(),0).toString());
+                    st.setString(3, tam.getValueAt(table1.getSelectedRow(), 0).toString());
 
                     st.executeUpdate();
 
@@ -123,7 +133,7 @@ public class SuperUsuario {
 
                     st = conexion.prepareStatement(sql);
 
-                    st.setString(1, tam.getValueAt(table1.getSelectedRow(),0).toString());
+                    st.setString(1, tam.getValueAt(table1.getSelectedRow(), 0).toString());
 
                     st.executeUpdate();
 
@@ -143,9 +153,9 @@ public class SuperUsuario {
             @Override
             public void mouseClicked(MouseEvent e) {
                 super.mouseClicked(e);
-                textField1.setText(tam.getValueAt(table1.getSelectedRow(),0).toString());
-                textField2.setText(tam.getValueAt(table1.getSelectedRow(),1).toString());
-                textField3.setText(tam.getValueAt(table1.getSelectedRow(),2).toString());
+                textField1.setText(tam.getValueAt(table1.getSelectedRow(), 0).toString());
+                textField2.setText(tam.getValueAt(table1.getSelectedRow(), 1).toString());
+                textField3.setText(tam.getValueAt(table1.getSelectedRow(), 2).toString());
             }
         });
         cambiarButton.addMouseListener(new MouseAdapter() {
@@ -156,7 +166,7 @@ public class SuperUsuario {
                 try {
                     Connection conexion = Conexion.conexion;
 
-                    if(new String(passwordField1.getPassword()).equals(new String(passwordField2.getPassword()))) {
+                    if (new String(passwordField1.getPassword()).equals(new String(passwordField2.getPassword()))) {
 
                         String sql = "update superusuario set password2=? where usuario='root'";
 
@@ -177,6 +187,44 @@ public class SuperUsuario {
                 } catch (java.lang.NumberFormatException e1) {
                     //e1.printStackTrace();
                 }
+            }
+        });
+        borrarButton.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                super.mouseClicked(e);
+
+                try {
+                    Connection conexion = Conexion.conexion;
+
+
+                    String sql = "delete from tablatriggerequipo";
+
+
+                    Statement st = null;
+
+                    st = conexion.createStatement();
+
+                    st.executeUpdate(sql);
+
+
+                } catch (SQLException e1) {
+                    e1.printStackTrace();
+                }
+
+            }
+
+        });
+        añadirDatosDePruebaButton.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                super.mouseClicked(e);
+            }
+        });
+        eliminarTodoButton.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                super.mouseClicked(e);
             }
         });
     }

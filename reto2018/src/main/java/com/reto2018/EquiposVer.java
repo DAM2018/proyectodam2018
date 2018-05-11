@@ -18,7 +18,7 @@ public class EquiposVer {
 
         Statement st = conexion.createStatement();
 
-        String sql = "select * from equipo";
+        String sql = "select * from equipo order by ordenInsertar";
 
         ResultSet rs=st.executeQuery(sql);
 

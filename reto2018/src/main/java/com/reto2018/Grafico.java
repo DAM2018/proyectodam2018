@@ -16,8 +16,7 @@ import java.awt.*;
 import java.nio.*;
 import java.sql.*;
 
-public class Grafico{
-
+public class Grafico {
 
 
     private ChartPanel cp;
@@ -25,10 +24,6 @@ public class Grafico{
 
     public Grafico() {
 
-        ByteBuffer b = ByteBuffer.allocate(10);
-
-
-        System.out.println(b.isReadOnly());
 
         XYDataset ds = createDataset();
 
@@ -86,42 +81,32 @@ public class Grafico{
     private XYDataset createDataset() {
 
         DefaultXYDataset ds = new DefaultXYDataset();
-
-
-        Connection conexion = Conexion.conexion;
-
-        Statement st = null;
         try {
+
+            Connection conexion = Conexion.conexion;
+
+            Statement st = null;
             st = conexion.createStatement();
-        } catch (SQLException e1) {
-            e1.printStackTrace();
-        }
-        String sql2 = "select distinct equipo from clasificacion2 order by equipo";
 
-        ResultSet rs = null;
-        try {
+            String sql2 = "select distinct equipo from clasificacion2 order by equipo";
+
+            ResultSet rs = null;
             rs = st.executeQuery(sql2);
-        } catch (SQLException e1) {
-            e1.printStackTrace();
-        }
 
-        String[] eq = new String[8];
-        int i = 0;
 
-        try {
+            String[] eq = new String[8];
+            int i = 0;
+
             while (rs.next()) {
 
                 eq[i] = rs.getString(1);
 
                 i++;
             }
-        } catch (SQLException e1) {
-            e1.printStackTrace();
-        }
 
-        String sql = "{call calendario.grafico(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)}";
 
-        try {
+            String sql = "{call calendario.grafico(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)}";
+
 
             for (int j = 0; j < 8; j++) {
 

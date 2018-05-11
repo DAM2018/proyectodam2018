@@ -17,7 +17,7 @@ public class EquiposBd {
         {
             try {
                 declaracion = conexion.createStatement();
-                ResultSet rs = declaracion.executeQuery("SELECT * FROM EQUIPO");
+                ResultSet rs = declaracion.executeQuery("SELECT * FROM Jose_EQUIPO");
 
                 while (rs.next()) {
                     listaDeEquiposDeLaBD.add(
@@ -58,7 +58,7 @@ public class EquiposBd {
         boolean registro = false;
 
         try {
-            PreparedStatement stmt = conexion.prepareStatement("INSERT INTO equipo VALUES (?,?,?,?,?,?)");
+            PreparedStatement stmt = conexion.prepareStatement("INSERT INTO jose_equipo VALUES (?,?,?,?,?,?)");
 
 
             stmt.setString(1, equipo.getNombre());
@@ -101,17 +101,17 @@ public class EquiposBd {
         boolean actualizacion = false;
 
         String nombre = equipo.getNombre();
-        String dni = equipo.getDniDuenyoEquipo();
         String codigo = equipo.getCodigo();
         int ganado = equipo.getGanado();
         int empatado = equipo.getEmpatado();
         int perdido = equipo.getPerdido();
+        String dni = equipo.getDniDuenyoEquipo();
 
 
         try {
 
             PreparedStatement stmt;
-            stmt = conexion.prepareStatement("UPDATE equipo SET nombreequi=?,codigoequi=?,ganados=?,empates=?,perdidos=?,dnidueequi=?  WHERE codigoequi=?");
+            stmt = conexion.prepareStatement("UPDATE jose_equipo SET nombreequi=?,codigoequi=?,ganados=?,empates=?,perdidos=?,dnidueequi=?  WHERE codigoequi=?");
             stmt.setString(1, nombre);
             stmt.setString(2, codigo);
             stmt.setInt(3, ganado);
@@ -150,7 +150,7 @@ public class EquiposBd {
 
         try {
 
-            PreparedStatement stmt = conexion.prepareStatement("DELETE FROM EQUIPO  WHERE CODIGOEQUI=?");
+            PreparedStatement stmt = conexion.prepareStatement("DELETE FROM JOSE_EQUIPO  WHERE CODIGOEQUI=?");
             stmt.setString(1,equipo.getCodigo());
 
             int rowsDeleted = stmt.executeUpdate();

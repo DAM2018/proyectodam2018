@@ -40,7 +40,7 @@ public class VentanaCrudJugadores {
     //Conexiones.
     private VentanaMenuAdministrador ventanaMenuAdministrador;
     private JugadoresBD jugadoresBD;
-    private JugadorDaoImpl jugadorDao;
+
 
 
     //Control de datos modelo.
@@ -134,7 +134,7 @@ public class VentanaCrudJugadores {
             public void actionPerformed(ActionEvent e) {
 
                 try {
-                    if(JugadorDaoImpl.registrar(extraerDatosTexfields())==true){
+                    if(JugadoresBD.registrar(extraerDatosTexfields())==true){
                         JOptionPane.showMessageDialog(contenedorPrincipal,"Jugador creado correctamente");
                         limpiarTexfields();
                         DefaultListModel<Jugador>modelo = new DefaultListModel<>();
@@ -156,9 +156,11 @@ public class VentanaCrudJugadores {
             public void actionPerformed(ActionEvent e) {
 
                 try {
-                    JugadorDaoImpl.actualizar(extraerDatosTexfields());
+                    JugadoresBD.actualizar(extraerDatosTexfields());
                     JOptionPane.showMessageDialog(contenedorPrincipal,"Jugador actualizado correctamente");
                     limpiarTexfields();
+
+
                     DefaultListModel<Jugador>modelo = new DefaultListModel<>();
                     modeloLista(modelo);
                 } catch (SQLException excepcion) {
@@ -172,7 +174,7 @@ public class VentanaCrudJugadores {
             @Override
             public void actionPerformed(ActionEvent e) {
 
-                if(JugadorDaoImpl.borrarJugador(extraerDatosTexfields())==true){
+                if(JugadoresBD.borrarJugador(extraerDatosTexfields())==true){
                     JOptionPane.showMessageDialog(contenedorPrincipal,"Jugador eliminado correctamente");
                     limpiarTexfields();
                         DefaultListModel<Jugador>modelo = new DefaultListModel<>();

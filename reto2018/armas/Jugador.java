@@ -1,26 +1,28 @@
 package jose.armas;
 /**
  * @author jose armas.
+ *
  */
 
 import java.util.Objects;
 
 /**
- * Esta clase representa a un jugador.
+ * @Class Esta clase representa a un jugador.
  */
 public class Jugador {
-    /**
-     * Descripción de nombreJugador.
-     */
+
     private String nombreJugador;
-    /**
-     *
-     */
     private String nickJugador;
     private int sueldoJugador;
     private String dniJugador;
     private String caracteristicasJugador;
     private String codigoEquipoJugador;
+    private boolean libre = true;
+
+    //Asociaciones.
+    private Equipo equipo;
+
+
 
     public Jugador() {
     }
@@ -81,6 +83,22 @@ public class Jugador {
 
     public void setCodigoEquipoJugador(String codigoEquipoJugador) {
         this.codigoEquipoJugador = codigoEquipoJugador;
+    }
+
+    public boolean isLibre() {
+        return libre;
+    }
+
+    public void setLibre(boolean libre) {
+        this.libre = libre;
+    }
+
+    public Equipo getEquipo() {
+        return equipo;
+    }
+
+    public void setEquipo(Equipo equipo) {
+        this.equipo = equipo;
     }
 
     @Override

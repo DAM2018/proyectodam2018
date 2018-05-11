@@ -4,16 +4,11 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class DuenyoBD {
+public class UsuarioBD {
 
-    /**
-     * @mtehod duenyoEquipo1() que se encarga de hacer la consulta en la BD para extrar un dueño en concreto.
-     * @return duenyo que tiene como equipo asignado de código 1.
-     * @throws SQLException
-     */
-    public static Duenyo duenyoEquipo1() throws SQLException {
+    public static List<Usuario> usuariosDelaBd() throws SQLException {
 
-        Duenyo duenyo = new Duenyo();
+        List<Usuario> listaDeUsuariosDeLaBD = new ArrayList<>();
 
         Connection conexion = ContraladorBd.abrirConecxion();
 
@@ -22,52 +17,16 @@ public class DuenyoBD {
         {
             try {
                 declaracion = conexion.createStatement();
-                ResultSet rs = declaracion.executeQuery("SELECT * FROM JOSE_DUEÑO WHERE CODIGOEQUIDUE="+1);
-
-                        while(rs.next()){
-                            duenyo= new Duenyo(
-
-
-                                    rs.getString(1),
-                                    rs.getString(2),
-                                    rs.getString(3)
-                            );
-                        }
-
-
-
-                rs.close();
-
-            } catch (SQLException e) {
-                e.printStackTrace();
-                ContraladorBd.cerrarConexion(conexion);
-                throw e;
-            }
-            ContraladorBd.cerrarConexion(conexion);
-        }
-
-        return duenyo;
-    }
-
-    public static List<Duenyo> duenyosDelaBd() throws SQLException {
-
-        List<Duenyo> listaDeDuenyosDeLaBD = new ArrayList<>();
-
-        Connection conexion = ContraladorBd.abrirConecxion();
-
-        Statement declaracion;
-
-        {
-            try {
-                declaracion = conexion.createStatement();
-                ResultSet rs = declaracion.executeQuery("SELECT * FROM JOSE_DUEÑO");
+                ResultSet rs = declaracion.executeQuery("SELECT * FROM usuario");
 
                 while (rs.next()) {
-                    listaDeDuenyosDeLaBD.add(
-                            new Duenyo(
+                    listaDeUsuariosDeLaBD.add(
+                            new Usuario(
                                     rs.getString(1),
                                     rs.getString(2),
-                                    rs.getString(3)
+                                    rs.getString(3),
+                                    rs.getString(4),
+                                    rs.getString(5)
                             )
                     );
                 }
@@ -81,10 +40,10 @@ public class DuenyoBD {
             ContraladorBd.cerrarConexion(conexion);
         }
 
-        return listaDeDuenyosDeLaBD;
+        return listaDeUsuariosDeLaBD;
     }
 
-    public static boolean crear(Duenyo duenyo) throws SQLException {
+    public static boolean crear(Usuario usuario) throws SQLException {
 
         Statement stm = null;
         Connection conexion = ContraladorBd.abrirConecxion();
@@ -92,12 +51,15 @@ public class DuenyoBD {
         boolean registro = false;
 
         try {
-            PreparedStatement stmt = conexion.prepareStatement("INSERT INTO JOSE_DUEÑO VALUES (?,?,?)");
+            PreparedStatement stmt = conexion.prepareStatement("INSERT INTO usuario VALUES (?,?,?,?,?)");
 
 
-            stmt.setString(1, duenyo.getNombreDueño());
-            stmt.setString(2, duenyo.getDniDuenyo());
-            stmt.setString(3, duenyo.getCodigoEquipo());
+            stmt.setString(1, usuario.getNombre());
+            stmt.setString(2, usuario.getMail());
+            stmt.setString(3, usuario.getDni());
+            stmt.setString (4,usuario.getUser());
+            stmt.setString (5,usuario.getPassword());
+
 
             int filas = stmt.executeUpdate();
             System.out.println("Filas afectadas: " + filas);
@@ -119,30 +81,36 @@ public class DuenyoBD {
     }
 
     /**
-     * @param duenyo es el objeto de tipo Equipo que se pasa para ser actualizado en la BD.
+     * @param usuario es el objeto de tipo Usuario que se pasa para ser actualizado en la BD.
      * @return retorna si la actualización está realizada o no (True or false).
      * @throws SQLException que se recoge de las posibles restricciones de la BD.
      * @method método que se encarga de realizar el UPDATE en la BD.
      */
-    public static boolean actualizar(Duenyo duenyo) throws SQLException {
+    public static boolean actualizar(Usuario usuario) throws SQLException {
 
         Statement stm = null;
         Connection conexion = ContraladorBd.abrirConecxion();
 
         boolean actualizacion = false;
 
-        String nombre = duenyo.getNombreDueño();
-        String dni = duenyo.getDniDuenyo();
-        String codigo = duenyo.getCodigoEquipo();
+        String nombre = usuario.getNombre();
+        String dni = usuario.getDni();
+        String mail = usuario.getMail();
+        String user = usuario.getUser();
+        String contra = usuario.getPassword();
 
         try {
 
             PreparedStatement stmt;
-            stmt = conexion.prepareStatement("UPDATE JOSE_DUEÑO SET nombredue=?,dnidue=?,codigoequidue=? WHERE dnidue=?");
+            stmt = conexion.prepareStatement
+                    ("UPDATE usuario SET nombre=?,mail=?,dni=?,usuario=?,contraseña=? WHERE dni=?");
             stmt.setString(1, nombre);
-            stmt.setString(2, dni);
-            stmt.setString(3, codigo);
-            stmt.setString(4, dni);
+            stmt.setString(2, mail);
+            stmt.setString(3, dni);
+            stmt.setString(4, user);
+            stmt.setString(5, contra);
+            stmt.setString(6, dni);
+
 
             int i = stmt.executeUpdate();
 
@@ -163,19 +131,19 @@ public class DuenyoBD {
     }
 
     /**
-     * @param duenyo que se le pasa a función para que sea eliminado.
+     * @param usuario que se le pasa a función para que sea eliminado.
      * @return la variable borrado como True, si es borrado o False si es el caso contrario.
      * @throws SQLException que se lanza en el caso de detectar restricciones de la BD.
-     * @method borrarDuenyo  que se encarga de eliminar un duenyo.
+     * @method borrarDuenyo  que se encarga de eliminar un usuario.
      */
-    public static boolean borrarDuenyo(Duenyo duenyo) throws SQLException {
+    public static boolean borrarUsuario(Usuario usuario) throws SQLException {
         boolean borrado = false;
         Connection conexion = ContraladorBd.abrirConecxion();
 
         try {
 
-            PreparedStatement stmt = conexion.prepareStatement("DELETE FROM JOSE_DUEÑO WHERE dnidue=?");
-            stmt.setString(1, duenyo.getDniDuenyo());
+            PreparedStatement stmt = conexion.prepareStatement("DELETE FROM usuario  WHERE dni=?");
+            stmt.setString(1, usuario.getDni());
 
             int rowsDeleted = stmt.executeUpdate();
 

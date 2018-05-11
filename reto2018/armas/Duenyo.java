@@ -1,5 +1,6 @@
 package jose.armas;
 
+import java.util.List;
 import java.util.Objects;
 
 public class Duenyo {
@@ -8,6 +9,35 @@ public class Duenyo {
     private String dniDuenyo;
     private String codigoEquipo;
 
+    //Asociación.
+    private List<Jugador> jugadorList;
+    private Equipo equipo;
+    private VentanaMenuDuenyo ventanaMenuDuenyo;
+
+    public VentanaMenuDuenyo getVentanaMenuDuenyo() {
+        return ventanaMenuDuenyo;
+    }
+
+    public void setVentanaMenuDuenyo(VentanaMenuDuenyo ventanaMenuDuenyo) {
+        this.ventanaMenuDuenyo = ventanaMenuDuenyo;
+    }
+
+    public Equipo getEquipo() {
+        return equipo;
+    }
+
+
+
+    public void setJugadorList(List<Jugador> jugadorList) {
+        this.jugadorList = jugadorList;
+    }
+
+    public void setEquipo(Equipo equipo) {
+        this.equipo = equipo;
+    }
+
+
+    //Constructores.
 
     public Duenyo() {
     }

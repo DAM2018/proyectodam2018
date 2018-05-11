@@ -1,5 +1,6 @@
 package jose.armas;
 
+import java.util.List;
 import java.util.Objects;
 
 public class Equipo {
@@ -10,11 +11,34 @@ public class Equipo {
     private int empatado;
     private int perdido;
     private String dniDuenyoEquipo;
+    private boolean asigandoDuenyo;
 
     //Asociaciones.
     private VentanaMenuAdministrador ventanaMenuAdministrador;
     private Jugador jugadorClaseConexion;
+    private List<Jugador> jugadorList;
+    private Duenyo duenyo;
+    private VentanaMenuDuenyo ventanaMenuDuenyo;
 
+    public VentanaMenuDuenyo getVentanaMenuDuenyo() {
+        return ventanaMenuDuenyo;
+    }
+
+    public void setVentanaMenuDuenyo(VentanaMenuDuenyo ventanaMenuDuenyo) {
+        this.ventanaMenuDuenyo = ventanaMenuDuenyo;
+    }
+
+    public Duenyo getDuenyo() {
+        return duenyo;
+    }
+
+    public void setDuenyo(Duenyo duenyo) {
+        this.duenyo = duenyo;
+    }
+
+    public void setJugadorList(List<Jugador> jugadorList) {
+        this.jugadorList = jugadorList;
+    }
 
     public Equipo(String nombre, String codigo, int ganado, int empatado, int perdido, String dniDuenyoEquipo) {
         this.nombre = nombre;
@@ -89,6 +113,13 @@ public class Equipo {
         this.jugadorClaseConexion = jugadorClaseConexion;
     }
 
+    public boolean isAsigandoDuenyo() {
+        return asigandoDuenyo;
+    }
+
+    public void setAsigandoDuenyo(boolean asigandoDuenyo) {
+        this.asigandoDuenyo = asigandoDuenyo;
+    }
 
     @Override
     public boolean equals(Object o) {

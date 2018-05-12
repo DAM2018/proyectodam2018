@@ -42,7 +42,7 @@ public class VentanaCrudDuenyo {
         frame.setLocationRelativeTo(null);
         frame.setVisible(true);
 
-        obtenerDueñosBdGenerarModeloListaEinsertarloEnElJlist();
+        obtenerDuenyosBdGenerarModeloListaEinsertarloEnElJlist();
         obtenerEquiposBdGenerarModeloListaEinsertarloEnElJlist();
 
 
@@ -74,6 +74,13 @@ public class VentanaCrudDuenyo {
 
                 try {
                     DuenyoBD.crear(nuevoDuenyoExtraidoDeLosDatosTexfields());
+                    DefaultListModel<Duenyo>equipoDefaultListModel = new DefaultListModel<>();
+                    for (Duenyo duenyo:DuenyoBD.duenyosDelaBd()) {
+                        equipoDefaultListModel.addElement(duenyo);
+                    }
+                    list1Duenyos.setModel(equipoDefaultListModel);
+                    limpiarTexfields();
+
                 } catch (SQLException exception) {
                     JOptionPane.showMessageDialog(contendorPrincipal,exception.getMessage());
                 }
@@ -86,9 +93,38 @@ public class VentanaCrudDuenyo {
 
                 try {
                     DuenyoBD.actualizar(nuevoDuenyoExtraidoDeLosDatosTexfields());
+                    DefaultListModel<Duenyo>duenyoDefaultListModel = new DefaultListModel<>();
+                    for (Duenyo duenyo:DuenyoBD.duenyosDelaBd()) {
+                        duenyoDefaultListModel.addElement(duenyo);
+                    }
+                    list1Duenyos.setModel(duenyoDefaultListModel);
+
+
                 } catch (SQLException exception) {
                     JOptionPane.showMessageDialog(contendorPrincipal,exception.getMessage());
                 }
+
+            }
+        });
+        borrarButton.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mousePressed(MouseEvent e) {
+                super.mousePressed(e);
+
+                try {
+                    DuenyoBD.borrarDuenyo(nuevoDuenyoExtraidoDeLosDatosTexfields());
+                    DefaultListModel<Duenyo>duenyoDefaultListModel = new DefaultListModel<>();
+                    for (Duenyo duenyo:DuenyoBD.duenyosDelaBd()) {
+                        duenyoDefaultListModel.addElement(duenyo);
+                    }
+                    list1Duenyos.setModel(duenyoDefaultListModel);
+                    limpiarTexfields();
+
+
+                } catch (SQLException exception) {
+                    JOptionPane.showMessageDialog(contendorPrincipal,exception.getMessage());
+                }
+
 
             }
         });
@@ -99,7 +135,7 @@ public class VentanaCrudDuenyo {
     /**
      * @method que obtiene los dueños de la BD para crear un ModeloLista e insertarlo en el Jlist.
      */
-    private void obtenerDueñosBdGenerarModeloListaEinsertarloEnElJlist() {
+    private void obtenerDuenyosBdGenerarModeloListaEinsertarloEnElJlist() {
         List<Duenyo> listaDeDuenyos = null;
         try {
             listaDeDuenyos = DuenyoBD.duenyosDelaBd();

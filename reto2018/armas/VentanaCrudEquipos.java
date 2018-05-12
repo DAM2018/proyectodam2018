@@ -109,6 +109,7 @@ public class VentanaCrudEquipos {
                         equipoDefaultListModel.addElement(equipe);
                     }
                     list1Equipos.setModel(equipoDefaultListModel);
+                    limpiarTexfields();
                 } catch (SQLException excepcion) {
                     JOptionPane.showMessageDialog(contenedorPrincipal,excepcion.getMessage());
                 }
@@ -152,6 +153,7 @@ public class VentanaCrudEquipos {
                         equipoDefaultListModel.addElement(equipe);
                     }
                     list1Equipos.setModel(equipoDefaultListModel);
+                    limpiarTexfields();
                 } catch (SQLException excepcion) {
                     JOptionPane.showMessageDialog(contenedorPrincipal,excepcion.getMessage());
                 }
@@ -168,6 +170,7 @@ public class VentanaCrudEquipos {
                         equipoDefaultListModel.addElement(equipe);
                     }
                     list1Equipos.setModel(equipoDefaultListModel);
+
                 } catch (SQLException excepcion) {
                     JOptionPane.showMessageDialog(contenedorPrincipal,excepcion.getMessage());
                 }

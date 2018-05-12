@@ -49,7 +49,4 @@ public class Inicio {
         return login;
     }
 
-    public static void setLogin(Login login) {
-        Inicio.login = login;
-    }
 }

@@ -45,32 +45,16 @@ public class Conexion {
         return servidor;
     }
 
-    public static void setServidor(String servidor) {
-        Conexion.servidor = servidor;
-    }
-
     public static String getPuerto() {
         return puerto;
-    }
-
-    public static void setPuerto(String puerto) {
-        Conexion.puerto = puerto;
     }
 
     public static String getSid() {
         return sid;
     }
 
-    public static void setSid(String sid) {
-        Conexion.sid = sid;
-    }
-
     public static String getLogin() {
         return login;
-    }
-
-    public static void setLogin(String login) {
-        Conexion.login = login;
     }
 
     public static String getPassword() {
@@ -81,11 +65,5 @@ public class Conexion {
         Conexion.password = password;
     }
 
-    public static String getUrl() {
-        return url;
-    }
 
-    public static void setUrl(String url) {
-        Conexion.url = url;
-    }
 }

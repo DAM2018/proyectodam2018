@@ -13,11 +13,6 @@ public class TablaJugadoresModel extends AbstractTableModel {
 
     private List<Jugador> jugadores;
 
-    public TablaJugadoresModel() {
-
-        jugadores = new ArrayList<Jugador>();
-
-    }
 
     public TablaJugadoresModel(int j) throws SQLException, ClassNotFoundException {
         jugadores = JugadoresVer.jugadores();

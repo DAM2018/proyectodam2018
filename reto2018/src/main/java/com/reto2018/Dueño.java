@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Abre la ventana de los administradores
+ * Abre la ventana de los dueños
  *
  * @author Iñigo, Jose, Mikel
  * @since 2018 -05-11
@@ -19,7 +19,7 @@ public class Dueño {
     /**
      * <p></p>
      */
-    private JPanel panel11;
+    private JPanel panel;
     /**
      * <p></p>
      */
@@ -376,6 +376,7 @@ public class Dueño {
      * <p></p>
      */
     private Connection conexion = Conexion.conexion;
+    private String dueño=Inicio.getLogin().getNombreDue().get(Inicio.getLogin().getDu() - 1);
 
 
     /**
@@ -392,7 +393,7 @@ public class Dueño {
     public Dueño() throws SQLException, ClassNotFoundException {
 
         JFrame frame = new JFrame("Dueño");
-        frame.setContentPane(panel11);
+        frame.setContentPane(panel);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.pack();
         frame.setVisible(true);
@@ -821,7 +822,7 @@ public class Dueño {
                                                     st5.execute(sql);
 
 
-                                                    sql = "update jugador set CodigoEquiJug=?,actualizacion=seq.nextval where dnijug='" + tjm.getValueAt(table1.getSelectedRow(), 3).toString() + "'";
+                                                    sql = "update jugador set CodigoEquiJug=?,numaccion=seq3.nextval,administradorodueño=? where dnijug='" + tjm.getValueAt(table1.getSelectedRow(), 3).toString() + "'";
 
 
                                                     PreparedStatement st = conexion.prepareStatement(sql);
@@ -829,7 +830,7 @@ public class Dueño {
                                                     st = conexion.prepareStatement(sql);
 
                                                     st.setString(1, listaEquipos.get(Inicio.getLogin().getDu() - 1));
-                                                    //st.setInt(2, seq.nextval);
+                                                    st.setString(2, dueño);
 
                                                     st.executeUpdate();
 
@@ -881,14 +882,14 @@ public class Dueño {
                                                       st5.execute(sql);
 
 
-                                                      sql = "update jugador set CodigoEquiJug='0' where dnijug='" + tjm2.getValueAt(table2.getSelectedRow(), 3).toString() + "'";
+                                                      sql = "update jugador set CodigoEquiJug='0',administradorodueño=? where dnijug='" + tjm2.getValueAt(table2.getSelectedRow(), 3).toString() + "'";
 
 
                                                       PreparedStatement st;
 
                                                       st = conexion.prepareStatement(sql);
 
-                                                      //st.setNull(1,java.sql.Types.INTEGER);
+                                                      st.setString(1,dueño);
 
                                                       st.executeUpdate();
 

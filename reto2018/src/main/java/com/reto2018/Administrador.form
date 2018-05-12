@@ -504,18 +504,6 @@
                           <text value=""/>
                         </properties>
                       </component>
-                      <component id="c7ce8" class="javax.swing.JTextField" binding="textField7" default-binding="true">
-                        <constraints>
-                          <grid row="0" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
-                            <preferred-size width="150" height="-1"/>
-                          </grid>
-                        </constraints>
-                        <properties>
-                          <background color="-5129424"/>
-                          <font size="26"/>
-                          <foreground color="-15197859"/>
-                        </properties>
-                      </component>
                       <component id="b042" class="javax.swing.JLabel">
                         <constraints>
                           <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
@@ -533,6 +521,18 @@
                         <properties>
                           <foreground color="-5129424"/>
                           <text value="Actualizar"/>
+                        </properties>
+                      </component>
+                      <component id="c7ce8" class="javax.swing.JTextField" binding="textField7" default-binding="true">
+                        <constraints>
+                          <grid row="0" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+                            <preferred-size width="150" height="-1"/>
+                          </grid>
+                        </constraints>
+                        <properties>
+                          <background color="-5129424"/>
+                          <font size="26"/>
+                          <foreground color="-15197859"/>
                         </properties>
                       </component>
                     </children>
@@ -1473,7 +1473,9 @@
                       </grid>
                       <component id="e680a" class="javax.swing.JButton" binding="actualizarResultadoFechaButton" default-binding="true">
                         <constraints>
-                          <grid row="5" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                          <grid row="5" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false">
+                            <preferred-size width="-1" height="50"/>
+                          </grid>
                         </constraints>
                         <properties>
                           <text value="Insertar"/>

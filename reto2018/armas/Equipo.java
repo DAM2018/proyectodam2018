@@ -19,6 +19,20 @@ public class Equipo {
     private List<Jugador> jugadorList;
     private Duenyo duenyo;
     private VentanaMenuDuenyo ventanaMenuDuenyo;
+    private List<Jornada>jornadas;
+    private List<Partido>partidos;
+
+    public List<Jugador> getJugadorList() {
+        return jugadorList;
+    }
+
+    public List<Jornada> getJornadas() {
+        return jornadas;
+    }
+
+    public List<Partido> getPartidos() {
+        return partidos;
+    }
 
     public VentanaMenuDuenyo getVentanaMenuDuenyo() {
         return ventanaMenuDuenyo;
@@ -38,6 +52,9 @@ public class Equipo {
 
     public void setJugadorList(List<Jugador> jugadorList) {
         this.jugadorList = jugadorList;
+    }
+
+    public Equipo() {
     }
 
     public Equipo(String nombre, String codigo, int ganado, int empatado, int perdido, String dniDuenyoEquipo) {

@@ -21,6 +21,7 @@ public class Jugador {
 
     //Asociaciones.
     private Equipo equipo;
+    private Plantilla plantilla;
 
 
 
@@ -118,6 +119,6 @@ public class Jugador {
 
     @Override
     public String toString() {
-        return nombreJugador+" "+nickJugador;
+        return nombreJugador+" ---> "+sueldoJugador+" euros";
     }
 }

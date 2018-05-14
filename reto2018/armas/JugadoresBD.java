@@ -89,6 +89,48 @@ public class JugadoresBD {
         return lista;
     }
 
+    public static List<Jugador> listaDeJugadoresLIbres()throws SQLException{
+
+        List<Jugador> lista = new ArrayList<>();
+        List<Jugador>listaLIbres = new ArrayList<>();
+
+        Connection conexion=null;
+        try {
+            conexion = ContraladorBd.abrirConecxion();
+
+            Statement st =conexion.createStatement();
+            ResultSet rs = st.executeQuery("SELECT * FROM JOSE_JUGADOR" );
+
+            while (rs.next()) {
+
+                lista.add(
+                        new Jugador(
+                                rs.getString(1),
+                                rs.getString(2),
+                                rs.getInt(3),
+                                rs.getString(4),
+                                rs.getString(5),
+                                rs.getString(6)
+                        )
+                );
+            }
+            st.close();
+
+        } catch (SQLException ex) {
+            ContraladorBd.cerrarConexion(conexion);
+            throw ex;
+        }
+        ContraladorBd.cerrarConexion(conexion);
+
+        for (Jugador j:lista) {
+            if(j.getCodigoEquipoJugador()==null){
+                listaLIbres.add(j);
+            }
+        }
+
+        return listaLIbres;
+    }
+
 
     public static boolean registrar(Jugador jugador) throws SQLException {
 
@@ -158,6 +200,51 @@ public class JugadoresBD {
             stmt.setString(5, caracteristicas);
             stmt.setString(6, codigoEquipo);
             stmt.setString(7, dni);
+
+            int i = stmt.executeUpdate();
+
+            if (i> 0) {
+                actualizacion = true;
+            }
+
+        } catch (SQLException e) {
+            System.out.println("ERROR: ");
+            System.out.println(e.getMessage());
+            ContraladorBd.cerrarConexion(conexion);
+            throw e;
+        }
+        ContraladorBd.cerrarConexion(conexion);
+
+        return actualizacion;
+
+    }
+
+    /**
+     * @param jugador
+     * @method actualizar Update el Jugador que recibe por parámetro y loactualiza en la BD.
+     */
+    public static boolean actualizarCodigoEquipoDelJugador(Jugador jugador) throws SQLException {
+
+        Statement stm = null;
+        Connection conexion = ContraladorBd.abrirConecxion();
+
+        boolean actualizacion = false;
+
+        String nombre = jugador.getNombreJugador();
+        String dni = jugador.getDniJugador();
+        Integer salario = jugador.getSueldoJugador();
+        String nick = jugador.getNickJugador();
+        String caracteristicas = jugador.getCaracteristicasJugador();
+        String codigoEquipo = jugador.getCodigoEquipoJugador();
+
+
+        try {
+
+            PreparedStatement stmt;
+            stmt = conexion.prepareStatement("UPDATE JOSE_JUGADOR SET CODIGOEQUIJUG=?  WHERE dnijug=?");
+
+            stmt.setString(1, codigoEquipo);
+            stmt.setString(2, dni);
 
             int i = stmt.executeUpdate();
 

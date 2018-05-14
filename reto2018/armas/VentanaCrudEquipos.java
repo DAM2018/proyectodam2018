@@ -52,7 +52,7 @@ public class VentanaCrudEquipos {
         frame.setVisible(true);
 
 
-       obtenerEquiposBdGenerarModeloListaEinsertarloEnElJlist();
+        obtenerEquiposBdGenerarModeloListaEinsertarloEnElJlist();
 
         volverAlMenuButton.addKeyListener(new KeyAdapter() {
             @Override
@@ -83,17 +83,21 @@ public class VentanaCrudEquipos {
 
                 List<Equipo> equipos = EquiposBd.equiposDeLaBD();
                 String texto = textFieldDeBusqueda.getText();
+                char c = texto.charAt(0);
+                String compracion = "" + c + "";
 
                 DefaultListModel<Equipo> equipoDefaultListModel = new DefaultListModel<>();
 
                 for (Equipo equipo : equipos) {
-                    if (texto.equalsIgnoreCase(equipo.getNombre())) {
+                    char ca = equipo.getNombre().charAt(0);
+                    String g = "" + ca + "";
+
+                    if (g.equalsIgnoreCase(compracion)) {
                         equipoDefaultListModel.addElement(equipo);
                     }
                 }
 
                 list1Equipos.setModel(equipoDefaultListModel);
-
             }
         });
 
@@ -104,14 +108,14 @@ public class VentanaCrudEquipos {
 
                 try {
                     EquiposBd.crear(nuevoEquipoExtraidoDeLosDatosTexfields());
-                    DefaultListModel<Equipo>equipoDefaultListModel = new DefaultListModel<>();
-                    for (Equipo equipe:EquiposBd.equiposDeLaBD()) {
+                    DefaultListModel<Equipo> equipoDefaultListModel = new DefaultListModel<>();
+                    for (Equipo equipe : EquiposBd.equiposDeLaBD()) {
                         equipoDefaultListModel.addElement(equipe);
                     }
                     list1Equipos.setModel(equipoDefaultListModel);
                     limpiarTexfields();
                 } catch (SQLException excepcion) {
-                    JOptionPane.showMessageDialog(contenedorPrincipal,excepcion.getMessage());
+                    JOptionPane.showMessageDialog(contenedorPrincipal, excepcion.getMessage());
                 }
 
             }
@@ -121,7 +125,7 @@ public class VentanaCrudEquipos {
             public void mousePressed(MouseEvent e) {
                 super.mousePressed(e);
 
-                Equipo equipo = (Equipo)list1Equipos.getSelectedValue();
+                Equipo equipo = (Equipo) list1Equipos.getSelectedValue();
 
             }
         });
@@ -136,7 +140,7 @@ public class VentanaCrudEquipos {
             public void mousePressed(MouseEvent e) {
                 super.mousePressed(e);
 
-                Equipo equipo = (Equipo)list1Equipos.getSelectedValue();
+                Equipo equipo = (Equipo) list1Equipos.getSelectedValue();
 
                 cogerObjetoDelListEinsertarDatosEnTexfields(equipo);
 
@@ -148,14 +152,17 @@ public class VentanaCrudEquipos {
 
                 try {
                     EquiposBd.borrarEquipo(nuevoEquipoExtraidoDeLosDatosTexfields());
-                    DefaultListModel<Equipo>equipoDefaultListModel = new DefaultListModel<>();
-                    for (Equipo equipe:EquiposBd.equiposDeLaBD()) {
+                    DefaultListModel<Equipo> equipoDefaultListModel = new DefaultListModel<>();
+
+                    for (Equipo equipe : EquiposBd.equiposDeLaBD()) {
                         equipoDefaultListModel.addElement(equipe);
                     }
                     list1Equipos.setModel(equipoDefaultListModel);
                     limpiarTexfields();
                 } catch (SQLException excepcion) {
-                    JOptionPane.showMessageDialog(contenedorPrincipal,excepcion.getMessage());
+                    JOptionPane.showMessageDialog(contenedorPrincipal, excepcion.getMessage());
+                }catch (NumberFormatException n){
+                    JOptionPane.showMessageDialog(null,"Elija un equipo de la lista");
                 }
             }
         });
@@ -163,16 +170,20 @@ public class VentanaCrudEquipos {
             @Override
             public void actionPerformed(ActionEvent e) {
 
+
+
                 try {
                     EquiposBd.actualizar(nuevoEquipoExtraidoDeLosDatosTexfields());
-                    DefaultListModel<Equipo>equipoDefaultListModel = new DefaultListModel<>();
-                    for (Equipo equipe:EquiposBd.equiposDeLaBD()) {
+                    DefaultListModel<Equipo> equipoDefaultListModel = new DefaultListModel<>();
+                    for (Equipo equipe : EquiposBd.equiposDeLaBD()) {
                         equipoDefaultListModel.addElement(equipe);
                     }
                     list1Equipos.setModel(equipoDefaultListModel);
 
                 } catch (SQLException excepcion) {
-                    JOptionPane.showMessageDialog(contenedorPrincipal,excepcion.getMessage());
+                    JOptionPane.showMessageDialog(contenedorPrincipal, excepcion.getMessage());
+                }catch (NumberFormatException n){
+                    JOptionPane.showMessageDialog(null,"Inserte datos en los espacios en blanco");
                 }
 
             }
@@ -180,8 +191,8 @@ public class VentanaCrudEquipos {
     }
 
     /**
-     * @method que se encarga de obtener los datos de un objeto seleccionado del Jlist y de insertarlos en los Texfields.
      * @param equipo que se pasa a la función para su extracción de sus atributos.
+     * @method que se encarga de obtener los datos de un objeto seleccionado del Jlist y de insertarlos en los Texfields.
      */
     private void cogerObjetoDelListEinsertarDatosEnTexfields(Equipo equipo) {
         textFieldNombreEquipo.setText(equipo.getNombre());
@@ -191,7 +202,7 @@ public class VentanaCrudEquipos {
         String perdido = Integer.toString(equipo.getPerdido());
         textFieldGanados.setText(ganado);
         textFieldEmpates.setText(empatado);
-        textFieldPerdidos.setText( perdido);
+        textFieldPerdidos.setText(perdido);
         textFieldDniDuenyo.setText(equipo.getDniDuenyoEquipo());
     }
 
@@ -209,7 +220,7 @@ public class VentanaCrudEquipos {
         list1Equipos.setModel(modeloLista);
     }
 
-    private void controlDeInserccionesTextFields(DefaultListModel<Equipo>modeloEquipo, int seleccion) throws SQLException {
+    private void controlDeInserccionesTextFields(DefaultListModel<Equipo> modeloEquipo, int seleccion) throws SQLException {
 
         //int seleccion = listJugadores.getSelectedIndex();
         Equipo equipoArellenar = modeloEquipo.getElementAt(seleccion);

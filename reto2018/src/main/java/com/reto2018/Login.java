@@ -16,7 +16,7 @@ public class Login {
     private Administrador administrador;
     private Usuario usuario;
     private SuperUsuario superUsuario;
-    private Dueño dueño;
+    private Duenyo duenyo;
     private List<String> claves = new ArrayList<String>();
     private List<String> usuarios = new ArrayList<String>();
     private List<String> nombresAdministradores = new ArrayList<String>();
@@ -88,15 +88,22 @@ public class Login {
                                                       super.mouseClicked(e);
 
 
-                                                    /*  String servidor = Inicio.getLogin().getTextField1().getText();
-                                                      String puerto = Inicio.getLogin().getTextField2().getText();
-                                                      String sid = Inicio.getLogin().getTextField3().getText();
-                                                      String login = Inicio.getLogin().getTextField4().getText();
-                                                      String password = Inicio.getLogin().getTextField5().getText();
-                                                      String url = "jdbc:oracle:thin:@" + servidor + ":" + puerto + ":" + sid;*/
                                                       boolean accesoUsuario = false;
-                                                      boolean accesoDueños = false;
+                                                      boolean accesoDuenyos = false;
+//Nota de seguridad:
+//Si queremos mayor seguridad quitar estas 8 lineas de abajo, y cargar y descargar el programa para cada tipo de usuario,
+                                                      // si no el ultimo que logea es el que deja el rastro
+                                                      // Esto solo para probar en clase!!!!
 
+
+                                                      claves.clear();
+                                                      usuarios.clear();
+                                                      nombresAdministradores.clear();
+                                                      nombresUsuarios.clear();
+                                                      emails.clear();
+                                                      passwords.clear();
+                                                      nombreDue.clear();
+                                                      passwordDue.clear();
 
                                                       try {
                                                           Conexion.EstablecerConexion();
@@ -136,10 +143,10 @@ public class Login {
                                                           st = conexion.createStatement();
 
 
-                                                          sql = "select nombreDue,passwordDue from dueño order by ordenInsertar";
+                                                          sql = "select nombreDue,passwordDue from duenyo order by ordenInsertar";
 
                                                           rs = st.executeQuery(sql);
-// Cargar listas con los datos de los dueños
+// Cargar listas con los datos de los duenyos
 
                                                           while (rs.next()) {
 
@@ -152,7 +159,7 @@ public class Login {
                                                           int i;
                                                           for (i = 0; i < nombreDue.size(); i++) {
                                                               if (nombreDue.get(i).equals(textField6.getText()) && new String(passwordField1.getPassword()).equals(passwordDue.get(i))) {
-                                                                  accesoDueños = true;
+                                                                  accesoDuenyos = true;
                                                                   du = i + 1;
                                                               }
 
@@ -163,18 +170,19 @@ public class Login {
 
 // Cargar listas con los datos de los administradores
 
-                                                          sql = "select usuario,password2 from administradores";
+                                                          sql = "select nombre,usuario,password2 from administradores";
 
                                                           rs = st.executeQuery(sql);
 
                                                           while (rs.next()) {
 
+                                                              nombresAdministradores.add(rs.getString("nombre"));
                                                               usuarios.add(rs.getString("usuario"));
                                                               claves.add(rs.getString("password2"));
-                                                              nombresAdministradores.add(rs.getString("nombre"));
 
 
                                                           }
+
 
                                                           st = conexion.createStatement();
 
@@ -199,9 +207,8 @@ public class Login {
                                                               }
 
                                                           }
-
+                                                          System.out.println(textField6.getText());
 // Comprobar si el superusuario entra
-
                                                           if (textField6.getText().equals(superusuario) && new String(passwordField1.getPassword()).equals(superpassword)) {
 
 
@@ -212,7 +219,6 @@ public class Login {
                                                               // Comprobar si el administrador entra
 
                                                           } else if (aceptarAdmin) {
-
 
                                                               administrador = new Administrador();
                                                               administrador.setAdministrador(ad);
@@ -225,13 +231,13 @@ public class Login {
                                                               usuario = new Usuario();
 
 
-                                                              // Comprobar si el dueño entra
+                                                              // Comprobar si el duenyo entra
 
-                                                          } else if (accesoDueños) {
+                                                          } else if (accesoDuenyos) {
 
                                                               Conexion.EstablecerConexion();
 
-                                                              dueño = new Dueño();
+                                                              duenyo = new Duenyo();
 
                                                           } else {
 
@@ -243,7 +249,7 @@ public class Login {
                                                           nombreDue.clear();
                                                           passwordDue.clear();
                                                       } catch (SQLException e1) {
-                                                          e1.printStackTrace();
+                                                          //  e1.printStackTrace();
                                                       } catch (ClassNotFoundException e1) {
                                                           e1.printStackTrace();
                                                       } catch (UnsupportedFlavorException e1) {
@@ -303,7 +309,7 @@ public class Login {
 
                                                            } else {
 
-                                                               JOptionPane.showMessageDialog(null, "La contraseña tiene que tener más de 7 caracteres...", "Error", JOptionPane.ERROR_MESSAGE);
+                                                               JOptionPane.showMessageDialog(null, "La contrasenya tiene que tener más de 7 caracteres...", "Error", JOptionPane.ERROR_MESSAGE);
 
                                                            }
 

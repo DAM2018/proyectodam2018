@@ -14,7 +14,7 @@ import java.util.List;
 /**
  * Abre la ventana de los administradores
  *
- * @author Iñigo, Jose, Mikel
+ * @author Inyigo, Jose, Mikel
  * @since 2018 -05-11
  */
 public class Administrador {
@@ -247,51 +247,51 @@ public class Administrador {
     /**
      * <p></p>
      */
-    private JLabel dueñosEq1;
+    private JLabel duenyosEq1;
     /**
      * <p></p>
      */
-    private JLabel dueñosEq2;
+    private JLabel duenyosEq2;
     /**
      * <p></p>
      */
-    private JLabel dueñosEq3;
+    private JLabel duenyosEq3;
     /**
      * <p></p>
      */
-    private JLabel dueñosEq4;
+    private JLabel duenyosEq4;
     /**
      * <p></p>
      */
-    private JLabel dueñosEq5;
+    private JLabel duenyosEq5;
     /**
      * <p></p>
      */
-    private JLabel dueñosEq6;
+    private JLabel duenyosEq6;
     /**
      * <p></p>
      */
-    private JLabel dueñosEq7;
+    private JLabel duenyosEq7;
     /**
      * <p></p>
      */
-    private JLabel dueñosEq8;
+    private JLabel duenyosEq8;
     /**
      * <p></p>
      */
-    private JLabel dueñosInsertar;
+    private JLabel duenyosInsertar;
     /**
      * <p></p>
      */
-    private JLabel dueñosRefresh;
+    private JLabel duenyosRefresh;
     /**
      * <p></p>
      */
-    private JLabel dueñosBorrar;
+    private JLabel duenyosBorrar;
     /**
      * <p></p>
      */
-    private JLabel numDueños;
+    private JLabel numDuenyos;
     /**
      * <p></p>
      */
@@ -427,7 +427,7 @@ public class Administrador {
      *
      * @throws SQLException           the sql exception
      * @throws ClassNotFoundException the class not found exception
-     * @author Iñigo, Jose, Mikel
+     * @author Inyigo, Jose, Mikel
      * @since 2018 -05-11
      * </p>
      */
@@ -454,7 +454,7 @@ public class Administrador {
 
         funcionesEquipos();
 
-        funcionesDueños();
+        funcionesDuenyos();
 
         funcionesPartidos();
 
@@ -467,7 +467,7 @@ public class Administrador {
     }
 
     /**
-     * <p>Carga las acciones del mouse relacionadas con la pestaña EQUIPOS
+     * <p>Carga las acciones del mouse relacionadas con la pestanya EQUIPOS
      * <p>
      * insertarEquipos();
      * <p>
@@ -490,30 +490,30 @@ public class Administrador {
     }
 
     /**
-     * <p>Carga las acciones del mouse relacionadas con la pestaña DUEÑOS
+     * <p>Carga las acciones del mouse relacionadas con la pestanya DUEnyOS
      * <p>
-     * insertarDueños();
+     * insertarDuenyos();
      * <p>
-     * refreshDueños();
+     * refreshDuenyos();
      * <p>
-     * borrarDueños();
+     * borrarDuenyos();
      * <p>
-     * actualizarDueños();
+     * actualizarDuenyos();
      */
 
-    private void funcionesDueños() throws SQLException, ClassNotFoundException {
+    private void funcionesDuenyos() throws SQLException, ClassNotFoundException {
 
-        insertarDueños();
+        insertarDuenyos();
 
-        refreshDueños();
+        refreshDuenyos();
 
-        borrarDueños();
+        borrarDuenyos();
 
-        actualizarDueños();
+        actualizarDuenyos();
     }
 
     /**
-     * <p>Carga las acciones del mouse relacionadas con la pestaña PARTIDOS
+     * <p>Carga las acciones del mouse relacionadas con la pestanya PARTIDOS
      * <p>
      * insertarResultados();
      * <p>
@@ -532,7 +532,7 @@ public class Administrador {
     }
 
     /**
-     * <p>Carga las acciones del mouse relacionadas con la pestaña JUGADORES
+     * <p>Carga las acciones del mouse relacionadas con la pestanya JUGADORES
      * <p>
      * insertarJugador();
      * <p>
@@ -551,7 +551,7 @@ public class Administrador {
     }
 
     /**
-     * <p>Carga las acciones del mouse relacionadas con la pestaña USUARIOS
+     * <p>Carga las acciones del mouse relacionadas con la pestanya USUARIOS
      * <p>
      * borrarUsuario();
      */
@@ -562,7 +562,7 @@ public class Administrador {
     }
 
     /**
-     * <p>Carga las acciones del mouse relacionadas con la pestaña CONFIGURACION
+     * <p>Carga las acciones del mouse relacionadas con la pestanya CONFIGURACION
      * <p>
      * cambiarPassword();
      */
@@ -674,17 +674,17 @@ public class Administrador {
                 equals("8 OK!"))
 
         {
-            dueñosEq1.setText(textField10.getText());
-            dueñosEq2.setText(textField12.getText());
-            dueñosEq3.setText(textField13.getText());
-            dueñosEq4.setText(textField14.getText());
-            dueñosEq5.setText(textField28.getText());
-            dueñosEq6.setText(textField29.getText());
-            dueñosEq7.setText(textField30.getText());
-            dueñosEq8.setText(textField31.getText());
+            duenyosEq1.setText(textField10.getText());
+            duenyosEq2.setText(textField12.getText());
+            duenyosEq3.setText(textField13.getText());
+            duenyosEq4.setText(textField14.getText());
+            duenyosEq5.setText(textField28.getText());
+            duenyosEq6.setText(textField29.getText());
+            duenyosEq7.setText(textField30.getText());
+            duenyosEq8.setText(textField31.getText());
         }
 
-        String sql6 = "{call calendario.verDueños(?)}";
+        String sql6 = "{call calendario.verDuenyos(?)}";
 
         CallableStatement callableStatement6 = null;
         try
@@ -697,27 +697,27 @@ public class Administrador {
 
             callableStatement6.executeUpdate();
             rs = (ResultSet) callableStatement6.getObject(1);
-            List<String> listaDueños = new ArrayList<String>();
+            List<String> listaDuenyos = new ArrayList<String>();
             while (rs.next()) {
                 String nombreDue = rs.getString("NombreDue");
                 String passwordDue = rs.getString("PasswordDue");
 
-                listaDueños.add(nombreDue);
-                listaDueños.add(passwordDue);
+                listaDuenyos.add(nombreDue);
+                listaDuenyos.add(passwordDue);
 
 
             }
 
-            textField7.setText(listaDueños.get(0));
-            d2.setText(listaDueños.get(2));
-            d3.setText(listaDueños.get(4));
-            d4.setText(listaDueños.get(6));
-            d5.setText(listaDueños.get(8));
-            d6.setText(listaDueños.get(10));
-            d7.setText(listaDueños.get(12));
-            d8.setText(listaDueños.get(14));
+            textField7.setText(listaDuenyos.get(0));
+            d2.setText(listaDuenyos.get(2));
+            d3.setText(listaDuenyos.get(4));
+            d4.setText(listaDuenyos.get(6));
+            d5.setText(listaDuenyos.get(8));
+            d6.setText(listaDuenyos.get(10));
+            d7.setText(listaDuenyos.get(12));
+            d8.setText(listaDuenyos.get(14));
 
-            listaDueños.clear();
+            listaDuenyos.clear();
 
         } catch (
                 SQLException e1)
@@ -755,11 +755,11 @@ public class Administrador {
                         equals(""))
 
         {
-            numDueños.setText("0");
+            numDuenyos.setText("0");
         } else
 
         {
-            numDueños.setText("8 OK!");
+            numDuenyos.setText("8 OK!");
         }
 
 
@@ -986,7 +986,7 @@ public class Administrador {
                                                                      numEquipos.getText().equals("0")
                                                                      ) {
                                                                  PreparedStatement st;
-                                                                 String sql = "insert into equipo(nombreequi,ordenInsertar,administradorodueño, numaccion) values " +
+                                                                 String sql = "insert into equipo(nombreequi,ordenInsertar,administradoroduenyo, numaccion) values " +
                                                                          "(?,seq.nextval,?,seq3.nextval)";
                                                                  st = conexion.prepareStatement(sql);
                                                                  st.setString(1, textField10.getText());
@@ -995,7 +995,7 @@ public class Administrador {
                                                                  st.executeUpdate();
 
                                                                  PreparedStatement st2;
-                                                                 String sql2 = "insert into equipo(nombreequi,ordenInsertar,administradorodueño, numaccion) values " +
+                                                                 String sql2 = "insert into equipo(nombreequi,ordenInsertar,administradoroduenyo, numaccion) values " +
                                                                          "(?,seq.nextval,?,seq3.nextval)";
                                                                  st2 = conexion.prepareStatement(sql2);
                                                                  st2.setString(1, textField12.getText());
@@ -1004,7 +1004,7 @@ public class Administrador {
                                                                  st2.executeUpdate();
 
                                                                  PreparedStatement st3;
-                                                                 String sql3 = "insert into equipo(nombreequi,ordenInsertar,administradorodueño,numaccion) values " +
+                                                                 String sql3 = "insert into equipo(nombreequi,ordenInsertar,administradoroduenyo,numaccion) values " +
                                                                          "(?,seq.nextval,?,seq3.nextval)";
                                                                  st3 = conexion.prepareStatement(sql3);
                                                                  st3.setString(1, textField13.getText());
@@ -1013,7 +1013,7 @@ public class Administrador {
                                                                  st3.executeUpdate();
 
                                                                  PreparedStatement st4;
-                                                                 String sql4 = "insert into equipo(nombreequi,ordenInsertar,administradorodueño,numaccion) values " +
+                                                                 String sql4 = "insert into equipo(nombreequi,ordenInsertar,administradoroduenyo,numaccion) values " +
                                                                          "(?,seq.nextval,?,seq3.nextval)";
                                                                  st4 = conexion.prepareStatement(sql4);
                                                                  st4.setString(1, textField14.getText());
@@ -1022,7 +1022,7 @@ public class Administrador {
                                                                  st4.executeUpdate();
 
                                                                  PreparedStatement st5;
-                                                                 String sql5 = "insert into equipo(nombreequi,ordenInsertar,administradorodueño,numaccion) values " +
+                                                                 String sql5 = "insert into equipo(nombreequi,ordenInsertar,administradoroduenyo,numaccion) values " +
                                                                          "(?,seq.nextval,?,seq3.nextval)";
                                                                  st5 = conexion.prepareStatement(sql5);
                                                                  st5.setString(1, textField28.getText());
@@ -1031,7 +1031,7 @@ public class Administrador {
                                                                  st5.executeUpdate();
 
                                                                  PreparedStatement st6;
-                                                                 String sql6 = "insert into equipo(nombreequi,ordenInsertar,administradorodueño,numaccion) values " +
+                                                                 String sql6 = "insert into equipo(nombreequi,ordenInsertar,administradoroduenyo,numaccion) values " +
                                                                          "(?,seq.nextval,?,seq3.nextval)";
                                                                  st6 = conexion.prepareStatement(sql6);
                                                                  st6.setString(1, textField29.getText());
@@ -1040,7 +1040,7 @@ public class Administrador {
                                                                  st6.executeUpdate();
 
                                                                  PreparedStatement st7;
-                                                                 String sql7 = "insert into equipo(nombreequi,ordenInsertar,administradorodueño,numaccion) values " +
+                                                                 String sql7 = "insert into equipo(nombreequi,ordenInsertar,administradoroduenyo,numaccion) values " +
                                                                          "(?,seq.nextval,?,seq3.nextval)";
                                                                  st7 = conexion.prepareStatement(sql7);
                                                                  st7.setString(1, textField30.getText());
@@ -1049,7 +1049,7 @@ public class Administrador {
                                                                  st7.executeUpdate();
 
                                                                  PreparedStatement st8;
-                                                                 String sql8 = "insert into equipo(nombreequi,ordenInsertar,administradorodueño,numaccion) values " +
+                                                                 String sql8 = "insert into equipo(nombreequi,ordenInsertar,administradoroduenyo,numaccion) values " +
                                                                          "(?,seq.nextval,?,seq3.nextval)";
                                                                  st8 = conexion.prepareStatement(sql8);
                                                                  st8.setString(1, textField31.getText());
@@ -1058,14 +1058,14 @@ public class Administrador {
                                                                  st8.executeUpdate();
                                                                  numEquipos.setText("8 OK!");
 
-                                                                 dueñosEq1.setText(textField10.getText());
-                                                                 dueñosEq2.setText(textField12.getText());
-                                                                 dueñosEq3.setText(textField13.getText());
-                                                                 dueñosEq4.setText(textField14.getText());
-                                                                 dueñosEq5.setText(textField28.getText());
-                                                                 dueñosEq6.setText(textField29.getText());
-                                                                 dueñosEq7.setText(textField30.getText());
-                                                                 dueñosEq8.setText(textField31.getText());
+                                                                 duenyosEq1.setText(textField10.getText());
+                                                                 duenyosEq2.setText(textField12.getText());
+                                                                 duenyosEq3.setText(textField13.getText());
+                                                                 duenyosEq4.setText(textField14.getText());
+                                                                 duenyosEq5.setText(textField28.getText());
+                                                                 duenyosEq6.setText(textField29.getText());
+                                                                 duenyosEq7.setText(textField30.getText());
+                                                                 duenyosEq8.setText(textField31.getText());
 
                                                              }
 
@@ -1153,7 +1153,7 @@ public class Administrador {
     }
 
     /**
-     * <p>Borra los equipos, los dueños, y los resultados de la base de datos
+     * <p>Borra los equipos, los duenyos, y los resultados de la base de datos
      */
 
     private void borrarEquipos() {
@@ -1164,7 +1164,7 @@ public class Administrador {
                                                    public void mouseClicked(MouseEvent e) {
                                                        super.mouseClicked(e);
                                                        numEquipos.setText("0");
-                                                       numDueños.setText("0");
+                                                       numDuenyos.setText("0");
 
                                                        listaEquipos.clear();
 
@@ -1213,16 +1213,16 @@ public class Administrador {
                                                            textField20.setText("");
                                                            textField23.setText("");
 
-                                                           dueñosEq1.setText("");
-                                                           dueñosEq2.setText("");
-                                                           dueñosEq3.setText("");
-                                                           dueñosEq4.setText("");
-                                                           dueñosEq5.setText("");
-                                                           dueñosEq6.setText("");
-                                                           dueñosEq7.setText("");
-                                                           dueñosEq8.setText("");
+                                                           duenyosEq1.setText("");
+                                                           duenyosEq2.setText("");
+                                                           duenyosEq3.setText("");
+                                                           duenyosEq4.setText("");
+                                                           duenyosEq5.setText("");
+                                                           duenyosEq6.setText("");
+                                                           duenyosEq7.setText("");
+                                                           duenyosEq8.setText("");
 
-                                                           sql = "delete from dueño";
+                                                           sql = "delete from duenyo";
                                                            st = conexion.prepareStatement(sql);
 
 
@@ -1265,9 +1265,9 @@ public class Administrador {
                                                        } catch (SQLException e1) {
                                                           // e1.printStackTrace();
                                                        } catch (java.lang.NumberFormatException e1) {
-                                                           e1.printStackTrace();
+                                                        //   e1.printStackTrace();
                                                        } catch (ClassNotFoundException e1) {
-                                                           e1.printStackTrace();
+                                                       //    e1.printStackTrace();
                                                        }catch (java.lang.IndexOutOfBoundsException e1) {
                                                            //e1.printStackTrace();
                                                        }
@@ -1294,7 +1294,7 @@ public class Administrador {
 
 
                                                  Connection conexion = Conexion.conexion;
-                                                 String sql = "alter trigger triggerDueño disable";
+                                                 String sql = "alter trigger triggerDuenyo disable";
                                                  Statement st5 = conexion.prepareStatement(sql);
                                                  st5 = conexion.prepareStatement(sql);
                                                  st5.execute(sql);
@@ -1311,7 +1311,7 @@ public class Administrador {
                                                  PreparedStatement st;
 
 
-                                                 sql = "update equipo set nombreequi=?,administradorodueño=?,numaccion=seq3.nextval where nombreequi=?";
+                                                 sql = "update equipo set nombreequi=?,administradoroduenyo=?,numaccion=seq3.nextval where nombreequi=?";
 
                                                  st = conexion.prepareStatement(sql);
 
@@ -1322,7 +1322,7 @@ public class Administrador {
                                                  st.executeUpdate();
 
 
-                                                 sql = "update dueño set equidue=? where nombredue=?";
+                                                 sql = "update duenyo set equidue=? where nombredue=?";
 
                                                  st = conexion.prepareStatement(sql);
 
@@ -1387,10 +1387,10 @@ public class Administrador {
 
                                                  }
 
-                                                 dueñosEq1.setText(listaEquipos.get(0));
+                                                 duenyosEq1.setText(listaEquipos.get(0));
 
 
-                                                 sql = "alter trigger triggerDueño enable";
+                                                 sql = "alter trigger triggerDuenyo enable";
                                                  st5 = conexion.prepareStatement(sql);
                                                  st5.execute(sql);
 
@@ -1419,7 +1419,7 @@ public class Administrador {
                                              try {
 
                                                  Connection conexion = Conexion.conexion;
-                                                 String sql = "alter trigger triggerDueño disable";
+                                                 String sql = "alter trigger triggerDuenyo disable";
                                                  Statement st5 = conexion.prepareStatement(sql);
                                                  st5 = conexion.prepareStatement(sql);
                                                  st5.execute(sql);
@@ -1434,7 +1434,7 @@ public class Administrador {
                                                  PreparedStatement st;
 
 
-                                                 sql = "update equipo set nombreequi=?,administradorodueño=?,numaccion=seq3.nextval where nombreequi=?";
+                                                 sql = "update equipo set nombreequi=?,administradoroduenyo=?,numaccion=seq3.nextval where nombreequi=?";
 
                                                  st = conexion.prepareStatement(sql);
 
@@ -1444,7 +1444,7 @@ public class Administrador {
 
                                                  st.executeUpdate();
 
-                                                 sql = "update dueño set equidue=? where nombredue=?";
+                                                 sql = "update duenyo set equidue=? where nombredue=?";
 
                                                  st = conexion.prepareStatement(sql);
 
@@ -1507,9 +1507,9 @@ public class Administrador {
 
 
                                                  }
-                                                 dueñosEq2.setText(listaEquipos.get(1));
+                                                 duenyosEq2.setText(listaEquipos.get(1));
 
-                                                 sql = "alter trigger triggerDueño enable";
+                                                 sql = "alter trigger triggerDuenyo enable";
                                                  st5 = conexion.prepareStatement(sql);
                                                  st5.execute(sql);
 
@@ -1538,7 +1538,7 @@ public class Administrador {
                                              try {
 
                                                  Connection conexion = Conexion.conexion;
-                                                 String sql = "alter trigger triggerDueño disable";
+                                                 String sql = "alter trigger triggerDuenyo disable";
                                                  Statement st5 = conexion.prepareStatement(sql);
                                                  st5 = conexion.prepareStatement(sql);
                                                  st5.execute(sql);
@@ -1553,7 +1553,7 @@ public class Administrador {
                                                  PreparedStatement st;
 
 
-                                                 sql = "update equipo set nombreequi=?,administradorodueño=?,numaccion=seq3.nextval where nombreequi=?";
+                                                 sql = "update equipo set nombreequi=?,administradoroduenyo=?,numaccion=seq3.nextval where nombreequi=?";
 
                                                  st = conexion.prepareStatement(sql);
 
@@ -1563,7 +1563,7 @@ public class Administrador {
 
                                                  st.executeUpdate();
 
-                                                 sql = "update dueño set equidue=? where nombredue=?";
+                                                 sql = "update duenyo set equidue=? where nombredue=?";
 
                                                  st = conexion.prepareStatement(sql);
 
@@ -1626,9 +1626,9 @@ public class Administrador {
 
                                                  }
 
-                                                 dueñosEq3.setText(listaEquipos.get(2));
+                                                 duenyosEq3.setText(listaEquipos.get(2));
 
-                                                 sql = "alter trigger triggerDueño enable";
+                                                 sql = "alter trigger triggerDuenyo enable";
                                                  st5 = conexion.prepareStatement(sql);
                                                  st5.execute(sql);
 
@@ -1656,7 +1656,7 @@ public class Administrador {
                                              try {
 
                                                  Connection conexion = Conexion.conexion;
-                                                 String sql = "alter trigger triggerDueño disable";
+                                                 String sql = "alter trigger triggerDuenyo disable";
                                                  Statement st5 = conexion.prepareStatement(sql);
                                                  st5 = conexion.prepareStatement(sql);
                                                  st5.execute(sql);
@@ -1671,7 +1671,7 @@ public class Administrador {
                                                  PreparedStatement st;
 
 
-                                                 sql = "update equipo set nombreequi=?,administradorodueño=?,numaccion=seq3.nextval where nombreequi=?";
+                                                 sql = "update equipo set nombreequi=?,administradoroduenyo=?,numaccion=seq3.nextval where nombreequi=?";
 
                                                  st = conexion.prepareStatement(sql);
 
@@ -1682,7 +1682,7 @@ public class Administrador {
 
                                                  st.executeUpdate();
 
-                                                 sql = "update dueño set equidue=? where nombredue=?";
+                                                 sql = "update duenyo set equidue=? where nombredue=?";
 
                                                  st = conexion.prepareStatement(sql);
 
@@ -1744,9 +1744,9 @@ public class Administrador {
 
 
                                                  }
-                                                 dueñosEq4.setText(listaEquipos.get(3));
+                                                 duenyosEq4.setText(listaEquipos.get(3));
 
-                                                 sql = "alter trigger triggerDueño enable";
+                                                 sql = "alter trigger triggerDuenyo enable";
                                                  st5 = conexion.prepareStatement(sql);
                                                  st5.execute(sql);
 
@@ -1775,7 +1775,7 @@ public class Administrador {
                                              try {
 
                                                  Connection conexion = Conexion.conexion;
-                                                 String sql = "alter trigger triggerDueño disable";
+                                                 String sql = "alter trigger triggerDuenyo disable";
                                                  Statement st5 = conexion.prepareStatement(sql);
                                                  st5 = conexion.prepareStatement(sql);
                                                  st5.execute(sql);
@@ -1790,7 +1790,7 @@ public class Administrador {
                                                  PreparedStatement st;
 
 
-                                                 sql = "update equipo set nombreequi=?,administradorodueño=?,numaccion=seq3.nextval where nombreequi=?";
+                                                 sql = "update equipo set nombreequi=?,administradoroduenyo=?,numaccion=seq3.nextval where nombreequi=?";
 
                                                  st = conexion.prepareStatement(sql);
 
@@ -1801,7 +1801,7 @@ public class Administrador {
 
                                                  st.executeUpdate();
 
-                                                 sql = "update dueño set equidue=? where nombredue=?";
+                                                 sql = "update duenyo set equidue=? where nombredue=?";
 
                                                  st = conexion.prepareStatement(sql);
 
@@ -1863,9 +1863,9 @@ public class Administrador {
 
 
                                                  }
-                                                 dueñosEq5.setText(listaEquipos.get(4));
+                                                 duenyosEq5.setText(listaEquipos.get(4));
 
-                                                 sql = "alter trigger triggerDueño enable";
+                                                 sql = "alter trigger triggerDuenyo enable";
                                                  st5 = conexion.prepareStatement(sql);
                                                  st5.execute(sql);
 
@@ -1894,7 +1894,7 @@ public class Administrador {
                                              try {
 
                                                  Connection conexion = Conexion.conexion;
-                                                 String sql = "alter trigger triggerDueño disable";
+                                                 String sql = "alter trigger triggerDuenyo disable";
                                                  Statement st5 = conexion.prepareStatement(sql);
                                                  st5 = conexion.prepareStatement(sql);
                                                  st5.execute(sql);
@@ -1909,7 +1909,7 @@ public class Administrador {
                                                  PreparedStatement st;
 
 
-                                                 sql = "update equipo set nombreequi=?,administradorodueño=?,numaccion=seq3.nextval where nombreequi=?";
+                                                 sql = "update equipo set nombreequi=?,administradoroduenyo=?,numaccion=seq3.nextval where nombreequi=?";
 
                                                  st = conexion.prepareStatement(sql);
 
@@ -1920,7 +1920,7 @@ public class Administrador {
 
                                                  st.executeUpdate();
 
-                                                 sql = "update dueño set equidue=? where nombredue=?";
+                                                 sql = "update duenyo set equidue=? where nombredue=?";
 
                                                  st = conexion.prepareStatement(sql);
 
@@ -1980,9 +1980,9 @@ public class Administrador {
 
 
                                                  }
-                                                 dueñosEq6.setText(listaEquipos.get(5));
+                                                 duenyosEq6.setText(listaEquipos.get(5));
 
-                                                 sql = "alter trigger triggerDueño enable";
+                                                 sql = "alter trigger triggerDuenyo enable";
                                                  st5 = conexion.prepareStatement(sql);
                                                  st5.execute(sql);
 
@@ -2011,7 +2011,7 @@ public class Administrador {
                                              try {
 
                                                  Connection conexion = Conexion.conexion;
-                                                 String sql = "alter trigger triggerDueño disable";
+                                                 String sql = "alter trigger triggerDuenyo disable";
                                                  Statement st5 = conexion.prepareStatement(sql);
                                                  st5 = conexion.prepareStatement(sql);
                                                  st5.execute(sql);
@@ -2026,7 +2026,7 @@ public class Administrador {
                                                  PreparedStatement st;
 
 
-                                                 sql = "update equipo set nombreequi=?,administradorodueño=?,numaccion=seq3.nextval where nombreequi=?";
+                                                 sql = "update equipo set nombreequi=?,administradoroduenyo=?,numaccion=seq3.nextval where nombreequi=?";
 
                                                  st = conexion.prepareStatement(sql);
 
@@ -2038,7 +2038,7 @@ public class Administrador {
                                                  st.executeUpdate();
 
 
-                                                 sql = "update dueño set equidue=? where nombredue=?";
+                                                 sql = "update duenyo set equidue=? where nombredue=?";
 
                                                  st = conexion.prepareStatement(sql);
 
@@ -2099,9 +2099,9 @@ public class Administrador {
 
                                                  }
 
-                                                 dueñosEq7.setText(listaEquipos.get(6));
+                                                 duenyosEq7.setText(listaEquipos.get(6));
 
-                                                 sql = "alter trigger triggerDueño enable";
+                                                 sql = "alter trigger triggerDuenyo enable";
                                                  st5 = conexion.prepareStatement(sql);
                                                  st5.execute(sql);
 
@@ -2128,7 +2128,7 @@ public class Administrador {
                                              try {
 
                                                  Connection conexion = Conexion.conexion;
-                                                 String sql = "alter trigger triggerDueño disable";
+                                                 String sql = "alter trigger triggerDuenyo disable";
                                                  Statement st5 = conexion.prepareStatement(sql);
                                                  st5 = conexion.prepareStatement(sql);
                                                  st5.execute(sql);
@@ -2143,7 +2143,7 @@ public class Administrador {
                                                  PreparedStatement st;
 
 
-                                                 sql = "update equipo set nombreequi=?,administradorodueño=?,numaccion=seq3.nextval where nombreequi=?";
+                                                 sql = "update equipo set nombreequi=?,administradoroduenyo=?,numaccion=seq3.nextval where nombreequi=?";
 
                                                  st = conexion.prepareStatement(sql);
 
@@ -2154,7 +2154,7 @@ public class Administrador {
 
                                                  st.executeUpdate();
 
-                                                 sql = "update dueño set equidue=? where nombredue=?";
+                                                 sql = "update duenyo set equidue=? where nombredue=?";
 
                                                  st = conexion.prepareStatement(sql);
 
@@ -2216,9 +2216,9 @@ public class Administrador {
 
 
                                                  }
-                                                 dueñosEq8.setText(listaEquipos.get(7));
+                                                 duenyosEq8.setText(listaEquipos.get(7));
 
-                                                 sql = "alter trigger triggerDueño enable";
+                                                 sql = "alter trigger triggerDuenyo enable";
                                                  st5 = conexion.prepareStatement(sql);
                                                  st5.execute(sql);
 
@@ -2243,12 +2243,12 @@ public class Administrador {
     }
 
     /**
-     * <p>Inserta 8 dueños(al mismo tiempo) en la base de datos
+     * <p>Inserta 8 duenyos(al mismo tiempo) en la base de datos
      */
 
-    private void insertarDueños() {
+    private void insertarDuenyos() {
 
-        dueñosInsertar.addMouseListener(new
+        duenyosInsertar.addMouseListener(new
 
                                                 MouseAdapter() {
                                                     @Override
@@ -2256,7 +2256,7 @@ public class Administrador {
                                                         super.mouseClicked(e);
 
 
-                                                        if (numDueños.getText().equals("0") &&
+                                                        if (numDuenyos.getText().equals("0") &&
                                                                 !textField7.getText().equals("") && //!textField8.getText().equals("") &&
                                                                 !d2.getText().equals("") && //!p2.getText().equals("") &&
                                                                 !d3.getText().equals("") && //!p3.getText().equals("") &&
@@ -2270,93 +2270,93 @@ public class Administrador {
 
                                                                 Connection conexion = Conexion.conexion;
                                                                 PreparedStatement st;
-                                                                String sql = "insert into dueño(nombredue,passworddue,equidue,ordenInsertar,numaccion,administradorodueño) values " +
+                                                                String sql = "insert into duenyo(nombredue,passworddue,equidue,ordenInsertar,numaccion,administradoroduenyo) values " +
                                                                         "(?,?,?,seq2.nextval,seq3.nextval,?)";
                                                                 st = conexion.prepareStatement(sql);
                                                                 st.setString(1, textField7.getText());
                                                                 st.setString(2, textField7.getText());
-                                                                st.setString(3, dueñosEq1.getText());
+                                                                st.setString(3, duenyosEq1.getText());
                                                                 st.setString(4, Inicio.getLogin().getNombresAdministradores().get(Inicio.getLogin().getAd() - 1));
 
                                                                 st.executeUpdate();
 
                                                                 PreparedStatement st2;
-                                                                String sql2 = "insert into dueño(nombredue,passworddue,equidue,ordenInsertar,numaccion,administradorodueño) values " +
+                                                                String sql2 = "insert into duenyo(nombredue,passworddue,equidue,ordenInsertar,numaccion,administradoroduenyo) values " +
                                                                         "(?,?,?,seq2.nextval,seq3.nextval,?)";
                                                                 st2 = conexion.prepareStatement(sql2);
                                                                 st2.setString(1, d2.getText());
                                                                 st2.setString(2, d2.getText());
-                                                                st2.setString(3, dueñosEq2.getText());
+                                                                st2.setString(3, duenyosEq2.getText());
                                                                 st2.setString(4, Inicio.getLogin().getNombresAdministradores().get(Inicio.getLogin().getAd() - 1));
 
                                                                 st2.executeUpdate();
 
                                                                 PreparedStatement st3;
-                                                                String sql3 = "insert into dueño(nombredue,passworddue,equidue,ordenInsertar,numaccion,administradorodueño) values " +
+                                                                String sql3 = "insert into duenyo(nombredue,passworddue,equidue,ordenInsertar,numaccion,administradoroduenyo) values " +
                                                                         "(?,?,?,seq2.nextval,seq3.nextval,?)";
                                                                 st3 = conexion.prepareStatement(sql3);
                                                                 st3.setString(1, d3.getText());
                                                                 st3.setString(2, d3.getText());
-                                                                st3.setString(3, dueñosEq3.getText());
+                                                                st3.setString(3, duenyosEq3.getText());
                                                                 st3.setString(4, Inicio.getLogin().getNombresAdministradores().get(Inicio.getLogin().getAd() - 1));
 
                                                                 st3.executeUpdate();
 
                                                                 PreparedStatement st4;
-                                                                String sql4 = "insert into dueño(nombredue,passworddue,equidue,ordenInsertar,numaccion,administradorodueño) values " +
+                                                                String sql4 = "insert into duenyo(nombredue,passworddue,equidue,ordenInsertar,numaccion,administradoroduenyo) values " +
                                                                         "(?,?,?,seq2.nextval,seq3.nextval,?)";
                                                                 st4 = conexion.prepareStatement(sql4);
                                                                 st4.setString(1, d4.getText());
                                                                 st4.setString(2, d4.getText());
-                                                                st4.setString(3, dueñosEq4.getText());
+                                                                st4.setString(3, duenyosEq4.getText());
                                                                 st4.setString(4, Inicio.getLogin().getNombresAdministradores().get(Inicio.getLogin().getAd() - 1));
 
                                                                 st4.executeUpdate();
 
                                                                 PreparedStatement st5;
-                                                                String sql5 = "insert into dueño(nombredue,passworddue,equidue,ordenInsertar,numaccion,administradorodueño) values " +
+                                                                String sql5 = "insert into duenyo(nombredue,passworddue,equidue,ordenInsertar,numaccion,administradoroduenyo) values " +
                                                                         "(?,?,?,seq2.nextval,seq3.nextval,?)";
                                                                 st5 = conexion.prepareStatement(sql5);
                                                                 st5.setString(1, d5.getText());
                                                                 st5.setString(2, d5.getText());
-                                                                st5.setString(3, dueñosEq5.getText());
+                                                                st5.setString(3, duenyosEq5.getText());
                                                                 st5.setString(4, Inicio.getLogin().getNombresAdministradores().get(Inicio.getLogin().getAd() - 1));
 
                                                                 st5.executeUpdate();
 
                                                                 PreparedStatement st6;
-                                                                String sql6 = "insert into dueño(nombredue,passworddue,equidue,ordenInsertar,numaccion,administradorodueño) values " +
+                                                                String sql6 = "insert into duenyo(nombredue,passworddue,equidue,ordenInsertar,numaccion,administradoroduenyo) values " +
                                                                         "(?,?,?,seq2.nextval,seq3.nextval,?)";
                                                                 st6 = conexion.prepareStatement(sql6);
                                                                 st6.setString(1, d6.getText());
                                                                 st6.setString(2, d6.getText());
-                                                                st6.setString(3, dueñosEq6.getText());
+                                                                st6.setString(3, duenyosEq6.getText());
                                                                 st6.setString(4, Inicio.getLogin().getNombresAdministradores().get(Inicio.getLogin().getAd() - 1));
 
                                                                 st6.executeUpdate();
 
                                                                 PreparedStatement st7;
-                                                                String sql7 = "insert into dueño(nombredue,passworddue,equidue,ordenInsertar,numaccion,administradorodueño) values " +
+                                                                String sql7 = "insert into duenyo(nombredue,passworddue,equidue,ordenInsertar,numaccion,administradoroduenyo) values " +
                                                                         "(?,?,?,seq2.nextval,seq3.nextval,?)";
                                                                 st7 = conexion.prepareStatement(sql7);
                                                                 st7.setString(1, d7.getText());
                                                                 st7.setString(2, d7.getText());
-                                                                st7.setString(3, dueñosEq7.getText());
+                                                                st7.setString(3, duenyosEq7.getText());
                                                                 st7.setString(4, Inicio.getLogin().getNombresAdministradores().get(Inicio.getLogin().getAd() - 1));
 
                                                                 st7.executeUpdate();
 
                                                                 PreparedStatement st8;
-                                                                String sql8 = "insert into dueño(nombredue,passworddue,equidue,ordenInsertar,numaccion,administradorodueño) values " +
+                                                                String sql8 = "insert into duenyo(nombredue,passworddue,equidue,ordenInsertar,numaccion,administradoroduenyo) values " +
                                                                         "(?,?,?,seq2.nextval,seq3.nextval,?)";
                                                                 st8 = conexion.prepareStatement(sql8);
                                                                 st8.setString(1, d8.getText());
                                                                 st8.setString(2, d8.getText());
-                                                                st8.setString(3, dueñosEq8.getText());
+                                                                st8.setString(3, duenyosEq8.getText());
                                                                 st8.setString(4, Inicio.getLogin().getNombresAdministradores().get(Inicio.getLogin().getAd() - 1));
 
                                                                 st8.executeUpdate();
-                                                                numDueños.setText("8 OK!");
+                                                                numDuenyos.setText("8 OK!");
 
                                                             } catch (SQLException e1) {
                                                                 //  e1.printStackTrace();
@@ -2371,12 +2371,12 @@ public class Administrador {
     }
 
     /**
-     * <p>Actualiza los nombres de los dueños ordenados por orden de insercion en la base de datos
+     * <p>Actualiza los nombres de los duenyos ordenados por orden de insercion en la base de datos
      */
 
-    private void refreshDueños() {
+    private void refreshDuenyos() {
 
-        dueñosRefresh.addMouseListener(new
+        duenyosRefresh.addMouseListener(new
 
                                                MouseAdapter() {
                                                    @Override
@@ -2384,14 +2384,14 @@ public class Administrador {
                                                        super.mouseClicked(e);
 
 
-                                                       dueñosEq1.setText("");
-                                                       dueñosEq2.setText("");
-                                                       dueñosEq3.setText("");
-                                                       dueñosEq4.setText("");
-                                                       dueñosEq5.setText("");
-                                                       dueñosEq6.setText("");
-                                                       dueñosEq7.setText("");
-                                                       dueñosEq8.setText("");
+                                                       duenyosEq1.setText("");
+                                                       duenyosEq2.setText("");
+                                                       duenyosEq3.setText("");
+                                                       duenyosEq4.setText("");
+                                                       duenyosEq5.setText("");
+                                                       duenyosEq6.setText("");
+                                                       duenyosEq7.setText("");
+                                                       duenyosEq8.setText("");
 
                                                        textField7.setText("");
                                                        d2.setText("");
@@ -2426,17 +2426,17 @@ public class Administrador {
 
                                                            }
 
-                                                           dueñosEq1.setText(listaEquipos.get(0));
-                                                           dueñosEq2.setText(listaEquipos.get(1));
-                                                           dueñosEq3.setText(listaEquipos.get(2));
-                                                           dueñosEq4.setText(listaEquipos.get(3));
-                                                           dueñosEq5.setText(listaEquipos.get(4));
-                                                           dueñosEq6.setText(listaEquipos.get(5));
-                                                           dueñosEq7.setText(listaEquipos.get(6));
-                                                           dueñosEq8.setText(listaEquipos.get(7));
+                                                           duenyosEq1.setText(listaEquipos.get(0));
+                                                           duenyosEq2.setText(listaEquipos.get(1));
+                                                           duenyosEq3.setText(listaEquipos.get(2));
+                                                           duenyosEq4.setText(listaEquipos.get(3));
+                                                           duenyosEq5.setText(listaEquipos.get(4));
+                                                           duenyosEq6.setText(listaEquipos.get(5));
+                                                           duenyosEq7.setText(listaEquipos.get(6));
+                                                           duenyosEq8.setText(listaEquipos.get(7));
 
 
-                                                           sql2 = "{call calendario.verDueños(?)}";
+                                                           sql2 = "{call calendario.verDuenyos(?)}";
 
 
                                                            callableStatement2 = conexion.prepareCall(sql2);
@@ -2446,27 +2446,27 @@ public class Administrador {
 
                                                            callableStatement2.executeUpdate();
                                                            rs = (ResultSet) callableStatement2.getObject(1);
-                                                           List<String> listaDueños = new ArrayList<String>();
+                                                           List<String> listaDuenyos = new ArrayList<String>();
                                                            while (rs.next()) {
                                                                String nombreDue = rs.getString("nombreDue");
                                                                String passwordDue = rs.getString("passwordDue");
 
-                                                               listaDueños.add(nombreDue);
-                                                               listaDueños.add(passwordDue);
+                                                               listaDuenyos.add(nombreDue);
+                                                               listaDuenyos.add(passwordDue);
 
 
                                                            }
 
-                                                           textField7.setText(listaDueños.get(0));
-                                                           d2.setText(listaDueños.get(2));
-                                                           d3.setText(listaDueños.get(4));
-                                                           d4.setText(listaDueños.get(6));
-                                                           d5.setText(listaDueños.get(8));
-                                                           d6.setText(listaDueños.get(10));
-                                                           d7.setText(listaDueños.get(12));
-                                                           d8.setText(listaDueños.get(14));
+                                                           textField7.setText(listaDuenyos.get(0));
+                                                           d2.setText(listaDuenyos.get(2));
+                                                           d3.setText(listaDuenyos.get(4));
+                                                           d4.setText(listaDuenyos.get(6));
+                                                           d5.setText(listaDuenyos.get(8));
+                                                           d6.setText(listaDuenyos.get(10));
+                                                           d7.setText(listaDuenyos.get(12));
+                                                           d8.setText(listaDuenyos.get(14));
 
-                                                           listaDueños.clear();
+                                                           listaDuenyos.clear();
 
                                                        } catch (SQLException e1) {
                                                            e1.printStackTrace();
@@ -2479,20 +2479,20 @@ public class Administrador {
     }
 
     /**
-     * <p>Borra los los dueños de la base de datos
+     * <p>Borra los los duenyos de la base de datos
      */
 
-    private void borrarDueños() {
+    private void borrarDuenyos() {
 
 
-        dueñosBorrar.addMouseListener(new
+        duenyosBorrar.addMouseListener(new
 
                                               MouseAdapter() {
                                                   @Override
                                                   public void mouseClicked(MouseEvent e) {
                                                       super.mouseClicked(e);
 
-                                                      numDueños.setText("0");
+                                                      numDuenyos.setText("0");
                                                       try {
 
                                                           Connection conexion = Conexion.conexion;
@@ -2500,7 +2500,7 @@ public class Administrador {
                                                           PreparedStatement st;
 
 
-                                                          String sql = "delete from dueño";
+                                                          String sql = "delete from duenyo";
                                                           st = conexion.prepareStatement(sql);
 
 
@@ -2535,10 +2535,10 @@ public class Administrador {
     }
 
     /**
-     * <p>Borra los los dueños de la base de datos uno por uno
+     * <p>Borra los los duenyos de la base de datos uno por uno
      */
 
-    private void actualizarDueños() {
+    private void actualizarDuenyos() {
 
         a1.addMouseListener(new
 
@@ -2554,15 +2554,15 @@ public class Administrador {
                                                 PreparedStatement st;
 
 
-                                                String sql = "update dueño set nombredue=?,passworddue=?, numaccion=seq3.nextval," +
-                                                        "administradorodueño=? where equidue=?";
+                                                String sql = "update duenyo set nombredue=?,passworddue=?, numaccion=seq3.nextval," +
+                                                        "administradoroduenyo=? where equidue=?";
 
                                                 st = conexion.prepareStatement(sql);
 
                                                 st.setString(1, textField7.getText());
                                                 st.setString(2, textField7.getText());
                                                 st.setString(3, Inicio.getLogin().getNombresAdministradores().get(Inicio.getLogin().getAd() - 1));
-                                                st.setString(4, dueñosEq1.getText());
+                                                st.setString(4, duenyosEq1.getText());
 
                                                 st.executeUpdate();
 
@@ -2587,15 +2587,15 @@ public class Administrador {
                                                 PreparedStatement st;
 
 
-                                                String sql = "update dueño set nombredue=?,passworddue=?, numaccion=seq3.nextval," +
-                                                        "administradorodueño=? where equidue=?";
+                                                String sql = "update duenyo set nombredue=?,passworddue=?, numaccion=seq3.nextval," +
+                                                        "administradoroduenyo=? where equidue=?";
 
                                                 st = conexion.prepareStatement(sql);
 
                                                 st.setString(1, d2.getText());
                                                 st.setString(2, d2.getText());
                                                 st.setString(3, Inicio.getLogin().getNombresAdministradores().get(Inicio.getLogin().getAd() - 1));
-                                                st.setString(4, dueñosEq2.getText());
+                                                st.setString(4, duenyosEq2.getText());
 
                                                 st.executeUpdate();
 
@@ -2620,15 +2620,15 @@ public class Administrador {
                                                 PreparedStatement st;
 
 
-                                                String sql = "update dueño set nombredue=?,passworddue=?, numaccion=seq3.nextval," +
-                                                        "administradorodueño=? where equidue=?";
+                                                String sql = "update duenyo set nombredue=?,passworddue=?, numaccion=seq3.nextval," +
+                                                        "administradoroduenyo=? where equidue=?";
 
                                                 st = conexion.prepareStatement(sql);
 
                                                 st.setString(1, d3.getText());
                                                 st.setString(2, d3.getText());
                                                 st.setString(3, Inicio.getLogin().getNombresAdministradores().get(Inicio.getLogin().getAd() - 1));
-                                                st.setString(4, dueñosEq3.getText());
+                                                st.setString(4, duenyosEq3.getText());
 
                                                 st.executeUpdate();
 
@@ -2653,15 +2653,15 @@ public class Administrador {
                                                 PreparedStatement st;
 
 
-                                                String sql = "update dueño set nombredue=?,passworddue=?, numaccion=seq3.nextval," +
-                                                        "administradorodueño=? where equidue=?";
+                                                String sql = "update duenyo set nombredue=?,passworddue=?, numaccion=seq3.nextval," +
+                                                        "administradoroduenyo=? where equidue=?";
 
                                                 st = conexion.prepareStatement(sql);
 
                                                 st.setString(1, d4.getText());
                                                 st.setString(2, d4.getText());
                                                 st.setString(3, Inicio.getLogin().getNombresAdministradores().get(Inicio.getLogin().getAd() - 1));
-                                                st.setString(4, dueñosEq4.getText());
+                                                st.setString(4, duenyosEq4.getText());
 
                                                 st.executeUpdate();
 
@@ -2686,15 +2686,15 @@ public class Administrador {
                                                 PreparedStatement st;
 
 
-                                                String sql = "update dueño set nombredue=?,passworddue=?, numaccion=seq3.nextval," +
-                                                        "administradorodueño=? where equidue=?";
+                                                String sql = "update duenyo set nombredue=?,passworddue=?, numaccion=seq3.nextval," +
+                                                        "administradoroduenyo=? where equidue=?";
 
                                                 st = conexion.prepareStatement(sql);
 
                                                 st.setString(1, d5.getText());
                                                 st.setString(2, d5.getText());
                                                 st.setString(3, Inicio.getLogin().getNombresAdministradores().get(Inicio.getLogin().getAd() - 1));
-                                                st.setString(4, dueñosEq5.getText());
+                                                st.setString(4, duenyosEq5.getText());
 
                                                 st.executeUpdate();
 
@@ -2719,15 +2719,15 @@ public class Administrador {
                                                 PreparedStatement st;
 
 
-                                                String sql = "update dueño set nombredue=?,passworddue=?, numaccion=seq3.nextval" +
-                                                        ",administradorodueño=? where equidue=?";
+                                                String sql = "update duenyo set nombredue=?,passworddue=?, numaccion=seq3.nextval" +
+                                                        ",administradoroduenyo=? where equidue=?";
 
                                                 st = conexion.prepareStatement(sql);
 
                                                 st.setString(1, d6.getText());
                                                 st.setString(2, d6.getText());
                                                 st.setString(3, Inicio.getLogin().getNombresAdministradores().get(Inicio.getLogin().getAd() - 1));
-                                                st.setString(4, dueñosEq6.getText());
+                                                st.setString(4, duenyosEq6.getText());
 
                                                 st.executeUpdate();
 
@@ -2752,15 +2752,15 @@ public class Administrador {
                                                 PreparedStatement st;
 
 
-                                                String sql = "update dueño set nombredue=?,passworddue=?, numaccion=seq3.nextval," +
-                                                        "administradorodueño=? where equidue=?";
+                                                String sql = "update duenyo set nombredue=?,passworddue=?, numaccion=seq3.nextval," +
+                                                        "administradoroduenyo=? where equidue=?";
 
                                                 st = conexion.prepareStatement(sql);
 
                                                 st.setString(1, d7.getText());
                                                 st.setString(2, d7.getText());
                                                 st.setString(3, Inicio.getLogin().getNombresAdministradores().get(Inicio.getLogin().getAd() - 1));
-                                                st.setString(4, dueñosEq7.getText());
+                                                st.setString(4, duenyosEq7.getText());
 
                                                 st.executeUpdate();
 
@@ -2785,15 +2785,15 @@ public class Administrador {
                                                 PreparedStatement st;
 
 
-                                                String sql = "update dueño set nombredue=?,passworddue=?, numaccion=seq3.nextval," +
-                                                        "administradorodueño=? where equidue=?";
+                                                String sql = "update duenyo set nombredue=?,passworddue=?, numaccion=seq3.nextval," +
+                                                        "administradoroduenyo=? where equidue=?";
 
                                                 st = conexion.prepareStatement(sql);
 
                                                 st.setString(1, d8.getText());
                                                 st.setString(2, d8.getText());
                                                 st.setString(3, Inicio.getLogin().getNombresAdministradores().get(Inicio.getLogin().getAd() - 1));
-                                                st.setString(4, dueñosEq8.getText());
+                                                st.setString(4, duenyosEq8.getText());
 
                                                 st.executeUpdate();
 
@@ -3140,7 +3140,7 @@ public class Administrador {
                                              super.mouseClicked(e);
                                              try {
                                                  PreparedStatement st;
-                                                 String sql = "update partido set fecha=?,jornada=?,resultado1=?,resultado2=?, numaccion=seq3.nextval,administradorodueño=? where " +
+                                                 String sql = "update partido set fecha=?,jornada=?,resultado1=?,resultado2=?, numaccion=seq3.nextval,administradoroduenyo=? where " +
                                                          "nombreequiloc=? and nombreequivis=?";
                                                  st = conexion.prepareStatement(sql);
 
@@ -3236,7 +3236,7 @@ public class Administrador {
 
                                              try {
                                                  PreparedStatement st;
-                                                 String sql = "update partido set fecha=?,jornada=?,resultado1=?,resultado2=?,numaccion=seq3.nextval ,administradorodueño=? where " +
+                                                 String sql = "update partido set fecha=?,jornada=?,resultado1=?,resultado2=?,numaccion=seq3.nextval ,administradoroduenyo=? where " +
                                                          "nombreequiloc=? and nombreequivis=?";
                                                  st = conexion.prepareStatement(sql);
 
@@ -3332,7 +3332,7 @@ public class Administrador {
 
                                              try {
                                                  PreparedStatement st;
-                                                 String sql = "update partido set fecha=?,jornada=?,resultado1=?,resultado2=?,numaccion=seq3.nextval,administradorodueño=? where " +
+                                                 String sql = "update partido set fecha=?,jornada=?,resultado1=?,resultado2=?,numaccion=seq3.nextval,administradoroduenyo=? where " +
                                                          "nombreequiloc=? and nombreequivis=?";
                                                  st = conexion.prepareStatement(sql);
 
@@ -3427,7 +3427,7 @@ public class Administrador {
 
                                              try {
                                                  PreparedStatement st;
-                                                 String sql = "update partido set fecha=?,jornada=?,resultado1=?,resultado2=?,numaccion=seq3.nextval,administradorodueño=? where " +
+                                                 String sql = "update partido set fecha=?,jornada=?,resultado1=?,resultado2=?,numaccion=seq3.nextval,administradoroduenyo=? where " +
                                                          "nombreequiloc=? and nombreequivis=?";
                                                  st = conexion.prepareStatement(sql);
 
@@ -3601,7 +3601,7 @@ public class Administrador {
                                                             PreparedStatement st;
 
 
-                                                            String sql = "insert into jugador(nombrejug,nick,sueldo,dnijug,caracteristicas,codigoequijug,administradorodueño,numaccion) values (?,?,?,?,?,?,?,seq3.nextval)";
+                                                            String sql = "insert into jugador(nombrejug,nick,sueldo,dnijug,caracteristicas,codigoequijug,administradoroduenyo,numaccion) values (?,?,?,?,?,?,?,seq3.nextval)";
                                                             st = conexion.prepareStatement(sql);
                                                             st.setString(1, textField1.getText());
                                                             st.setString(2, textField2.getText());
@@ -3653,7 +3653,7 @@ public class Administrador {
                                                           try {
 
                                                               String sql = "update jugador set nombrejug=?, nick=?, sueldo=?, dnijug=?," +
-                                                                      "caracteristicas=?,administradorodueño=?, numaccion=seq3.nextval where dnijug='" + tjm.getValueAt(table1.getSelectedRow(), 3).toString() + "'";
+                                                                      "caracteristicas=?,administradoroduenyo=?, numaccion=seq3.nextval where dnijug='" + tjm.getValueAt(table1.getSelectedRow(), 3).toString() + "'";
 
 
                                                               PreparedStatement st = conexion.prepareStatement(sql);
@@ -3800,7 +3800,7 @@ public class Administrador {
     }
 
     /**
-     * <p>Cambia el usuario y la contraseña del administrador connectado
+     * <p>Cambia el usuario y la contrasenya del administrador connectado
      */
 
     private void cambiarPassword() {

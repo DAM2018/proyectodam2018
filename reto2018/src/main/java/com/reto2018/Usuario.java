@@ -119,7 +119,7 @@ public class Usuario implements Serializable {
     private JLabel equi;
     private JLabel bienvenida;
     private JLabel nombreEquipo;
-    private JLabel nombreDueño;
+    private JLabel nombreDuenyo;
     private JLabel fundacion;
     private JLabel ciudad;
     private JLabel estadio;
@@ -143,7 +143,7 @@ public class Usuario implements Serializable {
      * <p>
      * Controla las acciones permitidas a los usuarios
      *
-     * @author Iñigo, Jose, Mikel
+     * @author Inyigo, Jose, Mikel
      * @since 2018 -05-11
      * </p>
      */
@@ -174,7 +174,7 @@ public class Usuario implements Serializable {
     }
 
 
-    /**<p>Añade las jornadas al combobox y carga listaEquipos con los equipos*/
+    /**<p>Anyade las jornadas al combobox y carga listaEquipos con los equipos*/
     public void datosResultados() {
 
 
@@ -229,7 +229,7 @@ public class Usuario implements Serializable {
         }
     }
 
-    /**<p>Añade las jornadas al combobox*/
+    /**<p>Anyade las jornadas al combobox*/
     public void datosClasificacion() {
 
 
@@ -254,7 +254,7 @@ public class Usuario implements Serializable {
 
     }
 
-    /**<p>Añade los datos para hacer el grafico*/
+    /**<p>Anyade los datos para hacer el grafico*/
     public void datosGrafico() {
 
 
@@ -269,7 +269,7 @@ public class Usuario implements Serializable {
     }
 
 
-    /**<p>Añade los equipos de listaEquipos al combobox de la pestaña plantillas*/
+    /**<p>Anyade los equipos de listaEquipos al combobox de la pestanya plantillas*/
     public void datosPlantillas() {
 
 
@@ -288,7 +288,7 @@ public class Usuario implements Serializable {
 
     }
 
-    /**<p>Añade los equipos de listaEquipos al combobox de la pestaña equipos*/
+    /**<p>Anyade los equipos de listaEquipos al combobox de la pestanya equipos*/
     public void datosEquipos() {
 
 
@@ -634,13 +634,13 @@ public class Usuario implements Serializable {
 
                                                         st = conexion.createStatement();
 
-                                                        sql = "select nombredue,nombre,edad,profesion from dueño where equidue='" + dcm4.getSelectedItem().toString() + "'";
+                                                        sql = "select nombredue,nombre,edad,profesion from duenyo where equidue='" + dcm4.getSelectedItem().toString() + "'";
 
                                                         rs = st.executeQuery(sql);
 
                                                         while (rs.next()) {
 
-                                                            nombreDueño.setText(rs.getString("nombredue"));
+                                                            nombreDuenyo.setText(rs.getString("nombredue"));
                                                             nombre.setText(rs.getString("nombre"));
                                                             edad.setText(String.valueOf(rs.getInt("edad")));
                                                             profesion.setText(rs.getString("profesion"));

@@ -20,7 +20,7 @@ public class SuperUsuario {
     private JTextField textField1;
     private JTextField textField2;
     private JTextField textField3;
-    private JButton añadirButton;
+    private JButton anyadirButton;
     private JButton actualizarButton1;
     private JButton eliminarButton;
     private JPasswordField passwordField1;
@@ -32,7 +32,7 @@ public class SuperUsuario {
     private JTable table4;
     private JScrollPane scrollPane4;
     private JButton borrarButton;
-    private JButton añadirDatosDePruebaButton;
+    private JButton anyadirDatosDePruebaButton;
     private JButton eliminarTodoButton;
     private JScrollPane scrollPane2;
     private JScrollPane scrollPane3;
@@ -46,7 +46,7 @@ public class SuperUsuario {
     private JButton borrarButton4;
     private TablaAdministradoresModel tam = new TablaAdministradoresModel(0);
     private TablaTriggerEquiposModel ttem = new TablaTriggerEquiposModel(0);
-    private TablaTriggerDueñosModel ttdm = new TablaTriggerDueñosModel(0);
+    private TablaTriggerDuenyosModel ttdm = new TablaTriggerDuenyosModel(0);
     private TablaTriggerPartidosModel ttpm = new TablaTriggerPartidosModel(0);
     private TablaTriggerJugadoresModel ttjm = new TablaTriggerJugadoresModel(0);
     private TablaTriggerUsuariosModel ttum = new TablaTriggerUsuariosModel(0);
@@ -119,7 +119,7 @@ public class SuperUsuario {
     private void funcionesTriggers() {
 
         borrarTriggerEquipos();
-        //   borrarTriggerDueños();
+        //   borrarTriggerDuenyos();
         //  borrarTriggerPartidos();
         //   borrarTriggerJugadores();
         //   borrarTriggerUsuarios();
@@ -138,7 +138,7 @@ public class SuperUsuario {
     private void insertarAdministrador() {
 
 
-        añadirButton.addMouseListener(new
+        anyadirButton.addMouseListener(new
 
                                               MouseAdapter() {
                                                   @Override
@@ -357,7 +357,7 @@ public class SuperUsuario {
                                                            Connection conexion = Conexion.conexion;
 
 
-                                                           String sql = "delete from tablatriggedueño";
+                                                           String sql = "delete from tablatriggeduenyo";
 
 
                                                            Statement st = null;
@@ -475,7 +475,7 @@ public class SuperUsuario {
     private void cargarDatos() {
 
 
-        añadirDatosDePruebaButton.addMouseListener(new
+        anyadirDatosDePruebaButton.addMouseListener(new
 
                                                            MouseAdapter() {
                                                                @Override
@@ -523,7 +523,7 @@ public class SuperUsuario {
 
                                                                 callableStatement2.executeUpdate();
                                                             } catch (SQLException e1) {
-                                                                e1.printStackTrace();
+                                                             //   e1.printStackTrace();
                                                             }
                                                         }
                                                     });

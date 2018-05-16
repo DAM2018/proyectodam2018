@@ -29,6 +29,7 @@
         <SOURCES />
       </library>
     </orderEntry>
+    <orderEntry type="library" name="plantuml" level="project" />
   </component>
   <component name="POM File Configuration" pomFile="" />
 </module>

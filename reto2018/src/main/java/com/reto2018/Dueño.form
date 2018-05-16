@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="com.reto2018.Dueño">
+<form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="com.reto2018.Duenyo">
   <grid id="27dc6" binding="panel1" layout-manager="GridLayoutManager" row-count="1" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
     <margin top="0" left="0" bottom="0" right="0"/>
     <constraints>
@@ -10,7 +10,7 @@
     </properties>
     <border type="none"/>
     <children>
-      <tabbedpane id="21abf" binding="tabbedPane1" default-binding="true">
+      <tabbedpane id="21abf" default-binding="true">
         <constraints>
           <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false">
             <preferred-size width="200" height="200"/>
@@ -177,7 +177,7 @@
                 </properties>
                 <border type="none"/>
                 <children>
-                  <grid id="8a87e" binding="añadir" layout-manager="GridLayoutManager" row-count="1" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+                  <grid id="8a87e" binding="anyadir" layout-manager="GridLayoutManager" row-count="1" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
                     <margin top="0" left="0" bottom="0" right="0"/>
                     <constraints>
                       <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
@@ -194,7 +194,7 @@
                         <properties>
                           <font size="26"/>
                           <foreground color="-15197859"/>
-                          <text value="Añadir"/>
+                          <text value="Anyadir"/>
                         </properties>
                       </component>
                     </children>
@@ -1333,7 +1333,7 @@
                     </constraints>
                     <properties>
                       <foreground color="-819679"/>
-                      <text value="Dueño"/>
+                      <text value="Duenyo"/>
                     </properties>
                   </component>
                 </children>

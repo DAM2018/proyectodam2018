@@ -1,3 +1,4 @@
+
 # proyectodam2018
 Proyecto DAM 2018 (Iñigo, Jose, Mikel)
 
@@ -15,3 +16,10 @@ Proyecto DAM 2018 (Iñigo, Jose, Mikel)
   o con los datos de acceso del pdf.
   
   
+
+
+# proyectodam2018
+Proyecto DAM 2018 (Iñigo, Jose, Mikel)
+
+Inicio del proyecto:
+

@@ -164,7 +164,7 @@ administrador varchar2(30));
 /
 
 create table tablaTriggerUsuario(
-usuario varchar2(10),
+email varchar2(30),
 accion varchar2(30),
 fecha TIMESTAMP WITH TIME ZONE,
 administrador varchar2(30));
@@ -598,7 +598,7 @@ end;
 create or replace trigger triggerUsuario2 before delete on usuarios
 declare
 v varchar2(30):='deleting';
-v_1 varchar2 (10);
+v_1 varchar2 (30);
 v_2 varchar2 (30);
 v_3 number;
 begin
@@ -1010,6 +1010,7 @@ delete from partido;
 delete from jugador;
 delete from usuarios;
 delete from administradores;
+delete from clasificacion2;
  
 
 insert into equipo(nombreequi,ordeninsertar) values('equipo1',seq.nextval);
@@ -1284,7 +1285,13 @@ execute immediate' alter  trigger triggerJugador2 disable';
 execute immediate' alter  trigger triggerUsuario disable';
 execute immediate' alter  trigger triggerUsuario2 disable';
 
-
+delete from equipo;
+delete from duenyo;
+delete from partido;
+delete from jugador;
+delete from usuarios;
+delete from administradores;
+delete from clasificacion2;
 
 insert into equipo(nombreequi,ordeninsertar) values('equipo1',seq.nextval);
 insert into equipo(nombreequi,ordeninsertar) values('equipo2',seq.nextval);
@@ -1325,18 +1332,7 @@ insert into jugador (nombrejug, nick,sueldo,dnijug, administradoroduenyo,numacci
 insert into jugador (nombrejug, nick,sueldo,dnijug, administradoroduenyo,numaccion,CodigoEquiJug) values ('jugador19','jug19',90000,'19','nadie',seq3.nextval,'0');
 insert into jugador (nombrejug, nick,sueldo,dnijug, administradoroduenyo,numaccion,CodigoEquiJug) values ('jugador20','jug20', 100000,'20','nadie',seq3.nextval,'0');
 
-insert into partido values('1/1/2018','1','2','1','equipo1','equipo2',seq3.nextval, 'nadie',seq3.nextval);
-insert into partido values('1/1/2018','1','4','2','equipo3','equipo8',seq3.nextval, 'nadie',seq3.nextval);
-insert into partido values('1/1/2018','1','1','1','equipo4','equipo7',seq3.nextval, 'nadie',seq3.nextval);
-insert into partido values('1/1/2018','1','0','1','equipo5','equipo6',seq3.nextval, 'nadie',seq3.nextval);
-insert into partido values('8/1/2018','2','1','1','','',seq3.nextval, 'nadie',seq3.nextval);
-insert into partido values('8/1/2018','2','1','1','','',seq3.nextval, 'nadie',seq3.nextval);
-insert into partido values('8/1/2018','2','1','1','','',seq3.nextval, 'nadie',seq3.nextval);
-insert into partido values('8/1/2018','2','1','1','','',seq3.nextval, 'nadie',seq3.nextval);
-insert into partido values('15/1/2018','3','1','1','','',seq3.nextval, 'nadie',seq3.nextval);
-insert into partido values('15/1/2018','3','1','1','','',seq3.nextval, 'nadie',seq3.nextval);
-insert into partido values('15/1/2018','3','1','1','','',seq3.nextval, 'nadie',seq3.nextval);
-insert into partido values('15/1/2018','3','1','1','','',seq3.nextval, 'nadie',seq3.nextval);
+
 
 insert into administradores values('admin1','admin1','admin1');
 insert into administradores values('admin2','admin2','admin2');
@@ -1561,4 +1557,4 @@ end;
 commit;
 
 
-select * from clasificacion2;
+select * from jugador;

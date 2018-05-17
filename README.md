@@ -1,6 +1,5 @@
-﻿# proyectodam2018
-Proyecto DAM 2018 (Iñigo, Jose, Mikel)
+﻿# GRUPO 2 PROYECTO 2018.
 
-Proyecto 2018
+
 
 

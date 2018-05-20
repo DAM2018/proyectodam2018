@@ -1,10 +1,13 @@
+<<<<<<< HEAD
 ﻿
 MANUAL DE ADMINISTRADOR Y USUARIO
+=======
+>>>>>>> master
 
 
-1- Antes de iniciar la aplicación:
 
 
+<<<<<<< HEAD
 - Cargar el scrypt en la base de datos de oracle, para ello se puede utilizar Oracle SQL Developer.
 
 
@@ -159,3 +162,5 @@ Proyecto DAM 2018 – Grupo 2 E-Sport
 7
 
 
+=======
+>>>>>>> master

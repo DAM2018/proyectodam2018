@@ -12,6 +12,15 @@ public class Equipo {
     private int perdido;
     private String dniDuenyoEquipo;
     private boolean asigandoDuenyo;
+    private String jornada;
+
+    public String getJornada() {
+        return jornada;
+    }
+
+    public void setJornada(String jornada) {
+        this.jornada = jornada;
+    }
 
     //Asociaciones.
     private VentanaMenuAdministrador ventanaMenuAdministrador;

@@ -18,7 +18,8 @@ public class ClasificacionEquipo {
     private int gc;
 
     /**
-     * Constructor para objetos de clasificacion de equipo. Este objeto recoje las estadisticas de la clasificacion de la liga para un equipo.
+     * Constructor para objetos de clasificacion de equipo. Este objeto recoje las estadisticas de la clasificacion
+     * de la liga para un equipo.
      * Este constructor inicializa todas las variables a 0.
      */
     public ClasificacionEquipo()
@@ -34,7 +35,8 @@ public class ClasificacionEquipo {
     }
 
     /**
-     * Constructor para objetos de clasificacion de equipo. Este objeto recoje las estadisticas de la clasificacion de la liga para un equipo.
+     * Constructor para objetos de clasificacion de equipo. Este objeto recoje las estadisticas de la
+     * clasificacion de la liga para un equipo.
      * @param puntos Los puntos del equipo
      * @param pj Partidos jugados por el equipo
      * @param pg Partidos ganados por el equipo
@@ -43,6 +45,7 @@ public class ClasificacionEquipo {
      * @param gf Goles a favor del equipo
      * @param gc Goles en contra del equipo
      */
+
     public ClasificacionEquipo(int puntos, int pj, int pg, int pe, int pp, int gf, int gc)
     {
         // initialise instance variables

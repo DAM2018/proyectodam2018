@@ -10,6 +10,11 @@ public class Partido {
     private String visitante;
     private String resultado;
     private String fecha;
+    private int golesLocal;
+    private int golesVisitante;
+    private int numeroJOrnada;
+    private  String loc;
+    private String visit;
 
     //Asociaciones.
     private List<Equipo>equipos;
@@ -18,12 +23,58 @@ public class Partido {
     public Partido() {
     }
 
-    public Partido(String numeroPartido, String local, String visitante, String resultado, Jornada jornada) {
+    public Partido(String numeroPartido, String local, String visitante, String resultado, String fecha, int golesLocal,
+                   int golesVisitante, int numeroJOrnada, String loc, String visit) {
         this.numeroPartido = numeroPartido;
         this.local = local;
         this.visitante = visitante;
         this.resultado = resultado;
-        this.jornada = jornada;
+        this.fecha = fecha;
+        this.golesLocal = golesLocal;
+        this.golesVisitante = golesVisitante;
+        this.numeroJOrnada = numeroJOrnada;
+        this.loc = loc;
+        this.visit = visit;
+    }
+
+    public String getLoc() {
+        return loc;
+    }
+
+    public void setLoc(String loc) {
+        this.loc = loc;
+    }
+
+    public String getVisit() {
+        return visit;
+    }
+
+    public void setVisit(String visit) {
+        this.visit = visit;
+    }
+
+    public int getNumeroJOrnada() {
+        return numeroJOrnada;
+    }
+
+    public void setNumeroJOrnada(int numeroJOrnada) {
+        this.numeroJOrnada = numeroJOrnada;
+    }
+
+    public int getGolesLocal() {
+        return golesLocal;
+    }
+
+    public void setGolesLocal(int golesLocal) {
+        this.golesLocal = golesLocal;
+    }
+
+    public int getGolesVisitante() {
+        return golesVisitante;
+    }
+
+    public void setGolesVisitante(int golesVisitante) {
+        this.golesVisitante = golesVisitante;
     }
 
     public String getFecha() {

@@ -1,7 +1,10 @@
 package jose.armas;
 
+
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.*;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -181,11 +184,11 @@ public class VentanaMenuAdministrador {
         DefaultComboBoxModel<String> jornadaDefaultComboBoxModel = new DefaultComboBoxModel<>();
 
 
-        List <Equipo> equipoList = EquiposBd.equiposDeLaBD();
+        List<Equipo> equipoList = EquiposBd.equiposDeLaBD();
 
         for (int i = 0; i < 14; i++) {
-            String jornada = (String)"Jornada "+(i+1);
-            jornadaDefaultComboBoxModel.insertElementAt(jornada,i);
+            String jornada = (String) "Jornada " + (i + 1);
+            jornadaDefaultComboBoxModel.insertElementAt(jornada, i);
         }
 
         comboBoxJornadas.setModel(jornadaDefaultComboBoxModel);
@@ -194,13 +197,13 @@ public class VentanaMenuAdministrador {
         comboBoxJornadas.addItemListener(new ItemListener() {
             @Override
             public void itemStateChanged(ItemEvent e) {
-                String [][] primeraVuelta = generarEmparejamientosPrimeraVuelta(equipoList);
-                String [][]segundaVuelta = generarEmparejamientosSegundaVuelta(equipoList);
-               int index = comboBoxJornadas.getSelectedIndex();
-                switch (index){
+                String[][] primeraVuelta = generarEmparejamientosPrimeraVuelta(equipoList);
+                String[][] segundaVuelta = generarEmparejamientosSegundaVuelta(equipoList);
+                int index = comboBoxJornadas.getSelectedIndex();
+                switch (index) {
                     case 0:
                         for (int i = 0; i < 4; i++) {
-                            switch (i){
+                            switch (i) {
                                 case 0:
                                     partido1Label.setText(primeraVuelta[0][i]);
                                     break;
@@ -218,7 +221,7 @@ public class VentanaMenuAdministrador {
                         break;
                     case 1:
                         for (int i = 0; i < 4; i++) {
-                            switch (i){
+                            switch (i) {
                                 case 0:
                                     partido1Label.setText(primeraVuelta[1][i]);
                                     break;
@@ -237,7 +240,7 @@ public class VentanaMenuAdministrador {
                         break;
                     case 2:
                         for (int i = 0; i < 4; i++) {
-                            switch (i){
+                            switch (i) {
                                 case 0:
                                     partido1Label.setText(primeraVuelta[2][i]);
                                     break;
@@ -255,7 +258,7 @@ public class VentanaMenuAdministrador {
                         break;
                     case 3:
                         for (int i = 0; i < 4; i++) {
-                            switch (i){
+                            switch (i) {
                                 case 0:
                                     partido1Label.setText(primeraVuelta[3][i]);
                                     break;
@@ -273,7 +276,7 @@ public class VentanaMenuAdministrador {
                         break;
                     case 4:
                         for (int i = 0; i < 4; i++) {
-                            switch (i){
+                            switch (i) {
                                 case 0:
                                     partido1Label.setText(primeraVuelta[4][i]);
                                     break;
@@ -291,7 +294,7 @@ public class VentanaMenuAdministrador {
                         break;
                     case 5:
                         for (int i = 0; i < 4; i++) {
-                            switch (i){
+                            switch (i) {
                                 case 0:
                                     partido1Label.setText(primeraVuelta[5][i]);
                                     break;
@@ -309,7 +312,7 @@ public class VentanaMenuAdministrador {
                         break;
                     case 6:
                         for (int i = 0; i < 4; i++) {
-                            switch (i){
+                            switch (i) {
                                 case 0:
                                     partido1Label.setText(primeraVuelta[6][i]);
                                     break;
@@ -330,7 +333,7 @@ public class VentanaMenuAdministrador {
 
                     case 7:
                         for (int i = 0; i < 4; i++) {
-                            switch (i){
+                            switch (i) {
                                 case 0:
                                     partido1Label.setText(segundaVuelta[0][i]);
                                     break;
@@ -348,7 +351,7 @@ public class VentanaMenuAdministrador {
                         break;
                     case 8:
                         for (int i = 0; i < 4; i++) {
-                            switch (i){
+                            switch (i) {
                                 case 0:
                                     partido1Label.setText(segundaVuelta[1][i]);
                                     break;
@@ -367,7 +370,7 @@ public class VentanaMenuAdministrador {
                         break;
                     case 9:
                         for (int i = 0; i < 4; i++) {
-                            switch (i){
+                            switch (i) {
                                 case 0:
                                     partido1Label.setText(segundaVuelta[2][i]);
                                     break;
@@ -385,7 +388,7 @@ public class VentanaMenuAdministrador {
                         break;
                     case 10:
                         for (int i = 0; i < 4; i++) {
-                            switch (i){
+                            switch (i) {
                                 case 0:
                                     partido1Label.setText(segundaVuelta[3][i]);
                                     break;
@@ -403,7 +406,7 @@ public class VentanaMenuAdministrador {
                         break;
                     case 11:
                         for (int i = 0; i < 4; i++) {
-                            switch (i){
+                            switch (i) {
                                 case 0:
                                     partido1Label.setText(segundaVuelta[4][i]);
                                     break;
@@ -421,7 +424,7 @@ public class VentanaMenuAdministrador {
                         break;
                     case 12:
                         for (int i = 0; i < 4; i++) {
-                            switch (i){
+                            switch (i) {
                                 case 0:
                                     partido1Label.setText(segundaVuelta[5][i]);
                                     break;
@@ -439,7 +442,7 @@ public class VentanaMenuAdministrador {
                         break;
                     case 13:
                         for (int i = 0; i < 4; i++) {
-                            switch (i){
+                            switch (i) {
                                 case 0:
                                     partido1Label.setText(segundaVuelta[6][i]);
                                     break;
@@ -486,63 +489,144 @@ public class VentanaMenuAdministrador {
             @Override
             public void actionPerformed(ActionEvent e) {
 
-                try{
-                    int numeroJOrnada = comboBoxJornadas.getSelectedIndex();
-                }catch (NullPointerException n){
+                int codPartido;
+                String[] equipos;
+                String local;
+                String visitante;
+                String resultado;
+                int golesLocal;
+                int golesVisitante;
+                String fecha = null;
 
-                }
+                int numeroJOrnada = comboBoxJornadas.getSelectedIndex();
+
+                if (numeroJOrnada < 0) {
+                    Toolkit.getDefaultToolkit().beep();
+                    JOptionPane.showMessageDialog(null, "seleccione una jornada");
+                } else if (!isNumeric(textField1.getText())) {
+                    Toolkit.getDefaultToolkit().beep();
+                    JOptionPane.showMessageDialog(null, "dato no válido, introduzca un número");
+                } else if (!isNumeric(textField2.getText())) {
+                    Toolkit.getDefaultToolkit().beep();
+                    JOptionPane.showMessageDialog(null, "dato no válido, introduzca un número");
+                } else if (!isNumeric(textField3.getText())) {
+                    Toolkit.getDefaultToolkit().beep();
+                    JOptionPane.showMessageDialog(null, "dato no válido, introduzca un número");
+                } else if (!isNumeric(textField4.getText())) {
+                    Toolkit.getDefaultToolkit().beep();
+                    JOptionPane.showMessageDialog(null, "dato no válido, introduzca un número");
+                } else if (!isNumeric(textField5.getText())) {
+                    Toolkit.getDefaultToolkit().beep();
+                    JOptionPane.showMessageDialog(null, "dato no válido, introduzca un número");
+                } else if (!isNumeric(textField6.getText())) {
+                    Toolkit.getDefaultToolkit().beep();
+                    JOptionPane.showMessageDialog(null, "dato no válido, introduzca un número");
+                } else if (!isNumeric(textField7.getText())) {
+                    Toolkit.getDefaultToolkit().beep();
+                    JOptionPane.showMessageDialog(null, "dato no válido, introduzca un número");
+                } else if (!isNumeric(textField8.getText())) {
+                    Toolkit.getDefaultToolkit().beep();
+                    JOptionPane.showMessageDialog(null, "dato no válido, introduzca un número");
+                } else  {
+                    switch (numeroJOrnada){
+                        case 0:
+                            for (int i = 0; i < 4; i++) {
+                                switch (i) {
+                                    case 0:
+                                        codPartido = 1;
+                                        String cod = String.valueOf(codPartido);
+                                        equipos = label1.getText().split(" vs ");
+                                        local = equipos[0];
+                                        visitante = equipos[1];
+                                        resultado = textField1.getText() + " - " + textField2.getText();
+                                        golesLocal = Integer.parseInt(textField1.getText());
+                                        golesVisitante = Integer.parseInt(textField2.getText());
+
+                                        Partido partido1 = new Partido(cod,local,visitante,resultado,fecha,golesLocal,
+                                                golesVisitante,numeroJOrnada,local,visitante);
+
+                                        try {
+                                            PartidoBD.crear(partido1);
+                                        } catch (SQLException excepcion) {
+                                            JOptionPane.showMessageDialog(null,excepcion.getMessage());
+                                        }
+
+
+                                        break;
+                                    case 1:
+                                        codPartido = 2;
+                                        String co = Integer.toString(codPartido);
+                                        equipos = label2.getText().split(" vs ");
+                                        local = equipos[0];
+                                        visitante = equipos[1];
+                                        resultado = textField3.getText() + " - " + textField4.getText();
+                                        golesLocal = Integer.parseInt(textField3.getText());
+                                        golesVisitante = Integer.parseInt(textField4.getText());
+
+                                        Partido partido2 = new Partido(co,local,visitante,resultado,fecha,golesLocal,
+                                                golesVisitante,numeroJOrnada,local,visitante);
+
+                                        try {
+                                            PartidoBD.crear(partido2);
+                                        } catch (SQLException excepcion) {
+                                            excepcion.getMessage();
+                                        }
+                                        break;
+                                    case 2:
+                                        codPartido = 3;
+                                        String c = Integer.toString(codPartido);
+                                        equipos = label3.getText().split(" vs ");
+                                        local = equipos[0];
+                                        visitante = equipos[1];
+                                        resultado = textField5.getText() + " - " + textField6.getText();
+                                        golesLocal = Integer.parseInt(textField5.getText());
+                                        golesVisitante = Integer.parseInt(textField6.getText());
+
+                                        Partido partido3 = new Partido(c,local,visitante,resultado,fecha,golesLocal,
+                                                golesVisitante,numeroJOrnada,local,visitante);
+
+                                        try {
+                                            PartidoBD.crear(partido3);
+                                        } catch (SQLException excepcion) {
+                                            excepcion.getMessage();
+                                        }
+                                        break;
+                                    case 3:
+                                        codPartido = 4;
+                                        String od = Integer.toString(codPartido);
+                                        equipos = label4.getText().split(" vs ");
+                                        local = equipos[0];
+                                        visitante = equipos[1];
+                                        resultado = textField7.getText() + " - " + textField8.getText();
+                                        golesLocal = Integer.parseInt(textField7.getText());
+                                        golesVisitante = Integer.parseInt(textField8.getText());
+
+                                        Partido partido4 = new Partido(od,local,visitante,resultado,fecha,golesLocal,
+                                                golesVisitante,numeroJOrnada,local,visitante);
+
+                                        try {
+                                            PartidoBD.crear(partido4);
+                                        } catch (SQLException excepcion) {
+                                            excepcion.getMessage();
+                                        }
+                                        break;
+                                }
+                            }
+                            break;
+                        case 1:
+
+                            break;
+                        case 2:
+
+                            break;
 
 
 
-                Equipo equipo = new Equipo();
-                Partido partido = new Partido();
 
-
-
-                List<Equipo>listadeEquipos = EquiposBd.equiposDeLaBD();
-                List<Partido>partidoList = new ArrayList<>();
-
-                partidoList = equipo.getPartidos();
-
-
-
-
-                for (int i = 0; i < 14; i++) {
-                    for (int j = 0; j < 4; j++) {
 
                     }
+
                 }
-
-
-                //Recojo datos del partido.
-                String date = null;
-                String resultado = textField1.getText()+textField2.getText();
-                String [] equipos = label1.getText().split(" vs ");
-                String local = equipos[0];
-                String visitante = equipos[1];
-                String codPartido = Integer.toString(1);
-                String codLocal =null;
-                String codVisitante=null;
-
-
-
-
-                for (Equipo equipe:listadeEquipos) {
-                    if (equipo.getNombre().equalsIgnoreCase(local)) {
-                        codLocal=equipe.getCodigo();
-                    }
-                    if (equipo.getNombre().equalsIgnoreCase(visitante)) {
-
-                        codVisitante=equipe.getCodigo();
-                    }
-                }
-
-
-
-
-
-
-
 
             }
         });
@@ -685,60 +769,59 @@ public class VentanaMenuAdministrador {
     }
 
     /**
-     * @method que genera los emparejamientos de la primera vuelta.
      * @param clubes
      * @return jorandas que es una matriz donde están las 7 jornadas de la 1ª vuelta.
+     * @method que genera los emparejamientos de la primera vuelta.
      */
-    public  String[][]  generarEmparejamientosPrimeraVuelta ( List<Equipo> clubes){
+    public String[][] generarEmparejamientosPrimeraVuelta(List<Equipo> clubes) {
 
         int N = clubes.size();
 
         String[] equipos;
-        String[][] matriz1,matriz2,jornadas,jornadas2;
+        String[][] matriz1, matriz2, jornadas, jornadas2;
 
         equipos = new String[N];
 
         //Relleno el array de equipos.
-        int contador =0;
+        int contador = 0;
 
-        for (Equipo e:clubes) {
-            if(contador<N){
-                equipos[contador]=e.getNombre();
+        for (Equipo e : clubes) {
+            if (contador < N) {
+                equipos[contador] = e.getNombre();
                 contador++;
             }
         }
 
-        matriz1 = new String[N-1][N/2];
-        matriz2 = new String[N-1][N/2];
-        jornadas = new String[N-1][N/2]; //primera vuelta
-        jornadas2 = new String[N-1][N/2]; //segunda vuelta
+        matriz1 = new String[N - 1][N / 2];
+        matriz2 = new String[N - 1][N / 2];
+        jornadas = new String[N - 1][N / 2]; //primera vuelta
+        jornadas2 = new String[N - 1][N / 2]; //segunda vuelta
 
         //Relleno las matrices
 
         int cont = 0;
-        int cont2 = N-2;
+        int cont2 = N - 2;
 
-        for(int i=0;i<N-1;i++){
-            for(int j=0;j<N/2;j++){
+        for (int i = 0; i < N - 1; i++) {
+            for (int j = 0; j < N / 2; j++) {
                 //matriz1
                 matriz1[i][j] = String.valueOf(equipos[cont]);
                 cont++;
-                if(cont==(N-1)) cont=0;
+                if (cont == (N - 1)) cont = 0;
 
                 //matriz2
-                if(j==0) matriz2[i][j] = String.valueOf(equipos[N-1]);
+                if (j == 0) matriz2[i][j] = String.valueOf(equipos[N - 1]);
                 else {
                     matriz2[i][j] = String.valueOf(equipos[cont2]);
                     cont2--;
-                    if(cont2==-1) cont2 = N-2;
+                    if (cont2 == -1) cont2 = N - 2;
                 }
 
                 //Elaboro la matriz final de enfrentamientos por jornada (primera vuelta)
-                if(j==0){
-                    if(i%2==0) jornadas[i][j] = matriz2[i][j] + " vs " + matriz1[i][j] + " ";
+                if (j == 0) {
+                    if (i % 2 == 0) jornadas[i][j] = matriz2[i][j] + " vs " + matriz1[i][j] + " ";
                     else jornadas[i][j] = matriz1[i][j] + " vs " + matriz2[i][j] + " ";
-                }
-                else jornadas[i][j] = matriz1[i][j] + " vs " + matriz2[i][j] + " ";
+                } else jornadas[i][j] = matriz1[i][j] + " vs " + matriz2[i][j] + " ";
 
 
                 /*segunda vuelta - al reves que la primera
@@ -755,52 +838,52 @@ public class VentanaMenuAdministrador {
     }
 
     /**
-     * @method que genera los emparejamientos de la segunda vuelta.
      * @param clubes
      * @return jorandas2 que es una matriz donde están las 7 jornadas de la 2ªvuelta.
+     * @method que genera los emparejamientos de la segunda vuelta.
      */
-    public  String[][]  generarEmparejamientosSegundaVuelta ( List<Equipo> clubes){
+    public String[][] generarEmparejamientosSegundaVuelta(List<Equipo> clubes) {
 
         int N = clubes.size();
 
         String[] equipos;
-        String[][] matriz1,matriz2,jornadas,jornadas2;
+        String[][] matriz1, matriz2, jornadas, jornadas2;
 
         equipos = new String[N];
 
         //Relleno el array de equipos.
-        int contador =0;
+        int contador = 0;
 
-        for (Equipo e:clubes) {
-            if(contador<N){
-                equipos[contador]=e.getNombre();
+        for (Equipo e : clubes) {
+            if (contador < N) {
+                equipos[contador] = e.getNombre();
                 contador++;
             }
         }
 
-        matriz1 = new String[N-1][N/2];
-        matriz2 = new String[N-1][N/2];
-        jornadas = new String[N-1][N/2]; //primera vuelta
-        jornadas2 = new String[N-1][N/2]; //segunda vuelta
+        matriz1 = new String[N - 1][N / 2];
+        matriz2 = new String[N - 1][N / 2];
+        jornadas = new String[N - 1][N / 2]; //primera vuelta
+        jornadas2 = new String[N - 1][N / 2]; //segunda vuelta
 
         //Relleno las matrices
 
         int cont = 0;
-        int cont2 = N-2;
+        int cont2 = N - 2;
 
-        for(int i=0;i<N-1;i++){
-            for(int j=0;j<N/2;j++){
+        for (int i = 0; i < N - 1; i++) {
+            for (int j = 0; j < N / 2; j++) {
                 //matriz1
                 matriz1[i][j] = String.valueOf(equipos[cont]);
                 cont++;
-                if(cont==(N-1)) cont=0;
+                if (cont == (N - 1)) cont = 0;
 
                 //matriz2
-                if(j==0) matriz2[i][j] = String.valueOf(equipos[N-1]);
+                if (j == 0) matriz2[i][j] = String.valueOf(equipos[N - 1]);
                 else {
                     matriz2[i][j] = String.valueOf(equipos[cont2]);
                     cont2--;
-                    if(cont2==-1) cont2 = N-2;
+                    if (cont2 == -1) cont2 = N - 2;
                 }
 
                 /*Elaboro la matriz final de enfrentamientos por jornada (primera vuelta)
@@ -812,11 +895,10 @@ public class VentanaMenuAdministrador {
 
 
                 //segunda vuelta - al reves que la primera
-                if(j==0){
-                    if(i%2==0) jornadas2[i][j] = matriz1[i][j] + " vs " + matriz2[i][j] + " ";
+                if (j == 0) {
+                    if (i % 2 == 0) jornadas2[i][j] = matriz1[i][j] + " vs " + matriz2[i][j] + " ";
                     else jornadas2[i][j] = matriz2[i][j] + " vs " + matriz1[i][j] + " ";
-                }
-                else jornadas2[i][j] = matriz2[i][j] + " vs " + matriz1[i][j] + " ";
+                } else jornadas2[i][j] = matriz2[i][j] + " vs " + matriz1[i][j] + " ";
 
             }
         }
@@ -824,5 +906,17 @@ public class VentanaMenuAdministrador {
         return jornadas2;
     }
 
+    public boolean isNumeric(String cadena) {
 
+        boolean resultado;
+
+        try {
+            Integer.parseInt(cadena);
+            resultado = true;
+        } catch (NumberFormatException excepcion) {
+            resultado = false;
+        }
+
+        return resultado;
+    }
 }

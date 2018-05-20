@@ -1,13 +1,14 @@
-<<<<<<< HEAD
-﻿
+
+
+
 MANUAL DE ADMINISTRADOR Y USUARIO
 =======
->>>>>>> master
 
 
 
 
-<<<<<<< HEAD
+
+
 - Cargar el scrypt en la base de datos de oracle, para ello se puede utilizar Oracle SQL Developer.
 
 
@@ -159,8 +160,4 @@ Por lo tanto tendrá acceso a un menú de usuario como el que se muestra a conti
 
 Proyecto DAM 2018 – Grupo 2 E-Sport
 
-7
 
-
-=======
->>>>>>> master

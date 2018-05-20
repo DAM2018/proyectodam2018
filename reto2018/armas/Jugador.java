@@ -7,7 +7,7 @@ package jose.armas;
 import java.util.Objects;
 
 /**
- * @Class Esta clase representa a un jugador.
+ *
  */
 public class Jugador {
 
@@ -28,6 +28,15 @@ public class Jugador {
     public Jugador() {
     }
 
+    /**
+     *
+     * @param nombreJugador
+     * @param nickJugador
+     * @param sueldoJugador
+     * @param dniJugador
+     * @param caracteristicasJugador
+     * @param codigoEquipoJugador
+     */
     public Jugador(String nombreJugador, String nickJugador, int sueldoJugador, String dniJugador,
                    String caracteristicasJugador, String codigoEquipoJugador) {
         this.nombreJugador = nombreJugador;

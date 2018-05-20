@@ -62,6 +62,13 @@ public class VentanaUsuario {
             @Override
             public void actionPerformed(ActionEvent e) {
 
+                try{
+                    UsuarioBD.borrarUsuario(nuevoUsuarioExtraidoDeLosDatosTexfields());
+
+                }catch (Exception excepcion){
+                    JOptionPane.showMessageDialog(null,"error");
+                }
+
                 try {
                     UsuarioBD.borrarUsuario(nuevoUsuarioExtraidoDeLosDatosTexfields());
                     DefaultListModel<Usuario>usuarioDefaultListModel = new DefaultListModel<>();
@@ -81,6 +88,15 @@ public class VentanaUsuario {
         actualizarButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+
+                try{
+                   nuevoUsuarioExtraidoDeLosDatosTexfields();
+
+                }catch (NullPointerException excepcion){
+
+                    JOptionPane.showMessageDialog(contenedorPrincipal,excepcion.getMessage());
+                }
+
 
                 try {
                     UsuarioBD.actualizar(nuevoUsuarioExtraidoDeLosDatosTexfields());
@@ -103,6 +119,14 @@ public class VentanaUsuario {
         crearButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+
+                try{
+                    UsuarioBD.borrarUsuario(nuevoUsuarioExtraidoDeLosDatosTexfields());
+
+                }catch (Exception excepcion){
+                    JOptionPane.showMessageDialog(null,"error");
+                }
+
 
                 try {
                     UsuarioBD.crear(nuevoUsuarioExtraidoDeLosDatosTexfields());
